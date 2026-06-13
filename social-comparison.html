@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Role of Social Comparison in Performance and Wellbeing — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/White_Logo.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    h1,h2,h3,h4,h5{font-family:var(--font-heading)!important;font-weight:var(--weight-heading)!important;letter-spacing:var(--tracking-tight);}
+    html,body{margin:0;scroll-behavior:smooth;}
+    body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-body);}
+    #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+    .nav-glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(243,243,240,.93);border-bottom:var(--border-width) solid var(--border-subtle);}
+    .nav-link{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none;transition:color .2s ease;}
+    .nav-link:hover{text-decoration:none;}
+    .nav-login{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;border-radius:var(--radius-pill);padding:8px 18px;cursor:pointer;background:transparent;transition:background .2s ease;}
+    .nav-logo-icon{height:32px;width:32px;object-fit:contain;transition:filter .4s ease;}
+    .nav-drop-wrap{position:relative;display:inline-flex;align-items:center;}
+    .nav-drop-trigger{display:inline-flex!important;align-items:center;gap:4px;cursor:pointer;}
+    .nav-drop-wrap:hover .nav-chevron{transform:rotate(180deg);}
+    .nav-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;padding-top:10px;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:200;}
+    .nav-dropdown-inner{background:rgba(243,243,240,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,46,46,.10);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,.13);padding:6px;}
+    .nav-drop-wrap:hover .nav-dropdown{opacity:1;pointer-events:auto;}
+    .nav-drop-item{display:block;padding:9px 14px;border-radius:var(--radius-md);color:var(--text-muted)!important;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none!important;transition:background .15s ease,color .15s ease!important;white-space:nowrap;}
+    .nav-drop-item:hover{background:var(--surface-sunken);color:var(--ep-pine)!important;}
+    .nav-drop-divider{height:1px;background:var(--border-subtle);margin:4px 8px;}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-delay-1{transition-delay:.12s;}.reveal-delay-2{transition-delay:.24s;}
+    .back-link{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.45);text-decoration:none;transition:color .2s;}
+    .back-link:hover{color:rgba(243,243,240,.8);text-decoration:none;}
+    .article-body{max-width:680px;}
+    .article-body p{color:var(--text-body);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);font-size:var(--text-base);}
+    .article-body h2{color:var(--text-strong);font-size:var(--text-3xl);margin-top:var(--space-12);margin-bottom:var(--space-4);}
+    .article-body h3{color:var(--text-strong);font-size:var(--text-xl);margin-top:var(--space-8);margin-bottom:var(--space-3);}
+    .article-body ul{color:var(--text-body);margin-bottom:var(--space-5);padding-left:var(--space-5);}
+    .article-body ul li{margin-bottom:var(--space-2);line-height:var(--leading-relaxed);}
+    .article-body strong{color:var(--text-strong);font-weight:600;}
+    .pull-quote{border-left:3px solid var(--ep-plum);padding:var(--space-5) var(--space-7);margin:var(--space-10) 0;background:color-mix(in srgb,var(--ep-plum) 5%,transparent);border-radius:0 var(--radius-md) var(--radius-md) 0;}
+    .pull-quote p{font-size:var(--text-xl)!important;color:var(--text-strong)!important;line-height:1.45!important;margin:0!important;font-style:italic;}
+    .pull-quote cite{display:block;margin-top:var(--space-3);font-size:var(--text-xs);color:var(--text-muted);font-style:normal;font-family:var(--font-heading);letter-spacing:.06em;text-transform:uppercase;}
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--ep-plum) 10%,transparent);color:var(--ep-plum);font-family:var(--font-heading);font-size:var(--text-xs);font-weight:600;letter-spacing:.06em;flex-shrink:0;margin-right:var(--space-3);}
+    .article-photo{border-radius:var(--radius-lg);overflow:hidden;margin:var(--space-10) 0;}
+    .article-photo img{width:100%;display:block;object-fit:cover;}
+    .article-photo figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
+    .takehome-card{background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);transition:box-shadow .2s;}
+    .takehome-card:hover{box-shadow:var(--shadow-sm);}
+    .cta-btn{display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html#services" class="nav-link text-white/70 hover:text-white">Services</a>
+      <a href="index.html#about" class="nav-link text-white/70 hover:text-white">About</a>
+      <div class="nav-drop-wrap">
+        <a href="our-work.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Our Work <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="wem-case-study.html" class="nav-drop-item">World Extreme Medicine</a>
+          <a href="rnli-case-study.html" class="nav-drop-item">RNLI</a>
+          <a href="mountain-rescue-case-study.html" class="nav-drop-item">Mountain Rescue</a>
+          <a href="tor-divide-case-study.html" class="nav-drop-item">The Tor Divide</a>
+          <div class="nav-drop-divider"></div>
+          <a href="performance-anxiety.html" class="nav-drop-item">Performance Anxiety</a>
+          <a href="social-comparison.html" class="nav-drop-item">Social Comparison</a>
+        </div></div>
+      </div>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="courses.html" class="nav-drop-item">All Courses</a>
+          <div class="nav-drop-divider"></div>
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+          <a href="courses.html#performance" class="nav-drop-item">Peak Performance</a>
+          <a href="courses.html#leadership" class="nav-drop-item">Leadership Under Pressure</a>
+        </div></div>
+      </div>
+      <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
+      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-2 border-t border-white/10" style="background:var(--ep-ink)">
+    <a href="index.html#services" class="block py-2 nav-link text-white/60">Services</a>
+    <a href="index.html#about" class="block py-2 nav-link text-white/60">About</a>
+    <a href="our-work.html" class="block py-2 nav-link text-white/60">Our Work</a>
+    <a href="free-tools.html" class="block py-2 nav-link text-white/60">Resources</a>
+    <a href="courses.html" class="block py-2 nav-link text-white/60">Courses</a>
+    <a href="index.html#contact" class="block py-2 nav-link text-white/60">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[70vh] flex items-end overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="assets/img/climb-stanage1.webp" alt="Climber on Stanage Edge with belayer below" class="w-full h-full object-cover" style="object-position:center 30%">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.95) 0%,rgba(10,15,22,.55) 45%,rgba(10,15,22,.15) 100%)"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
+    <a href="our-work.html" class="back-link mb-8 inline-flex reveal"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Articles</a>
+    <div class="flex flex-wrap items-center gap-3 mb-5 reveal">
+      <span class="ep-tag" style="background:rgba(91,74,106,.25);color:rgba(243,243,240,.85);border:1px solid rgba(91,74,106,.3)">Performance</span>
+      <span class="ep-tag" style="background:rgba(91,74,106,.25);color:rgba(243,243,240,.85);border:1px solid rgba(91,74,106,.3)">Wellbeing</span>
+      <span class="ep-tag" style="background:rgba(255,255,255,.1);color:rgba(243,243,240,.6)">Article</span>
+    </div>
+    <h1 class="text-4xl md:text-6xl text-white mb-5 reveal reveal-delay-1" style="max-width:780px;line-height:1.07">The Role of Social Comparison in Performance and Wellbeing</h1>
+    <p class="text-lg font-light mb-8 reveal reveal-delay-2" style="color:rgba(243,243,240,.55);max-width:560px;line-height:var(--leading-relaxed)">Social comparison is deeply human — but when it drives your performance, it quietly erodes the very thing that made you start.</p>
+    <div class="flex items-center gap-4 reveal reveal-delay-2">
+      <img src="assets/img/team-fin.jpg" alt="Dr Fin Haley" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)">
+      <div>
+        <p class="text-sm font-semibold" style="color:rgba(243,243,240,.8)">Dr Fin Haley</p>
+        <p class="text-xs" style="color:rgba(243,243,240,.4)">Clinical Psychologist &amp; Rock Climbing Instructor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+  <div class="grid lg:grid-cols-[1fr_280px] gap-16 items-start">
+
+    <!-- BODY -->
+    <article class="article-body reveal">
+
+      <p class="text-xl leading-relaxed mb-8" style="color:var(--text-strong)">You've just watched an epic reel of someone climbing a high peak in the Alps. You're left in awe, inspired, maybe even a little envious, and you can't wait to get down to your local wall to work on your own project.</p>
+
+      <p>It's a busy midweek evening. The place is packed, and everywhere you look people are floating up the walls on holds smaller than a slice of Terry's Chocolate Orange. You feel a twinge of embarrassment as you struggle on your problem, a few grades below theirs.</p>
+
+      <p>You chalk up, place your hands on the starting holds, and pull on — but halfway up, you slip off. You glance around. People are laughing nearby; they're not looking at you, but what if they saw? You drift over to a quieter section, avoiding the crowd. Your project, the one you were excited about all week, goes untouched for the rest of the session. You think to yourself: <strong>"I'll never be like that guy in the reel."</strong></p>
+
+      <p>This is the power of social comparison.</p>
+
+      <p>Social comparison, while completely natural and human, belongs to the thinking, self-conscious part of the mind — the part that wonders how we measure up, what others think of us, and whether we're "good enough." But when it comes to performance, that's exactly the part that gets in the way.</p>
+
+      <div class="pull-quote">
+        <p>"Those moments are hard to describe, but they often share one thing in common: you weren't thinking. You were simply doing."</p>
+      </div>
+
+      <p>Think back to a time when you performed at your best — at work, in sport, or even in a social setting. What did that feel like? Those moments often share one thing in common: you weren't analysing, judging, or worrying about who was watching. You were completely absorbed in the task at hand.</p>
+
+      <p>When we perform at our best, we enter a flow state. In that state, the part of the brain that compares and evaluates — the one that tracks our place in the social order — quiets down.</p>
+
+      <!-- SECTION 1 -->
+      <h2>What Is Social Comparison?</h2>
+
+      <p>We are social creatures by nature. Our survival has always depended on belonging, working together, protecting one another, raising children as a group. From tribal campfires to modern communities, being part of the collective has provided us with safety, identity, and meaning.</p>
+
+      <p>So when we feel excluded or "less than," it can trigger a deeply primal fear. Our brains evolved to avoid isolation — to conform, to fit in, and to compare ourselves with others to know where we stand.</p>
+
+      <p>Psychologically, we can imagine a bell curve of performance. Most people cluster near the middle. When we find ourselves at the lower end, we fear not being good enough; at the higher end, we may fear losing our status. The wider and more visible that curve becomes, the more pressure we feel.</p>
+
+      <!-- PHOTO 2 — belayer with gear -->
+      <figure class="article-photo">
+        <img src="assets/img/climb-stanage2.webp" alt="Climber racking gear at Stanage Edge" style="height:400px;object-position:center 40%">
+        <figcaption>The social context of climbing — connection and comparison exist side by side.</figcaption>
+      </figure>
+
+      <p>In today's world, that curve is massively stretched. We are constantly bombarded with images of extraordinary success — athletes, influencers, professionals performing at the very top of their game. Social media offers a distorted reality, showing us the highlights of others' lives without the struggle, failure, or downtime in between. Over time, we start to believe these extremes are normal. And when the "average" looks impossibly perfect, it's hard not to feel like we're falling short.</p>
+
+      <!-- SECTION 2 -->
+      <h2>How Does Social Comparison Affect Performance?</h2>
+
+      <p>This constant stream of comparison activates our need to achieve. We begin to measure our worth through visible, quantifiable outcomes: climbing a harder grade, running a faster time, getting a promotion.</p>
+
+      <p>Goals can be motivating — they give us direction and structure. But when they stem from fear of inadequacy rather than genuine curiosity or enjoyment, they begin to work against us. Performance becomes about <strong>avoiding failure</strong> instead of pursuing growth.</p>
+
+      <p>When that happens, our attention shifts away from the process — the very thing that makes us perform well — and fixates on the outcome. Anxiety takes over, and performance drops. Instead of moving freely, we become self-conscious, tense, and disconnected from the joy that brought us to the activity in the first place.</p>
+
+      <p>This not only undermines our own performance but can also erode our connection with others. When everyone becomes a competitor, we lose the social bonds that make our pursuits meaningful. Shared joy becomes envy; mutual growth becomes rivalry.</p>
+
+      <p>And the truth is, there will always be someone better, faster, stronger, more skilled. The key is not to suppress comparison, but to use it differently.</p>
+
+      <!-- PHOTO 3 — climber on The File -->
+      <figure class="article-photo">
+        <img src="assets/img/climb-file.webp" alt="Climber on The File crag focused on the moves" style="height:480px;object-position:center 25%">
+        <figcaption>Absorbed in the move — when comparison fades, performance follows.</figcaption>
+      </figure>
+
+      <!-- SECTION 3 -->
+      <h2>Better Strategies for Performance and Wellbeing</h2>
+
+      <p>Social comparison isn't something we can switch off — it's part of being human. But we can learn to work with it so that it fuels motivation rather than drains confidence.</p>
+
+      <h3>Notice and name it</h3>
+      <p>The first step to managing anything in the mind is noticing. Emotions shape how we see the world, often without us realising. Taking note of what you're feeling — and how you're feeling it — is the first step toward doing something about it.</p>
+
+      <h3>Remind yourself why you started</h3>
+      <p>It probably wasn't to beat anyone. You began because you enjoyed learning, growing, and feeling your body move. You felt proud of small improvements. You shared those moments with others — over a laugh, a drink, or a story — and that connection made the effort worthwhile.</p>
+      <p>When comparison starts to creep in, pause and reconnect with that original motivation. Ask yourself:</p>
+      <ul>
+        <li>What do I actually enjoy about this?</li>
+        <li>What part of this challenge feels meaningful to me right now?</li>
+      </ul>
+      <p>Re-anchoring to enjoyment and curiosity helps shift your attention from proving yourself to exploring your potential. After all, this is just an adult form of play.</p>
+
+      <h3>Refocus on your own process</h3>
+      <p>Everyone's path is different, shaped by unique bodies, experiences, time, and resources. If you're performing at your best, that's the absolute best you can do — and that's enough. Let others' achievements serve as inspiration, not measurement. When you catch yourself comparing, compare instead to your own past self — yesterday, six months ago, two years ago. How proud would your past self be?</p>
+
+      <h3>Be present</h3>
+      <p>Social comparison lives in the thinking part of the brain. Bring your focus back to your body — the textures under your fingers, the tension through your muscles, the rhythm of your breath. This not only steers you away from spiralling thoughts, it helps your brain learn what it's doing. You'll move better, feel more grounded, and stay connected to the experience.</p>
+
+      <h3>Connect with others</h3>
+      <p>Ironically, comparison disconnects us from the very people who could support and inspire us. We start seeing potential allies as competitors. Try reversing that. Celebrate someone else's success. Offer encouragement. Ask for tips. When you turn competition into connection, the environment feels safer, more enjoyable, and more collaborative — and you're far more likely to take risks, learn, and perform well.</p>
+
+      <div class="pull-quote">
+        <p>"Each time you come back to your body and your purpose, you're retraining your brain to perform from presence rather than pressure."</p>
+      </div>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="lg:sticky lg:top-28 space-y-4 reveal reveal-delay-1">
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">In This Article</p>
+        <nav class="space-y-1">
+          <a href="#" class="block py-2 text-sm border-b" style="color:var(--ep-plum);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">What Is Social Comparison?</a>
+          <a href="#" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">How It Affects Performance</a>
+          <a href="#" class="block py-2 text-sm" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.02em">Better Strategies</a>
+        </nav>
+      </div>
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Related</p>
+        <a href="performance-anxiety.html" class="block text-sm font-semibold mb-1" style="color:var(--ep-pine);text-decoration:none">Performance Anxiety →</a>
+        <p class="text-xs mb-4" style="color:var(--text-muted)">Three levers that break the anxiety cycle in sport.</p>
+        <a href="courses.html" class="block text-sm font-semibold mb-1" style="color:var(--ep-pine);text-decoration:none">Fear of Falling Toolkit →</a>
+        <p class="text-xs" style="color:var(--text-muted)">A structured course for managing fear in climbing.</p>
+      </div>
+      <div style="background:var(--ep-ink);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs);color:var(--ep-plum)">Work With Us</p>
+        <p class="text-sm mb-4" style="color:rgba(243,243,240,.6)">Want 1:1 support or team training in performance psychology?</p>
+        <a href="index.html#contact" class="cta-btn text-xs px-5 py-3" style="background:var(--ep-pine);color:var(--ep-paper)">Get In Touch</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- TAKE-HOMES -->
+<section class="py-20 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Take-Homes</p>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Five things to take away</h2>
+    <div class="grid md:grid-cols-5 gap-4">
+      <div class="takehome-card reveal">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+          <i data-lucide="eye" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+        </div>
+        <h3 class="text-base mb-2" style="color:var(--text-strong)">Notice It</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-muted)">Awareness is the first step to changing any pattern in the mind.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-1">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+          <i data-lucide="tag" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+        </div>
+        <h3 class="text-base mb-2" style="color:var(--text-strong)">Name It</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-muted)">Labelling what you're feeling reduces its grip on your performance.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-2">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="target" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-base mb-2" style="color:var(--text-strong)">Refocus</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-muted)">Come back to your own process. Compare to your past self, not others.</p>
+      </div>
+      <div class="takehome-card reveal">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-clay) 10%,transparent)">
+          <i data-lucide="activity" class="w-5 h-5" style="color:var(--ep-clay)"></i>
+        </div>
+        <h3 class="text-base mb-2" style="color:var(--text-strong)">Stay Present</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-muted)">Your body is the fastest route back to the present moment.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-1">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="users" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-base mb-2" style="color:var(--text-strong)">Connect</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--text-muted)">Turn competition into connection. Shared joy beats rivalry every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height:28px;opacity:.6">
+      <span style="color:rgba(243,243,240,.3);font-size:var(--text-xs);font-family:var(--font-heading)">Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="our-work.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Our Work</a>
+      <a href="courses.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Courses</a>
+      <a href="index.html#contact" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script>
+  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link'),navLogin=document.querySelector('.nav-login');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});if(navLogin){navLogin.style.borderColor='var(--border-default)';navLogin.style.color='var(--text-muted)';}}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLinks.forEach(function(l){l.style.color=''});if(navLogin){navLogin.style.borderColor='';navLogin.style.color='';}}
+  });
+  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+  lucide.createIcons();
+</script>
+</body>
+</html>

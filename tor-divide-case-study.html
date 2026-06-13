@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tor Divide — Case Study — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/White_Logo.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { 'ep-bg':'#F3F3F0','ep-text':'#2E2E2E','ep-p':'#5B4A6A','ep-s':'#4B7A6E','ep-r':'#B6534B','ep-o':'#C97A4A','ep-y':'#D6B86C','ep-g':'#6A977E' } } }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <style>
+    h1,h2,h3,h4,h5 { font-family:var(--font-heading)!important; font-weight:var(--weight-heading)!important; letter-spacing:var(--tracking-tight); }
+    html,body { height:100%; margin:0; scroll-behavior:smooth; }
+    body { font-family:var(--font-body); font-weight:var(--weight-body); color:var(--text-body); background:var(--surface-page); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease-out),transform .7s var(--ease-out); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; }
+    .reveal-delay-2 { transition-delay:.2s; }
+    .reveal-delay-3 { transition-delay:.3s; }
+    .nav-glass { backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); background:rgba(243,243,240,.93); border-bottom:var(--border-width) solid var(--border-subtle); }
+    .nav-link { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-xs); letter-spacing:var(--tracking-wide); text-transform:uppercase; text-decoration:none; transition:color var(--dur-fast) ease; }
+    .nav-link:hover { text-decoration:none; }
+    .nav-login { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-2xs); letter-spacing:var(--tracking-caps); text-transform:uppercase; border-radius:var(--radius-pill); padding:var(--space-2) var(--space-4); cursor:pointer; transition:all var(--dur-base) var(--ease-out); background:transparent; }
+    .nav-logo-icon { height:32px; width:32px; object-fit:contain; transition:filter var(--dur-slow) ease; }
+    .logo-white { filter:brightness(0) invert(1); }
+    #mobile-menu { display:none; }
+    #mobile-menu.open { display:block; }
+    .hero-bg { background:var(--ep-ink); }
+    .hero-photo { position:absolute;inset:0;background-image:url('assets/img/tor-descent.jpg');background-size:cover;background-position:center 40%;opacity:.45; }
+    .hero-scrim { position:absolute;inset:0;background:linear-gradient(to top,rgba(20,12,6,.92) 0%,rgba(20,12,6,.5) 55%,rgba(20,12,6,.25) 100%); }
+
+    /* ── Nav Dropdowns ── */
+    .nav-drop-wrap { position:relative; display:inline-flex; align-items:center; }
+    .nav-drop-trigger { display:inline-flex !important; align-items:center; gap:4px; cursor:pointer; }
+    .nav-drop-wrap:hover .nav-drop-trigger .nav-chevron { transform:rotate(180deg); }
+    .nav-chevron { transition:transform .2s ease; flex-shrink:0; }
+    .nav-dropdown {
+      position:absolute; top:100%; left:50%;
+      transform:translateX(-50%);
+      min-width:220px; padding-top:10px;
+      opacity:0; pointer-events:none;
+      transition:opacity .18s ease;
+      z-index:200;
+    }
+    .nav-dropdown-inner {
+      background:rgba(243,243,240,0.95);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border:1px solid rgba(46,46,46,0.10);
+      border-radius:var(--radius-lg);
+      box-shadow:0 8px 32px rgba(0,0,0,0.13);
+      padding:6px;
+    }
+    .nav-drop-wrap:hover .nav-dropdown { opacity:1; pointer-events:auto; }
+    .nav-drop-item {
+      display:block; padding:9px 14px; border-radius:var(--radius-md);
+      color:var(--text-muted) !important;
+      font-family:var(--font-heading); font-weight:var(--weight-heading);
+      font-size:var(--text-xs); letter-spacing:var(--tracking-wide);
+      text-transform:uppercase; text-decoration:none !important;
+      transition:background .15s ease, color .15s ease !important;
+      white-space:nowrap;
+    }
+    .nav-drop-item:hover { background:var(--surface-sunken); color:var(--ep-pine) !important; }
+    .nav-drop-divider { height:1px; background:var(--border-subtle); margin:4px 8px; }
+    .divider { height:1px; background:var(--border-subtle); }
+    .cta-btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-2); position:relative; overflow:hidden; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-sm); letter-spacing:.03em; padding:var(--space-3) var(--space-7); text-decoration:none; cursor:pointer; border:none; transition:transform var(--dur-base) var(--ease-out),box-shadow var(--dur-base) ease; }
+    .cta-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); text-decoration:none; }
+    .cta-btn:active { transform:translateY(0); }
+    .cta-btn-primary { background:var(--ep-plum); color:var(--ep-paper); }
+    .cta-btn-primary:hover { background:var(--ep-plum-700); color:var(--ep-paper); }
+    .cta-btn-accent  { background:var(--ep-pine); color:var(--ep-paper); }
+    .cta-btn-accent:hover { background:var(--ep-pine-700); color:var(--ep-paper); }
+    .cta-btn-ghost { background:transparent; color:rgba(255,255,255,.9); border:1px solid rgba(255,255,255,.28); }
+    .cta-btn-ghost:hover { background:rgba(255,255,255,.1); color:white; }
+    .back-link { display:inline-flex; align-items:center; gap:var(--space-2); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-xs); letter-spacing:var(--tracking-wide); text-transform:uppercase; text-decoration:none; color:rgba(243,243,240,.45); transition:color var(--dur-fast) ease; }
+    .back-link:hover { color:rgba(243,243,240,.8); text-decoration:none; }
+    .pull-quote { border-left:3px solid var(--ep-ember); padding:var(--space-4) var(--space-6); margin:var(--space-8) 0; background:color-mix(in srgb,var(--ep-ember) 6%,transparent); border-radius:0 var(--radius-md) var(--radius-md) 0; }
+    .pull-quote p { font-size:var(--text-lg); font-style:italic; color:var(--text-body); margin:0; line-height:var(--leading-relaxed); }
+    .step-number { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-4xl); line-height:1; color:color-mix(in srgb,var(--ep-ember) 22%,transparent); letter-spacing:var(--tracking-tight); user-select:none; }
+    .impact-card { background:var(--surface-raised); border-radius:var(--radius-lg); border:var(--border-width) solid var(--border-subtle); box-shadow:var(--shadow-sm); padding:var(--space-6); transition:transform var(--dur-slow) var(--ease-out),box-shadow var(--dur-slow) ease; }
+    .impact-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .ep-list { list-style:none; padding:0; margin:0; }
+    .ep-list li { display:flex; align-items:flex-start; gap:var(--space-3); padding:var(--space-2) 0; font-size:var(--text-base); color:var(--text-muted); border-bottom:var(--border-width) solid var(--border-subtle); }
+    .ep-list li:last-child { border-bottom:none; }
+    .ep-list li::before { content:''; flex-shrink:0; width:6px; height:6px; border-radius:50%; background:var(--ep-ember); margin-top:.55em; }
+    .ep-list-pine li::before { background:var(--ep-pine); }
+    .service-list { list-style:none; padding:0; margin:0; }
+    .service-list li { display:flex; align-items:center; gap:var(--space-3); padding:var(--space-3) 0; font-size:var(--text-base); color:rgba(243,243,240,.65); border-bottom:1px solid rgba(255,255,255,.07); }
+    .service-list li:last-child { border-bottom:none; }
+    .service-list li i { color:var(--ep-pine); flex-shrink:0; }
+    .ep-tag { display:inline-flex; align-items:center; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-2xs); letter-spacing:.02em; padding:var(--space-1) var(--space-3); }
+    .ep-tag-ember { background:color-mix(in srgb,var(--ep-ember) 12%,transparent); color:var(--ep-ember); }
+    .ep-tag-pine  { background:color-mix(in srgb,var(--ep-pine) 10%,transparent); color:var(--ep-pine); }
+    .ep-tag-ink   { background:var(--border-subtle); color:var(--text-muted); }
+    /* Stat strip */
+    .stat-strip-item { text-align:center; padding:var(--space-6) var(--space-4); }
+    .stat-strip-value { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-3xl); color:var(--ep-ember); line-height:1; margin-bottom:var(--space-2); }
+    .stat-strip-label { font-size:var(--text-xs); color:var(--text-muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+  </style>
+</head>
+<body class="bg-ep-bg text-ep-text">
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon logo-white">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html#services"  class="nav-link text-white/70 hover:text-white">Services</a>
+      <a href="index.html#about"     class="nav-link text-white/70 hover:text-white">About</a>
+      <div class="nav-drop-wrap">
+        <a href="our-work.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Our Work <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="wem-case-study.html" class="nav-drop-item">World Extreme Medicine</a>
+          <a href="rnli-case-study.html" class="nav-drop-item">RNLI</a>
+          <a href="mountain-rescue-case-study.html" class="nav-drop-item">Mountain Rescue</a>
+          <a href="tor-divide-case-study.html" class="nav-drop-item">The Tor Divide</a>
+          <div class="nav-drop-divider"></div>
+          <a href="performance-anxiety.html" class="nav-drop-item">Performance Anxiety</a>
+          <a href="social-comparison.html" class="nav-drop-item">Social Comparison</a>
+        </div></div>
+      </div>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="courses.html" class="nav-drop-item">All Courses</a>
+          <div class="nav-drop-divider"></div>
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+          <a href="courses.html#performance" class="nav-drop-item">Peak Performance</a>
+          <a href="courses.html#leadership" class="nav-drop-item">Leadership Under Pressure</a>
+        </div></div>
+      </div>
+      <a href="index.html#contact"   class="nav-link text-white/70 hover:text-white">Contact</a>
+      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-3 border-t border-ep-text/5" style="background:var(--surface-page)">
+    <a href="index.html#services"  class="block py-2 nav-link" style="color:var(--text-muted)">Services</a>
+    <a href="index.html#about"     class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
+    <a href="our-work.html"      class="block py-2 nav-link" style="color:var(--text-muted)">Our Work</a>
+    <a href="wem-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ World Extreme Medicine</a>
+    <a href="rnli-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ RNLI</a>
+    <a href="mountain-rescue-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Mountain Rescue</a>
+    <a href="tor-divide-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ The Tor Divide</a>
+    <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
+    <a href="courses.html" class="block py-2 nav-link" style="color:var(--text-muted)">Courses</a>
+    <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Peak Performance</a>
+    <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Leadership Under Pressure</a>
+    <a href="index.html#contact"   class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[60vh] flex items-end hero-bg overflow-hidden pt-24">
+  <div class="hero-photo"></div>
+  <div class="hero-scrim"></div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16">
+    <a href="our-work.html" class="back-link mb-8 inline-flex reveal"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Work</a>
+    <div class="flex flex-wrap gap-3 mb-6 reveal reveal-delay-1">
+      <span class="ep-tag ep-tag-ember">Ultra-Endurance</span>
+      <span class="ep-tag ep-tag-pine">Bikepacking</span>
+      <span class="ep-tag ep-tag-ink">Workshop + Field Research</span>
+    </div>
+    <h1 class="text-5xl md:text-7xl text-white mb-4 reveal reveal-delay-1" style="max-width:820px">The Tor Divide</h1>
+    <p class="text-xl md:text-2xl font-light mb-0 reveal reveal-delay-2" style="color:rgba(243,243,240,.55);max-width:620px;line-height:var(--leading-relaxed)">
+      Expedition Psychology in the Field
+    </p>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="divider"></div>
+<div class="max-w-6xl mx-auto">
+  <div class="grid grid-cols-3 divide-x" style="border-color:var(--border-subtle)">
+    <div class="stat-strip-item reveal">
+      <div class="stat-strip-value">150–250km</div>
+      <div class="stat-strip-label">Route Distance</div>
+    </div>
+    <div class="stat-strip-item reveal reveal-delay-1">
+      <div class="stat-strip-value">100%</div>
+      <div class="stat-strip-label">Self-Supported</div>
+    </div>
+    <div class="stat-strip-item reveal reveal-delay-2">
+      <div class="stat-strip-value">Peak District</div>
+      <div class="stat-strip-label">Terrain</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- OVERVIEW -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+      <div class="lg:col-span-2">
+        <p class="ep-eyebrow mb-4 reveal">Overview</p>
+        <p class="text-lg md:text-xl leading-relaxed mb-6 reveal reveal-delay-1" style="color:var(--text-body)">
+          The Tor Divide is a self-supported bikepacking event crossing the Peak District, attracting riders ranging from first-time bikepackers to experienced ultra-endurance athletes.
+        </p>
+        <p class="leading-relaxed mb-5 reveal reveal-delay-2" style="color:var(--text-muted)">
+          Expedition Psychology was invited to deliver a pre-event workshop exploring the psychological skills required to navigate challenge, adversity, and uncertainty during endurance events.
+        </p>
+        <p class="leading-relaxed mb-5 reveal reveal-delay-2" style="color:var(--text-muted)">
+          Alongside the workshop, rider interviews were conducted throughout the event to better understand the real-world psychological demands participants faced and the strategies they used to overcome them.
+        </p>
+        <p class="leading-relaxed reveal reveal-delay-2" style="color:var(--text-muted)">
+          The project provided an opportunity to translate psychological theory into practical tools while gathering valuable insights into human performance in demanding outdoor environments.
+        </p>
+        <div class="pull-quote reveal">
+          <p>"The talk really got me thinking about why I was here and what would keep me moving when things got tough."</p>
+        </div>
+      </div>
+      <div class="lg:col-span-1 reveal reveal-delay-2">
+        <div class="sticky top-28 space-y-4">
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Event</p>
+            <div class="flex items-center gap-4">
+              <img src="assets/img/tor-logo.png" alt="Tor Divide" class="w-16 object-contain flex-shrink-0" style="filter:opacity(.7)">
+              <p class="font-semibold" style="color:var(--text-strong);font-family:var(--font-heading)">The Tor Divide</p>
+            </div>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Sector</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="ep-tag ep-tag-ember">Ultra-Endurance</span>
+              <span class="ep-tag ep-tag-pine">Outdoor Events</span>
+            </div>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Intervention</p>
+            <p class="text-sm" style="color:var(--text-muted)">Pre-event psychology workshop and in-field rider interviews across the event weekend</p>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Focus Areas</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="ep-tag ep-tag-ember">Motivation</span>
+              <span class="ep-tag ep-tag-pine">Self-Awareness</span>
+              <span class="ep-tag ep-tag-ember">Goal Setting</span>
+              <span class="ep-tag ep-tag-pine">Resilience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- VIDEO -->
+<section class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4">Watch the Talk</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">Psychology of the Tor Divide</h2>
+        <p class="leading-relaxed mb-5" style="color:var(--text-muted)">Watch a clip from the pre-event workshop — covering the psychological demands of self-supported endurance challenges and the practical tools riders can use to manage motivation, adversity, and uncertainty in the field.</p>
+        <p class="leading-relaxed mb-8" style="color:var(--text-muted)">Delivered by Dr Fin Haley, Clinical Psychologist at Expedition Psychology, at the Tor Divide start.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="ep-tag ep-tag-ember">Motivation</span>
+          <span class="ep-tag ep-tag-pine">Resilience</span>
+          <span class="ep-tag ep-tag-ember">Self-Awareness</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1 flex justify-center">
+        <div class="relative" style="width:100%;max-width:340px">
+          <div id="tor-player" class="relative overflow-hidden cursor-pointer" style="border-radius:var(--radius-xl);aspect-ratio:9/16;background:#0a0a0a;box-shadow:var(--shadow-xl)" onclick="loadTorVideo()">
+            <img id="tor-thumb" src="assets/img/tor-thumbnail.jpg" alt="Tor Divide talk thumbnail" class="absolute inset-0 w-full h-full object-cover" style="object-position:center 20%">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(15,10,5,.65) 0%,rgba(0,0,0,.15) 60%)"></div>
+            <div id="tor-play-btn" class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.3);transition:transform .2s ease,background .2s ease" onmouseover="this.style.background='rgba(255,255,255,.25)';this.style.transform='scale(1.08)'" onmouseout="this.style.background='rgba(255,255,255,.15)';this.style.transform='scale(1)'">
+                <svg viewBox="0 0 24 24" fill="white" class="w-7 h-7" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg>
+              </div>
+              <p class="text-sm font-semibold tracking-wide" style="color:rgba(255,255,255,.75);font-family:var(--font-heading)">Watch on YouTube</p>
+            </div>
+          </div>
+          <p class="text-center text-xs mt-3" style="color:var(--text-muted)">The Tor Divide × Expedition Psychology</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- THE CHALLENGE -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-3xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">2. The Challenge</p>
+    <h2 class="text-3xl md:text-4xl mb-8 reveal" style="color:var(--text-strong)">A unique psychological environment with no external rewards</h2>
+    <p class="leading-relaxed mb-6 reveal reveal-delay-1" style="color:var(--text-muted)">
+      Unlike traditional races, the Tor Divide offers no prizes, rankings, or podiums. Participants are required to navigate between 150km and 250km of Peak District terrain completely self-supported, making decisions around pacing, nutrition, sleep, navigation, and problem-solving independently.
+    </p>
+
+    <!-- Integrated photo: moorland terrain -->
+    <div class="reveal reveal-delay-1 mb-6 overflow-hidden" style="border-radius:var(--radius-lg)">
+      <img src="assets/img/tor-moorland.jpg" alt="Tor Divide rider crossing Peak District moorland" class="w-full object-cover" style="height:300px;object-position:center 30%;display:block;">
+      <p class="text-xs mt-2" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em">A Tor Divide rider navigating the open moorland of the Peak District.</p>
+    </div>
+
+    <p class="leading-relaxed mb-5 reveal reveal-delay-1" style="color:var(--text-muted)">This creates a unique psychological environment where riders must manage:</p>
+    <ul class="ep-list mb-8 reveal reveal-delay-1">
+      <li>Physical fatigue</li>
+      <li>Sleep deprivation</li>
+      <li>Adverse weather conditions</li>
+      <li>Navigation challenges</li>
+      <li>Mechanical setbacks</li>
+      <li>Fluctuating motivation</li>
+      <li>Self-doubt and uncertainty</li>
+    </ul>
+    <p class="leading-relaxed mb-4 reveal reveal-delay-2" style="color:var(--text-muted)">
+      While riders often spend significant time preparing physically, many have little formal preparation for the psychological demands of long-distance endurance challenges. The aim was therefore twofold:
+    </p>
+    <ul class="ep-list ep-list-pine mb-6 reveal reveal-delay-2">
+      <li>Equip riders with practical psychological skills before the event</li>
+      <li>Explore how participants actually responded when faced with adversity during the challenge</li>
+    </ul>
+    <div class="pull-quote reveal reveal-delay-2">
+      <p>"I found the talk inspirational — it definitely gave me a lot to think about during the ride."</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- THE INTERVENTION -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-3xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">3. The Intervention</p>
+    <h2 class="text-3xl md:text-4xl mb-10 reveal" style="color:var(--text-strong)">Workshop and field research in parallel</h2>
+
+    <!-- Integrated photo: workshop talk — full width to show both people -->
+    <div class="reveal reveal-delay-1 mb-8 overflow-hidden" style="border-radius:var(--radius-lg)">
+      <img src="assets/img/tor-hero.jpg" alt="Fin Haley delivering the pre-event workshop at the Tor Divide" class="w-full object-cover" style="height:320px;object-position:center 35%;display:block;">
+      <p class="text-xs mt-2" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em">Fin Haley delivering the pre-event psychology workshop at the Tor Divide start.</p>
+    </div>
+    <p class="leading-relaxed mb-10 reveal reveal-delay-1" style="color:var(--text-muted)">Before riders set out, Expedition Psychology delivered a pre-event workshop introducing practical psychological tools for self-awareness, motivation, and managing adversity. Throughout the weekend, informal rider interviews captured how those strategies translated into real performance on the terrain.</p>
+
+    <div class="mb-10 reveal">
+      <div class="flex items-start gap-5 mb-5">
+        <span class="step-number flex-shrink-0">01</span>
+        <div>
+          <h3 class="text-2xl mb-3" style="color:var(--text-strong)">Knowing Yourself</h3>
+          <p class="leading-relaxed mb-5" style="color:var(--text-muted)">Riders were introduced to concepts of self-awareness and emotional regulation, exploring how they typically respond when things become difficult.</p>
+          <ul class="ep-list ep-list-pine">
+            <li>Common emotional responses to challenge</li>
+            <li>Recognising personal triggers</li>
+            <li>Understanding thought patterns under pressure</li>
+            <li>Identifying behavioural responses to fatigue and stress</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-10 reveal">
+      <div class="flex items-start gap-5 mb-5">
+        <span class="step-number flex-shrink-0">02</span>
+        <div>
+          <h3 class="text-2xl mb-3" style="color:var(--text-strong)">Knowing Your How</h3>
+          <p class="leading-relaxed mb-5" style="color:var(--text-muted)">Practical psychological tools were introduced to help riders navigate challenging moments throughout the event. The focus throughout was on practical application rather than theory alone.</p>
+          <ul class="ep-list ep-list-pine">
+            <li>Breaking large challenges into smaller goals</li>
+            <li>Positive self-talk strategies</li>
+            <li>Mental imagery and visualisation</li>
+            <li>Emotional check-ins</li>
+            <li>Decision-making under pressure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-10 reveal">
+      <div class="flex items-start gap-5 mb-5">
+        <span class="step-number flex-shrink-0">03</span>
+        <div>
+          <h3 class="text-2xl mb-3" style="color:var(--text-strong)">Rider Interviews</h3>
+          <p class="leading-relaxed mb-5" style="color:var(--text-muted)">Throughout the weekend, Expedition Psychology conducted informal interviews with riders before, during, and after the event — a unique opportunity to observe psychological skills operating in real-world conditions rather than controlled environments.</p>
+          <ul class="ep-list ep-list-pine">
+            <li>Sources of motivation</li>
+            <li>Responses to setbacks</li>
+            <li>Emotional experiences during the ride</li>
+            <li>Strategies used to maintain progress</li>
+            <li>Lessons learned through adversity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote reveal">
+      <p>"Unforgettable — it's given me so many tools to better prepare for events like this in the future."</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- IMPACT -->
+<section class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">4. Measurable &amp; Observable Impact</p>
+    <h2 class="text-3xl md:text-4xl mb-4 reveal" style="color:var(--text-strong)">Four consistent themes from the field</h2>
+    <p class="leading-relaxed mb-14 max-w-2xl reveal reveal-delay-1" style="color:var(--text-muted)">Several consistent themes emerged across rider interviews, revealing how psychological preparation translated into real performance under pressure.</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="impact-card reveal">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-ember) 12%,transparent)">
+          <i data-lucide="compass" class="w-5 h-5" style="color:var(--ep-ember)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Purpose Drives Persistence</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Participants who maintained a clear connection to their personal reasons for undertaking the challenge appeared better able to navigate periods of discomfort and uncertainty.</p>
+      </div>
+      <div class="impact-card reveal reveal-delay-1">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="eye" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Self-Awareness Improves Decision-Making</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Many experienced riders demonstrated strong awareness of how fatigue, hunger, and sleep deprivation influenced their thinking — recognising these as temporary rather than reacting immediately to negative thoughts.</p>
+      </div>
+      <div class="impact-card reveal reveal-delay-1">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-ember) 12%,transparent)">
+          <i data-lucide="target" class="w-5 h-5" style="color:var(--ep-ember)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Breaking Challenges Down Works</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">One of the most common psychological strategies reported was reducing overwhelming challenges into smaller, manageable objectives — the next checkpoint, climb, village, or hour rather than the remaining distance.</p>
+      </div>
+      <div class="impact-card reveal reveal-delay-2">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+          <i data-lucide="brain" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Psychology Is a Performance Tool</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Success in endurance environments is influenced by far more than physical fitness alone. Emotion regulation, sustained motivation, adaptability to setbacks, and decision-making under pressure all emerged as critical performance factors.</p>
+      </div>
+    </div>
+    <div class="pull-quote mt-10 reveal">
+      <p>"I wish there were more talks like this at other events. It really gives you something useful to think about."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 md:py-32 px-6" style="background:var(--ep-ink)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4" style="color:var(--ep-pine)">Work With Expedition Psychology</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--ep-paper)">Supporting individuals and organisations in high-consequence environments</h2>
+        <p class="leading-relaxed mb-8" style="color:rgba(243,243,240,.55)">Endurance events, expeditions, adventure organisations, and high-performance teams all operate in environments where uncertainty, pressure, and adversity are unavoidable. Expedition Psychology helps individuals and organisations develop the psychological skills required to perform effectively when conditions become challenging.</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html#contact" class="cta-btn cta-btn-accent">Get In Touch</a>
+          <a href="index.html#services" class="cta-btn cta-btn-ghost">Explore Services</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <ul class="service-list">
+          <li><i data-lucide="mic" class="w-4 h-4"></i>Event workshops and keynote talks</li>
+          <li><i data-lucide="map" class="w-4 h-4"></i>Expedition preparation programmes</li>
+          <li><i data-lucide="shield" class="w-4 h-4"></i>Resilience and performance training</li>
+          <li><i data-lucide="brain" class="w-4 h-4"></i>Psychological skills development</li>
+          <li><i data-lucide="users" class="w-4 h-4"></i>Team development workshops</li>
+          <li><i data-lucide="search" class="w-4 h-4"></i>Research within adventure and endurance environments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/EP_Logo-White.png" alt="Expedition Psychology" class="h-7" style="filter:brightness(0) invert(1) opacity(.3)">
+      <span class="text-sm font-semibold" style="color:rgba(243,243,240,.3)">© 2024 Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6 text-xs font-semibold" style="color:rgba(243,243,240,.3)">
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Privacy</a>
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Terms</a>
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link'),navLogin=document.querySelector('.nav-login');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});navLogin.style.borderColor='color-mix(in srgb,var(--ep-plum) 30%,transparent)';navLogin.style.color='var(--ep-plum)';}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLogo.classList.add('logo-white');navLinks.forEach(function(l){l.style.color='rgba(243,243,240,.7)'});navLogin.style.borderColor='rgba(255,255,255,.3)';navLogin.style.color='white';}
+  });
+  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
+  // Tor Divide YouTube click-to-play
+  function loadTorVideo() {
+    var player = document.getElementById('tor-player');
+    var thumb = document.getElementById('tor-thumb');
+    var btn = document.getElementById('tor-play-btn');
+    if (thumb) thumb.style.display = 'none';
+    if (btn) btn.style.display = 'none';
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/IBMqScTyFj4?autoplay=1&rel=0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:inherit';
+    player.style.cursor = 'default';
+    player.onclick = null;
+    player.appendChild(iframe);
+  }
+
+  document.querySelectorAll('.reveal').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>=0)el.classList.add('visible');});
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<div id="tor-tweaks-root"></div>
+
+<script type="text/babel">
+const TOR_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "thumbY": 39,
+  "thumbX": 42,
+  "heroOpacity": 45
+}/*EDITMODE-END*/;
+
+function TorTweaks() {
+  const [t, setTweak] = useTweaks(TOR_TWEAK_DEFAULTS);
+
+  React.useEffect(function() {
+    var thumb = document.getElementById('tor-thumb');
+    if (thumb) thumb.style.objectPosition = t.thumbX + '% ' + t.thumbY + '%';
+  }, [t.thumbY, t.thumbX]);
+
+  React.useEffect(function() {
+    var hero = document.querySelector('.hero-photo');
+    if (hero) hero.style.opacity = t.heroOpacity / 100;
+  }, [t.heroOpacity]);
+
+  return (
+    React.createElement(TweaksPanel, null,
+      React.createElement(TweakSection, {label: "Video Thumbnail"}),
+      React.createElement(TweakSlider, {
+        label: "Horizontal crop", value: t.thumbX, min: 0, max: 100, unit: "%",
+        onChange: function(v) { setTweak('thumbX', v); }
+      }),
+      React.createElement(TweakSlider, {
+        label: "Vertical crop", value: t.thumbY, min: 0, max: 100, unit: "%",
+        onChange: function(v) { setTweak('thumbY', v); }
+      }),
+      React.createElement(TweakSection, {label: "Hero Photo"}),
+      React.createElement(TweakSlider, {
+        label: "Opacity", value: t.heroOpacity, min: 20, max: 80, unit: "%",
+        onChange: function(v) { setTweak('heroOpacity', v); }
+      })
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tor-tweaks-root')).render(
+  React.createElement(TorTweaks, null)
+);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* ============================================================
+   Expedition Psychology — Webfonts
+   ------------------------------------------------------------
+   Brand fonts:
+     • Headings / titles / single words  → Arboria Medium
+     • Body / detailed content / bullets  → Nunito Light
+
+   Arboria is served live from the brand's Adobe Fonts (Typekit)
+   kit. The family name exposed by the kit is `arboria`.
+   Nunito is served from Google Fonts and matches the spec exactly.
+   ============================================================ */
+
+@import url('https://use.typekit.net/frv6yjh.css');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');

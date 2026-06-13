@@ -1,0 +1,57 @@
+/* ============================================================
+   Expedition Psychology — Spacing, radius, shadow, layout
+   8px base grid. Calm, generous, premium spacing.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (8px base) ----------------------------- */
+  --space-0:   0;
+  --space-1:   0.25rem;   /* 4  */
+  --space-2:   0.5rem;    /* 8  */
+  --space-3:   0.75rem;   /* 12 */
+  --space-4:   1rem;      /* 16 */
+  --space-5:   1.5rem;    /* 24 */
+  --space-6:   2rem;      /* 32 */
+  --space-7:   2.5rem;    /* 40 */
+  --space-8:   3rem;      /* 48 */
+  --space-9:   4rem;      /* 64 */
+  --space-10:  5rem;      /* 80 */
+  --space-11:  6.5rem;    /* 104 */
+  --space-12:  8rem;      /* 128 */
+
+  /* ---- Radius ---------------------------------------------- */
+  /* Understated, modern — gentle radii, never pill-soft on cards */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;
+
+  /* ---- Borders --------------------------------------------- */
+  --border-width:   1px;
+  --border-width-2: 2px;
+
+  /* ---- Shadows (soft, low, never harsh) -------------------- */
+  --shadow-xs:  0 1px 2px rgba(46, 46, 46, 0.06);
+  --shadow-sm:  0 1px 3px rgba(46, 46, 46, 0.08), 0 1px 2px rgba(46, 46, 46, 0.04);
+  --shadow-md:  0 4px 12px rgba(46, 46, 46, 0.08), 0 2px 4px rgba(46, 46, 46, 0.05);
+  --shadow-lg:  0 12px 32px rgba(46, 46, 46, 0.10), 0 4px 8px rgba(46, 46, 46, 0.05);
+  --shadow-xl:  0 24px 56px rgba(46, 46, 46, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(75, 122, 110, 0.35);  /* pine focus */
+
+  /* ---- Motion ---------------------------------------------- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);  /* @kind other */
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --dur-fast:   140ms;  /* @kind other */
+  --dur-base:   220ms;  /* @kind other */
+  --dur-slow:   400ms;  /* @kind other */
+
+  /* ---- Layout ---------------------------------------------- */
+  --container-sm:  640px;
+  --container-md:  860px;
+  --container-lg:  1120px;
+  --container-xl:  1320px;
+  --gutter:        var(--space-5);
+  --section-y:     var(--space-11);
+}

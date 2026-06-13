@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Extreme Medicine — Case Study — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/White_Logo.png">
+
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ep-bg':  '#F3F3F0',
+            'ep-text':'#2E2E2E',
+            'ep-p':   '#5B4A6A',
+            'ep-s':   '#4B7A6E',
+            'ep-r':   '#B6534B',
+            'ep-o':   '#C97A4A',
+            'ep-y':   '#D6B86C',
+            'ep-g':   '#6A977E',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+
+  <style>
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-heading) !important;
+      font-weight: var(--weight-heading) !important;
+      letter-spacing: var(--tracking-tight);
+    }
+    html, body { height: 100%; margin: 0; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: var(--weight-body);
+      color: var(--text-body);
+      background: var(--surface-page);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Nav */
+    .nav-glass {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(243, 243, 240, 0.93);
+      border-bottom: var(--border-width) solid var(--border-subtle);
+    }
+    .nav-link {
+      font-family: var(--font-heading);
+      font-weight: var(--weight-heading);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color var(--dur-fast) ease;
+    }
+    .nav-link:hover { text-decoration: none; }
+    .nav-login {
+      font-family: var(--font-heading);
+      font-weight: var(--weight-heading);
+      font-size: var(--text-2xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      padding: var(--space-2) var(--space-4);
+      cursor: pointer;
+      transition: all var(--dur-base) var(--ease-out);
+      background: transparent;
+    }
+    .nav-logo-icon { height: 32px; width: 32px; object-fit: contain; transition: filter var(--dur-slow) ease; }
+    .logo-white { filter: brightness(0) invert(1); }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    /* Hero */
+    .hero-bg {
+      background: var(--ep-ink);
+    }
+    .hero-photo {
+      position: absolute; inset: 0;
+      background-image: url('assets/img/WEM-Hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.45;
+    }
+    .hero-scrim {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,16,26,0.92) 0%, rgba(20,16,26,0.55) 55%, rgba(20,16,26,0.3) 100%);
+    }
+
+    /* Divider */
+    .divider { height: 1px; background: var(--border-subtle); }
+
+    /* Buttons */
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--space-2); position: relative; overflow: hidden;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading); font-weight: var(--weight-heading);
+      font-size: var(--text-sm); letter-spacing: 0.03em;
+      padding: var(--space-3) var(--space-7);
+      text-decoration: none; cursor: pointer; border: none;
+      transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) ease;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); text-decoration: none; }
+    .cta-btn:active { transform: translateY(0); }
+    .cta-btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+    .cta-btn-primary { background: var(--ep-plum); color: var(--ep-paper); }
+    .cta-btn-primary:hover { background: var(--ep-plum-700); color: var(--ep-paper); }
+    .cta-btn-accent  { background: var(--ep-pine);  color: var(--ep-paper); }
+    .cta-btn-accent:hover  { background: var(--ep-pine-700);  color: var(--ep-paper); }
+    .cta-btn-ghost { background: transparent; color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.28); }
+    .cta-btn-ghost:hover { background: rgba(255,255,255,0.1); color: white; }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-family: var(--font-heading); font-weight: var(--weight-heading);
+      font-size: var(--text-xs); letter-spacing: var(--tracking-wide);
+      text-transform: uppercase; text-decoration: none;
+      color: rgba(243,243,240,0.45);
+      transition: color var(--dur-fast) ease;
+    }
+    .back-link:hover { color: rgba(243,243,240,0.8); text-decoration: none; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--ep-pine);
+      padding: var(--space-4) var(--space-6);
+      margin: var(--space-8) 0;
+      background: color-mix(in srgb, var(--ep-pine) 5%, transparent);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .pull-quote p {
+      font-size: var(--text-lg);
+      font-style: italic;
+      color: var(--text-body);
+      margin: 0;
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Numbered step */
+    .step-number {
+      font-family: var(--font-heading);
+      font-weight: var(--weight-heading);
+      font-size: var(--text-4xl);
+      line-height: 1;
+      color: color-mix(in srgb, var(--ep-clay) 20%, transparent);
+      letter-spacing: var(--tracking-tight);
+      user-select: none;
+    }
+
+    /* Impact card */
+    .impact-card {
+      background: var(--surface-raised);
+      border-radius: var(--radius-lg);
+      border: var(--border-width) solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-6);
+      transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) ease;
+    }
+    .impact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+    /* Bullet list */
+    .ep-list { list-style: none; padding: 0; margin: 0; }
+    .ep-list li {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      padding: var(--space-2) 0;
+      font-size: var(--text-base);
+      color: var(--text-muted);
+      border-bottom: var(--border-width) solid var(--border-subtle);
+    }
+    .ep-list li:last-child { border-bottom: none; }
+    .ep-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ep-clay);
+      margin-top: 0.55em;
+    }
+    .ep-list-pine li::before { background: var(--ep-pine); }
+
+    /* Service list in CTA */
+    .service-list { list-style: none; padding: 0; margin: 0; }
+    .service-list li {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-3) 0;
+      font-size: var(--text-base);
+      color: rgba(243,243,240,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .service-list li:last-child { border-bottom: none; }
+    .service-list li i { color: var(--ep-pine); flex-shrink: 0; }
+
+    /* Stat strip */
+    .stat-strip {
+      background: color-mix(in srgb, var(--ep-clay) 8%, var(--surface-page));
+      border-top: var(--border-width) solid var(--border-subtle);
+      border-bottom: var(--border-width) solid var(--border-subtle);
+    }
+
+    /* Tag */
+    .ep-tag {
+      display: inline-flex; align-items: center;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading); font-weight: var(--weight-heading);
+      font-size: var(--text-2xs); letter-spacing: 0.02em;
+      padding: var(--space-1) var(--space-3);
+    }
+    .ep-tag-clay { background: color-mix(in srgb,var(--ep-clay) 10%,transparent); color: var(--ep-clay); }
+    .ep-tag-pine { background: color-mix(in srgb,var(--ep-pine) 10%,transparent); color: var(--ep-pine); }
+  
+    /* ── Nav Dropdowns ── */
+    .nav-drop-wrap { position:relative; display:inline-flex; align-items:center; }
+    .nav-drop-trigger { display:inline-flex !important; align-items:center; gap:4px; cursor:pointer; }
+    .nav-drop-wrap:hover .nav-drop-trigger .nav-chevron { transform:rotate(180deg); }
+    .nav-chevron { transition:transform .2s ease; flex-shrink:0; }
+    .nav-dropdown {
+      position:absolute; top:100%; left:50%;
+      transform:translateX(-50%);
+      min-width:220px; padding-top:10px;
+      opacity:0; pointer-events:none;
+      transition:opacity .18s ease;
+      z-index:200;
+    }
+    .nav-dropdown-inner {
+      background:rgba(243,243,240,0.95);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border:1px solid rgba(46,46,46,0.10);
+      border-radius:var(--radius-lg);
+      box-shadow:0 8px 32px rgba(0,0,0,0.13);
+      padding:6px;
+    }
+    .nav-drop-wrap:hover .nav-dropdown { opacity:1; pointer-events:auto; }
+    .nav-drop-item {
+      display:block; padding:9px 14px; border-radius:var(--radius-md);
+      color:var(--text-muted) !important;
+      font-family:var(--font-heading); font-weight:var(--weight-heading);
+      font-size:var(--text-xs); letter-spacing:var(--tracking-wide);
+      text-transform:uppercase; text-decoration:none !important;
+      transition:background .15s ease, color .15s ease !important;
+      white-space:nowrap;
+    }
+    .nav-drop-item:hover { background:var(--surface-sunken); color:var(--ep-pine) !important; }
+    .nav-drop-divider { height:1px; background:var(--border-subtle); margin:4px 8px; }
+  </style>
+</head>
+<body class="bg-ep-bg text-ep-text">
+
+<!-- ═══ NAV ═══ -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon logo-white">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html#services"  class="nav-link text-white/70 hover:text-white">Services</a>
+      <a href="index.html#about"     class="nav-link text-white/70 hover:text-white">About</a>
+      <div class="nav-drop-wrap">
+        <a href="our-work.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Our Work <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="wem-case-study.html" class="nav-drop-item">World Extreme Medicine</a>
+          <a href="rnli-case-study.html" class="nav-drop-item">RNLI</a>
+          <a href="mountain-rescue-case-study.html" class="nav-drop-item">Mountain Rescue</a>
+          <a href="tor-divide-case-study.html" class="nav-drop-item">The Tor Divide</a>
+          <div class="nav-drop-divider"></div>
+          <a href="performance-anxiety.html" class="nav-drop-item">Performance Anxiety</a>
+          <a href="social-comparison.html" class="nav-drop-item">Social Comparison</a>
+        </div></div>
+      </div>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="courses.html" class="nav-drop-item">All Courses</a>
+          <div class="nav-drop-divider"></div>
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+          <a href="courses.html#performance" class="nav-drop-item">Peak Performance</a>
+          <a href="courses.html#leadership" class="nav-drop-item">Leadership Under Pressure</a>
+        </div></div>
+      </div>
+      <a href="index.html#contact"   class="nav-link text-white/70 hover:text-white">Contact</a>
+      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-3 border-t border-ep-text/5" style="background:var(--surface-page)">
+    <a href="index.html#services"  class="block py-2 nav-link" style="color:var(--text-muted)">Services</a>
+    <a href="index.html#about"     class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
+    <a href="our-work.html"      class="block py-2 nav-link" style="color:var(--text-muted)">Our Work</a>
+    <a href="wem-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ World Extreme Medicine</a>
+    <a href="rnli-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ RNLI</a>
+    <a href="mountain-rescue-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Mountain Rescue</a>
+    <a href="tor-divide-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ The Tor Divide</a>
+    <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
+    <a href="courses.html" class="block py-2 nav-link" style="color:var(--text-muted)">Courses</a>
+    <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Peak Performance</a>
+    <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Leadership Under Pressure</a>
+    <a href="index.html#contact"   class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="wem" class="relative min-h-[60vh] flex items-end hero-bg overflow-hidden pt-24">
+  <div class="hero-photo"></div>
+  <div class="hero-scrim"></div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16">
+    <a href="our-work.html" class="back-link mb-8 inline-flex reveal">
+      <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Work
+    </a>
+    <div class="flex flex-wrap gap-3 mb-6 reveal reveal-delay-1">
+      <span class="ep-tag ep-tag-clay">Healthcare</span>
+      <span class="ep-tag ep-tag-pine">Emergency Medicine</span>
+      <span class="ep-tag" style="background:rgba(255,255,255,0.1);color:rgba(243,243,240,0.6)">Webinar</span>
+    </div>
+    <h1 class="text-5xl md:text-7xl text-white mb-4 reveal reveal-delay-1" style="max-width:820px">
+      World Extreme Medicine
+    </h1>
+    <p class="text-xl md:text-2xl font-light mb-0 reveal reveal-delay-2" style="color:rgba(243,243,240,0.55);max-width:620px;line-height:var(--leading-relaxed)">
+      Managing Trauma and Building Resilience in Extreme Medicine
+    </p>
+  </div>
+</section>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+
+      <!-- Main body -->
+      <div class="lg:col-span-2">
+        <p class="ep-eyebrow mb-4 reveal">Overview</p>
+        <p class="text-lg md:text-xl leading-relaxed mb-6 reveal reveal-delay-1" style="color:var(--text-body)">
+          Healthcare professionals working in extreme and austere environments are routinely exposed to situations that place significant psychological demands upon them.
+        </p>
+        <p class="leading-relaxed mb-5 reveal reveal-delay-2" style="color:var(--text-muted)">
+          From humanitarian deployments and disaster response to remote medicine, pre-hospital care, and expedition healthcare, clinicians often encounter trauma, uncertainty, high-consequence decision-making, and emotionally challenging events.
+        </p>
+        <p class="leading-relaxed mb-5 reveal reveal-delay-2" style="color:var(--text-muted)">
+          Expedition Psychology was invited by World Extreme Medicine to deliver a webinar exploring the psychology of trauma, the development of Post-Traumatic Stress Disorder (PTSD), and evidence-informed approaches to building resilience before, during, and after traumatic experiences.
+        </p>
+        <p class="leading-relaxed reveal reveal-delay-2" style="color:var(--text-muted)">
+          The session brought together current research from neuroscience, psychology, and trauma theory to provide a practical framework for supporting both performance and psychological wellbeing in high-risk environments.
+        </p>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1 reveal reveal-delay-2">
+        <div class="sticky top-28 space-y-4">
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">Organisation</p>
+            <div class="flex items-center gap-4">
+              <img src="assets/img/WEM-logo.png" alt="World Extreme Medicine" class="w-14 h-14 object-contain flex-shrink-0">
+              <p class="font-semibold" style="color:var(--text-strong);font-family:var(--font-heading)">World Extreme Medicine</p>
+            </div>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">Sector</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="ep-tag ep-tag-clay">Healthcare</span>
+              <span class="ep-tag ep-tag-pine">Emergency</span>
+            </div>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">Intervention</p>
+            <p class="text-sm" style="color:var(--text-muted)">Evidence-based webinar on trauma psychology and resilience for extreme medicine professionals</p>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">Focus Areas</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="ep-tag ep-tag-clay">Trauma</span>
+              <span class="ep-tag ep-tag-pine">Resilience</span>
+              <span class="ep-tag ep-tag-pine">PTSD</span>
+              <span class="ep-tag ep-tag-clay">Performance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- ═══ VIDEO ═══ -->
+<section class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Text -->
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4">Watch the Talk</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">Trauma, Resilience &amp; Extreme Medicine</h2>
+        <p class="leading-relaxed mb-5" style="color:var(--text-muted)">Watch a clip from the World Extreme Medicine webinar — an evidence-based exploration of how trauma affects the mind and body, and the practical strategies that support recovery and resilience in high-consequence environments.</p>
+        <p class="leading-relaxed mb-8" style="color:var(--text-muted)">Delivered by Dr Fin Haley, Clinical Psychologist at Expedition Psychology.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="ep-tag ep-tag-clay">Trauma &amp; PTSD</span>
+          <span class="ep-tag ep-tag-pine">Resilience</span>
+          <span class="ep-tag ep-tag-pine">Extreme Medicine</span>
+        </div>
+      </div>
+      <!-- Video player -->
+      <div class="reveal reveal-delay-1 flex justify-center">
+        <div class="relative" style="width:100%;max-width:340px">
+          <!-- 9:16 container -->
+          <div id="wem-player" class="relative overflow-hidden cursor-pointer" style="border-radius:var(--radius-xl);aspect-ratio:9/16;background:#0a0a0a;box-shadow:var(--shadow-xl)" onclick="loadWEMVideo()">
+            <!-- Thumbnail -->
+            <img id="wem-thumb" src="assets/img/WEM-thumbnail.jpg" alt="WEM Webinar thumbnail" class="absolute inset-0 w-full h-full object-cover" style="transition:transform .5s var(--ease-out)">
+            <!-- Scrim -->
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(20,15,30,.65) 0%,rgba(0,0,0,.15) 60%)"></div>
+            <!-- Play button -->
+            <div id="wem-play-btn" class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.3);transition:transform .2s ease,background .2s ease" onmouseover="this.style.background='rgba(255,255,255,.25)';this.style.transform='scale(1.08)'" onmouseout="this.style.background='rgba(255,255,255,.15)';this.style.transform='scale(1)'">
+                <svg viewBox="0 0 24 24" fill="white" class="w-7 h-7" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg>
+              </div>
+              <p class="text-sm font-semibold tracking-wide" style="color:rgba(255,255,255,.75);font-family:var(--font-heading)">Watch on YouTube</p>
+            </div>
+            <!-- iframe injected on click -->
+          </div>
+          <p class="text-center text-xs mt-3" style="color:var(--text-muted)">World Extreme Medicine × Expedition Psychology</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- ═══ THE CHALLENGE ═══ -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-3xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">2. The Challenge</p>
+    <h2 class="text-3xl md:text-4xl mb-8 reveal" style="color:var(--text-strong)">
+      High-consequence environments create unique psychological demands
+    </h2>
+    <p class="leading-relaxed mb-6 reveal reveal-delay-1" style="color:var(--text-muted)">
+      Extreme medicine places clinicians in situations that differ significantly from conventional healthcare settings. Professionals may be required to operate with:
+    </p>
+
+    <!-- Integrated photo -->
+    <div class="reveal reveal-delay-1 mb-8 overflow-hidden" style="border-radius:var(--radius-lg);">
+      <img src="assets/img/WEM-Hero.jpg" alt="Dr Fin Haley delivering the World Extreme Medicine webinar" class="w-full object-cover" style="height:280px;object-position:center 35%;display:block;">
+      <p class="text-xs mt-2" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em">Dr Fin Haley delivering the WEM webinar on trauma and resilience.</p>
+    </div>
+
+    <ul class="ep-list mb-8 reveal reveal-delay-1">
+      <li>Limited resources</li>
+      <li>High levels of uncertainty</li>
+      <li>Exposure to serious injury and death</li>
+      <li>Ethical and moral dilemmas</li>
+      <li>Physical fatigue and environmental stressors</li>
+      <li>Responsibility for critical decisions under pressure</li>
+      <li>Repeated exposure to traumatic incidents</li>
+    </ul>
+
+    <p class="leading-relaxed mb-6 reveal reveal-delay-2" style="color:var(--text-muted)">
+      While technical and clinical competence are essential, psychological demands often receive less attention despite their significant impact on both wellbeing and performance. The challenge is not simply exposure to trauma itself, but how traumatic experiences are processed, interpreted, and integrated over time.
+    </p>
+
+    <p class="leading-relaxed mb-4 reveal reveal-delay-2" style="color:var(--text-muted)">The webinar therefore aimed to:</p>
+    <ul class="ep-list ep-list-pine mb-8 reveal reveal-delay-2">
+      <li>Increase understanding of how PTSD develops</li>
+      <li>Explore evidence-based approaches to resilience</li>
+      <li>Provide practical tools for managing traumatic experiences</li>
+      <li>Help clinicians support both themselves and their colleagues following difficult incidents</li>
+    </ul>
+
+    <div class="pull-quote reveal reveal-delay-2">
+      <p>"This webinar challenged many assumptions about trauma and offered practical strategies that could be applied immediately in the field."</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- ═══ THE INTERVENTION ═══ -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-3xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">3. The Intervention</p>
+    <h2 class="text-3xl md:text-4xl mb-8 reveal" style="color:var(--text-strong)">
+      A structured, evidence-based programme
+    </h2>
+
+    <!-- Integrated photo -->
+    <div class="reveal reveal-delay-1 mb-14" style="display:grid;grid-template-columns:1fr 200px;gap:var(--space-6);align-items:start">
+      <p class="leading-relaxed" style="color:var(--text-muted);">The webinar was structured around four core areas — moving from understanding the neuroscience of trauma through to practical in-the-moment strategies and long-term resilience building. Each section combined theory with applied exercises, ensuring participants left with tools they could implement immediately.</p>
+      <div class="overflow-hidden flex-shrink-0" style="border-radius:var(--radius-lg)">
+        <img src="assets/img/WEM-main.jpg" alt="Dr Fin Haley" class="w-full object-cover" style="height:220px;object-position:60% center;display:block;">
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="mb-10 reveal">
+      <div class="flex items-start gap-5 mb-5">
+        <span class="step-number flex-shrink-0">01</span>
+        <div>
+          <h3 class="text-2xl mb-3" style="color:var(--text-strong)">Understanding Trauma and PTSD</h3>
+          <p class="leading-relaxed mb-5" style="color:var(--text-muted)">
+            The webinar began by exploring how traumatic experiences affect the brain and body, drawing on a biopsychosocial understanding of PTSD — how biological, psychological, and social factors interact to influence recovery.
+          </p>
+          <ul class="ep-list ep-list-pine">
+            <li>What PTSD is and how it develops</li>
+            <li>Neurobiological responses to threat</li>
+            <li>The role of the amygdala, hippocampus, and prefrontal cortex</li>
+            <li>Why traumatic memories can become fragmented</li>
+            <li>Common psychological responses following trauma</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="mb-10 reveal">
+      <div class="flex items-start gap-5 mb-5">
+        <span class="step-number flex-shrink-0">02</span>
+        <div>
+          <h3 class="text-2xl mb-3" style="color:var(--text-strong)">During the Event: Supporting Effective Processing</h3>
+          <p class="leading-relaxed mb-5" style="color:var(--text-muted)">
+            The second section focused on practical strategies that can be used during highly stressful incidents — how simple psychological skills can help organise experience and support more effective decision-making under pressure.
+          </p>
+          <ul class="ep-list ep-list-pine">
+            <li>Sensory grounding techniques</li>
+            <li>Maintaining situational awareness</li>
+            <li>Structured self-talk</li>
+            <li>Emotional regulation under pressure</li>
+            <li>Preserving a sense of agency in chaotic situations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="mb-10 reveal">
+      <div class="flex items-start gap-5 mb-5">
+        <span class="step-number flex-shrink-0">03</span>
+        <div>
+          <h3 class="text-2xl mb-3" style="color:var(--text-strong)">After the Event: Recovery and Integration</h3>
+          <p class="leading-relaxed mb-5" style="color:var(--text-muted)">
+            The webinar then examined what happens after exposure to trauma and how recovery can be supported. A key theme throughout was that distress following trauma is often a normal human response and should not automatically be viewed as pathology.
+          </p>
+          <ul class="ep-list ep-list-pine">
+            <li>Creating coherent narratives of traumatic experiences</li>
+            <li>The importance of social support</li>
+            <li>Cognitive reappraisal and perspective taking</li>
+            <li>Understanding avoidance behaviours</li>
+            <li>Principles of graded exposure</li>
+            <li>Recognising when professional support may be beneficial</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="mb-10 reveal">
+      <div class="flex items-start gap-5 mb-5">
+        <span class="step-number flex-shrink-0">04</span>
+        <div>
+          <h3 class="text-2xl mb-3" style="color:var(--text-strong)">Building Resilience Before Exposure</h3>
+          <p class="leading-relaxed mb-5" style="color:var(--text-muted)">
+            The final section explored proactive approaches to resilience, with emphasis on resilience as a dynamic process rather than a fixed personality trait.
+          </p>
+          <ul class="ep-list ep-list-pine">
+            <li>The role of psychological flexibility</li>
+            <li>Building strong support networks</li>
+            <li>Maintaining identity beyond professional roles</li>
+            <li>Balancing work, relationships, leisure, and personal growth</li>
+            <li>Creating environments that support healthy processing and recovery</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote reveal">
+      <p>"I found the talk inspirational — it gave me a lot of useful tips for my daily work."</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- ═══ IMPACT ═══ -->
+<section class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">4. Measurable &amp; Observable Impact</p>
+    <h2 class="text-3xl md:text-4xl mb-4 reveal" style="color:var(--text-strong)">
+      Four key themes emerged from participant feedback
+    </h2>
+    <p class="leading-relaxed mb-14 max-w-2xl reveal reveal-delay-1" style="color:var(--text-muted)">
+      Across participant responses and discussion, the following insights shaped how professionals understood and applied psychological principles in their work.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <div class="impact-card reveal">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-clay) 10%,transparent)">
+          <i data-lucide="brain" class="w-5 h-5" style="color:var(--ep-clay)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Trauma Is About Processing, Not Just Exposure</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+          Exposure alone does not determine psychological outcomes. How experiences are interpreted, processed, and integrated plays a critical role in recovery and long-term wellbeing.
+        </p>
+      </div>
+
+      <div class="impact-card reveal reveal-delay-1">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="zap" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Psychological Skills Can Be Applied Immediately</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+          Participants identified numerous opportunities to implement practical strategies — grounding, self-talk, structured reflection — within their professional environments, reporting increased confidence in managing challenging situations.
+        </p>
+      </div>
+
+      <div class="impact-card reveal reveal-delay-1">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="users" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Social Support Matters</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+          The webinar reinforced the importance of supportive professional cultures. Participants reflected on the role of colleagues, peer support, and open conversations in promoting recovery following difficult incidents.
+        </p>
+      </div>
+
+      <div class="impact-card reveal reveal-delay-2">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+          <i data-lucide="shield" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Resilience Is Built Before It Is Needed</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+          Resilience is not developed during a crisis. It emerges from habits, relationships, coping strategies, and support systems established long before traumatic events occur.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Quotes -->
+    <div class="grid md:grid-cols-2 gap-6 mt-10">
+      <div class="pull-quote reveal">
+        <p>"The framework gave me a clearer understanding of what resilience actually looks like in practice."</p>
+      </div>
+      <div class="pull-quote reveal reveal-delay-1">
+        <p>"One of the most useful trauma webinars I've attended. It was evidence-based, practical, and immediately relevant to the realities of extreme medicine."</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="py-24 md:py-32 px-6" style="background:var(--ep-ink)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4" style="color:var(--ep-pine)">Work With Expedition Psychology</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--ep-paper)">
+          Supporting individuals and organisations in high-consequence environments
+        </h2>
+        <p class="leading-relaxed mb-8" style="color:rgba(243,243,240,0.55)">
+          Individuals operating in extreme environments face psychological challenges that extend far beyond technical performance. Expedition Psychology helps organisations, healthcare professionals, expedition teams, and emergency services develop the psychological skills required to perform effectively while maintaining long-term wellbeing.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html#contact" class="cta-btn cta-btn-accent">Get In Touch</a>
+          <a href="index.html#services" class="cta-btn cta-btn-ghost">Explore Services</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <ul class="service-list">
+          <li><i data-lucide="mic" class="w-4 h-4"></i>Conference presentations and keynote talks</li>
+          <li><i data-lucide="heart-pulse" class="w-4 h-4"></i>Trauma and resilience workshops</li>
+          <li><i data-lucide="map" class="w-4 h-4"></i>Expedition preparation programmes</li>
+          <li><i data-lucide="brain" class="w-4 h-4"></i>Psychological skills training</li>
+          <li><i data-lucide="users" class="w-4 h-4"></i>Team development workshops</li>
+          <li><i data-lucide="search" class="w-4 h-4"></i>Research and insight projects in high-performance environments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,0.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/EP_Logo-White.png" alt="Expedition Psychology" class="h-7" style="filter:brightness(0) invert(1) opacity(0.3)">
+      <span class="text-sm font-semibold" style="color:rgba(243,243,240,0.3)">© 2024 Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6 text-xs font-semibold" style="color:rgba(243,243,240,0.3)">
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Privacy</a>
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Terms</a>
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  // Nav scroll
+  var nav = document.getElementById('main-nav');
+  var navLogo = document.getElementById('nav-logo');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var navLogin = document.querySelector('.nav-login');
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 80) {
+      nav.classList.add('nav-glass');
+      navLogo.style.filter = 'brightness(0) opacity(0.65)';
+      navLinks.forEach(function (l) { l.style.color = 'var(--text-muted)'; });
+      navLogin.style.borderColor = 'color-mix(in srgb,var(--ep-plum) 30%,transparent)';
+      navLogin.style.color = 'var(--ep-plum)';
+    } else {
+      nav.classList.remove('nav-glass');
+      navLogo.style.filter = '';
+      navLogo.classList.add('logo-white');
+      navLinks.forEach(function (l) { l.style.color = 'rgba(243,243,240,0.7)'; });
+      navLogin.style.borderColor = 'rgba(255,255,255,0.3)';
+      navLogin.style.color = 'white';
+    }
+  });
+
+  document.getElementById('mob-btn').addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+
+  // YouTube click-to-play
+  function loadWEMVideo() {
+    var player = document.getElementById('wem-player');
+    var thumb = document.getElementById('wem-thumb');
+    var btn = document.getElementById('wem-play-btn');
+    if (thumb) thumb.style.display = 'none';
+    if (btn) btn.style.display = 'none';
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/xLKbvRIf_G4?autoplay=1&rel=0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:inherit';
+    player.style.cursor = 'default';
+    player.onclick = null;
+    player.appendChild(iframe);
+  }
+
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom >= 0) el.classList.add('visible');
+  });
+
+  // Scroll-reveal for everything below the fold
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+</script>
+</body>
+</html>

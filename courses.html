@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Guided Programmes — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/White_Logo.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { 'ep-bg':'#F3F3F0','ep-text':'#2E2E2E','ep-p':'#5B4A6A','ep-s':'#4B7A6E','ep-r':'#B6534B','ep-o':'#C97A4A','ep-y':'#D6B86C','ep-g':'#6A977E' } } }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+
+  <style>
+    h1,h2,h3,h4,h5 { font-family:var(--font-heading)!important; font-weight:var(--weight-heading)!important; letter-spacing:var(--tracking-tight); }
+    html,body { height:100%; margin:0; scroll-behavior:smooth; }
+    body { font-family:var(--font-body); font-weight:var(--weight-body); color:var(--text-body); background:var(--surface-page); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease-out),transform .7s var(--ease-out); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; }
+    .reveal-delay-2 { transition-delay:.2s; }
+    .reveal-delay-3 { transition-delay:.3s; }
+
+    /* Nav */
+    .nav-glass { backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); background:rgba(243,243,240,.93); border-bottom:var(--border-width) solid var(--border-subtle); }
+    .nav-link { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-xs); letter-spacing:var(--tracking-wide); text-transform:uppercase; text-decoration:none; transition:color var(--dur-fast) ease; }
+    .nav-link:hover { text-decoration:none; }
+    .nav-login { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-2xs); letter-spacing:var(--tracking-caps); text-transform:uppercase; border-radius:var(--radius-pill); padding:var(--space-2) var(--space-4); cursor:pointer; transition:all var(--dur-base) var(--ease-out); background:transparent; }
+    .nav-logo-icon { height:32px; width:32px; object-fit:contain; transition:filter var(--dur-slow) ease; }
+    .logo-white { filter:brightness(0) invert(1); }
+    #mobile-menu { display:none; }
+    #mobile-menu.open { display:block; }
+
+    /* Hero */
+    .hero-bg { background:var(--ep-ink); }
+    .hero-photo { position:absolute;inset:0;background-image:url('assets/img/fof-climb4.jpg');background-size:cover;background-position:center 30%;opacity:.4; }
+    .hero-scrim { position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,22,.92) 0%,rgba(10,15,22,.5) 55%,rgba(10,15,22,.2) 100%); }
+
+    /* Divider */
+
+    /* ── Nav Dropdowns ── */
+    .nav-drop-wrap { position:relative; display:inline-flex; align-items:center; }
+    .nav-drop-trigger { display:inline-flex !important; align-items:center; gap:4px; cursor:pointer; }
+    .nav-drop-wrap:hover .nav-drop-trigger .nav-chevron { transform:rotate(180deg); }
+    .nav-chevron { transition:transform .2s ease; flex-shrink:0; }
+    .nav-dropdown {
+      position:absolute; top:100%; left:50%;
+      transform:translateX(-50%);
+      min-width:220px; padding-top:10px;
+      opacity:0; pointer-events:none;
+      transition:opacity .18s ease;
+      z-index:200;
+    }
+    .nav-dropdown-inner {
+      background:rgba(243,243,240,0.95);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border:1px solid rgba(46,46,46,0.10);
+      border-radius:var(--radius-lg);
+      box-shadow:0 8px 32px rgba(0,0,0,0.13);
+      padding:6px;
+    }
+    .nav-drop-wrap:hover .nav-dropdown { opacity:1; pointer-events:auto; }
+    .nav-drop-item {
+      display:block; padding:9px 14px; border-radius:var(--radius-md);
+      color:var(--text-muted) !important;
+      font-family:var(--font-heading); font-weight:var(--weight-heading);
+      font-size:var(--text-xs); letter-spacing:var(--tracking-wide);
+      text-transform:uppercase; text-decoration:none !important;
+      transition:background .15s ease, color .15s ease !important;
+      white-space:nowrap;
+    }
+    .nav-drop-item:hover { background:var(--surface-sunken); color:var(--ep-pine) !important; }
+    .nav-drop-divider { height:1px; background:var(--border-subtle); margin:4px 8px; }
+    .divider { height:1px; background:var(--border-subtle); }
+
+    /* Buttons */
+    .cta-btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-2); position:relative; overflow:hidden; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-sm); letter-spacing:.03em; padding:var(--space-3) var(--space-7); text-decoration:none; cursor:pointer; border:none; transition:transform var(--dur-base) var(--ease-out),box-shadow var(--dur-base) ease; }
+    .cta-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); text-decoration:none; }
+    .cta-btn:active { transform:translateY(0); }
+    .cta-btn-primary { background:var(--ep-plum); color:var(--ep-paper); }
+    .cta-btn-primary:hover { background:var(--ep-plum-700); color:var(--ep-paper); }
+    .cta-btn-accent  { background:var(--ep-pine); color:var(--ep-paper); }
+    .cta-btn-accent:hover  { background:var(--ep-pine-700); color:var(--ep-paper); }
+    .cta-btn-ember  { background:var(--ep-ember); color:var(--ep-paper); }
+    .cta-btn-ember:hover  { background:var(--ep-clay); color:var(--ep-paper); }
+    .cta-btn-ghost { background:transparent; color:rgba(255,255,255,.9); border:1px solid rgba(255,255,255,.28); }
+    .cta-btn-ghost:hover { background:rgba(255,255,255,.1); color:white; }
+
+    /* Back link */
+    .back-link { display:inline-flex; align-items:center; gap:var(--space-2); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-xs); letter-spacing:var(--tracking-wide); text-transform:uppercase; text-decoration:none; color:rgba(243,243,240,.45); transition:color var(--dur-fast) ease; }
+    .back-link:hover { color:rgba(243,243,240,.8); text-decoration:none; }
+
+    /* Tag */
+    .ep-tag { display:inline-flex; align-items:center; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-2xs); letter-spacing:.02em; padding:var(--space-1) var(--space-3); }
+    .ep-tag-ember { background:color-mix(in srgb,var(--ep-ember) 12%,transparent); color:var(--ep-ember); }
+    .ep-tag-pine  { background:color-mix(in srgb,var(--ep-pine) 10%,transparent); color:var(--ep-pine); }
+    .ep-tag-plum  { background:color-mix(in srgb,var(--ep-plum) 10%,transparent); color:var(--ep-plum); }
+    .ep-tag-sand  { background:color-mix(in srgb,var(--ep-sand) 15%,transparent); color:#907a30; }
+    .ep-tag-ink   { background:var(--border-subtle); color:var(--text-muted); }
+
+    /* Filter tags */
+    .r-tag { border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-xs); padding:var(--space-2) var(--space-4); border:var(--border-width) solid var(--border-default); color:var(--text-muted); background:transparent; cursor:pointer; transition:background var(--dur-fast) ease,color var(--dur-fast) ease,border-color var(--dur-fast) ease; }
+    .r-tag:hover,.r-tag.active { background:var(--ep-pine); color:var(--ep-paper); border-color:var(--ep-pine); }
+
+    /* Course card */
+    .course-card {
+      background:var(--surface-raised);
+      border-radius:var(--radius-xl);
+      border:var(--border-width) solid var(--border-subtle);
+      box-shadow:var(--shadow-sm);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:transform var(--dur-slow) var(--ease-out),box-shadow var(--dur-slow) ease;
+    }
+    .course-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-xl); }
+    .course-thumb { position:relative; overflow:hidden; }
+    .course-thumb-inner { transition:transform .7s var(--ease-out); }
+    .course-card:hover .course-thumb-inner { transform:scale(1.04); }
+
+    /* Progress bar */
+    .progress-bar { height:3px; background:var(--border-subtle); border-radius:2px; overflow:hidden; }
+    .progress-fill { height:100%; border-radius:2px; transition:width .6s var(--ease-out); }
+
+    /* What's included list */
+    .includes-list { list-style:none; padding:0; margin:0; }
+    .includes-list li { display:flex; align-items:center; gap:var(--space-3); padding:var(--space-2) 0; font-size:var(--text-sm); color:var(--text-muted); border-bottom:var(--border-width) solid var(--border-subtle); }
+    .includes-list li:last-child { border-bottom:none; }
+    .includes-list li i { flex-shrink:0; }
+
+    /* Service list */
+    .service-list { list-style:none; padding:0; margin:0; }
+    .service-list li { display:flex; align-items:center; gap:var(--space-3); padding:var(--space-3) 0; font-size:var(--text-base); color:rgba(243,243,240,.65); border-bottom:1px solid rgba(255,255,255,.07); }
+    .service-list li:last-child { border-bottom:none; }
+    .service-list li i { color:var(--ep-pine); flex-shrink:0; }
+
+    /* Coming soon overlay */
+    .coming-soon-badge { position:absolute; top:var(--space-4); right:var(--space-4); background:rgba(20,18,14,.7); backdrop-filter:blur(8px); border-radius:var(--radius-pill); padding:var(--space-1) var(--space-3); font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-2xs); letter-spacing:.06em; text-transform:uppercase; color:rgba(243,243,240,.6); }
+  </style>
+</head>
+<body class="bg-ep-bg text-ep-text">
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon logo-white">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html#services"  class="nav-link text-white/70 hover:text-white">Services</a>
+      <a href="index.html#about"     class="nav-link text-white/70 hover:text-white">About</a>
+      <div class="nav-drop-wrap">
+        <a href="our-work.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Our Work <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="wem-case-study.html" class="nav-drop-item">World Extreme Medicine</a>
+          <a href="rnli-case-study.html" class="nav-drop-item">RNLI</a>
+          <a href="mountain-rescue-case-study.html" class="nav-drop-item">Mountain Rescue</a>
+          <a href="tor-divide-case-study.html" class="nav-drop-item">The Tor Divide</a>
+          <div class="nav-drop-divider"></div>
+          <a href="performance-anxiety.html" class="nav-drop-item">Performance Anxiety</a>
+          <a href="social-comparison.html" class="nav-drop-item">Social Comparison</a>
+        </div></div>
+      </div>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="courses.html" class="nav-drop-item">All Courses</a>
+          <div class="nav-drop-divider"></div>
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+          <a href="courses.html#performance" class="nav-drop-item">Peak Performance</a>
+          <a href="courses.html#leadership" class="nav-drop-item">Leadership Under Pressure</a>
+        </div></div>
+      </div>
+      <a href="index.html#contact"   class="nav-link text-white/70 hover:text-white">Contact</a>
+      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-3 border-t border-ep-text/5" style="background:var(--surface-page)">
+    <a href="index.html#services"  class="block py-2 nav-link" style="color:var(--text-muted)">Services</a>
+    <a href="index.html#about"     class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
+    <a href="our-work.html"      class="block py-2 nav-link" style="color:var(--text-muted)">Our Work</a>
+    <a href="wem-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ World Extreme Medicine</a>
+    <a href="rnli-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ RNLI</a>
+    <a href="mountain-rescue-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Mountain Rescue</a>
+    <a href="tor-divide-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ The Tor Divide</a>
+    <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
+    <a href="courses.html" class="block py-2 nav-link" style="color:var(--text-muted)">Courses</a>
+    <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Peak Performance</a>
+    <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Leadership Under Pressure</a>
+    <a href="index.html#contact"   class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[52vh] flex items-end hero-bg overflow-hidden pt-24">
+  <div class="hero-photo"></div>
+  <div class="hero-scrim"></div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16">
+    <a href="index.html#services" class="back-link mb-8 inline-flex reveal">
+      <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Back to Services
+    </a>
+    <div class="flex flex-wrap gap-3 mb-6 reveal reveal-delay-1">
+      <span class="ep-tag ep-tag-ember">Self-Guided</span>
+      <span class="ep-tag ep-tag-pine">Evidence-Based</span>
+      <span class="ep-tag ep-tag-ink">Learn Anywhere</span>
+    </div>
+    <h1 class="text-5xl md:text-7xl text-white mb-4 reveal reveal-delay-1" style="max-width:800px">
+      Self-Guided Programmes
+    </h1>
+    <p class="text-xl md:text-2xl font-light reveal reveal-delay-2" style="color:rgba(243,243,240,.55);max-width:580px;line-height:var(--leading-relaxed)">
+      Psychological skills, anytime, anywhere.
+    </p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4">About the Programmes</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">
+          Built for the real world, not the therapy room
+        </h2>
+        <p class="leading-relaxed mb-5" style="color:var(--text-muted)">
+          Each programme is developed by a clinical psychologist with lived experience in high-consequence environments. The content is evidence-based, practically focused, and designed for people who face real challenges — not textbook scenarios.
+        </p>
+        <p class="leading-relaxed" style="color:var(--text-muted)">
+          Work through interactive workbooks, video lessons, and guided exercises at your own pace. Apply the skills immediately to your preparation, performance, or recovery.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 reveal reveal-delay-1">
+        <div class="p-6 rounded-2xl" style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle)">
+          <i data-lucide="book-open" class="w-6 h-6 mb-4" style="color:var(--ep-ember)"></i>
+          <p class="font-semibold mb-1" style="color:var(--text-strong);font-family:var(--font-heading)">Interactive Workbooks</p>
+          <p class="text-sm" style="color:var(--text-muted)">Guided exercises you complete as you learn</p>
+        </div>
+        <div class="p-6 rounded-2xl" style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle)">
+          <i data-lucide="play-circle" class="w-6 h-6 mb-4" style="color:var(--ep-pine)"></i>
+          <p class="font-semibold mb-1" style="color:var(--text-strong);font-family:var(--font-heading)">Video Lessons</p>
+          <p class="text-sm" style="color:var(--text-muted)">Expert-led sessions you can revisit anytime</p>
+        </div>
+        <div class="p-6 rounded-2xl" style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle)">
+          <i data-lucide="trending-up" class="w-6 h-6 mb-4" style="color:var(--ep-plum)"></i>
+          <p class="font-semibold mb-1" style="color:var(--text-strong);font-family:var(--font-heading)">Progress Tracking</p>
+          <p class="text-sm" style="color:var(--text-muted)">See how your skills develop over time</p>
+        </div>
+        <div class="p-6 rounded-2xl" style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle)">
+          <i data-lucide="shield" class="w-6 h-6 mb-4" style="color:var(--ep-sage)"></i>
+          <p class="font-semibold mb-1" style="color:var(--text-strong);font-family:var(--font-heading)">Evidence-Based</p>
+          <p class="text-sm" style="color:var(--text-muted)">Grounded in clinical psychology research</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- COURSES -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+      <div>
+        <p class="ep-eyebrow mb-3">All Programmes</p>
+        <h2 class="text-3xl md:text-4xl" style="color:var(--text-strong)">Choose Your Path</h2>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button class="r-tag active" onclick="filterCourses('all',this)">All</button>
+        <button class="r-tag" onclick="filterCourses('performance',this)">Performance</button>
+        <button class="r-tag" onclick="filterCourses('fear',this)">Fear Management</button>
+        <button class="r-tag" onclick="filterCourses('leadership',this)">Leadership</button>
+      </div>
+    </div>
+
+    <div id="courses-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Fear of Falling -->
+      <div id="fear" class="course-card reveal" data-cat="fear">
+        <div class="course-thumb h-52" style="position:relative;overflow:hidden">
+          <div class="course-thumb-inner w-full h-full">
+            <img src="assets/img/fof-climb2.jpg" alt="Fear of Falling Toolkit" class="w-full h-full object-cover" style="object-position:center 30%">
+          </div>
+          <div class="absolute top-4 left-4"><span class="ep-tag ep-tag-ember">Fear Management</span></div>
+        </div>
+        <div class="p-7 flex flex-col flex-1">
+          <h3 class="text-xl mb-2" style="color:var(--text-strong)">Fear of Falling Toolkit</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:var(--text-muted)">
+            A structured programme for climbers and outdoor athletes looking to understand, manage, and work with their fear of falling — built on graded exposure, cognitive reappraisal, and performance psychology.
+          </p>
+          <ul class="includes-list mb-6">
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>6 modules, self-paced</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Graded exposure framework</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Video lessons + workbook</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Practical field exercises</li>
+          </ul>
+          <div class="mt-auto">
+            <a href="courses.html" class="cta-btn cta-btn-ember w-full" style="border-radius:var(--radius-md)">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Peak Performance -->
+      <div id="performance" class="course-card reveal reveal-delay-1" data-cat="performance">
+        <div class="course-thumb h-52" style="background:color-mix(in srgb,var(--ep-pine) 8%,var(--surface-sunken))">
+          <div class="course-thumb-inner w-full h-full flex items-center justify-center">
+            <svg viewBox="0 0 120 120" class="w-28 h-28 opacity-20">
+              <polyline points="10,90 35,60 55,75 80,30 110,45" stroke="#4B7A6E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
+              <circle cx="80" cy="30" r="5" fill="#4B7A6E" opacity="0.5"></circle>
+            </svg>
+          </div>
+          <div class="absolute top-4 left-4"><span class="ep-tag ep-tag-pine">Performance</span></div>
+        </div>
+        <div class="p-7 flex flex-col flex-1">
+          <h3 class="text-xl mb-2" style="color:var(--text-strong)">Peak Performance</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:var(--text-muted)">
+            Develop the psychological toolkit to perform at your best when it matters most. Covering focus, arousal regulation, pre-performance routines, and bouncing back from setbacks.
+          </p>
+          <ul class="includes-list mb-6">
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>8 modules, self-paced</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Pre-performance routine builder</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Video lessons + workbook</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Mental rehearsal exercises</li>
+          </ul>
+          <div class="mt-auto">
+            <a href="index.html#contact" class="cta-btn cta-btn-accent w-full" style="border-radius:var(--radius-md)">
+              Register Interest
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leadership Under Pressure -->
+      <div id="leadership" class="course-card reveal reveal-delay-2" data-cat="leadership">
+        <div class="course-thumb h-52" style="background:color-mix(in srgb,var(--ep-plum) 8%,var(--surface-sunken))">
+          <div class="course-thumb-inner w-full h-full flex items-center justify-center">
+            <svg viewBox="0 0 120 120" class="w-28 h-28 opacity-20">
+              <circle cx="60" cy="38" r="14" stroke="#5B4A6A" stroke-width="2.5" fill="none"></circle>
+              <circle cx="30" cy="80" r="10" stroke="#5B4A6A" stroke-width="2" fill="none"></circle>
+              <circle cx="90" cy="80" r="10" stroke="#5B4A6A" stroke-width="2" fill="none"></circle>
+              <line x1="60" y1="52" x2="40" y2="70" stroke="#5B4A6A" stroke-width="1.5"></line>
+              <line x1="60" y1="52" x2="80" y2="70" stroke="#5B4A6A" stroke-width="1.5"></line>
+            </svg>
+          </div>
+          <div class="absolute top-4 left-4"><span class="ep-tag ep-tag-plum">Leadership</span></div>
+        </div>
+        <div class="p-7 flex flex-col flex-1">
+          <h3 class="text-xl mb-2" style="color:var(--text-strong)">Leadership Under Pressure</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:var(--text-muted)">
+            For leaders in high-consequence environments. Learn to make clear decisions under uncertainty, manage your own emotions while supporting your team, and build a psychologically safe environment.
+          </p>
+          <ul class="includes-list mb-6">
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>7 modules, self-paced</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Decision-making frameworks</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Video lessons + workbook</li>
+            <li><i data-lucide="check" class="w-4 h-4" style="color:var(--ep-pine)"></i>Team communication tools</li>
+          </ul>
+          <div class="mt-auto">
+            <a href="index.html#contact" class="cta-btn cta-btn-primary w-full" style="border-radius:var(--radius-md)">
+              Register Interest
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- NOT SURE SECTION -->
+<section class="py-20 md:py-24 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="ep-eyebrow mb-4 reveal" style="display:flex;justify-content:center">Not Sure Where to Start?</p>
+    <h2 class="text-3xl md:text-4xl mb-5 reveal" style="color:var(--text-strong)">Talk to us first</h2>
+    <p class="text-lg leading-relaxed mb-10 max-w-2xl mx-auto reveal reveal-delay-1" style="color:var(--text-muted)">
+      If you're unsure which programme is right for you, get in touch for a free 20-minute consultation. We'll help you identify the best approach for your situation, environment, and goals.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center reveal reveal-delay-2">
+      <a href="index.html#contact" class="cta-btn cta-btn-accent">Book a Free Consultation</a>
+      <a href="index.html#services" class="cta-btn" style="background:transparent;color:var(--text-muted);border:var(--border-width) solid var(--border-default);border-radius:var(--radius-pill)">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="border-top:var(--border-width) solid var(--border-subtle)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/EP_Logo-White.png" alt="Expedition Psychology" class="h-7" style="filter:brightness(0) opacity(.3)">
+      <span class="text-sm font-semibold" style="color:var(--text-muted)">© 2024 Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6 text-xs font-semibold" style="color:var(--text-muted)">
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Privacy</a>
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Terms</a>
+      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  // Nav scroll
+  var nav = document.getElementById('main-nav');
+  var navLogo = document.getElementById('nav-logo');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var navLogin = document.querySelector('.nav-login');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 80) {
+      nav.classList.add('nav-glass');
+      navLogo.style.filter = 'brightness(0) opacity(.65)';
+      navLinks.forEach(function (l) { l.style.color = 'var(--text-muted)'; });
+      navLogin.style.borderColor = 'color-mix(in srgb,var(--ep-plum) 30%,transparent)';
+      navLogin.style.color = 'var(--ep-plum)';
+    } else {
+      nav.classList.remove('nav-glass');
+      navLogo.style.filter = '';
+      navLogo.classList.add('logo-white');
+      navLinks.forEach(function (l) { l.style.color = 'rgba(243,243,240,.7)'; });
+      navLogin.style.borderColor = 'rgba(255,255,255,.3)';
+      navLogin.style.color = 'white';
+    }
+  });
+  document.getElementById('mob-btn').addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+
+  // Reveal
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom >= 0) el.classList.add('visible');
+  });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+
+  // Filter
+  function filterCourses(cat, btn) {
+    document.querySelectorAll('.r-tag').forEach(function (t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('#courses-grid [data-cat]').forEach(function (card) {
+      var show = cat === 'all' || card.dataset.cat === cat;
+      card.style.transition = 'opacity .3s, transform .3s';
+      card.style.opacity = show ? '1' : '.2';
+      card.style.transform = show ? '' : 'scale(.97)';
+      card.style.pointerEvents = show ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

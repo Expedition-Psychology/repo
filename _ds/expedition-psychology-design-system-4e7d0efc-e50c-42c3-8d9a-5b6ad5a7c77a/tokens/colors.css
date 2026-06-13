@@ -1,0 +1,75 @@
+/* ============================================================
+   Expedition Psychology — Colour tokens
+   Source: official Branding Guidelines
+   ============================================================ */
+
+:root {
+  /* ---- Brand: main palette ---------------------------------- */
+  --ep-plum:        #5b4a6a;   /* primary brand — Slate Plum   */
+  --ep-pine:        #4b7a6e;   /* secondary brand — Pine green */
+  --ep-paper:       #f3f3f0;   /* off-white surface            */
+  --ep-ink:         #2e2e2e;   /* near-black ink               */
+
+  /* ---- Brand: signal / diagram palette ---------------------- */
+  /* Used for assessment scales, data viz, status — low→high.    */
+  --ep-clay:        #b6534b;   /* terracotta red  (alert / low) */
+  --ep-ember:       #c97a4a;   /* burnt orange    (caution)     */
+  --ep-sand:        #d6b86c;   /* muted gold      (moderate)    */
+  --ep-sage:        #6a977e;   /* soft sage       (steady/high) */
+
+  /* ---- Plum tints & shades (derived) ------------------------ */
+  --ep-plum-700:    #463a52;
+  --ep-plum-600:    #5b4a6a;
+  --ep-plum-400:    #82749140;  /* note: use tint tokens below for fills */
+  --ep-plum-tint:   #e7e3ec;   /* 12% plum on paper             */
+  --ep-plum-tint-2: #d2cbdb;
+
+  /* ---- Pine tints & shades (derived) ------------------------ */
+  --ep-pine-700:    #3a6056;
+  --ep-pine-600:    #4b7a6e;
+  --ep-pine-tint:   #dde9e5;   /* soft pine wash                */
+  --ep-pine-tint-2: #c3d6d0;
+
+  /* ---- Neutral scale (warm grey, off the ink/paper axis) ---- */
+  --ep-neutral-0:   #ffffff;
+  --ep-neutral-50:  #f7f7f4;
+  --ep-neutral-100: #f3f3f0;   /* = paper */
+  --ep-neutral-200: #e6e6e1;
+  --ep-neutral-300: #d4d4cd;
+  --ep-neutral-400: #aeaea6;
+  --ep-neutral-500: #84847c;
+  --ep-neutral-600: #5f5f59;
+  --ep-neutral-700: #444440;
+  --ep-neutral-800: #333330;
+  --ep-neutral-900: #2e2e2e;   /* = ink */
+
+  /* ---- Semantic aliases ------------------------------------- */
+  --surface-page:      var(--ep-paper);
+  --surface-raised:    var(--ep-neutral-0);
+  --surface-sunken:    var(--ep-neutral-50);
+  --surface-inverse:   var(--ep-ink);
+  --surface-brand:     var(--ep-plum);
+  --surface-brand-alt: var(--ep-pine);
+
+  --text-strong:    var(--ep-ink);
+  --text-body:      var(--ep-neutral-700);
+  --text-muted:     var(--ep-neutral-500);
+  --text-on-brand:  var(--ep-paper);
+  --text-on-dark:   var(--ep-paper);
+  --text-link:      var(--ep-pine-700);
+
+  --border-subtle:  var(--ep-neutral-200);
+  --border-default: var(--ep-neutral-300);
+  --border-strong:  var(--ep-neutral-400);
+  --border-brand:   var(--ep-plum);
+
+  --accent:         var(--ep-pine);
+  --accent-strong:  var(--ep-plum);
+
+  --status-danger:  var(--ep-clay);
+  --status-warning: var(--ep-ember);
+  --status-caution: var(--ep-sand);
+  --status-success: var(--ep-sage);
+
+  --focus-ring:     var(--ep-pine);
+}

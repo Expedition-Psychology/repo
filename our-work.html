@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/White_Logo.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    h1,h2,h3,h4,h5{font-family:var(--font-heading)!important;font-weight:var(--weight-heading)!important;letter-spacing:var(--tracking-tight);}
+    html,body{margin:0;scroll-behavior:smooth;}
+    body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-body);}
+    #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+    .nav-glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(243,243,240,.93);border-bottom:var(--border-width) solid var(--border-subtle);}
+    .nav-link{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none;transition:color .2s ease;}
+    .nav-link:hover{text-decoration:none;}
+    .nav-login{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;border-radius:var(--radius-pill);padding:8px 18px;cursor:pointer;background:transparent;transition:background .2s ease;}
+    .nav-logo-icon{height:32px;width:32px;object-fit:contain;transition:filter .4s ease;}
+    .nav-drop-wrap{position:relative;display:inline-flex;align-items:center;}
+    .nav-drop-trigger{display:inline-flex!important;align-items:center;gap:4px;cursor:pointer;}
+    .nav-drop-wrap:hover .nav-chevron{transform:rotate(180deg);}
+    .nav-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;padding-top:10px;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:200;}
+    .nav-dropdown-inner{background:rgba(243,243,240,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,46,46,.10);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,.13);padding:6px;}
+    .nav-drop-wrap:hover .nav-dropdown{opacity:1;pointer-events:auto;}
+    .nav-drop-item{display:block;padding:9px 14px;border-radius:var(--radius-md);color:var(--text-muted)!important;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none!important;transition:background .15s ease,color .15s ease!important;white-space:nowrap;}
+    .nav-drop-item:hover{background:var(--surface-sunken);color:var(--ep-pine)!important;}
+    .nav-drop-divider{height:1px;background:var(--border-subtle);margin:4px 8px;}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-delay-1{transition-delay:.12s;}.reveal-delay-2{transition-delay:.24s;}
+    .case-card{background:var(--surface-raised);border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);overflow:hidden;display:block;text-decoration:none;transition:transform .25s var(--ease-out),box-shadow .25s ease;}
+    .case-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);text-decoration:none;}
+    .r-tag{border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;padding:8px 18px;cursor:pointer;background:transparent;border:var(--border-width) solid var(--border-default);color:var(--text-muted);transition:background .2s,color .2s,border-color .2s;}
+    .r-tag:hover,.r-tag.active{background:var(--ep-pine);color:var(--ep-paper);border-color:var(--ep-pine);}
+    .work-extra{display:none;}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html#services" class="nav-link text-white/70 hover:text-white">Services</a>
+      <a href="index.html#about" class="nav-link text-white/70 hover:text-white">About</a>
+      <div class="nav-drop-wrap">
+        <a href="our-work.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Our Work <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="wem-case-study.html" class="nav-drop-item">World Extreme Medicine</a>
+          <a href="rnli-case-study.html" class="nav-drop-item">RNLI</a>
+          <a href="mountain-rescue-case-study.html" class="nav-drop-item">Mountain Rescue</a>
+          <a href="tor-divide-case-study.html" class="nav-drop-item">The Tor Divide</a>
+          <div class="nav-drop-divider"></div>
+          <a href="performance-anxiety.html" class="nav-drop-item">Performance Anxiety</a>
+          <a href="social-comparison.html" class="nav-drop-item">Social Comparison</a>
+        </div></div>
+      </div>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="courses.html" class="nav-drop-item">All Courses</a>
+          <div class="nav-drop-divider"></div>
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+          <a href="courses.html#performance" class="nav-drop-item">Peak Performance</a>
+          <a href="courses.html#leadership" class="nav-drop-item">Leadership Under Pressure</a>
+        </div></div>
+      </div>
+      <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
+      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-2 border-t border-white/10" style="background:var(--ep-ink)">
+    <a href="index.html#services" class="block py-2 nav-link text-white/60">Services</a>
+    <a href="index.html#about" class="block py-2 nav-link text-white/60">About</a>
+    <a href="our-work.html" class="block py-2 nav-link text-white/60">Our Work</a>
+    <a href="free-tools.html" class="block py-2 nav-link text-white/60">Resources</a>
+    <a href="courses.html" class="block py-2 nav-link text-white/60">Courses</a>
+    <a href="index.html#contact" class="block py-2 nav-link text-white/60">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[40vh] flex items-end overflow-hidden pt-24 pb-16" style="background:linear-gradient(140deg,#0e1820 0%,var(--ep-ink) 40%,#101e18 70%,var(--ep-ink) 100%)">
+  <div class="absolute inset-0 pointer-events-none" style="opacity:.06">
+    <svg class="w-full h-full" viewBox="0 0 1400 500" preserveAspectRatio="none">
+      <path d="M0 300 Q350 260 700 280 T1400 260" stroke="#4B7A6E" stroke-width="1" fill="none"></path>
+    </svg>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6">
+    <p class="ep-eyebrow mb-3 reveal" style="color:var(--ep-pine)">Impact &amp; Insights</p>
+    <h1 class="text-5xl md:text-6xl text-white mb-4 reveal" style="max-width:600px">Our Work</h1>
+    <p class="text-xl font-light reveal" style="color:rgba(243,243,240,.5);max-width:500px;line-height:var(--leading-relaxed)">Case studies, articles, and research from the field — grounded in evidence, written for practice.</p>
+  </div>
+</section>
+
+<!-- GRID -->
+<section class="py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-wrap gap-3 mb-10 reveal">
+      <button class="r-tag work-filter active" onclick="filterWork('all',this)">All</button>
+      <button class="r-tag work-filter" onclick="filterWork('case-study',this)">Case Studies</button>
+      <button class="r-tag work-filter" onclick="filterWork('article',this)">Articles</button>
+    </div>
+
+    <div id="work-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <a href="wem-case-study.html" class="case-card reveal" data-type="case-study">
+        <div class="h-40 overflow-hidden" style="position:relative">
+          <img src="assets/img/wem-card-hero.jpg" alt="World Extreme Medicine" class="w-full h-full object-cover" style="object-position:center 30%">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.35) 0%,transparent 60%)"></div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Healthcare · Emergency</p>
+            <span class="ep-tag ep-tag-ink" style="font-size:10px">Case Study</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">World Extreme Medicine</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Managing trauma and building resilience in extreme medicine.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read case study <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+      <a href="rnli-case-study.html" class="case-card reveal reveal-delay-1" data-type="case-study">
+        <div class="h-40 overflow-hidden" style="position:relative">
+          <img src="assets/img/rnli-card-hero.jpg" alt="RNLI" class="w-full h-full object-cover" style="object-position:center center">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.35) 0%,transparent 60%)"></div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Rescue Services</p>
+            <span class="ep-tag ep-tag-ink" style="font-size:10px">Case Study</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">RNLI</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Building resilience and processing identity transitions for frontline lifeboat crews.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read case study <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+      <a href="mountain-rescue-case-study.html" class="case-card reveal reveal-delay-2" data-type="case-study">
+        <div class="h-40 overflow-hidden" style="position:relative">
+          <img src="assets/img/mr-card-hero.jpg" alt="Mountain Rescue" class="w-full h-full object-cover" style="object-position:center 40%">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.4) 0%,transparent 60%)"></div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Search &amp; Rescue</p>
+            <span class="ep-tag ep-tag-ink" style="font-size:10px">Case Study</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Mountain Rescue</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Supporting casualties in heightened emotional states and managing callout stress.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read case study <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+      <a href="tor-divide-case-study.html" class="case-card reveal" data-type="case-study">
+        <div class="h-40 overflow-hidden" style="position:relative">
+          <img src="assets/img/tor-card-hero.jpg" alt="The Tor Divide" class="w-full h-full object-cover" style="object-position:center 35%">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.35) 0%,transparent 60%)"></div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Ultra-Endurance</p>
+            <span class="ep-tag ep-tag-ink" style="font-size:10px">Case Study</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Tor Divide</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Mental preparation for ultra-distance cycling across challenging terrain and unpredictable conditions.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read case study <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+      <a href="performance-anxiety.html" class="case-card reveal reveal-delay-1" data-type="article">
+        <div class="h-40 overflow-hidden" style="position:relative">
+          <img src="assets/img/mammut-run1.webp" alt="Performance Anxiety" class="w-full h-full object-cover" style="object-position:center 40%">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Performance · Resilience</p>
+            <span class="ep-tag ep-tag-pine" style="font-size:10px">Article</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">How to Deal With Performance Anxiety in Sports</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Process focus, body grounding, and self-talk — the three levers that break the anxiety cycle.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read article <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+      <a href="social-comparison.html" class="case-card reveal reveal-delay-2" data-type="article">
+        <div class="h-40 overflow-hidden" style="position:relative">
+          <img src="assets/img/climb-stanage1.webp" alt="Social Comparison" class="w-full h-full object-cover" style="object-position:center 30%">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Performance · Wellbeing</p>
+            <span class="ep-tag ep-tag-pine" style="font-size:10px">Article</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Role of Social Comparison in Performance</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted)">How the comparisons we make quietly shape our performance — and how to work with them instead of against them.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read article <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+      <!-- Hidden extras -->
+      <a href="#" class="case-card work-extra" data-type="article">
+        <div class="h-40" style="background:var(--surface-sunken)"></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Performance · Resilience</p>
+            <span class="ep-tag ep-tag-pine" style="font-size:10px">Article</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">What Ultra-Endurance Athletes Teach Us About Mental Resilience</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted)">The psychological strategies that keep people moving through pain, doubt, and the darkest hours.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read article <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+      <a href="#" class="case-card work-extra" data-type="article">
+        <div class="h-40" style="background:var(--surface-sunken)"></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold tracking-wide uppercase" style="color:var(--text-muted)">Fear · Performance</p>
+            <span class="ep-tag ep-tag-pine" style="font-size:10px">Article</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Why Fear Isn't the Enemy</h3>
+          <p class="text-sm" style="color:var(--text-muted)">Reframing fear as information, not obstacle.</p>
+          <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read article <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="text-center mt-12 reveal" id="work-expand-wrap">
+      <button id="work-expand-btn" onclick="toggleWorkExpand()" style="display:inline-flex;align-items:center;gap:var(--space-2);background:transparent;color:var(--text-muted);border:var(--border-width) solid var(--border-default);border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:.03em;padding:var(--space-3) var(--space-7);cursor:pointer;transition:background .15s,border-color .15s,color .15s" onmouseover="this.style.background='var(--border-subtle)';this.style.color='var(--text-strong)'" onmouseout="this.style.background='transparent';this.style.color='var(--text-muted)'">
+        <span id="work-expand-label">Show More</span>
+        <i data-lucide="chevron-down" id="work-expand-icon" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height:28px;opacity:.6">
+      <span style="color:rgba(243,243,240,.3);font-size:var(--text-xs);font-family:var(--font-heading)">Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="our-work.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Our Work</a>
+      <a href="courses.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Courses</a>
+      <a href="index.html#contact" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script>
+  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link'),navLogin=document.querySelector('.nav-login');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});if(navLogin){navLogin.style.borderColor='var(--border-default)';navLogin.style.color='var(--text-muted)';}}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLinks.forEach(function(l){l.style.color=''});if(navLogin){navLogin.style.borderColor='';navLogin.style.color='';}}
+  });
+  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+  var workExpanded=false;
+  function toggleWorkExpand(){
+    workExpanded=!workExpanded;
+    document.querySelectorAll('.work-extra').forEach(function(el){
+      el.style.display=workExpanded?'':'none';
+      if(workExpanded){setTimeout(function(){el.classList.add('visible');},50);}
+      else{el.classList.remove('visible');}
+    });
+    document.getElementById('work-expand-label').textContent=workExpanded?'Show Less':'Show More';
+    var icon=document.getElementById('work-expand-icon');
+    icon.setAttribute('data-lucide',workExpanded?'chevron-up':'chevron-down');
+    lucide.createIcons();
+    if(!workExpanded){var y=document.getElementById('work-grid').getBoundingClientRect().top+window.scrollY-120;window.scrollTo({top:y,behavior:'smooth'});}
+  }
+  function filterWork(type,btn){
+    document.querySelectorAll('.work-filter').forEach(function(t){t.classList.remove('active');});
+    btn.classList.add('active');
+    workExpanded=false;
+    document.querySelectorAll('#work-grid [data-type]').forEach(function(card){
+      var isExtra=card.classList.contains('work-extra');
+      var show=type==='all'?!isExtra:card.dataset.type===type;
+      card.style.display=show?'':'none';
+      if(show){card.classList.add('visible');}
+    });
+    document.getElementById('work-expand-wrap').style.display=type==='article'?'none':'';
+    document.getElementById('work-expand-label').textContent='Show More';
+    document.getElementById('work-expand-icon').setAttribute('data-lucide','chevron-down');
+    lucide.createIcons();
+  }
+  lucide.createIcons();
+</script>
+</body>
+</html>

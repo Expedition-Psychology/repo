@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Deal With Performance Anxiety in Sports — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/White_Logo.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    h1,h2,h3,h4,h5{font-family:var(--font-heading)!important;font-weight:var(--weight-heading)!important;letter-spacing:var(--tracking-tight);}
+    html,body{margin:0;scroll-behavior:smooth;}
+    body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-body);}
+
+    /* Nav */
+    #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+    .nav-glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(243,243,240,.93);border-bottom:var(--border-width) solid var(--border-subtle);}
+    .nav-link{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none;transition:color .2s ease;}
+    .nav-link:hover{text-decoration:none;}
+    .nav-login{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;border-radius:var(--radius-pill);padding:8px 18px;cursor:pointer;background:transparent;transition:background .2s ease;}
+    .nav-logo-icon{height:32px;width:32px;object-fit:contain;transition:filter .4s ease;}
+    .nav-drop-wrap{position:relative;display:inline-flex;align-items:center;}
+    .nav-drop-trigger{display:inline-flex!important;align-items:center;gap:4px;cursor:pointer;}
+    .nav-drop-wrap:hover .nav-chevron{transform:rotate(180deg);}
+    .nav-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;padding-top:10px;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:200;}
+    .nav-dropdown-inner{background:rgba(243,243,240,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,46,46,.10);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,.13);padding:6px;}
+    .nav-drop-wrap:hover .nav-dropdown{opacity:1;pointer-events:auto;}
+    .nav-drop-item{display:block;padding:9px 14px;border-radius:var(--radius-md);color:var(--text-muted)!important;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none!important;transition:background .15s ease,color .15s ease!important;white-space:nowrap;}
+    .nav-drop-item:hover{background:var(--surface-sunken);color:var(--ep-pine)!important;}
+    .nav-drop-divider{height:1px;background:var(--border-subtle);margin:4px 8px;}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-delay-1{transition-delay:.12s;}.reveal-delay-2{transition-delay:.24s;}
+
+    /* Back link */
+    .back-link{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.45);text-decoration:none;transition:color .2s;}
+    .back-link:hover{color:rgba(243,243,240,.8);text-decoration:none;}
+
+    /* Article body */
+    .article-body{max-width:680px;}
+    .article-body p{color:var(--text-body);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);font-size:var(--text-base);}
+    .article-body h2{color:var(--text-strong);font-size:var(--text-3xl);margin-top:var(--space-12);margin-bottom:var(--space-4);}
+    .article-body h3{color:var(--text-strong);font-size:var(--text-xl);margin-top:var(--space-8);margin-bottom:var(--space-3);}
+    .article-body ul{color:var(--text-body);margin-bottom:var(--space-5);padding-left:var(--space-5);}
+    .article-body ul li{margin-bottom:var(--space-2);line-height:var(--leading-relaxed);}
+    .article-body strong{color:var(--text-strong);font-weight:600;}
+
+    /* Pull quote */
+    .pull-quote{border-left:3px solid var(--ep-pine);padding:var(--space-5) var(--space-7);margin:var(--space-10) 0;background:color-mix(in srgb,var(--ep-pine) 5%,transparent);border-radius:0 var(--radius-md) var(--radius-md) 0;}
+    .pull-quote p{font-size:var(--text-xl)!important;color:var(--text-strong)!important;line-height:1.45!important;margin:0!important;font-style:italic;}
+    .pull-quote cite{display:block;margin-top:var(--space-3);font-size:var(--text-xs);color:var(--text-muted);font-style:normal;font-family:var(--font-heading);letter-spacing:.06em;text-transform:uppercase;}
+
+    /* Section number */
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);font-family:var(--font-heading);font-size:var(--text-xs);font-weight:600;letter-spacing:.06em;flex-shrink:0;margin-right:var(--space-3);}
+
+    /* Inline photo */
+    .article-photo{border-radius:var(--radius-lg);overflow:hidden;margin:var(--space-10) 0;}
+    .article-photo img{width:100%;display:block;object-fit:cover;}
+    .article-photo figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
+
+    /* Take-homes */
+    .takehome-card{background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);}
+    .takehome-card:hover{box-shadow:var(--shadow-sm);}
+
+    /* Divider */
+    .div{height:1px;background:var(--border-subtle);}
+
+    /* CTA btn */
+    .cta-btn{display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html#services" class="nav-link text-white/70 hover:text-white">Services</a>
+      <a href="index.html#about" class="nav-link text-white/70 hover:text-white">About</a>
+      <div class="nav-drop-wrap">
+        <a href="our-work.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Our Work <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="wem-case-study.html" class="nav-drop-item">World Extreme Medicine</a>
+          <a href="rnli-case-study.html" class="nav-drop-item">RNLI</a>
+          <a href="mountain-rescue-case-study.html" class="nav-drop-item">Mountain Rescue</a>
+          <a href="tor-divide-case-study.html" class="nav-drop-item">The Tor Divide</a>
+          <div class="nav-drop-divider"></div>
+          <a href="performance-anxiety.html" class="nav-drop-item">Performance Anxiety</a>
+          <a href="social-comparison.html" class="nav-drop-item">Social Comparison</a>
+        </div></div>
+      </div>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="courses.html" class="nav-drop-item">All Courses</a>
+          <div class="nav-drop-divider"></div>
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+          <a href="courses.html#performance" class="nav-drop-item">Peak Performance</a>
+          <a href="courses.html#leadership" class="nav-drop-item">Leadership Under Pressure</a>
+        </div></div>
+      </div>
+      <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
+      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-2 border-t border-white/10" style="background:var(--ep-ink)">
+    <a href="index.html#services" class="block py-2 nav-link text-white/60">Services</a>
+    <a href="index.html#about" class="block py-2 nav-link text-white/60">About</a>
+    <a href="our-work.html" class="block py-2 nav-link text-white/60">Our Work</a>
+    <a href="free-tools.html" class="block py-2 nav-link text-white/60">Resources</a>
+    <a href="courses.html" class="block py-2 nav-link text-white/60">Courses</a>
+    <a href="index.html#contact" class="block py-2 nav-link text-white/60">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[70vh] flex items-end overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="assets/img/mammut-run1.webp" alt="Trail runner on Mam Tor ridge" class="w-full h-full object-cover" style="object-position:center 40%">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.95) 0%,rgba(10,15,22,.55) 45%,rgba(10,15,22,.15) 100%)"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
+    <a href="our-work.html" class="back-link mb-8 inline-flex reveal"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Articles</a>
+    <div class="flex flex-wrap items-center gap-3 mb-5 reveal">
+      <span class="ep-tag" style="background:rgba(75,122,110,.25);color:rgba(243,243,240,.85);border:1px solid rgba(75,122,110,.3)">Performance</span>
+      <span class="ep-tag" style="background:rgba(75,122,110,.25);color:rgba(243,243,240,.85);border:1px solid rgba(75,122,110,.3)">Resilience</span>
+      <span class="ep-tag" style="background:rgba(255,255,255,.1);color:rgba(243,243,240,.6)">Article</span>
+    </div>
+    <h1 class="text-4xl md:text-6xl text-white mb-5 reveal reveal-delay-1" style="max-width:760px;line-height:1.07">How to Deal With Performance Anxiety in Sports</h1>
+    <p class="text-lg font-light mb-8 reveal reveal-delay-2" style="color:rgba(243,243,240,.55);max-width:540px;line-height:var(--leading-relaxed)">Anxiety isn't the enemy. The way through is by shifting focus back to the process, the present moment, and the way you talk to yourself.</p>
+    <div class="flex items-center gap-4 reveal reveal-delay-2">
+      <img src="assets/img/team-fin.jpg" alt="Dr Fin Haley" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)">
+      <div>
+        <p class="text-sm font-semibold" style="color:rgba(243,243,240,.8)">Dr Fin Haley</p>
+        <p class="text-xs" style="color:rgba(243,243,240,.4)">Clinical Psychologist &amp; Rock Climbing Instructor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+  <div class="grid lg:grid-cols-[1fr_280px] gap-16 items-start">
+
+    <!-- BODY -->
+    <article class="article-body reveal">
+
+      <p class="text-xl leading-relaxed mb-8" style="color:var(--text-strong)">Performance anxiety is extremely common. It shows up in moments where the stakes feel high — job interviews, exams, competitions, or the final of an elite sporting event. These are the situations we've trained, prepared, and dreamed about.</p>
+
+      <p>Because the outcome matters so much, our minds sometimes react as if we're facing genuine danger. Often, performance anxiety begins after a moment that didn't go to plan. You felt ready, but something went wrong. You came up short, and that memory stuck. Now every time you approach a similar situation, that old feeling resurfaces — your heart races, your breath shortens, your thoughts spiral.</p>
+
+      <p>Anxiety itself isn't "bad." It's a survival mechanism: fast heartbeat pumps blood to muscles, quick breathing delivers oxygen, rapid thoughts help problem-solve. But in sport or performance settings — serving at match point, stepping onto a climbing wall, giving a presentation — this fight-or-flight response can work against us. Thinking "don't mess up again" drags us away from the calm, automatic, high-focus state we need to perform well.</p>
+
+      <p>And when anxiety pulls us away from our best, the thing we feared often becomes more likely. This can lead to a vicious cycle: <strong>anxiety → under-performance → more anxiety.</strong></p>
+
+      <p>The good news? You can break that cycle. The way through is by shifting your focus back to the process, the present moment, and the way you talk to yourself.</p>
+
+      <!-- SECTION 1 -->
+      <h2 class="flex items-center gap-0"><span class="section-num">1</span>Focus on the Process</h2>
+
+      <p>Performance anxiety almost always arises when the outcome becomes magnified: winning, beating someone, getting the job, proving yourself. It's natural — high-performers care deeply about success.</p>
+
+      <p>But ironically, athletes rarely perform at their best when thinking about the outcome. Flow state — the mental zone where everything clicks — comes when the mind stops analysing and simply acts.</p>
+
+      <div class="pull-quote">
+        <p>"You are not thinking ahead. You are just thinking about what is in front of you each second."</p>
+        <cite>— Aron Ralston</cite>
+      </div>
+
+      <p>Flow happens when you're absorbed in the process, not worrying about the result. And the truth is simple: if you're performing at your best, the outcome will take care of itself. If you don't win, then focusing on the outcome wouldn't have changed it anyway.</p>
+
+      <p>So redirect your attention:</p>
+      <ul>
+        <li>What do you love about your sport?</li>
+        <li>What does it feel like when you're at your best?</li>
+        <li>What sensations, movements, or rhythms matter in this moment?</li>
+      </ul>
+      <p>Chase that feeling, not a medal.</p>
+
+      <!-- PHOTO 1 — action jump -->
+      <figure class="article-photo">
+        <img src="assets/img/mammut-run2.webp" alt="Trail runner leaping fence at sunset on Mam Tor" style="height:420px;object-position:center 35%">
+        <figcaption>Commitment over caution — peak performance demands full absorption in the moment.</figcaption>
+      </figure>
+
+      <!-- SECTION 2 -->
+      <h2 class="flex items-center gap-0"><span class="section-num">2</span>Come Back Into the Body</h2>
+
+      <p>When anxiety takes over, we leave the present moment. The mind jumps to the past ("remember that mistake?") or into the future ("what if I fail again?"). But flow happens only in the now.</p>
+
+      <p>To return to the present, reconnect with your body. A few effective strategies:</p>
+
+      <h3>Breathwork</h3>
+      <p>The breath is always here. Using it anchors you. Try <strong>box breathing</strong>:</p>
+      <ul>
+        <li>Inhale for 4 seconds → hold for 4 → exhale for 4 → hold for 4.</li>
+        <li>Imagine drawing a square with each phase of the breath.</li>
+      </ul>
+      <p>This slows the nervous system and grounds your attention.</p>
+
+      <h3>Sensory Grounding</h3>
+      <p>Look around you. Name five green objects, then five red, then five blue. It seems simple, but it pulls your brain out of worry and into what's real right now.</p>
+
+      <h3>Cold Exposure</h3>
+      <p>Hold an ice cube in your hand. It's cold, sharp, impossible to ignore. This intense sensation snaps you back into the present moment — the only place performance happens.</p>
+
+      <!-- SECTION 3 -->
+      <h2 class="flex items-center gap-0"><span class="section-num">3</span>Positive Self-Talk</h2>
+
+      <p>When anxiety rises, inner dialogue often becomes harsh:</p>
+      <ul>
+        <li>"You always mess this up."</li>
+        <li>"Don't fail again."</li>
+        <li>"You're not good enough."</li>
+      </ul>
+
+      <p>Imagine someone standing next to you saying that out loud while you compete. They'd destroy your performance. Yet we often speak to ourselves this way without even noticing.</p>
+
+      <p>You need to become your biggest supporter, not your biggest critic. Positive self-talk directly boosts performance. Confidence isn't a luxury — it's a tool.</p>
+
+      <!-- PHOTO 2 — portrait running -->
+      <figure class="article-photo">
+        <img src="assets/img/mammut-run3.webp" alt="Trail runner in Mammut kit on Mam Tor ridge" style="height:480px;object-position:center 20%">
+        <figcaption>In-the-field focus — calm, committed, present.</figcaption>
+      </figure>
+
+      <p>Try this before your next performance: write down five positive things about yourself. They don't need to be sport-specific — your qualities as a person count. Remind yourself that you're enough, just by existing.</p>
+
+      <div class="pull-quote">
+        <p>"When you felt like you were floating across the court and could put the ball wherever you wanted."</p>
+        <cite>— Guy Forget, on flow state in tennis</cite>
+      </div>
+
+      <p>That state is fuelled by confidence, calm, and positive energy — not criticism.</p>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="lg:sticky lg:top-28 space-y-4 reveal reveal-delay-1">
+      <div class="impact-card" style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">In This Article</p>
+        <nav class="space-y-1">
+          <a href="#" class="block py-2 text-sm border-b" style="color:var(--ep-pine);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">1. Focus on the Process</a>
+          <a href="#" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">2. Come Back Into the Body</a>
+          <a href="#" class="block py-2 text-sm" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.02em">3. Positive Self-Talk</a>
+        </nav>
+      </div>
+      <div class="impact-card" style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Related</p>
+        <a href="courses.html" class="block text-sm font-semibold mb-1" style="color:var(--ep-pine);text-decoration:none">Fear of Falling Toolkit →</a>
+        <p class="text-xs" style="color:var(--text-muted)">A structured course for managing fear in climbing.</p>
+      </div>
+      <div style="background:var(--ep-ink);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs);color:var(--ep-pine)">Work With Us</p>
+        <p class="text-sm mb-4" style="color:rgba(243,243,240,.6)">Want 1:1 support or team training in performance psychology?</p>
+        <a href="index.html#contact" class="cta-btn text-xs px-5 py-3" style="background:var(--ep-pine);color:var(--ep-paper)">Get In Touch</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- TAKE-HOMES -->
+<section class="py-20 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Take-Homes</p>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Three things to take into your next performance</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="takehome-card reveal">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="target" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">The Process</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Stay absorbed in the actions — movement, rhythm — not the outcome. Flow follows focus on the task at hand.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-1">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+          <i data-lucide="activity" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">The Body</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Use breath, senses, and grounding techniques to return to the present moment — the only place performance happens.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-2">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-clay) 10%,transparent)">
+          <i data-lucide="message-circle" class="w-5 h-5" style="color:var(--ep-clay)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Positive Self-Talk</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Support yourself. Speak to yourself like you would to a teammate or friend. Confidence is a tool, not a luxury.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height:28px;opacity:.6">
+      <span style="color:rgba(243,243,240,.3);font-size:var(--text-xs);font-family:var(--font-heading)">Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="our-work.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Our Work</a>
+      <a href="courses.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Courses</a>
+      <a href="index.html#contact" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script>
+  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link'),navLogin=document.querySelector('.nav-login');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});if(navLogin){navLogin.style.borderColor='var(--border-default)';navLogin.style.color='var(--text-muted)';}}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLinks.forEach(function(l){l.style.color=''});if(navLogin){navLogin.style.borderColor='';navLogin.style.color='';}}
+  });
+  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+  lucide.createIcons();
+</script>
+</body>
+</html>
