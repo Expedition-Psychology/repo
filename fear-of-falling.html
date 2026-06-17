@@ -137,7 +137,7 @@
 <!-- ═══ HERO ═══ -->
 <section class="relative min-h-screen flex items-end overflow-hidden">
   <div class="absolute inset-0">
-    <img src="assets/img/fof-climb1.jpg" alt="Climber mid-fall on an indoor wall" class="w-full h-full object-cover" style="object-position:center 20%">
+    <img src="assets/img/fof-foundry2.jpg" alt="Climber mid-fall on an indoor wall" class="w-full h-full object-cover" style="object-position:center 20%">
     <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,1) 0%,rgba(10,15,22,.7) 30%,rgba(10,15,22,.15) 70%,transparent 100%)"></div>
   </div>
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-24 pt-40">
@@ -164,7 +164,7 @@
     <p class="text-xs uppercase tracking-widest flex-shrink-0" style="color:var(--text-muted);font-family:var(--font-heading)">In partnership with</p>
     <div class="flex items-center gap-10">
       <img src="assets/img/logo-mammut.png" alt="Mammut" style="height:48px;object-fit:contain;opacity:.55;filter:grayscale(1)">
-      <img src="assets/img/logo-foundry.webp" alt="The Foundry Climbing" style="height:44px;object-fit:contain;opacity:.55;filter:grayscale(1)">
+      <img src="assets/img/logo-foundry-new.png" alt="The Foundry Climbing" style="height:44px;object-fit:contain;opacity:.55;filter:grayscale(1)">
     </div>
   </div>
 </div>
@@ -193,8 +193,8 @@
 
 <!-- ═══ PHOTO STRIP ═══ -->
 <div style="display:grid;grid-template-columns:1fr 1fr;height:300px;overflow:hidden">
-  <img src="assets/img/fof-climb3.jpg" alt="Climber reaching on an overhang" class="w-full h-full object-cover" style="object-position:center 30%">
-  <img src="assets/img/fof-climb1.jpg" alt="Climber mid-fall on the wall" class="w-full h-full object-cover" style="object-position:center 20%">
+  <img src="assets/img/fof-foundry1.jpg" alt="Climber reaching on an overhang" class="w-full h-full object-cover" style="object-position:center 30%">
+  <img src="assets/img/fof-foundry2.jpg" alt="Climber mid-fall on the wall" class="w-full h-full object-cover" style="object-position:center 20%">
 </div>
 
 <!-- ═══ WHAT'S INSIDE ═══ -->
@@ -382,9 +382,7 @@
         <h2 class="text-3xl md:text-4xl mb-3 reveal rd1 text-center" style="color:#fff">Get notified when the toolkit launches</h2>
         <p class="text-base mb-10 reveal rd2 text-center" style="color:rgba(243,243,240,.6);line-height:var(--leading-relaxed)">Join the waitlist and be first to access the Fear of Falling Toolkit. Early access members receive a launch discount.</p>
 
-        <form id="signup-form" class="reveal rd3" name="fof-waitlist" netlify netlify-honeypot="bot-field" onsubmit="handleSignup(event)">
-          <input type="hidden" name="form-name" value="fof-waitlist">
-          <p style="display:none"><input name="bot-field"></p>
+        <form id="signup-form" class="reveal rd3" name="fof-waitlist" netlify netlify-honeypot="bot-field" onsubmit="handleSignup(event)"><input type="hidden" name="form-name" value="fof-waitlist"><p style="display:none"><input name="bot-field"></p>
           <div class="form-fields" id="form-fields">
             <div class="space-y-4 mb-4">
               <input type="text" name="name" class="email-input" placeholder="Your first name" id="field-name" autocomplete="given-name">
@@ -468,7 +466,7 @@
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 
-  // Email sign-up handler — submits to Netlify Forms
+  // Email sign-up — submits to Netlify Forms
   function handleSignup(e){
     e.preventDefault();
     var form=document.getElementById('signup-form');
@@ -479,9 +477,7 @@
         document.getElementById('form-success').classList.add('show');
         lucide.createIcons();
       })
-      .catch(function(){
-        alert('Something went wrong — please try again.');
-      });
+      .catch(function(){alert('Something went wrong — please try again.');});
   }
 
   lucide.createIcons();
