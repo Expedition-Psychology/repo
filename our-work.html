@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Work — Expedition Psychology</title>
-  <link rel="icon" type="image/png" href="assets/img/White_Logo.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
   <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
@@ -17,7 +17,7 @@
     .nav-link{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none;transition:color .2s ease;}
     .nav-link:hover{text-decoration:none;}
     .nav-login{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;border-radius:var(--radius-pill);padding:8px 18px;cursor:pointer;background:transparent;transition:background .2s ease;}
-    .nav-logo-icon{height:32px;width:32px;object-fit:contain;transition:filter .4s ease;}
+    .nav-logo-icon{height:28px;width:auto;max-width:190px;object-fit:contain;transition:filter .4s ease;}
     .nav-drop-wrap{position:relative;display:inline-flex;align-items:center;}
     .nav-drop-trigger{display:inline-flex!important;align-items:center;gap:4px;cursor:pointer;}
     .nav-drop-wrap:hover .nav-chevron{transform:rotate(180deg);}
@@ -56,7 +56,7 @@
 <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-3">
-      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
+      <img src="assets/img/logo-wordmark-white.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
     </a>
     <div class="hidden md:flex items-center gap-7">
       <a href="index.html#services" class="nav-link text-white/70 hover:text-white">Services</a>
@@ -85,7 +85,7 @@
         </div></div>
       </div>
       <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
-      <a href="https://e-learning-course-web-app.pages.dev/login" class="nav-login border border-white/30 text-white hover:bg-white/10" style="text-decoration:none;display:inline-flex;align-items:center">Client Login</a>
+      <a class="nav-login border border-white/30 text-white hover:bg-white/10" style="cursor:default;text-decoration:none;display:inline-flex;align-items:center">Client Login</a>
     </div>
     <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
   </div>
@@ -108,11 +108,10 @@
 </nav>
 
 <!-- HERO -->
-<section class="relative min-h-[40vh] flex items-end overflow-hidden pt-24 pb-16" style="background:linear-gradient(140deg,#0e1820 0%,var(--ep-ink) 40%,#101e18 70%,var(--ep-ink) 100%)">
-  <div class="absolute inset-0 pointer-events-none" style="opacity:.06">
-    <svg class="w-full h-full" viewBox="0 0 1400 500" preserveAspectRatio="none">
-      <path d="M0 300 Q350 260 700 280 T1400 260" stroke="#4B7A6E" stroke-width="1" fill="none"></path>
-    </svg>
+<section class="relative min-h-[40vh] flex items-end overflow-hidden pt-24 pb-16">
+  <div class="absolute inset-0">
+    <img src="assets/img/climber-hero.jpg" alt="Climber on rock face" class="w-full h-full object-cover" style="object-position:center 35%">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.95) 0%,rgba(10,15,22,.6) 50%,rgba(10,15,22,.2) 100%)"></div>
   </div>
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6">
     <p class="ep-eyebrow mb-3 reveal" style="color:var(--ep-pine)">Impact &amp; Insights</p>
