@@ -104,9 +104,10 @@
     .ep-tag-pine  { background:color-mix(in srgb,var(--ep-pine) 10%,transparent); color:var(--ep-pine); }
     .ep-tag-ink   { background:var(--border-subtle); color:var(--text-muted); }
     /* Stat strip */
-    .stat-strip-item { text-align:center; padding:var(--space-6) var(--space-4); }
-    .stat-strip-value { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-3xl); color:var(--ep-ember); line-height:1; margin-bottom:var(--space-2); }
+    .stat-strip-item { text-align:center; padding:var(--space-6) var(--space-4); overflow:hidden; }
+    .stat-strip-value { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:clamp(1.5rem,5vw,var(--text-3xl)); color:var(--ep-ember); line-height:1; margin-bottom:var(--space-2); word-break:break-word; overflow-wrap:break-word; }
     .stat-strip-label { font-size:var(--text-xs); color:var(--text-muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+    @media (max-width:640px) { .stat-strip-item { padding:var(--space-4) var(--space-2); } .stat-strip-label { font-size:var(--text-2xs); } }
   </style>
 </head>
 <body class="bg-ep-bg text-ep-text">
@@ -144,7 +145,7 @@
         </div></div>
       </div>
       <a href="index.html#contact"   class="nav-link text-white/70 hover:text-white">Contact</a>
-      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+      <a href="https://e-learning-course-web-app.pages.dev/login" class="nav-login border border-white/30 text-white hover:bg-white/10" style="text-decoration:none;display:inline-flex;align-items:center">Client Login</a>
     </div>
     <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
   </div>

@@ -51,6 +51,15 @@
     .takehome-card:hover{box-shadow:var(--shadow-sm);}
     .cta-btn{display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
     .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none;}
+
+    @media (max-width:768px) {
+      h1 { font-size:1.75rem !important; }
+      h2 { font-size:1.5rem !important; }
+      p { font-size:0.95rem !important; }
+      .article-body { max-width:100% !important; padding:0 1rem; }
+      .impact-card { padding:var(--space-4) !important; margin-bottom:var(--space-4); }
+      .article-photo { margin:var(--space-6) -1rem !important; max-width:calc(100% + 2rem); }
+    }
   </style>
 </head>
 <body>
@@ -88,7 +97,7 @@
         </div></div>
       </div>
       <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
-      <button class="nav-login border border-white/30 text-white hover:bg-white/10">Client Login</button>
+      <a href="https://e-learning-course-web-app.pages.dev/login" class="nav-login border border-white/30 text-white hover:bg-white/10" style="text-decoration:none;display:inline-flex;align-items:center">Client Login</a>
     </div>
     <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
   </div>
