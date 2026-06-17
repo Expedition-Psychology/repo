@@ -37,16 +37,16 @@
     .rd1{transition-delay:.12s;}.rd2{transition-delay:.24s;}.rd3{transition-delay:.36s;}
 
     /* Buttons */
-    .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:16px 36px;cursor:pointer;transition:transform .2s var(--ease-out),box-shadow .2s;text-decoration:none;}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:16px 36px;cursor:pointer;transition:transform .2s var(--ease-out),box-shadow .2s;text-decoration:none;border:none;}
     .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);text-decoration:none;}
     .cta-primary{background:var(--ep-clay);color:#fff;}
-    .cta-primary:hover{background:color-mix(in srgb,var(--ep-clay) 85%,#000);}
+    .cta-pine{background:var(--ep-pine);color:#fff;}
     .cta-outline{background:transparent;color:var(--ep-ink);border:1.5px solid var(--border-default);}
-    .cta-outline:hover{background:var(--surface-raised);border-color:var(--ep-ink);}
+    .cta-outline:hover{background:var(--surface-raised);}
+    .cta-white{background:#fff;color:var(--ep-pine);}
 
     /* Feature cards */
     .feat-card{background:#fff;border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-xl);padding:var(--space-8);transition:transform .25s var(--ease-out),box-shadow .25s;}
-    .feat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
 
     /* Ladder rungs */
     .rung{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);border:var(--border-width) solid var(--border-subtle);background:#fff;}
@@ -59,26 +59,30 @@
     /* Pull quote */
     .pq{border-left:3px solid var(--ep-pine);padding:var(--space-5) var(--space-6);background:color-mix(in srgb,var(--ep-pine) 6%,transparent);border-radius:0 var(--radius-md) var(--radius-md) 0;}
 
-    /* Problem item (light version) */
+    /* Problem item */
     .prob-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:var(--border-width) solid var(--border-subtle);}
     .prob-item:last-child{border-bottom:none;}
 
     /* Outcome grid */
     .outcome-card{background:#fff;border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);text-align:center;}
 
-    /* Discovery list */
-    .disc-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:var(--border-width) solid var(--border-subtle);}
-    .disc-item:last-child{border-bottom:none;}
-
-    /* CTA section (dark accent) */
-    .cta-band{background:var(--ep-pine);border-radius:var(--radius-2xl);overflow:hidden;position:relative;}
-
+    /* Divider */
     .div{height:1px;background:var(--border-subtle);}
 
-    /* App frame */
-    .app-frame{background:#f0f0f0;border-radius:14px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.07);border:1px solid rgba(0,0,0,.07);}
-    .app-bar{background:#fff;padding:10px 16px;border-bottom:1px solid rgba(0,0,0,.07);display:flex;align-items:center;gap:8px;}
-    .app-dot{width:10px;height:10px;border-radius:50%;}
+    /* Email form */
+    .email-form-wrap{background:var(--ep-pine);border-radius:var(--radius-2xl,24px);overflow:hidden;position:relative;}
+    .email-input{width:100%;padding:16px 20px;border-radius:var(--radius-pill);border:none;background:rgba(255,255,255,.12);color:#fff;font-family:var(--font-body);font-size:var(--text-base);outline:none;transition:background .2s;}
+    .email-input::placeholder{color:rgba(255,255,255,.45);}
+    .email-input:focus{background:rgba(255,255,255,.18);}
+    .email-submit{width:100%;padding:16px;border-radius:var(--radius-pill);border:none;background:#fff;color:var(--ep-pine);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+    .email-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+    .form-success{display:none;text-align:center;padding:var(--space-8);}
+    .form-success.show{display:block;}
+    .form-fields.hide{display:none;}
+
+    /* Disc item */
+    .disc-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:var(--border-width) solid var(--border-subtle);}
+    .disc-item:last-child{border-bottom:none;}
   </style>
 </head>
 <body>
@@ -133,35 +137,34 @@
 <!-- ═══ HERO ═══ -->
 <section class="relative min-h-screen flex items-end overflow-hidden">
   <div class="absolute inset-0">
-    <img src="assets/img/fof-climb2.jpg" alt="Climber on wall" class="w-full h-full object-cover" style="object-position:center 30%">
-    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(243,243,240,1) 0%,rgba(243,243,240,.6) 30%,rgba(243,243,240,.1) 65%,transparent 100%)"></div>
-    <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(243,243,240,.85) 0%,rgba(243,243,240,.3) 50%,transparent 100%)"></div>
+    <img src="assets/img/fof-climb1.jpg" alt="Climber mid-fall on an indoor wall" class="w-full h-full object-cover" style="object-position:center 20%">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,1) 0%,rgba(10,15,22,.7) 30%,rgba(10,15,22,.15) 70%,transparent 100%)"></div>
   </div>
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-20 pt-40">
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-24 pt-40">
     <div class="max-w-xl">
-      <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 reveal" style="background:color-mix(in srgb,var(--ep-clay) 10%,transparent);border:1px solid color-mix(in srgb,var(--ep-clay) 25%,transparent);border-radius:var(--radius-pill)">
+      <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 reveal" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-pill)">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--ep-clay);display:inline-block"></span>
-        <span style="font-family:var(--font-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--ep-clay)">Interactive Online Course</span>
+        <span style="font-family:var(--font-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(255,255,255,.7)">Interactive Online Course</span>
       </div>
-      <h1 class="text-5xl md:text-6xl mb-5 reveal rd1" style="color:var(--ep-ink);line-height:1.05">Stop Letting Fear<br>Hold Back Your<br>Climbing</h1>
-      <p class="text-xl font-light mb-4 reveal rd2" style="color:var(--text-muted);line-height:var(--leading-relaxed)">An interactive online workbook for climbers who are strong enough — but fear keeps getting in the way.</p>
-      <p class="text-base mb-10 reveal rd2" style="color:var(--text-muted)">This isn't about becoming fearless. It's about learning how to climb confidently <em>with</em> fear, so it no longer controls your climbing.</p>
+      <h1 class="text-5xl md:text-6xl mb-5 reveal rd1" style="color:#fff;line-height:1.05">Stop Letting Fear<br>Hold Back Your<br>Climbing</h1>
+      <p class="text-xl font-light mb-4 reveal rd2" style="color:rgba(255,255,255,.65);line-height:var(--leading-relaxed)">An interactive online workbook for climbers who are strong enough — but fear keeps getting in the way.</p>
+      <p class="text-base mb-10 reveal rd2" style="color:rgba(255,255,255,.5)">This isn't about becoming fearless. It's about learning how to climb confidently <em>with</em> fear.</p>
       <div class="flex flex-col sm:flex-row gap-4 reveal rd3">
-        <a href="index.html#contact" class="cta-btn cta-primary">Join The Toolkit Today</a>
-        <a href="#whats-inside" class="cta-btn cta-outline">See What's Inside</a>
+        <a href="#signup" class="cta-btn cta-primary">Get Early Access</a>
+        <a href="#whats-inside" class="cta-btn" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)">See What's Inside</a>
       </div>
-      <p class="mt-5 text-sm reveal rd3" style="color:var(--text-muted)">By Dr Fin Haley — Clinical Psychologist &amp; Rock Climbing Instructor</p>
+      <p class="mt-6 text-sm reveal rd3" style="color:rgba(255,255,255,.4)">By Dr Fin Haley — Clinical Psychologist &amp; Rock Climbing Instructor</p>
     </div>
   </div>
 </section>
 
 <!-- ═══ PARTNER STRIP ═══ -->
-<div style="background:var(--surface-sunken);border-top:var(--border-width) solid var(--border-subtle);border-bottom:var(--border-width) solid var(--border-subtle)" class="py-8 px-6">
+<div style="background:var(--surface-sunken);border-bottom:var(--border-width) solid var(--border-subtle)" class="py-8 px-6">
   <div class="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10">
     <p class="text-xs uppercase tracking-widest flex-shrink-0" style="color:var(--text-muted);font-family:var(--font-heading)">In partnership with</p>
     <div class="flex items-center gap-10">
-      <img src="assets/img/logo-mammut.png" alt="Mammut" style="height:48px;object-fit:contain;opacity:.7;filter:grayscale(1)">
-      <img src="assets/img/logo-foundry.webp" alt="The Foundry" style="height:48px;object-fit:contain;opacity:.7;filter:grayscale(1)">
+      <img src="assets/img/logo-mammut.png" alt="Mammut" style="height:48px;object-fit:contain;opacity:.55;filter:grayscale(1)">
+      <img src="assets/img/logo-foundry.webp" alt="The Foundry Climbing" style="height:44px;object-fit:contain;opacity:.55;filter:grayscale(1)">
     </div>
   </div>
 </div>
@@ -172,12 +175,12 @@
     <div class="reveal">
       <p class="ep-eyebrow mb-4" style="color:var(--ep-clay)">Sound Familiar?</p>
       <h2 class="text-3xl md:text-4xl mb-5" style="color:var(--text-strong)">You know you're strong enough for the route.</h2>
-      <p class="leading-relaxed mb-8" style="color:var(--text-muted)">You know the moves are there. But the moment you get above the clip — fear takes over.</p>
+      <p class="leading-relaxed mb-8" style="color:var(--text-muted)">You know the moves are there. But the moment you get above the clip — fear takes over. Not because you lack ability. Because fear hasn't been trained.</p>
       <div class="pq">
         <p class="text-sm leading-relaxed" style="color:var(--text-body);font-style:italic">"Fear changes through <strong>experience</strong>, not avoidance. The toolkit is built on the gold-standard psychological approach for overcoming fear."</p>
       </div>
     </div>
-    <div class="reveal rd1 space-y-0 bg-white rounded-2xl p-6" style="border:var(--border-width) solid var(--border-subtle)">
+    <div class="reveal rd1 bg-white rounded-2xl p-6" style="border:var(--border-width) solid var(--border-subtle)">
       <div class="prob-item"><i data-lucide="x-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-clay)"></i><span style="color:var(--text-body)">You hesitate above the clip</span></div>
       <div class="prob-item"><i data-lucide="x-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-clay)"></i><span style="color:var(--text-body)">You overgrip and burn out early</span></div>
       <div class="prob-item"><i data-lucide="x-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-clay)"></i><span style="color:var(--text-body)">You shout "take" instead of committing</span></div>
@@ -189,18 +192,17 @@
 </section>
 
 <!-- ═══ PHOTO STRIP ═══ -->
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:280px;overflow:hidden">
-  <img src="assets/img/fof-climb1.jpg" alt="" class="w-full h-full object-cover" style="object-position:center center">
-  <img src="assets/img/fof-climb2.jpg" alt="" class="w-full h-full object-cover" style="object-position:center center">
-  <img src="assets/img/fof-climb3.jpg" alt="" class="w-full h-full object-cover" style="object-position:center center">
+<div style="display:grid;grid-template-columns:1fr 1fr;height:300px;overflow:hidden">
+  <img src="assets/img/fof-climb3.jpg" alt="Climber reaching on an overhang" class="w-full h-full object-cover" style="object-position:center 30%">
+  <img src="assets/img/fof-climb1.jpg" alt="Climber mid-fall on the wall" class="w-full h-full object-cover" style="object-position:center 20%">
 </div>
 
 <!-- ═══ WHAT'S INSIDE ═══ -->
 <section id="whats-inside" class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
   <div class="max-w-6xl mx-auto">
     <p class="ep-eyebrow mb-4 reveal text-center">What's Included</p>
-    <h2 class="text-3xl md:text-4xl mb-10 reveal rd1 text-center" style="color:var(--text-strong)">Everything you need to build real confidence</h2>
-    <div class="grid md:grid-cols-3 gap-6 mb-16">
+    <h2 class="text-3xl md:text-4xl mb-12 reveal rd1 text-center" style="color:var(--text-strong)">Everything you need to build real confidence</h2>
+    <div class="grid md:grid-cols-3 gap-6">
       <div class="feat-card reveal">
         <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background:color-mix(in srgb,var(--ep-clay) 10%,transparent)">
           <i data-lucide="book-open" class="w-5 h-5" style="color:var(--ep-clay)"></i>
@@ -241,26 +243,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- App preview -->
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="reveal">
-        <p class="ep-eyebrow mb-4">Inside The Course</p>
-        <h2 class="text-2xl md:text-3xl mb-4" style="color:var(--text-strong)">A structured syllabus you actually work through</h2>
-        <p class="leading-relaxed mb-6" style="color:var(--text-muted)">Each lesson builds on the last — from understanding the psychology of fear to graded exercises on the wall. Workbook exercises and video lessons are integrated throughout.</p>
-        <a href="index.html#contact" class="cta-btn cta-primary" style="display:inline-flex">Join The Toolkit</a>
-      </div>
-      <div class="reveal rd1">
-        <div class="app-frame">
-          <div class="app-bar">
-            <div class="app-dot" style="background:#ff5f57"></div>
-            <div class="app-dot" style="background:#ffbd2e"></div>
-            <div class="app-dot" style="background:#28c840"></div>
-          </div>
-          <img src="assets/img/fof-app.png" alt="Fear of Falling Toolkit course interface" class="w-full block">
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -273,18 +255,18 @@
       <p class="ep-eyebrow mb-4">Why This Course Works</p>
       <h2 class="text-3xl md:text-4xl mb-5" style="color:var(--text-strong)">Most approaches don't work.</h2>
       <p class="leading-relaxed mb-6" style="color:var(--text-muted)">Most climbers try to overcome fear by avoiding falls, waiting to feel confident, or hoping fear will disappear with time. It doesn't.</p>
-      <div class="space-y-3 mb-8">
+      <div class="space-y-1 mb-8">
         <div class="prob-item"><i data-lucide="x" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color:var(--ep-clay)"></i><span class="text-sm" style="color:var(--text-muted)">Avoiding falls</span></div>
         <div class="prob-item"><i data-lucide="x" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color:var(--ep-clay)"></i><span class="text-sm" style="color:var(--text-muted)">Waiting to feel confident</span></div>
         <div class="prob-item"><i data-lucide="x" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color:var(--ep-clay)"></i><span class="text-sm" style="color:var(--text-muted)">Forcing yourself through panic</span></div>
         <div class="prob-item"><i data-lucide="x" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color:var(--ep-clay)"></i><span class="text-sm" style="color:var(--text-muted)">Hoping fear disappears with time</span></div>
       </div>
       <div class="pq">
-        <p class="text-sm leading-relaxed" style="color:var(--text-body);font-style:italic">The toolkit is built around the principles of <strong>exposure therapy</strong> — the gold-standard psychological approach for overcoming fear. You'll reduce fear safely, build trust in the rope, and stay present under pressure.</p>
+        <p class="text-sm leading-relaxed" style="color:var(--text-body);font-style:italic">The toolkit is built around <strong>exposure therapy</strong> — the gold-standard psychological approach for overcoming fear. You'll reduce fear safely, build trust in the rope, and stay present under pressure.</p>
       </div>
     </div>
     <div class="reveal rd1 overflow-hidden" style="border-radius:var(--radius-xl)">
-      <img src="assets/img/fof-climb4.jpg" alt="Climber focusing on the wall" class="w-full object-cover" style="height:420px;object-position:center 30%">
+      <img src="assets/img/fof-climb4.jpg" alt="Climber focusing on the wall" class="w-full object-cover" style="height:460px;object-position:center 30%">
     </div>
   </div>
 </section>
@@ -297,7 +279,8 @@
     <div class="reveal">
       <p class="ep-eyebrow mb-4">The Method</p>
       <h2 class="text-3xl md:text-4xl mb-4" style="color:var(--text-strong)">A Progressive Exposure Ladder</h2>
-      <p class="leading-relaxed" style="color:var(--text-muted)">Every step is designed to feel challenging, but manageable. Each one builds on the last — expanding your comfort zone without overwhelming it.</p>
+      <p class="leading-relaxed mb-8" style="color:var(--text-muted)">Every step is designed to feel challenging, but manageable. Each one builds on the last — expanding your comfort zone without overwhelming it.</p>
+      <a href="#signup" class="cta-btn cta-pine">Get Early Access</a>
     </div>
     <div class="space-y-3 reveal rd1">
       <div class="rung"><span class="rung-n">01</span><span class="text-sm" style="color:var(--text-body)">Top rope fall (little slack)</span></div>
@@ -328,7 +311,7 @@
         <div class="chk"><div class="chk-icon"><i data-lucide="check" class="w-3 h-3" style="color:var(--ep-clay)"></i></div><span class="text-sm" style="color:var(--text-body)">You avoid committing to moves</span></div>
         <div class="chk"><div class="chk-icon"><i data-lucide="check" class="w-3 h-3" style="color:var(--ep-clay)"></i></div><span class="text-sm" style="color:var(--text-body)">You panic on lead despite the ability</span></div>
         <div class="chk"><div class="chk-icon"><i data-lucide="check" class="w-3 h-3" style="color:var(--ep-clay)"></i></div><span class="text-sm" style="color:var(--text-body)">You avoid projecting limit routes</span></div>
-        <div class="chk"><div class="chk-icon"><i data-lucide="check" class="w-3 h-3" style="color:var(--ep-clay)"></i></div><span class="text-sm" style="color:var(--text-body)">You feel held back by fear despite ability</span></div>
+        <div class="chk"><div class="chk-icon"><i data-lucide="check" class="w-3 h-3" style="color:var(--ep-clay)"></i></div><span class="text-sm" style="color:var(--text-body)">You feel held back by fear despite your ability</span></div>
         <div class="chk"><div class="chk-icon"><i data-lucide="check" class="w-3 h-3" style="color:var(--ep-clay)"></i></div><span class="text-sm" style="color:var(--text-body)">You want to enjoy climbing more again</span></div>
       </div>
       <p class="text-sm" style="color:var(--text-muted)">Whether you're climbing your first lead routes or pushing your limit grade — the principles remain the same.</p>
@@ -362,11 +345,11 @@
   </div>
 </section>
 
-<!-- ═══ IMAGINE ═══ -->
+<!-- ═══ OUTCOMES ═══ -->
 <section class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
   <div class="max-w-6xl mx-auto">
     <p class="ep-eyebrow mb-4 reveal text-center" style="color:var(--ep-pine)">The Outcome</p>
-    <h2 class="text-4xl md:text-5xl mb-10 reveal rd1 text-center" style="color:var(--text-strong)">Imagine climbing like this…</h2>
+    <h2 class="text-4xl md:text-5xl mb-12 reveal rd1 text-center" style="color:var(--text-strong)">Imagine climbing like this…</h2>
     <div class="grid md:grid-cols-3 gap-4 mb-12">
       <div class="outcome-card reveal"><i data-lucide="zap" class="w-7 h-7 mx-auto mb-3" style="color:var(--ep-clay)"></i><p class="text-sm leading-relaxed" style="color:var(--text-body)">Committing to moves without freezing</p></div>
       <div class="outcome-card reveal rd1"><i data-lucide="anchor" class="w-7 h-7 mx-auto mb-3" style="color:var(--ep-clay)"></i><p class="text-sm leading-relaxed" style="color:var(--text-body)">Falling without panic — trusting the rope</p></div>
@@ -375,38 +358,64 @@
       <div class="outcome-card reveal rd1"><i data-lucide="heart" class="w-7 h-7 mx-auto mb-3" style="color:var(--ep-clay)"></i><p class="text-sm leading-relaxed" style="color:var(--text-body)">Enjoying climbing again</p></div>
       <div class="outcome-card reveal rd2"><i data-lucide="activity" class="w-7 h-7 mx-auto mb-3" style="color:var(--ep-clay)"></i><p class="text-sm leading-relaxed" style="color:var(--text-body)">Better movement &amp; focus under pressure</p></div>
     </div>
-    <!-- What climbers discover -->
     <div class="max-w-3xl mx-auto reveal">
-      <h3 class="text-2xl mb-6 text-center" style="color:var(--text-strong)">What Climbers Often Discover</h3>
       <div class="bg-white rounded-2xl p-6" style="border:var(--border-width) solid var(--border-subtle)">
+        <p class="text-xs font-semibold mb-5 uppercase tracking-widest" style="color:var(--ep-pine);font-family:var(--font-heading)">What climbers often discover</p>
         <div class="disc-item"><i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-pine)"></i><span class="text-sm" style="color:var(--text-body)">Less panic during lead climbing</span></div>
         <div class="disc-item"><i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-pine)"></i><span class="text-sm" style="color:var(--text-body)">Increased willingness to try hard moves</span></div>
         <div class="disc-item"><i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-pine)"></i><span class="text-sm" style="color:var(--text-body)">Better focus and movement under pressure</span></div>
         <div class="disc-item"><i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-pine)"></i><span class="text-sm" style="color:var(--text-body)">More enjoyment during sessions</span></div>
         <div class="disc-item"><i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:var(--ep-pine)"></i><span class="text-sm" style="color:var(--text-body)">Greater confidence across all climbing styles</span></div>
       </div>
-      <p class="text-sm mt-4 text-center" style="color:var(--text-muted)">Not because fear vanished — but because they learned how to work with it.</p>
+      <p class="text-sm mt-5 text-center" style="color:var(--text-muted)">Not because fear vanished — because they learned how to work with it.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ FINAL CTA ═══ -->
-<section class="py-20 md:py-28 px-6" style="background:var(--ep-paper)">
-  <div class="max-w-3xl mx-auto">
-    <div class="cta-band p-10 md:p-16 text-center">
-      <p class="ep-eyebrow mb-4 reveal" style="color:rgba(243,243,240,.6)">You Don't Need More Strength</p>
-      <h2 class="text-4xl md:text-5xl mb-4 reveal rd1" style="color:#fff">You Need a Different Relationship With Fear</h2>
-      <p class="leading-relaxed mb-10 reveal rd2" style="color:rgba(243,243,240,.65);max-width:440px;margin-left:auto;margin-right:auto">Fear is not proof that you can't do the route. It's a protective system that can be trained. Like any climbing skill, confidence is built through practice.</p>
-      <div class="grid sm:grid-cols-2 gap-3 mb-10 text-left max-w-sm mx-auto reveal rd2">
-        <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.85)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.6)"></i>Interactive Workbook</div>
-        <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.85)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.6)"></i>Guided Video Lessons</div>
-        <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.85)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.6)"></i>Structured Fall Practice</div>
-        <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.85)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.6)"></i>Reflective Journals</div>
-        <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.85)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.6)"></i>Psychological Skills</div>
-        <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.85)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.6)"></i>Learn at Your Own Pace</div>
+<!-- ═══ EMAIL SIGN-UP ═══ -->
+<section id="signup" class="py-20 md:py-28 px-6" style="background:var(--ep-paper)">
+  <div class="max-w-2xl mx-auto">
+    <div class="email-form-wrap p-10 md:p-16">
+      <!-- no decorative lines -->
+      <div class="relative z-10">
+        <p class="ep-eyebrow mb-4 reveal text-center" style="color:rgba(243,243,240,.55)">Early Access</p>
+        <h2 class="text-3xl md:text-4xl mb-3 reveal rd1 text-center" style="color:#fff">Get notified when the toolkit launches</h2>
+        <p class="text-base mb-10 reveal rd2 text-center" style="color:rgba(243,243,240,.6);line-height:var(--leading-relaxed)">Join the waitlist and be first to access the Fear of Falling Toolkit. Early access members receive a launch discount.</p>
+
+        <form id="signup-form" class="reveal rd3" name="fof-waitlist" netlify netlify-honeypot="bot-field" onsubmit="handleSignup(event)">
+          <input type="hidden" name="form-name" value="fof-waitlist">
+          <p style="display:none"><input name="bot-field"></p>
+          <div class="form-fields" id="form-fields">
+            <div class="space-y-4 mb-4">
+              <input type="text" name="name" class="email-input" placeholder="Your first name" id="field-name" autocomplete="given-name">
+              <input type="email" name="email" class="email-input" placeholder="Your email address" id="field-email" required autocomplete="email">
+            </div>
+            <button type="submit" class="email-submit">
+              Join the Waitlist
+            </button>
+            <p class="text-center mt-4 text-xs" style="color:rgba(243,243,240,.4)">No spam. Unsubscribe any time. We respect your privacy.</p>
+          </div>
+          <div class="form-success" id="form-success">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5" style="background:rgba(255,255,255,.15)">
+              <i data-lucide="check" class="w-7 h-7" style="color:#fff"></i>
+            </div>
+            <h3 class="text-2xl mb-3" style="color:#fff">You're on the list.</h3>
+            <p style="color:rgba(243,243,240,.65)">We'll be in touch when the toolkit launches. Keep climbing.</p>
+          </div>
+        </form>
+
+        <!-- What's included reminder -->
+        <div class="grid sm:grid-cols-2 gap-3 mt-10 reveal rd3 text-left">
+          <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.7)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.45)"></i>Interactive Workbook</div>
+          <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.7)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.45)"></i>Guided Video Lessons</div>
+          <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.7)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.45)"></i>Structured Fall Practice</div>
+          <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.7)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.45)"></i>Cognitive Techniques</div>
+          <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.7)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.45)"></i>Reflective Journals</div>
+          <div class="flex items-center gap-3 text-sm" style="color:rgba(243,243,240,.7)"><i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0" style="color:rgba(243,243,240,.45)"></i>Learn at Your Own Pace</div>
+        </div>
       </div>
-      <a href="index.html#contact" class="cta-btn reveal rd3" style="background:#fff;color:var(--ep-pine);display:inline-flex">Join The Fear of Falling Toolkit Today</a>
     </div>
+    <p class="text-center mt-6 text-sm" style="color:var(--text-muted)">By Dr Fin Haley — Clinical Psychologist &amp; Rock Climbing Instructor</p>
   </div>
 </section>
 
@@ -419,7 +428,7 @@
     </div>
     <div class="flex gap-6">
       <a href="courses.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">All Courses</a>
-      <a href="index.html#contact" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Contact</a>
+      <a href="our-work.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Our Work</a>
       <a href="index.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Home</a>
     </div>
   </div>
@@ -427,14 +436,54 @@
 
 <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
 <script>
-  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link'),navLogin=document.querySelector('.nav-login');
+  // Nav scroll behaviour
+  var nav=document.getElementById('main-nav');
+  var navLogo=document.getElementById('nav-logo');
+  var navLinks=document.querySelectorAll('.nav-link');
+  var navLogin=document.querySelector('.nav-login');
   window.addEventListener('scroll',function(){
-    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});if(navLogin){navLogin.style.borderColor='var(--border-default)';navLogin.style.color='var(--text-muted)';}}
-    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLinks.forEach(function(l){l.style.color=''});if(navLogin){navLogin.style.borderColor='';navLogin.style.color='';}}
+    if(window.scrollY>80){
+      nav.classList.add('nav-glass');
+      navLogo.style.filter='brightness(0) opacity(.65)';
+      navLinks.forEach(function(l){l.style.color='var(--text-muted)';});
+      if(navLogin){navLogin.style.borderColor='var(--border-default)';navLogin.style.color='var(--text-muted)';}
+    } else {
+      nav.classList.remove('nav-glass');
+      navLogo.style.filter='';
+      navLinks.forEach(function(l){l.style.color='';});
+      if(navLogin){navLogin.style.borderColor='';navLogin.style.color='';}
+    }
   });
-  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
-  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+
+  // Mobile menu
+  document.getElementById('mob-btn').addEventListener('click',function(){
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+
+  // Reveal on scroll
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+  // Email sign-up handler — submits to Netlify Forms
+  function handleSignup(e){
+    e.preventDefault();
+    var form=document.getElementById('signup-form');
+    var data=new URLSearchParams(new FormData(form)).toString();
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data})
+      .then(function(){
+        document.getElementById('form-fields').classList.add('hide');
+        document.getElementById('form-success').classList.add('show');
+        lucide.createIcons();
+      })
+      .catch(function(){
+        alert('Something went wrong — please try again.');
+      });
+  }
+
   lucide.createIcons();
 </script>
 </body>
