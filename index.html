@@ -783,20 +783,22 @@
       <h2 class="text-4xl md:text-5xl mb-4 reveal" style="color:var(--text-strong)">Let's Start The Conversation.</h2>
       <p class="reveal reveal-delay-1" style="color:var(--text-muted)">Whether you're preparing for an expedition, supporting your team, or processing a difficult experience.</p>
     </div>
-    <form id="contact-form" class="contact-card p-8 md:p-12 reveal reveal-delay-1" onsubmit="submitForm(event)">
+    <form id="contact-form" class="contact-card p-8 md:p-12 reveal reveal-delay-1" name="contact" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitForm(event)">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none"><input name="bot-field"></p>
       <div class="grid md:grid-cols-2 gap-5 mb-5">
         <div>
           <label class="block mb-2 ep-eyebrow" style="font-size:var(--text-2xs)">Name</label>
-          <input type="text" class="ep-input" placeholder="Your name">
+          <input type="text" name="name" class="ep-input" placeholder="Your name">
         </div>
         <div>
           <label class="block mb-2 ep-eyebrow" style="font-size:var(--text-2xs)">Email</label>
-          <input type="email" class="ep-input" placeholder="your@email.com">
+          <input type="email" name="email" class="ep-input" placeholder="your@email.com">
         </div>
       </div>
       <div class="mb-5">
         <label class="block mb-2 ep-eyebrow" style="font-size:var(--text-2xs)">I'm interested in</label>
-        <select class="ep-input">
+        <select name="interest" class="ep-input">
           <option>Individual Support</option>
           <option>Team Support</option>
           <option>Self-Guided Programmes</option>
@@ -807,7 +809,7 @@
       </div>
       <div class="mb-8">
         <label class="block mb-2 ep-eyebrow" style="font-size:var(--text-2xs)">Message</label>
-        <textarea class="ep-input resize-none" rows="4" placeholder="Tell us about your situation, environment, or challenge..."></textarea>
+        <textarea name="message" class="ep-input resize-none" rows="4" placeholder="Tell us about your situation, environment, or challenge..."></textarea>
       </div>
       <button type="submit" class="cta-btn cta-btn-accent w-full" style="border-radius:var(--radius-md)">
         Send Message
@@ -969,11 +971,23 @@
   // ── Contact form ──
   function submitForm(e) {
     e.preventDefault();
-    var ok = document.getElementById('form-ok');
-    ok.classList.remove('hidden');
-    ok.style.display = 'flex';
-    e.target.querySelector('[type=submit]').textContent = 'Sent ✓';
-    lucide.createIcons();
+    var form = e.target;
+    var btn = form.querySelector('[type=submit]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(form)).toString()})
+      .then(function() {
+        var ok = document.getElementById('form-ok');
+        ok.classList.remove('hidden');
+        ok.style.display = 'flex';
+        btn.textContent = 'Sent ✓';
+        lucide.createIcons();
+      })
+      .catch(function() {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong — please try again.');
+      });
   }
 
   // ── Our Work: filter + expand ──
