@@ -83,6 +83,10 @@
     /* Disc item */
     .disc-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:var(--border-width) solid var(--border-subtle);}
     .disc-item:last-child{border-bottom:none;}
+    /* Nav glass — desktop links turn dark; mobile menu links always dark */
+    .nav-glass .nav-link { color: var(--ep-neutral-700) !important; }
+    .nav-glass .nav-link:hover { color: var(--ep-pine) !important; }
+    #mobile-menu .nav-link { color: var(--text-muted) !important; }
   </style>
 </head>
 <body>
@@ -459,7 +463,8 @@
   });
 
   // Reveal on scroll
-    var revealObs = new IntersectionObserver(function (entries) {
+    document.querySelectorAll('.reveal').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>=0)el.classList.add('visible');});
+  var revealObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });

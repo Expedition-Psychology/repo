@@ -110,6 +110,10 @@
     .domain-card { background:var(--surface-raised); border-radius:var(--radius-lg); border:var(--border-width) solid var(--border-subtle); box-shadow:var(--shadow-xs); padding:var(--space-6); transition:transform var(--dur-base) var(--ease-out),box-shadow var(--dur-base) ease; }
     .domain-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-sm); }
     .stat-100 { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-5xl); color:var(--ep-pine); line-height:1; }
+    /* Nav glass — desktop links turn dark; mobile menu links always dark */
+    .nav-glass .nav-link { color: var(--ep-neutral-700) !important; }
+    .nav-glass .nav-link:hover { color: var(--ep-pine) !important; }
+    #mobile-menu .nav-link { color: var(--text-muted) !important; }
   </style>
 </head>
 <body class="bg-ep-bg text-ep-text">
@@ -163,7 +167,9 @@
     <a href="courses.html" class="block py-2 nav-link" style="color:var(--text-muted)">Courses</a>
     <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Peak Performance</a>
     <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Leadership Under Pressure</a>
+    <a href="fear-of-falling.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Fear of Falling Toolkit</a>
     <a href="index.html#contact"   class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+    <a href="https://e-learning-course-web-app.pages.dev/login" class="block py-2 nav-link" style="color:var(--ep-pine)">Client Login &#8594;</a>
   </div>
 </nav>
 

@@ -393,6 +393,10 @@
     }
     .nav-drop-item:hover { background:var(--surface-sunken); color:var(--ep-pine) !important; }
     .nav-drop-divider { height:1px; background:var(--border-subtle); margin:4px 8px; }
+    /* Nav glass — desktop links turn dark; mobile menu links always dark */
+    .nav-glass .nav-link { color: var(--ep-neutral-700) !important; }
+    .nav-glass .nav-link:hover { color: var(--ep-pine) !important; }
+    #mobile-menu .nav-link { color: var(--text-muted) !important; }
   </style>
 </head>
 <body class="bg-ep-bg text-ep-text">
@@ -451,6 +455,7 @@
     <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Peak Performance</a>
     <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Leadership Under Pressure</a>
     <a href="#contact"   class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+    <a href="https://e-learning-course-web-app.pages.dev/login" class="block py-2 nav-link" style="color:var(--ep-pine)">Client Login &#8594;</a>
   </div>
 </nav>
 

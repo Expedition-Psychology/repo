@@ -116,6 +116,10 @@
     .stat-strip-value { font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:clamp(1.5rem,5vw,var(--text-3xl)); color:var(--ep-ember); line-height:1; margin-bottom:var(--space-2); word-break:break-word; overflow-wrap:break-word; }
     .stat-strip-label { font-size:var(--text-xs); color:var(--text-muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
     @media (max-width:640px) { .stat-strip-item { padding:var(--space-4) var(--space-2); } .stat-strip-label { font-size:var(--text-2xs); } }
+    /* Nav glass — desktop links turn dark; mobile menu links always dark */
+    .nav-glass .nav-link { color: var(--ep-neutral-700) !important; }
+    .nav-glass .nav-link:hover { color: var(--ep-pine) !important; }
+    #mobile-menu .nav-link { color: var(--text-muted) !important; }
   </style>
 </head>
 <body class="bg-ep-bg text-ep-text">
@@ -169,7 +173,9 @@
     <a href="courses.html" class="block py-2 nav-link" style="color:var(--text-muted)">Courses</a>
     <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Peak Performance</a>
     <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Leadership Under Pressure</a>
+    <a href="fear-of-falling.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Fear of Falling Toolkit</a>
     <a href="index.html#contact"   class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+    <a href="https://e-learning-course-web-app.pages.dev/login" class="block py-2 nav-link" style="color:var(--ep-pine)">Client Login &#8594;</a>
   </div>
 </nav>
 
