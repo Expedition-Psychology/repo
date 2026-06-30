@@ -273,6 +273,18 @@
     .nav-glass .nav-link { color: var(--ep-neutral-700) !important; }
     .nav-glass .nav-link:hover { color: var(--ep-pine) !important; }
     #mobile-menu .nav-link { color: var(--text-muted) !important; }
+    .nav-glass #mob-btn { color: var(--ep-neutral-700) !important; }
+
+    @media (max-width:640px) {
+      .wem-photo-grid { grid-template-columns:1fr !important; }
+      .wem-photo-grid img { height:200px !important; }
+    }
+  
+    .mob-accordion-trigger { width:100%; display:flex; align-items:center; justify-content:space-between; gap:8px; background:none; border:none; padding:8px 0; font-family:var(--font-heading); font-weight:var(--weight-heading); font-size:var(--text-xs); letter-spacing:var(--tracking-wide); text-transform:uppercase; color:var(--text-muted); cursor:pointer; text-align:left; }
+    .mob-accordion-chevron { transition:transform .2s ease; flex-shrink:0; }
+    .mob-accordion-trigger.open .mob-accordion-chevron { transform:rotate(180deg); }
+    .mob-accordion-panel { display:none; }
+    .mob-accordion-panel.open { display:block; }
   </style>
 </head>
 <body class="bg-ep-bg text-ep-text">
@@ -313,20 +325,28 @@
     </div>
     <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
   </div>
-  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-3 border-t border-ep-text/5" style="background:var(--surface-page)">
-    <a href="index.html#services"  class="block py-2 nav-link" style="color:var(--text-muted)">Services</a>
-    <a href="index.html#about"     class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
-    <a href="our-work.html"      class="block py-2 nav-link" style="color:var(--text-muted)">Our Work</a>
-    <a href="wem-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ World Extreme Medicine</a>
-    <a href="rnli-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ RNLI</a>
-    <a href="mountain-rescue-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Mountain Rescue</a>
-    <a href="tor-divide-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ The Tor Divide</a>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-1 border-t border-ep-text/5" style="background:var(--surface-page)">
+    <a href="index.html#services" class="block py-2 nav-link" style="color:var(--text-muted)">Services</a>
+    <a href="index.html#about" class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
+    <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Our Work<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+    <div class="mob-accordion-panel">
+      <a href="our-work.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">All Articles</a>
+      <a href="wem-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">World Extreme Medicine</a>
+      <a href="rnli-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">RNLI</a>
+      <a href="mountain-rescue-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Mountain Rescue</a>
+      <a href="tor-divide-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">The Tor Divide</a>
+      <a href="performance-anxiety.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Performance Anxiety</a>
+      <a href="social-comparison.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Social Comparison</a>
+    </div>
     <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
-    <a href="courses.html" class="block py-2 nav-link" style="color:var(--text-muted)">Courses</a>
-    <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Peak Performance</a>
-    <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Leadership Under Pressure</a>
-    <a href="fear-of-falling.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">↳ Fear of Falling Toolkit</a>
-    <a href="index.html#contact"   class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+    <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Courses<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+    <div class="mob-accordion-panel">
+      <a href="courses.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">All Courses</a>
+      <a href="fear-of-falling.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Fear of Falling Toolkit</a>
+      <a href="courses.html#performance" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Peak Performance</a>
+      <a href="courses.html#leadership" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Leadership Under Pressure</a>
+    </div>
+    <a href="index.html#contact" class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
   </div>
 </nav>
 
@@ -515,7 +535,7 @@
     </h2>
 
     <!-- Integrated photo -->
-    <div class="reveal reveal-delay-1 mb-14" style="display:grid;grid-template-columns:1fr 200px;gap:var(--space-6);align-items:start">
+    <div class="reveal reveal-delay-1 mb-14 wem-photo-grid" style="display:grid;grid-template-columns:1fr 200px;gap:var(--space-6);align-items:start">
       <p class="leading-relaxed" style="color:var(--text-muted);">The webinar was structured around four core areas — moving from understanding the neuroscience of trauma through to practical in-the-moment strategies and long-term resilience building. Each section combined theory with applied exercises, ensuring participants left with tools they could implement immediately.</p>
       <div class="overflow-hidden flex-shrink-0" style="border-radius:var(--radius-lg)">
         <img src="assets/img/WEM-main.jpg" alt="Dr Fin Haley" class="w-full object-cover" style="height:220px;object-position:60% center;display:block;">
@@ -752,6 +772,7 @@
     }
   });
 
+  function toggleMobAccordion(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
   document.getElementById('mob-btn').addEventListener('click', function () {
     document.getElementById('mobile-menu').classList.toggle('open');
   });
