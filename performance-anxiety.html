@@ -100,6 +100,10 @@
     .mob-accordion-trigger.open .mob-accordion-chevron { transform:rotate(180deg); }
     .mob-accordion-panel { display:none; }
     .mob-accordion-panel.open { display:block; }
+
+    @media (max-width:640px) {
+      .pa-hero-img { object-position:80% 40% !important; }
+    }
   </style>
 </head>
 <body>
@@ -168,7 +172,7 @@
 <!-- HERO -->
 <section class="relative min-h-[70vh] flex items-end overflow-hidden">
   <div class="absolute inset-0">
-    <img src="assets/img/mammut-run1.webp" alt="Trail runner on Mam Tor ridge" class="w-full h-full object-cover" style="object-position:center 40%">
+    <img src="assets/img/mammut-run1.webp" alt="Trail runner on Mam Tor ridge" class="w-full h-full object-cover pa-hero-img" style="object-position:center 40%">
     <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.95) 0%,rgba(10,15,22,.55) 45%,rgba(10,15,22,.15) 100%)"></div>
   </div>
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
