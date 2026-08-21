@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alpine Route Risk Assessment — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon-64.png">
+  <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
+  <script src="support.js"></script>
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/colors.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/typography.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/base.css">
+<style>
+  :root{ --accent-ui: var(--ep-plum); --sheet:#ffffff; --rule:#e6e6e1;
+    --risk-low:#6a977e; --risk-mod:#d6b86c; --risk-high:#c97a4a; --risk-ext:#b6534b; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; }
+  body{ background:var(--ep-neutral-200); color:var(--ep-neutral-700); font-family:var(--font-body); font-weight:300; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  h1,h2,h3,h4{ font-family:var(--font-heading); font-weight:500; color:var(--ep-ink); margin:0; line-height:1.14; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:var(--ep-pine-700); }
+  a:hover{ text-decoration:underline; text-underline-offset:2px; }
+  em{ font-style:italic; }
+
+  .doc{ max-width:8.5in; margin:28px auto; background:var(--sheet); box-shadow:0 12px 54px rgba(46,46,46,.13); padding:0 clamp(22px,5vw,0.8in); }
+  .doc-frame{ width:100%; border-collapse:collapse; }
+  .doc-frame td{ padding:0; }
+  .pad-top,.pad-bottom{ display:none; }
+  .body-pad{ padding:42px 0 70px; }
+
+  .eyebrow{ font-family:var(--font-body); text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--accent-ui); }
+  .num{ font-family:var(--font-heading); font-weight:500; font-size:30px; line-height:0.9; color:var(--accent-ui); flex:none; min-width:44px; }
+  .purpose{ color:var(--ep-neutral-500); font-size:15.5px; margin-top:12px; max-width:66ch; }
+  .instr{ color:var(--ep-neutral-700); font-size:15px; margin-top:14px; max-width:68ch; }
+  .rule{ border:none; border-top:1px solid var(--rule); margin:16px 0 0; }
+
+  .q{ display:block; margin-top:18px; }
+  .q-label{ display:block; font-size:15.5px; font-weight:400; color:var(--ep-neutral-700); margin-bottom:8px; }
+  .q-label .sub{ display:block; font-size:14px; font-weight:300; color:var(--ep-neutral-500); margin-top:3px; }
+  .flab{ display:block; font-size:11px; font-weight:700; color:var(--ep-neutral-500); text-transform:uppercase; letter-spacing:.07em; margin-bottom:5px; }
+
+  .ta{ display:block; width:100%; font-family:var(--font-body); font-weight:300; font-size:15.5px; line-height:1.6; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; min-height:52px; field-sizing:content; resize:vertical; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .ta:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .ta::placeholder{ color:var(--ep-neutral-400); }
+  .inp{ width:100%; font-family:var(--font-body); font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:9px 12px; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .inp:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .inp::placeholder{ color:var(--ep-neutral-400); }
+
+  .sel{ width:100%; font-family:var(--font-body); font-weight:400; font-size:14.5px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:9px 11px; outline:none; cursor:pointer; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .sel:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .sel:invalid, .sel option[value=""]{ color:var(--ep-neutral-400); }
+
+  .cbx{ display:flex; align-items:center; gap:9px; padding:8px 11px; border:1px solid var(--ep-neutral-200); border-radius:9px; background:var(--ep-neutral-50); font-size:14.5px; color:var(--ep-neutral-700); cursor:pointer; transition:border-color .12s, background .12s; user-select:none; }
+  .cbx:hover{ border-color:var(--ep-pine); }
+  .cbx input{ accent-color:var(--ep-pine); width:16px; height:16px; flex:none; margin:0; }
+  .cbx:has(input:checked){ background:var(--ep-pine-tint); border-color:var(--ep-pine); color:var(--ep-pine-700); }
+
+  .note{ display:flex; align-items:flex-start; gap:13px; margin-top:20px; padding:14px 17px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.55; color:var(--ep-pine-700); }
+  .note strong{ font-weight:600; }
+  .note svg{ width:20px; height:auto; flex:none; margin-top:2px; }
+  .note-warn{ background:#f6e7e2; color:#7c3a30; }
+
+  .tile{ background:var(--ep-neutral-50); border:1px solid var(--rule); border-radius:14px; padding:17px 19px; }
+  .step{ display:flex; gap:13px; align-items:flex-start; }
+  .step .n{ flex:none; width:25px; height:25px; border-radius:50%; background:var(--ep-plum-tint); color:var(--ep-plum); font-family:var(--font-heading); font-weight:500; font-size:13.5px; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+
+  .toc-link{ display:flex; align-items:center; gap:14px; padding:11px 4px; border-bottom:1px solid var(--rule); text-decoration:none; color:var(--ep-ink); transition:color .12s; }
+  .toc-link:hover{ color:var(--accent-ui); }
+  .toc-dot{ width:10px; height:10px; border-radius:50%; border:1.5px solid var(--ep-neutral-300); background:transparent; flex:none; transition:background .2s, border-color .2s; }
+  .toc-num{ font-family:var(--font-heading); font-weight:500; color:var(--accent-ui); font-size:14.5px; width:26px; flex:none; }
+  .toc-title{ font-size:15.5px; }
+
+  .btn{ display:inline-flex; align-items:center; gap:7px; font-family:var(--font-body); font-weight:600; font-size:14px; padding:9px 16px; border-radius:9px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer; transition:background .15s, transform .05s, border-color .15s; }
+  .btn:hover{ background:var(--ep-plum-700); }
+  .btn:active{ transform:translateY(1px); }
+  .btn-ghost{ background:transparent; color:var(--ep-neutral-600); border-color:var(--ep-neutral-300); }
+  .btn-ghost:hover{ background:var(--ep-neutral-100); border-color:var(--ep-neutral-400); }
+
+  .sw{ display:inline-flex; align-items:center; gap:9px; cursor:pointer; user-select:none; font-size:13px; font-weight:600; color:var(--ep-neutral-700); flex:none; }
+  .sw input{ position:absolute; opacity:0; width:0; height:0; }
+  .sw .track{ width:38px; height:22px; border-radius:99px; background:var(--ep-neutral-300); transition:background .18s; flex:none; position:relative; }
+  .sw .track::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(46,46,46,.28); transition:transform .18s; }
+  .sw input:checked + .track{ background:var(--ep-clay); }
+  .sw input:checked + .track::after{ transform:translateX(16px); }
+  .sw input:focus-visible + .track{ box-shadow:0 0 0 3px rgba(182,83,75,.30); }
+
+  .toolbar{ position:sticky; top:0; z-index:30; background:rgba(243,243,240,.88); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); border-bottom:1px solid var(--ep-neutral-300); }
+  .toolbar-inner{ max-width:8.5in; margin:0 auto; padding:10px clamp(22px,5vw,0.8in); display:flex; align-items:center; gap:18px; }
+
+  /* Risk engine */
+  .haz{ padding:17px 0; border-top:1px solid var(--rule); }
+  .haz-head{ display:flex; align-items:baseline; gap:10px; }
+  .haz-title{ font-family:var(--font-heading); font-weight:500; font-size:16.5px; color:var(--ep-ink); }
+  .haz-desc{ font-size:14px; color:var(--ep-neutral-500); margin-top:4px; max-width:70ch; }
+  .haz-controls{ display:grid; grid-template-columns:1fr 1fr 118px; gap:11px; align-items:end; margin-top:13px; }
+  .chip{ display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-weight:500; font-size:14px; letter-spacing:.01em; padding:9px 8px; border-radius:9px; border:1px solid var(--ep-neutral-200); background:var(--ep-neutral-100); color:var(--ep-neutral-400); text-align:center; min-height:39px; }
+
+  .matrix{ width:100%; border-collapse:separate; border-spacing:3px; font-family:var(--font-body); margin-top:6px; }
+  .matrix th, .matrix td{ padding:8px 5px; text-align:center; font-size:12px; border-radius:6px; line-height:1.15; }
+  .matrix thead th{ background:transparent; color:var(--ep-neutral-600); font-weight:700; font-family:var(--font-heading); }
+  .matrix .rowlab{ background:var(--ep-neutral-100); color:var(--ep-neutral-700); font-weight:600; text-align:right; padding-right:9px; white-space:nowrap; }
+  .matrix .corner{ background:transparent; font-size:10.5px; color:var(--ep-neutral-500); font-weight:400; }
+  .cell-low{ background:var(--risk-low); color:#fff; font-weight:600; }
+  .cell-mod{ background:var(--risk-mod); color:#3a2f12; font-weight:600; }
+  .cell-high{ background:var(--risk-high); color:#fff; font-weight:600; }
+  .cell-ext{ background:var(--risk-ext); color:#fff; font-weight:600; }
+  .legend{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .legend span{ display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--ep-neutral-600); }
+  .legend i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+
+  .rdy{ display:grid; grid-template-columns:minmax(170px,190px) 1fr; gap:11px; align-items:start; margin-top:11px; }
+  .trap-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+
+  .ruletable{ width:100%; border-collapse:collapse; margin-top:14px; font-size:14px; }
+  .ruletable td{ padding:11px 13px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  .ruletable tr:last-child td{ border-bottom:none; }
+  .ruletable .cond{ color:var(--ep-neutral-700); width:52%; }
+  .ruletable .ind{ font-weight:600; color:var(--ep-ink); }
+  .ruletable tr td:first-child{ border-left:3px solid transparent; padding-left:14px; }
+  .ruletable .r-ext td:first-child{ border-left-color:var(--risk-ext); }
+  .ruletable .r-high td:first-child{ border-left-color:var(--risk-high); }
+  .ruletable .r-mod td:first-child{ border-left-color:var(--risk-mod); }
+  .ruletable .r-base td:first-child{ border-left-color:var(--ep-neutral-300); }
+
+  .estat{ background:var(--ep-neutral-50); border:1px solid var(--rule); border-radius:12px; padding:15px 16px; text-align:center; }
+  .estat .lab{ font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--ep-neutral-500); }
+  .estat .val{ font-family:var(--font-heading); font-weight:500; font-size:30px; color:var(--ep-ink); line-height:1; margin-top:8px; }
+  .indication{ margin-top:20px; border-radius:14px; padding:20px 22px; border:1px solid var(--ep-neutral-200); background:var(--ep-neutral-100); transition:background .2s, color .2s; }
+  .indication .it{ font-family:var(--font-heading); font-weight:500; font-size:23px; line-height:1.1; }
+  .indication .ir{ font-size:14.5px; line-height:1.5; margin-top:9px; opacity:.92; }
+
+  .blank{ min-height:46px; background:#fff; }
+
+  @media (max-width:620px){
+    .toolbar-inner{ flex-wrap:wrap; gap:11px; }
+    .haz-controls{ grid-template-columns:1fr 1fr; }
+    .haz-controls .chipwrap{ grid-column:1 / -1; }
+    .rdy{ grid-template-columns:1fr; }
+  }
+
+  @page{ size:letter; margin:0; }
+  @media print{
+    html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    html,body{ margin:0; padding:0; background:#fff; }
+    body{ font-size:11pt; }
+    .doc{ max-width:none !important; margin:0 !important; box-shadow:none !important; padding:0 0.7in !important; }
+    .body-pad{ padding:0 !important; }
+    .pad-top,.pad-bottom{ display:table-cell; height:0.7in; }
+    .screen-only{ display:none !important; }
+    .ta,.inp,.sel,.blank{ background:#fff !important; }
+    .cover{ break-after:page; }
+    .contents{ break-before:page; break-after:page; }
+    [data-breaks="1"] .section{ break-before:page; }
+    .section > header{ break-inside:avoid; break-after:avoid; }
+    h1,h2,h3,h4{ break-after:avoid; }
+    .q-label,.flab{ break-after:avoid; }
+    .note,.cbx,.tile,.step,.haz,.rdy,.estat,.indication,.matrix,.ruletable tr{ break-inside:avoid; }
+    .ta{ overflow:visible; }
+  }
+  [data-guidance="0"] .note{ display:none !important; }
+</style>
+  <style>
+    @media (max-width:640px) {
+      html, body { overflow-x:hidden; width:100%; max-width:100vw; }
+      .toolbar-inner { max-width:100vw !important; box-sizing:border-box !important; padding:10px 12px !important; flex-wrap:wrap; gap:8px; }
+      .btn { font-size:0 !important; padding:9px 11px !important; gap:0 !important; }
+      .btn svg { display:block; width:18px; height:18px; }
+      .btn-ghost { padding:9px 11px; }
+      .doc { margin:0 !important; max-width:100vw !important; box-sizing:border-box; padding:0 16px !important; }
+      .doc-frame { table-layout:fixed !important; width:100% !important; }
+      .doc-frame td { overflow:hidden; }
+    }
+  </style>
+</head>
+<body>
+<div style="background:var(--ep-ink);padding:12px 20px;display:flex;align-items:center;gap:10px;">
+  <a href="free-tools.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--ep-paper);opacity:0.75;font-family:var(--font-heading);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    Free Tools
+  </a>
+</div>
+<div id="act-root" data-breaks="1" data-guidance="1">
+
+  <div class="toolbar screen-only">
+    <div class="toolbar-inner">
+      <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:0;">
+        <img src="assets/logo-symbol-purple.png" alt="" width="22" style="flex:none; height:auto;">
+        <div style="flex:1; min-width:130px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:5px;">
+            <span style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-700);" data-progress-label="">0 of 6 sections started</span>
+            <span data-saved="" style="font-size:12px; font-weight:600; color:var(--ep-sage); opacity:0; transition:opacity .25s;">Saved</span>
+          </div>
+          <div style="height:6px; background:var(--ep-neutral-200); border-radius:99px; overflow:hidden;">
+            <div data-progress-bar="" style="height:100%; width:0%; background:var(--accent-ui); border-radius:99px; transition:width .3s;"></div>
+          </div>
+        </div>
+      </div>
+      <label class="sw" style="color:var(--ep-neutral-700);" title="On: your answers are saved in this browser so you can return later. Off: nothing is stored, and your answers clear when you leave.">
+        <input type="checkbox" data-action="remember">
+        <span class="track" style="background:var(--ep-neutral-300);"></span>
+        <span data-remember-label="">Saving on this device</span>
+      </label>
+      <div style="display:flex; gap:8px; flex:none;">
+        <button class="btn btn-ghost" data-action="clear" type="button">Clear</button>
+        <button class="btn" data-action="print" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="m7 10 5 5 5-5"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg>
+          Download as PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc">
+    <table class="doc-frame" role="presentation">
+      <thead><tr><td class="pad-top"></td></tr></thead>
+      <tbody><tr><td>
+        <div class="body-pad">
+
+          <section class="cover" data-screen-label="Cover" style="text-align:center; padding:34px 0 22px;">
+            <img src="assets/logo-symbol-purple.png" alt="Expedition Psychology" width="58" style="display:block; margin:0 auto; height:auto;">
+            <div class="eyebrow" style="margin-top:20px;">Summer Alpine Climbing</div>
+            <h1 style="font-size:clamp(32px,6vw,50px); margin-top:12px; max-width:15ch; margin-left:auto; margin-right:auto;">Route Risk Assessment</h1>
+            <p style="font-size:clamp(16px,2.4vw,19px); color:var(--ep-neutral-600); max-width:52ch; margin:18px auto 0; font-weight:300;">A structured planning tool for rating objective hazards, checking your readiness, and deciding — deliberately — before you commit to a route.</p>
+            <hr class="rule" style="max-width:110px; margin:30px auto 0; border-top-color:var(--ep-neutral-300);">
+          </section>
+
+          <section class="about" data-screen-label="About" style="padding-top:34px;">
+            <div class="eyebrow">Before you start</div>
+            <h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:11px; max-width:22ch;">Fill this out at the planning stage</h2>
+            <div style="margin-top:16px; display:grid; gap:13px; max-width:68ch; color:var(--ep-neutral-700);">
+              <p>This worksheet is designed to be completed while you are still rested and rational — before the mountain, the weather, and your own ego start negotiating with you. It walks you through the objective hazards you can't control, the readiness factors you can, the decision traps that quietly seed accidents, and the turnaround criteria you commit to now.</p>
+              <p>It structures your judgement; it does not replace it. Most controls are dropdowns, so the sheet fills in a couple of minutes. Free text is reserved for the few places where judgement genuinely needs words.</p>
+            </div>
+
+            <h3 style="font-size:20px; margin-top:28px;">How it works</h3>
+            <div style="display:grid; gap:12px; margin-top:14px; max-width:68ch;">
+              <div class="step"><span class="n">1</span><p style="font-size:15px;">In <strong style="font-weight:600;">Part A</strong> you rate each objective hazard with a likelihood × consequence matrix. Each hazard gets an automatic risk level — Low, Moderate, High, or Extreme.</p></div>
+              <div class="step"><span class="n">2</span><p style="font-size:15px;">Parts B–D check your readiness, surface your decision traps, and lock in your turnaround criteria.</p></div>
+              <div class="step"><span class="n">3</span><p style="font-size:15px;"><strong style="font-weight:600;">Part E</strong> reads it all back. The worst single hazard drives the result — never an average — and readiness and decision-trap flags can raise it further or stop the trip outright.</p></div>
+            </div>
+
+            <div class="note" style="background:var(--ep-neutral-100); color:var(--ep-neutral-700); border:1px solid var(--ep-neutral-200);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ep-neutral-500);"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <div><strong style="color:var(--ep-ink); font-weight:600;">Your privacy.</strong> Everything you enter stays on this device, in your browser only — it is never uploaded or shared. Turn saving off with the switch at the top, and use <strong style="font-weight:600;">Clear</strong> on a shared computer when you finish.</div>
+            </div>
+          </section>
+
+          <section class="contents" data-screen-label="Contents" style="padding-top:34px;">
+            <div class="eyebrow">Contents</div>
+            <h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:11px;">The assessment</h2>
+            <p class="purpose" style="margin-bottom:10px;">Six parts, filled in order. The dots fill in as you start each one.</p>
+            <div>
+              <a class="toc-link" href="#setup" data-toc="setup"><span class="toc-dot" data-dot=""></span><span class="toc-num">00</span><span class="toc-title">Route &amp; conditions</span></a>
+              <a class="toc-link" href="#secA" data-toc="secA"><span class="toc-dot" data-dot=""></span><span class="toc-num">A</span><span class="toc-title">Objective hazards</span></a>
+              <a class="toc-link" href="#secB" data-toc="secB"><span class="toc-dot" data-dot=""></span><span class="toc-num">B</span><span class="toc-title">Readiness</span></a>
+              <a class="toc-link" href="#secC" data-toc="secC"><span class="toc-dot" data-dot=""></span><span class="toc-num">C</span><span class="toc-title">Decision traps</span></a>
+              <a class="toc-link" href="#secD" data-toc="secD"><span class="toc-dot" data-dot=""></span><span class="toc-num">D</span><span class="toc-title">Turnaround criteria</span></a>
+              <a class="toc-link" href="#secE" data-toc="secE" style="border-bottom:none;"><span class="toc-dot" data-dot=""></span><span class="toc-num">E</span><span class="toc-title">Overall indication &amp; decision</span></a>
+            </div>
+          </section>
+
+          <section class="section" id="setup" data-section="setup" data-screen-label="00 Setup" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">00</span><div style="flex:1;"><div class="eyebrow">The plan</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Route &amp; conditions</h2></div></div>
+              <hr class="rule">
+              <p class="purpose">The objective, its difficulty, and the forecast you're working from.</p>
+            </header>
+            <label class="q"><span class="q-label">Route / objective</span><input class="inp" data-k="h_route" placeholder="e.g. Frendo Spur, Aiguille du Midi"></label>
+            <div class="q" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px;">
+              <div><span class="flab">Alpine grade</span>
+                <select class="sel" data-k="h_grade" required><option value="">Select…</option><option>F — easy</option><option>PD — a little difficult</option><option>AD — fairly difficult</option><option>D — difficult</option><option>TD — very difficult</option><option>ED — extremely difficult</option></select></div>
+              <div><span class="flab">Max altitude</span>
+                <select class="sel" data-k="h_alt" required><option value="">Select…</option><option>Below 3,000 m</option><option>3,000–4,000 m</option><option>4,000–5,000 m</option><option>Above 5,000 m</option></select></div>
+            </div>
+            <label class="q"><span class="q-label">Hardest technical pitch <span class="sub">Rock, ice or mixed grade of the crux.</span></span><input class="inp" data-k="h_pitch" placeholder="e.g. AI3, IV, M4, 5c"></label>
+            <div class="q" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px;">
+              <label><span class="flab">Planned date</span><input class="inp" data-k="h_date" placeholder="e.g. Sat 18 July"></label>
+              <label><span class="flab">Forecast source &amp; time issued</span><input class="inp" data-k="h_forecast" placeholder="e.g. Météo-France, 18:00 Fri"></label>
+            </div>
+          </section>
+
+          <section data-screen-label="Risk matrix" style="padding-top:34px;">
+            <div class="eyebrow">Printed reference</div>
+            <h2 style="font-size:clamp(21px,3.2vw,27px); margin-top:11px; max-width:24ch;">How the risk rating works</h2>
+            <p class="instr">For each objective hazard you pick two things from dropdowns — how likely it is to affect you, and how bad it would be if it did. The grid gives that hazard's risk level.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:13px; margin-top:16px;">
+              <div class="tile">
+                <div class="eyebrow" style="color:var(--ep-pine-700);">Likelihood</div>
+                <div style="display:grid; gap:5px; margin-top:9px; font-size:14px; color:var(--ep-neutral-700);">
+                  <p><strong style="font-weight:600;">1 · Rare</strong> — would be surprising</p>
+                  <p><strong style="font-weight:600;">2 · Unlikely</strong></p>
+                  <p><strong style="font-weight:600;">3 · Possible</strong> — could well happen</p>
+                  <p><strong style="font-weight:600;">4 · Likely</strong></p>
+                  <p><strong style="font-weight:600;">5 · Almost certain</strong></p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="eyebrow" style="color:var(--ep-pine-700);">Consequence</div>
+                <div style="display:grid; gap:5px; margin-top:9px; font-size:14px; color:var(--ep-neutral-700);">
+                  <p><strong style="font-weight:600;">1 · Negligible</strong></p>
+                  <p><strong style="font-weight:600;">2 · Minor</strong> — injury, self-managed</p>
+                  <p><strong style="font-weight:600;">3 · Moderate</strong> — injury needing descent/assistance</p>
+                  <p><strong style="font-weight:600;">4 · Serious</strong> — major injury, rescue required</p>
+                  <p><strong style="font-weight:600;">5 · Severe / fatal</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:18px; overflow-x:auto;">
+              <table class="matrix">
+                <thead>
+                  <tr>
+                    <th class="corner">Consequence ↓ / Likelihood →</th>
+                    <th>1<br>Rare</th><th>2<br>Unlikely</th><th>3<br>Possible</th><th>4<br>Likely</th><th>5<br>Almost&nbsp;certain</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="rowlab">5 · Severe / fatal</td><td class="cell-mod">Moderate</td><td class="cell-high">High</td><td class="cell-ext">Extreme</td><td class="cell-ext">Extreme</td><td class="cell-ext">Extreme</td></tr>
+                  <tr><td class="rowlab">4 · Serious</td><td class="cell-mod">Moderate</td><td class="cell-mod">Moderate</td><td class="cell-high">High</td><td class="cell-ext">Extreme</td><td class="cell-ext">Extreme</td></tr>
+                  <tr><td class="rowlab">3 · Moderate</td><td class="cell-low">Low</td><td class="cell-mod">Moderate</td><td class="cell-high">High</td><td class="cell-high">High</td><td class="cell-ext">Extreme</td></tr>
+                  <tr><td class="rowlab">2 · Minor</td><td class="cell-low">Low</td><td class="cell-mod">Moderate</td><td class="cell-mod">Moderate</td><td class="cell-mod">Moderate</td><td class="cell-high">High</td></tr>
+                  <tr><td class="rowlab">1 · Negligible</td><td class="cell-low">Low</td><td class="cell-low">Low</td><td class="cell-low">Low</td><td class="cell-mod">Moderate</td><td class="cell-mod">Moderate</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="legend">
+              <span><i style="background:var(--risk-low);"></i> Low</span>
+              <span><i style="background:var(--risk-mod);"></i> Moderate</span>
+              <span><i style="background:var(--risk-high);"></i> High</span>
+              <span><i style="background:var(--risk-ext);"></i> Extreme</span>
+            </div>
+
+            <div class="note note-warn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+              <div><strong>Read this before you use it.</strong> On serious alpine ground the consequence is rarely below Moderate — a slip in the wrong place is fatal wherever you are on the route. Most honest ratings land amber or worse, and that's correct: alpine climbing is a high-consequence activity. The matrix isn't there to reassure you. It's there to make you rate each hazard deliberately, compare them, and see which one is driving the decision. An Extreme cell is a stop sign, not a number to be balanced against a good forecast elsewhere.</div>
+            </div>
+          </section>
+
+          <section class="section" id="secA" data-section="secA" data-screen-label="A Objective hazards" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">A</span><div style="flex:1;"><div class="eyebrow">Outside your control</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Objective hazards</h2></div></div>
+              <hr class="rule">
+              <p class="instr">You can't remove these — only manage your exposure through timing and route choice. Rate each with the matrix above, then note how you'll reduce it.</p>
+            </header>
+
+            <div class="haz" data-hazard="" style="border-top:none;">
+              <div class="haz-head"><span class="haz-title">Weather window</span></div>
+              <p class="haz-desc">Temperature, wind, precipitation, cloud and visibility across your time on route.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a1_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a1_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a1_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+
+            <div class="haz" data-hazard="">
+              <div class="haz-head"><span class="haz-title">Thunderstorm / convective risk</span></div>
+              <p class="haz-desc">Storm probability and timing; where you'll be when storms typically build — afternoon exposure on ridges and summits is the summer red line.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a2_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a2_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a2_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+
+            <div class="haz" data-hazard="">
+              <div class="haz-head"><span class="haz-title">Rockfall</span></div>
+              <p class="haz-desc">Overnight freeze (or lack of it), warming through the day, degrading permafrost, couloirs, and parties above.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a3_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a3_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a3_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+
+            <div class="haz" data-hazard="">
+              <div class="haz-head"><span class="haz-title">Snow &amp; avalanche conditions</span></div>
+              <p class="haz-desc">Recent snowfall, wind-loading, wet-snow instability as the day warms, cornices, and lingering early-season avalanche risk.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a4_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a4_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a4_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+
+            <div class="haz" data-hazard="">
+              <div class="haz-head"><span class="haz-title">Glacier hazards</span></div>
+              <p class="haz-desc">Crevasses (open and hidden), snow-bridge strength, the bergschrund crossing, and overhead seracs — unmitigable except by minimising time beneath them.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a5_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a5_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a5_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+
+            <div class="haz" data-hazard="">
+              <div class="haz-head"><span class="haz-title">Terrain, exposure &amp; route condition</span></div>
+              <p class="haz-desc">Sustained exposure, committing sections with no easy retreat, and the current state of the rock or ice.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a6_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a6_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a6_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+
+            <div class="haz" data-hazard="">
+              <div class="haz-head"><span class="haz-title">Altitude &amp; acclimatisation</span></div>
+              <p class="haz-desc">Summit height against your acclimatisation, and altitude-illness risk.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a7_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a7_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a7_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+
+            <div class="haz" data-hazard="">
+              <div class="haz-head"><span class="haz-title">Timing &amp; daylight margin</span></div>
+              <p class="haz-desc">Realistic — not optimistic — route time against available daylight, plus crowding and queues at cruxes and abseils that could wreck your schedule.</p>
+              <div class="haz-controls">
+                <div><span class="flab">Likelihood</span><select class="sel" data-k="a8_l" data-role="likelihood"><option value="">—</option><option value="1">1 · Rare</option><option value="2">2 · Unlikely</option><option value="3">3 · Possible</option><option value="4">4 · Likely</option><option value="5">5 · Almost certain</option></select></div>
+                <div><span class="flab">Consequence</span><select class="sel" data-k="a8_c" data-role="consequence"><option value="">—</option><option value="1">1 · Negligible</option><option value="2">2 · Minor</option><option value="3">3 · Moderate</option><option value="4">4 · Serious</option><option value="5">5 · Severe</option></select></div>
+                <div class="chipwrap"><span class="flab">Risk</span><div class="chip" data-role="risk">—</div></div>
+              </div>
+              <textarea class="ta" data-k="a8_m" placeholder="Mitigation — how you'll reduce your exposure…" style="margin-top:11px;"></textarea>
+            </div>
+          </section>
+
+          <section class="section" id="secB" data-section="secB" data-screen-label="B Readiness" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">B</span><div style="flex:1;"><div class="eyebrow">Within your control</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Readiness</h2></div></div>
+              <hr class="rule">
+              <p class="instr">These are entirely yours. Be honest — self-assessment is where accidents are quietly seeded. Any single <strong style="font-weight:600;">Insufficient</strong> means you are not ready for this route today.</p>
+            </header>
+
+            <div class="q"><span class="q-label">Technical competence vs the grade <span class="sub">The hardest move on route, climbed recently in the mountains, with margin.</span></span>
+              <div class="rdy"><select class="sel" data-k="b1_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b1_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+            <div class="q"><span class="q-label">Core alpine skills, current <span class="sub">Crevasse rescue, ice-axe arrest, retreat/abseiling, belay building. When did you last actually practise crevasse rescue?</span></span>
+              <div class="rdy"><select class="sel" data-k="b2_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b2_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+            <div class="q"><span class="q-label">Fitness &amp; current condition <span class="sub">Endurance for the full day; any illness, injury or accumulated fatigue.</span></span>
+              <div class="rdy"><select class="sel" data-k="b3_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b3_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+            <div class="q"><span class="q-label">Acclimatisation for the altitude</span>
+              <div class="rdy"><select class="sel" data-k="b4_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b4_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+            <div class="q"><span class="q-label">Equipment &amp; emergency kit <span class="sub">Appropriate to route and conditions, with redundancy; bivvy, first aid, spare headtorch, repair kit.</span></span>
+              <div class="rdy"><select class="sel" data-k="b5_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b5_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+            <div class="q"><span class="q-label">Navigation, route knowledge &amp; conditions intel <span class="sub">Topo/GPS, and recent reports — hut warden, recent ascents.</span></span>
+              <div class="rdy"><select class="sel" data-k="b6_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b6_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+            <div class="q"><span class="q-label">Party competence &amp; pace <span class="sub">Everyone up to the route; planned to the slowest member, not the fittest.</span></span>
+              <div class="rdy"><select class="sel" data-k="b7_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b7_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+            <div class="q"><span class="q-label">Comms &amp; emergency plan <span class="sub">Plan lodged with someone; comms and rescue cover in place.</span></span>
+              <div class="rdy"><select class="sel" data-k="b8_r" data-readiness><option value="">Rate…</option><option>Adequate</option><option>Marginal</option><option>Insufficient</option></select><textarea class="ta" data-k="b8_n" placeholder="Note / action…" style="min-height:44px;"></textarea></div></div>
+          </section>
+
+          <section class="section" id="secC" data-section="secC" data-screen-label="C Decision traps" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">C</span><div style="flex:1;"><div class="eyebrow">Usually invisible</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Decision traps</h2></div></div>
+              <hr class="rule">
+              <p class="instr">The objective hazards rarely kill on their own — decisions do. These biases are strongest exactly when you're tired, invested and near the goal. Flag them now, rested and honest, so you'll recognise them later.</p>
+            </header>
+
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">Summit fever <span class="sub">Is wanting it distorting how you read the conditions?</span></span><label class="sw"><input type="checkbox" data-k="c1_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c1_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">Sunk cost <span class="sub">Can you walk away from effort already spent? "We've come this far" is not a reason.</span></span><label class="sw"><input type="checkbox" data-k="c2_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c2_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">External deadlines <span class="sub">Flights, work, a closing window pushing you up the hill.</span></span><label class="sw"><input type="checkbox" data-k="c3_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c3_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">Groupthink / expert halo <span class="sub">Continuing because no one wants to call it, or deferring uncritically to the "strongest" climber.</span></span><label class="sw"><input type="checkbox" data-k="c4_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c4_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">Complacency <span class="sub">Treating a serious route as routine because it's familiar or you've succeeded before.</span></span><label class="sw"><input type="checkbox" data-k="c5_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c5_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">Fear mis-read <span class="sub">Ignoring a legitimate gut warning, or letting anxiety override sound judgement.</span></span><label class="sw"><input type="checkbox" data-k="c6_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c6_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">Fatigue &amp; judgement <span class="sub">How will you notice when your thinking has gone downhill?</span></span><label class="sw"><input type="checkbox" data-k="c7_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c7_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+            <div class="q"><div class="trap-row"><span class="q-label" style="margin-bottom:0; max-width:80%;">Ego / validation <span class="sub">Whose approval are you climbing for?</span></span><label class="sw"><input type="checkbox" data-k="c8_flag" data-trap><span class="track"></span><span>Flag</span></label></div><textarea class="ta" data-k="c8_r" placeholder="Reflection…" style="min-height:44px; margin-top:9px;"></textarea></div>
+          </section>
+
+          <section class="section" id="secD" data-section="secD" data-screen-label="D Turnaround" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">D</span><div style="flex:1;"><div class="eyebrow">Commit now</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Turnaround criteria</h2></div></div>
+              <hr class="rule">
+              <p class="instr">Set these while rested and rational, before the mountain and your ego start negotiating. A turnaround time only works if it's decided in advance and treated as non-negotiable.</p>
+            </header>
+
+            <div class="q"><span class="q-label">Hard turnaround time</span>
+              <div style="display:grid; grid-template-columns:minmax(120px,150px) 1fr; gap:11px; align-items:center;">
+                <div><span class="flab">By (time)</span><input class="inp" data-k="d_time" placeholder="e.g. 11:00"></div>
+                <div><span class="flab">We must be at</span><input class="inp" data-k="d_place" placeholder="e.g. the summit, or top of the couloir"></div>
+              </div>
+              <p style="font-size:13.5px; color:var(--ep-neutral-500); margin-top:8px;">…regardless of how close the summit is.</p>
+            </div>
+
+            <div class="q"><span class="q-label">Conditions red lines <span class="sub">Any one of these means turn around. Tick those that apply, and add your own.</span></span>
+              <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; margin-top:4px;">
+                <label class="cbx"><input type="checkbox" data-k="d_rl_freeze"><span>No overnight freeze</span></label>
+                <label class="cbx"><input type="checkbox" data-k="d_rl_storm"><span>Storm building before turnaround</span></label>
+                <label class="cbx"><input type="checkbox" data-k="d_rl_altsym"><span>A party member showing altitude symptoms</span></label>
+                <label class="cbx"><input type="checkbox" data-k="d_rl_vis"><span>Visibility below your limit</span></label>
+                <label class="cbx"><input type="checkbox" data-k="d_rl_schedule"><span>Behind schedule at a checkpoint</span></label>
+                <label class="cbx"><input type="checkbox" data-k="d_rl_snow"><span>Snow softening dangerously</span></label>
+              </div>
+              <input class="inp" data-k="d_rl_other" placeholder="Others…" style="margin-top:9px;"></div>
+
+            <label class="q"><span class="q-label">Checkpoints &amp; target times <span class="sub">The waypoints you'll check your pace against, and when you need to be there.</span></span><textarea class="ta" data-k="d_checkpoints" placeholder="e.g. Bergschrund by 06:00 · foot of ridge by 08:30 · summit by 11:00"></textarea></label>
+            <label class="q"><span class="q-label">Escape / bail options <span class="sub">Where and how you can retreat from each phase of the route.</span></span><textarea class="ta" data-k="d_escape" placeholder="Write here…"></textarea></label>
+          </section>
+
+          <section class="section" id="secE" data-section="secE" data-screen-label="E Decision" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">E</span><div style="flex:1;"><div class="eyebrow">The call</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Overall indication &amp; decision</h2></div></div>
+              <hr class="rule">
+              <p class="instr">This reads off the parts above. The worst single hazard drives it — you do not average.</p>
+            </header>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-top:16px;">
+              <div class="estat"><div class="lab">Highest hazard (Part A)</div><div class="chip" data-role="highest" style="margin-top:9px; font-size:16px; min-height:42px;">—</div></div>
+              <div class="estat"><div class="lab">Readiness insufficient</div><div class="val" data-role="insuff-count">0</div></div>
+              <div class="estat"><div class="lab">Decision traps flagged</div><div class="val" data-role="traps-count">0</div></div>
+            </div>
+
+            <h3 style="font-size:18px; margin-top:28px;">Decision rule</h3>
+            <table class="ruletable">
+              <tbody>
+                <tr class="r-ext"><td class="cond">Any Part A hazard <strong style="font-weight:600;">Extreme</strong>, unmitigated</td><td class="ind">NO-GO — change timing/route to remove it, or don't go</td></tr>
+                <tr class="r-ext"><td class="cond">Any readiness factor <strong style="font-weight:600;">Insufficient</strong></td><td class="ind">NO-GO — you're not ready for this route today</td></tr>
+                <tr class="r-high"><td class="cond">3+ decision traps flagged</td><td class="ind">Mandatory pause — treat objective risk one band higher and decide again with a clear head</td></tr>
+                <tr class="r-mod"><td class="cond">2+ readiness factors Marginal</td><td class="ind">Treat objective risk one band higher</td></tr>
+                <tr class="r-base"><td class="cond">Otherwise</td><td class="ind">Overall risk = highest Part A rating</td></tr>
+              </tbody>
+            </table>
+
+            <div class="q"><span class="q-label" style="margin-bottom:6px;">Overall risk indication <span class="sub">Read automatically from the rule above.</span></span>
+              <div class="indication" data-role="indication">
+                <div class="it" data-role="indication-title">Awaiting inputs</div>
+                <div class="ir" data-role="indication-rule">Rate your objective hazards in Part A, then complete Parts B and C. Your overall indication will appear here.</div>
+              </div>
+            </div>
+
+            <div class="q"><span class="flab">Decision</span>
+              <select class="sel" data-k="e_decision" style="max-width:340px;"><option value="">Select…</option><option>GO</option><option>GO WITH MODIFICATIONS</option><option>NO-GO</option></select></div>
+            <label class="q"><span class="q-label">If with modifications, what changes? <span class="sub">e.g. earlier start · different objective · stricter turnaround · added kit · stronger party</span></span><textarea class="ta" data-k="e_mods" placeholder="Write here…"></textarea></label>
+          </section>
+
+          <section data-screen-label="Closing" style="padding-top:46px; text-align:center;">
+            <img src="assets/img/logo-symbol-purple.png" alt="" width="44" style="display:block; margin:0 auto; height:auto;">
+            <p style="font-family:var(--font-heading); font-weight:500; color:var(--ep-plum); font-size:clamp(18px,2.8vw,22px); margin-top:18px; max-width:34ch; margin-left:auto; margin-right:auto; line-height:1.35;">This worksheet structures your judgement — it does not replace it, and a green result is never a guarantee.</p>
+            <p style="color:var(--ep-neutral-500); font-size:15px; margin-top:14px; max-width:52ch; margin-left:auto; margin-right:auto;">The mountain will be there another day. The strongest alpinists aren't the ones who never turn around — they're the ones who are best at it.</p>
+            <img src="assets/img/logo-wordmark-black.png" alt="Expedition Psychology" width="180" style="display:block; margin:30px auto 0; height:auto;">
+          </section>
+
+        </div>
+      </td></tr></tbody>
+      <tfoot><tr><td class="pad-bottom"></td></tr></tfoot>
+    </table>
+  </main>
+</div>
+</body>
+</html>

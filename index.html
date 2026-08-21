@@ -230,8 +230,10 @@
       box-shadow: var(--shadow-sm);
       padding: var(--space-8);
       position: relative;
+      overflow: hidden;
       transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) ease;
     }
+    .service-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
     .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
     .service-icon { transition: transform var(--dur-base) var(--ease-out); }
     .service-card:hover .service-icon { transform: scale(1.08) rotate(3deg); }
@@ -405,6 +407,8 @@
     .mob-accordion-panel { display:none; }
     .mob-accordion-panel.open { display:block; }
   </style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
 </head>
 <body class="bg-ep-bg text-ep-text">
 
@@ -473,15 +477,6 @@
 
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero" class="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="particle w-2 h-2" style="background:rgba(75,122,110,0.5);top:18%;left:12%;animation-delay:0s"></div>
-    <div class="particle w-1 h-1" style="background:rgba(91,74,106,0.4);top:38%;left:78%;animation-delay:1.2s"></div>
-    <div class="particle w-3 h-3" style="background:rgba(214,184,108,0.2);top:62%;left:22%;animation-delay:2.4s"></div>
-    <div class="particle w-2 h-2" style="background:rgba(106,151,126,0.3);top:25%;left:88%;animation-delay:0.6s"></div>
-    <div class="particle w-1 h-1" style="background:rgba(255,255,255,0.18);top:72%;left:58%;animation-delay:1.8s"></div>
-    <div class="particle w-2 h-2" style="background:rgba(91,74,106,0.2);top:82%;left:35%;animation-delay:3.2s"></div>
-    <div class="particle w-1 h-1" style="background:rgba(75,122,110,0.3);top:48%;left:5%;animation-delay:0.9s"></div>
-  </div>
   <svg class="absolute inset-0 w-full h-full opacity-10 pointer-events-none" viewBox="0 0 1400 900" preserveAspectRatio="none">
     <path d="M0 420 Q350 360 700 400 T1400 380" stroke="#4B7A6E" stroke-width="1" fill="none" class="topo-line" style="animation-delay:0.4s"></path>
     <path d="M0 470 Q400 430 750 455 T1400 440" stroke="#5B4A6A" stroke-width="0.7" fill="none" class="topo-line" style="animation-delay:0.9s"></path>
@@ -602,7 +597,7 @@
     <div class="grid lg:grid-cols-3 gap-8">
 
       <div class="service-card reveal">
-        <div class="absolute top-0 left-0 w-full h-1 rounded-t-2xl" style="background:linear-gradient(90deg,var(--ep-clay),var(--ep-ember))"></div>
+        <div class="service-bar" style="background:linear-gradient(90deg,var(--ep-clay),var(--ep-ember))"></div>
         <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background:color-mix(in srgb,var(--ep-clay) 10%,transparent)">
           <i data-lucide="mountain" class="w-7 h-7" style="color:var(--ep-clay)"></i>
         </div>
@@ -620,7 +615,7 @@
       </div>
 
       <div class="service-card reveal reveal-delay-1">
-        <div class="absolute top-0 left-0 w-full h-1 rounded-t-2xl" style="background:linear-gradient(90deg,var(--ep-pine),var(--ep-sage))"></div>
+        <div class="service-bar" style="background:linear-gradient(90deg,var(--ep-pine),var(--ep-sage))"></div>
         <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
           <i data-lucide="users" class="w-7 h-7" style="color:var(--ep-pine)"></i>
         </div>
@@ -645,7 +640,7 @@
       </div>
 
       <div class="service-card reveal reveal-delay-2">
-        <div class="absolute top-0 left-0 w-full h-1 rounded-t-2xl" style="background:linear-gradient(90deg,var(--ep-sand),var(--ep-plum))"></div>
+        <div class="service-bar" style="background:linear-gradient(90deg,var(--ep-sand),color-mix(in srgb,var(--ep-sand) 55%,var(--ep-ink)))"></div>
         <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background:color-mix(in srgb,var(--ep-sand) 15%,transparent)">
           <i data-lucide="book-open" class="w-7 h-7" style="color:var(--ep-ember)"></i>
         </div>
@@ -709,13 +704,11 @@
         <div class="p-8">
           <h3 class="text-2xl mb-1" style="color:var(--text-strong)">Dr Fin Haley</h3>
           <p class="text-sm font-semibold mb-4" style="color:var(--ep-plum)">Clinical Psychologist · Rock Climbing Instructor · PADI Open Water Scuba Instructor</p>
-          <p class="text-sm leading-relaxed mb-6" style="color:var(--text-muted)">Specialising in performance psychology, trauma, and resilience in extreme environments. Combining clinical expertise with years of lived experience in adventure and expedition settings.</p>
+          <p class="text-sm leading-relaxed mb-6" style="color:var(--text-muted)">Fin is a clinical psychologist, qualified rock climbing instructor, and scuba instructor. Drawing on his lived experience in high-risk environments and his ability to speak English, Spanish, French, and Italian, he is well placed to support individuals and teams wherever their work takes them.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="ep-tag ep-tag-plum">Trauma</span>
-            <span class="ep-tag ep-tag-plum">Performance</span>
-            <span class="ep-tag ep-tag-plum">Resilience</span>
-            <span class="ep-tag ep-tag-plum">Extreme Environments</span>
-            <span class="ep-tag ep-tag-plum">Graded Exposure</span>
+            <span class="ep-tag ep-tag-plum">Climbing</span>
+            <span class="ep-tag ep-tag-plum">Mountain Biking</span>
+            <span class="ep-tag ep-tag-plum">Scuba Diving</span>
           </div>
         </div>
       </div>
@@ -728,12 +721,11 @@
         <div class="p-8">
           <h3 class="text-2xl mb-1" style="color:var(--text-strong)">Sam Taylor</h3>
           <p class="text-sm font-semibold mb-4" style="color:var(--ep-pine)">Photographer · Videographer · Adventure Storyteller</p>
-          <p class="text-sm leading-relaxed mb-6" style="color:var(--text-muted)">Capturing authentic stories through expedition photography, outdoor campaigns, and documentary-style visual storytelling for adventure brands and organisations worldwide.</p>
+          <p class="text-sm leading-relaxed mb-6" style="color:var(--text-muted)">Sam is a technical outdoor content specialist. He captures authentic stories for some of the biggest brands in the outdoor industry and is as comfortable shooting from an abseil rope as he is on a downhill MTB World Cup track.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="ep-tag ep-tag-pine">Brand Work</span>
-            <span class="ep-tag ep-tag-pine">Expedition Photography</span>
-            <span class="ep-tag ep-tag-pine">Documentary</span>
-            <span class="ep-tag ep-tag-pine">Campaign Content</span>
+            <span class="ep-tag ep-tag-pine">Climbing</span>
+            <span class="ep-tag ep-tag-pine">Mountain Biking</span>
+            <span class="ep-tag ep-tag-pine">Trail Running</span>
           </div>
         </div>
       </div>
@@ -786,8 +778,8 @@
     <div id="ep-eyebrow-testimonials" class="reveal" style="display:flex;justify-content:center;margin-bottom:1rem"></div>
     <div id="t-wrap" class="reveal reveal-delay-1">
       <div class="testimonial-card">
-        <p id="t-text" class="text-xl md:text-2xl font-light leading-relaxed italic mb-7" style="color:var(--text-body)">"Working with Expedition Psychology completely transformed how our team handles high-pressure situations. The combination of clinical expertise and real-world understanding is unmatched."</p>
-        <p id="t-attr" class="text-sm font-semibold" style="color:var(--text-strong)">— Mountain Rescue Team Leader</p>
+        <p id="t-text" class="text-xl md:text-2xl font-light leading-relaxed italic mb-7" style="color:var(--text-body)">"Incredibly thought provoking and relevant session, thinking about the emotions of our casualties and team mates."</p>
+        <p id="t-attr" class="text-sm font-semibold" style="color:var(--text-strong)">— Northumberland Mountain Rescue Team</p>
       </div>
     </div>
     <div class="flex justify-center gap-3 mt-8 reveal reveal-delay-2">
@@ -860,7 +852,9 @@
       <span class="text-sm font-semibold" style="color:var(--text-muted)">© 2024 Expedition Psychology</span>
     </div>
     <div class="flex gap-6 text-xs font-semibold" style="color:var(--text-muted)">
-      <a href="#" class="hover:text-ep-p transition-colors" style="color:inherit">Privacy</a>
+      <a href="privacy-policy.html" data-epx-legal class="hover:text-ep-p transition-colors" style="color:inherit">Privacy Policy</a>
+      <a href="#" onclick="epxOpenConsent();return false;" class="hover:text-ep-p transition-colors" style="color:inherit">Cookie Preferences</a>
+      <a href="#" onclick="epxDoNotSell();return false;" class="hover:text-ep-p transition-colors" style="color:inherit">Do Not Sell or Share My Personal Information</a>
       <a href="#" class="hover:text-ep-p transition-colors" style="color:inherit">Terms</a>
       <a href="#" class="hover:text-ep-p transition-colors" style="color:inherit">Accessibility</a>
     </div>
@@ -959,9 +953,9 @@
 
   // ── Testimonials ──
   var tData = [
-    { text: '"Working with Expedition Psychology completely transformed how our team handles high-pressure situations. The combination of clinical expertise and real-world understanding is unmatched."', attr: '— Mountain Rescue Team Leader' },
-    { text: '"The pre-expedition psychological preparation gave me tools I still use every day. It\'s not therapy — it\'s performance psychology that actually works in the field."', attr: '— Ultra-Endurance Athlete' },
-    { text: '"Finally, a psychologist who understands what it\'s actually like out there. The workshops were the most impactful training our team has ever received."', attr: '— RNLI Operations Manager' }
+    { text: '"Incredibly thought provoking and relevant session, thinking about the emotions of our casualties and team mates."', attr: '— Northumberland Mountain Rescue Team' },
+    { text: '"Since starting the course, I\'ve climbed so much better than I ever have."', attr: '— Climber' },
+    { text: '"I\'ve never seen resilience explained in that way, it was a really valuable session."', attr: '— RNLI Volunteer' }
   ];
   var tCur = 0;
 

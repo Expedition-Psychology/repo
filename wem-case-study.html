@@ -286,6 +286,8 @@
     .mob-accordion-panel { display:none; }
     .mob-accordion-panel.open { display:block; }
   </style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
 </head>
 <body class="bg-ep-bg text-ep-text">
 
@@ -515,10 +517,6 @@
       <li>Help clinicians support both themselves and their colleagues following difficult incidents</li>
     </ul>
 
-    <div class="pull-quote reveal reveal-delay-2">
-      <p>"This webinar challenged many assumptions about trauma and offered practical strategies that could be applied immediately in the field."</p>
-    </div>
-
   </div>
 </section>
 
@@ -623,10 +621,6 @@
       </div>
     </div>
 
-    <div class="pull-quote reveal">
-      <p>"I found the talk inspirational — it gave me a lot of useful tips for my daily work."</p>
-    </div>
-
   </div>
 </section>
 
@@ -687,16 +681,6 @@
 
     </div>
 
-    <!-- Quotes -->
-    <div class="grid md:grid-cols-2 gap-6 mt-10">
-      <div class="pull-quote reveal">
-        <p>"The framework gave me a clearer understanding of what resilience actually looks like in practice."</p>
-      </div>
-      <div class="pull-quote reveal reveal-delay-1">
-        <p>"One of the most useful trauma webinars I've attended. It was evidence-based, practical, and immediately relevant to the realities of extreme medicine."</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -739,7 +723,9 @@
       <span class="text-sm font-semibold" style="color:rgba(243,243,240,0.3)">© 2024 Expedition Psychology</span>
     </div>
     <div class="flex gap-6 text-xs font-semibold" style="color:rgba(243,243,240,0.3)">
-      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Privacy</a>
+      <a href="privacy-policy.html" data-epx-legal style="color:inherit" class="hover:opacity-70 transition-opacity">Privacy Policy</a>
+      <a href="#" onclick="epxOpenConsent();return false;" style="color:inherit" class="hover:opacity-70 transition-opacity">Cookie Preferences</a>
+      <a href="#" onclick="epxDoNotSell();return false;" style="color:inherit" class="hover:opacity-70 transition-opacity">Do Not Sell or Share My Personal Information</a>
       <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Terms</a>
       <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Accessibility</a>
     </div>

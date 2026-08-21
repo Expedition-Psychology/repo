@@ -127,6 +127,8 @@
     .mob-accordion-panel { display:none; }
     .mob-accordion-panel.open { display:block; }
   </style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
 </head>
 <body class="bg-ep-bg text-ep-text">
 
@@ -458,7 +460,9 @@
       <span class="text-sm font-semibold" style="color:rgba(243,243,240,.3)">© 2024 Expedition Psychology</span>
     </div>
     <div class="flex gap-6 text-xs font-semibold" style="color:rgba(243,243,240,.3)">
-      <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Privacy</a>
+      <a href="privacy-policy.html" data-epx-legal style="color:inherit" class="hover:opacity-70 transition-opacity">Privacy Policy</a>
+      <a href="#" onclick="epxOpenConsent();return false;" style="color:inherit" class="hover:opacity-70 transition-opacity">Cookie Preferences</a>
+      <a href="#" onclick="epxDoNotSell();return false;" style="color:inherit" class="hover:opacity-70 transition-opacity">Do Not Sell or Share My Personal Information</a>
       <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Terms</a>
       <a href="#" style="color:inherit" class="hover:opacity-70 transition-opacity">Accessibility</a>
     </div>

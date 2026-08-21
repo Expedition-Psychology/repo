@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<script>
+  window.__resources = window.__resources || {};
+  window.__epRes = function(id, fallback){ var r = window.__resources && window.__resources[id]; return r || fallback; };
+</script>
+<script src="assets/tools/fisbs-assets/fisbs-03.js"></script>
+<script src="support.js"></script>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
+</head>
+<body>
+<div class="ep-back-bar screen-only"><a href="free-tools.html">&larr; Back to Free Tools</a></div>
+<x-dc>
+<helmet>
+<style>/* ============================================================
+   Expedition Psychology — Webfonts
+   ------------------------------------------------------------
+   Brand fonts:
+     • Headings / titles / single words  → Arboria Medium
+     • Body / detailed content / bullets  → Nunito Light
+
+   Arboria is served live from the brand's Adobe Fonts (Typekit)
+   kit. The family name exposed by the kit is `arboria`.
+   Nunito is served from Google Fonts and matches the spec exactly.
+   ============================================================ */
+
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * arboria:
+ *   - http://typekit.com/eulas/0000000000000000775b8121
+ * nunito:
+ *   - http://typekit.com/eulas/00000000000000007753c3b5
+ *
+ * © 2009-2026 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2026-06-11 12:33:22 UTC"}*/
+
+/**/
+
+
+@font-face {
+font-family:"nunito";
+src:url("assets/tools/fisbs-assets/fisbs-06.woff2") format("woff2"),url("assets/tools/fisbs-assets/fisbs-07.woff") format("woff"),url("assets/tools/fisbs-assets/fisbs-08.otf") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"arboria";
+src:url("assets/tools/fisbs-assets/fisbs-09.woff2") format("woff2"),url("assets/tools/fisbs-assets/fisbs-10.woff") format("woff"),url("assets/tools/fisbs-assets/fisbs-11.otf") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
+}
+
+.tk-nunito { font-family: "nunito",sans-serif; }
+.tk-arboria { font-family: "arboria",sans-serif; }
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-12.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-13.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-14.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-15.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-16.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-17.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-18.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-19.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-20.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-21.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-17.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-18.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-19.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-20.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-21.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-17.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-18.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-19.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-20.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-21.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-17.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-18.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-19.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-20.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-21.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-17.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-18.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-19.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-20.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/fisbs-assets/fisbs-21.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Colour tokens
+   Source: official Branding Guidelines
+   ============================================================ */
+
+:root {
+  /* ---- Brand: main palette ---------------------------------- */
+  --ep-plum:        #5b4a6a;   /* primary brand — Slate Plum   */
+  --ep-pine:        #4b7a6e;   /* secondary brand — Pine green */
+  --ep-paper:       #f3f3f0;   /* off-white surface            */
+  --ep-ink:         #2e2e2e;   /* near-black ink               */
+
+  /* ---- Brand: signal / diagram palette ---------------------- */
+  /* Used for assessment scales, data viz, status — low→high.    */
+  --ep-clay:        #b6534b;   /* terracotta red  (alert / low) */
+  --ep-ember:       #c97a4a;   /* burnt orange    (caution)     */
+  --ep-sand:        #d6b86c;   /* muted gold      (moderate)    */
+  --ep-sage:        #6a977e;   /* soft sage       (steady/high) */
+
+  /* ---- Plum tints & shades (derived) ------------------------ */
+  --ep-plum-700:    #463a52;
+  --ep-plum-600:    #5b4a6a;
+  --ep-plum-400:    #82749140;  /* note: use tint tokens below for fills */
+  --ep-plum-tint:   #e7e3ec;   /* 12% plum on paper             */
+  --ep-plum-tint-2: #d2cbdb;
+
+  /* ---- Pine tints & shades (derived) ------------------------ */
+  --ep-pine-700:    #3a6056;
+  --ep-pine-600:    #4b7a6e;
+  --ep-pine-tint:   #dde9e5;   /* soft pine wash                */
+  --ep-pine-tint-2: #c3d6d0;
+
+  /* ---- Neutral scale (warm grey, off the ink/paper axis) ---- */
+  --ep-neutral-0:   #ffffff;
+  --ep-neutral-50:  #f7f7f4;
+  --ep-neutral-100: #f3f3f0;   /* = paper */
+  --ep-neutral-200: #e6e6e1;
+  --ep-neutral-300: #d4d4cd;
+  --ep-neutral-400: #aeaea6;
+  --ep-neutral-500: #84847c;
+  --ep-neutral-600: #5f5f59;
+  --ep-neutral-700: #444440;
+  --ep-neutral-800: #333330;
+  --ep-neutral-900: #2e2e2e;   /* = ink */
+
+  /* ---- Semantic aliases ------------------------------------- */
+  --surface-page:      var(--ep-paper);
+  --surface-raised:    var(--ep-neutral-0);
+  --surface-sunken:    var(--ep-neutral-50);
+  --surface-inverse:   var(--ep-ink);
+  --surface-brand:     var(--ep-plum);
+  --surface-brand-alt: var(--ep-pine);
+
+  --text-strong:    var(--ep-ink);
+  --text-body:      var(--ep-neutral-700);
+  --text-muted:     var(--ep-neutral-500);
+  --text-on-brand:  var(--ep-paper);
+  --text-on-dark:   var(--ep-paper);
+  --text-link:      var(--ep-pine-700);
+
+  --border-subtle:  var(--ep-neutral-200);
+  --border-default: var(--ep-neutral-300);
+  --border-strong:  var(--ep-neutral-400);
+  --border-brand:   var(--ep-plum);
+
+  --accent:         var(--ep-pine);
+  --accent-strong:  var(--ep-plum);
+
+  --status-danger:  var(--ep-clay);
+  --status-warning: var(--ep-ember);
+  --status-caution: var(--ep-sand);
+  --status-success: var(--ep-sage);
+
+  --focus-ring:     var(--ep-pine);
+}
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Typography tokens
+   Headings: Arboria Medium  (substituted → Poppins)
+   Body:     Nunito Light
+   Brand heading:body size ratio guide ≈ 22 : 12
+   ============================================================ */
+
+:root {
+  /* ---- Families -------------------------------------------- */
+  --font-heading: 'arboria', 'Segoe UI', system-ui, sans-serif;
+  --font-body:    'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'Nunito', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---- Weights ---------------------------------------------- */
+  /* Body leans LIGHT per brand (Nunito Light = 300).            */
+  --weight-body:      300;
+  --weight-body-md:   400;
+  --weight-body-bold: 600;
+  /* Headings use Arboria Medium (the kit ships weight 500 only). */
+  --weight-heading:   500;
+  --weight-heading-md:500;
+
+  /* ---- Type scale (1.25 major-third-ish, tuned) ------------- */
+  --text-2xs:  0.75rem;   /* 12px — captions, legal           */
+  --text-xs:   0.8125rem; /* 13px                              */
+  --text-sm:   0.9375rem; /* 15px — small body                */
+  --text-base: 1.0625rem; /* 17px — default body              */
+  --text-lg:   1.25rem;   /* 20px — lead / large body         */
+  --text-xl:   1.5rem;    /* 24px — h4 / card title           */
+  --text-2xl:  1.9375rem; /* 31px — h3                        */
+  --text-3xl:  2.5rem;    /* 40px — h2                        */
+  --text-4xl:  3.25rem;   /* 52px — h1                        */
+  --text-5xl:  4.25rem;   /* 68px — display                   */
+  --text-6xl:  5.5rem;    /* 88px — hero display              */
+
+  /* ---- Line heights ---------------------------------------- */
+  --leading-tight:   1.08;
+  --leading-snug:    1.22;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* ---- Letter spacing -------------------------------------- */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.14em;   /* eyebrows / overline labels   */
+
+  /* ---- Semantic roles -------------------------------------- */
+  --display-font:    var(--font-heading);
+  --display-weight:  var(--weight-heading);
+  --heading-font:    var(--font-heading);
+  --body-font:       var(--font-body);
+  --body-weight:     var(--weight-body);
+  --eyebrow-tracking:var(--tracking-caps);
+}
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Spacing, radius, shadow, layout
+   8px base grid. Calm, generous, premium spacing.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (8px base) ----------------------------- */
+  --space-0:   0;
+  --space-1:   0.25rem;   /* 4  */
+  --space-2:   0.5rem;    /* 8  */
+  --space-3:   0.75rem;   /* 12 */
+  --space-4:   1rem;      /* 16 */
+  --space-5:   1.5rem;    /* 24 */
+  --space-6:   2rem;      /* 32 */
+  --space-7:   2.5rem;    /* 40 */
+  --space-8:   3rem;      /* 48 */
+  --space-9:   4rem;      /* 64 */
+  --space-10:  5rem;      /* 80 */
+  --space-11:  6.5rem;    /* 104 */
+  --space-12:  8rem;      /* 128 */
+
+  /* ---- Radius ---------------------------------------------- */
+  /* Understated, modern — gentle radii, never pill-soft on cards */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;
+
+  /* ---- Borders --------------------------------------------- */
+  --border-width:   1px;
+  --border-width-2: 2px;
+
+  /* ---- Shadows (soft, low, never harsh) -------------------- */
+  --shadow-xs:  0 1px 2px rgba(46, 46, 46, 0.06);
+  --shadow-sm:  0 1px 3px rgba(46, 46, 46, 0.08), 0 1px 2px rgba(46, 46, 46, 0.04);
+  --shadow-md:  0 4px 12px rgba(46, 46, 46, 0.08), 0 2px 4px rgba(46, 46, 46, 0.05);
+  --shadow-lg:  0 12px 32px rgba(46, 46, 46, 0.10), 0 4px 8px rgba(46, 46, 46, 0.05);
+  --shadow-xl:  0 24px 56px rgba(46, 46, 46, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(75, 122, 110, 0.35);  /* pine focus */
+
+  /* ---- Motion ---------------------------------------------- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);  /* @kind other */
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --dur-fast:   140ms;  /* @kind other */
+  --dur-base:   220ms;  /* @kind other */
+  --dur-slow:   400ms;  /* @kind other */
+
+  /* ---- Layout ---------------------------------------------- */
+  --container-sm:  640px;
+  --container-md:  860px;
+  --container-lg:  1120px;
+  --container-xl:  1320px;
+  --gutter:        var(--space-5);
+  --section-y:     var(--space-11);
+}
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Base element defaults
+   Opinionated, minimal reset + brand typographic defaults.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  color: var(--text-strong);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); letter-spacing: var(--tracking-snug); }
+h4 { font-size: var(--text-xl); letter-spacing: var(--tracking-snug); }
+h5 { font-size: var(--text-lg); letter-spacing: var(--tracking-normal); }
+h6 {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-heading);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: var(--leading-snug);
+}
+
+p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+strong, b { font-weight: var(--weight-body-bold); color: var(--text-strong); }
+
+small { font-size: var(--text-2xs); }
+
+hr {
+  border: 0;
+  border-top: var(--border-width) solid var(--border-subtle);
+  margin: var(--space-6) 0;
+}
+
+::selection { background: var(--ep-pine-tint-2); color: var(--text-strong); }
+
+/* Eyebrow / overline label utility */
+.ep-eyebrow {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading-md);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+</style>
+<style>
+  :root{ --accent-ui: var(--ep-plum); --sheet:#ffffff; --rule:#e6e6e1; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; }
+  body{ background:var(--ep-neutral-200); color:var(--ep-neutral-700); font-family:var(--font-body); font-weight:300; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  h1,h2,h3,h4{ font-family:var(--font-heading); font-weight:500; color:var(--ep-ink); margin:0; line-height:1.14; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:var(--ep-pine-700); }
+  a:hover{ color:var(--ep-pine); }
+  em{ font-style:italic; }
+
+  .doc{ max-width:8.5in; margin:28px auto; background:var(--sheet); box-shadow:0 12px 54px rgba(46,46,46,.13); padding:0 clamp(22px,5vw,0.8in); }
+  .doc-frame{ width:100%; border-collapse:collapse; }
+  .doc-frame td{ padding:0; }
+  .pad-top,.pad-bottom{ display:none; }
+  .body-pad{ padding:42px 0 70px; }
+
+  .eyebrow{ font-family:var(--font-body); text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--accent-ui); }
+  .num{ font-family:var(--font-heading); font-weight:500; font-size:30px; line-height:0.9; color:var(--accent-ui); flex:none; min-width:38px; }
+  .purpose{ color:var(--ep-neutral-500); font-size:15.5px; margin-top:12px; max-width:64ch; }
+  .rule{ border:none; border-top:1px solid var(--rule); margin:16px 0 0; }
+
+  .q{ display:block; margin-top:18px; }
+  .q-label{ display:block; font-size:15.5px; font-weight:400; color:var(--ep-neutral-700); margin-bottom:8px; }
+  .ta{ display:block; width:100%; font-family:var(--font-body); font-weight:300; font-size:15.5px; line-height:1.6; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; min-height:62px; field-sizing:content; resize:vertical; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .ta:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .ta::placeholder{ color:var(--ep-neutral-400); }
+  .inp{ width:100%; font-family:var(--font-body); font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:9px 12px; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .inp:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .inp::placeholder{ color:var(--ep-neutral-400); }
+
+  .cbx{ display:flex; align-items:center; gap:9px; padding:8px 11px; border:1px solid var(--ep-neutral-200); border-radius:9px; background:var(--ep-neutral-50); font-size:14.5px; color:var(--ep-neutral-700); cursor:pointer; transition:border-color .12s, background .12s; user-select:none; }
+  .cbx:hover{ border-color:var(--ep-pine); }
+  .cbx input{ accent-color:var(--ep-pine); width:16px; height:16px; flex:none; margin:0; }
+  .cbx:has(input:checked){ background:var(--ep-pine-tint); border-color:var(--ep-pine); color:var(--ep-pine-700); }
+
+  .note{ display:flex; align-items:flex-start; gap:13px; margin-top:20px; padding:14px 17px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.55; color:var(--ep-pine-700); }
+  .note strong{ font-weight:600; }
+  .note > svg{ width:20px; height:auto; flex:none; margin-top:2px; }
+  .note-plum{ background:var(--ep-plum-tint); color:var(--ep-plum-700); }
+  .note-neutral{ background:var(--ep-neutral-100); color:var(--ep-neutral-700); border:1px solid var(--ep-neutral-200); }
+
+  .tile{ background:var(--ep-neutral-50); border:1px solid var(--rule); border-radius:14px; padding:17px 19px; }
+
+  .step{ display:flex; gap:13px; align-items:flex-start; }
+  .step .n{ flex:none; width:25px; height:25px; border-radius:50%; background:var(--ep-plum-tint); color:var(--ep-plum); font-family:var(--font-heading); font-weight:500; font-size:13.5px; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+
+  .btn{ display:inline-flex; align-items:center; gap:7px; font-family:var(--font-body); font-weight:600; font-size:14px; padding:9px 16px; border-radius:9px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer; transition:background .15s, transform .05s, border-color .15s; }
+  .btn:hover{ background:var(--ep-plum-700); }
+  .btn:active{ transform:translateY(1px); }
+  .btn-ghost{ background:transparent; color:var(--ep-neutral-600); border-color:var(--ep-neutral-300); }
+  .btn-ghost:hover{ background:var(--ep-neutral-100); border-color:var(--ep-neutral-400); }
+  .btn-accent{ background:var(--accent-ui); }
+  .btn-accent:hover{ filter:brightness(.92); }
+
+  .sw{ display:inline-flex; align-items:center; gap:9px; cursor:pointer; user-select:none; font-size:12.5px; font-weight:600; color:var(--ep-neutral-700); flex:none; }
+  .sw input{ position:absolute; opacity:0; width:0; height:0; }
+  .sw .track{ width:38px; height:22px; border-radius:99px; background:var(--ep-neutral-300); transition:background .18s; flex:none; position:relative; }
+  .sw .track::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(46,46,46,.28); transition:transform .18s; }
+  .sw input:checked + .track{ background:var(--ep-pine); }
+  .sw input:checked + .track::after{ transform:translateX(16px); }
+  .sw input:focus-visible + .track{ box-shadow:0 0 0 3px rgba(75,122,110,.30); }
+
+  .toolbar{ position:sticky; top:0; z-index:30; background:rgba(243,243,240,.88); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); border-bottom:1px solid var(--ep-neutral-300); }
+  .toolbar-inner{ max-width:8.5in; margin:0 auto; padding:10px clamp(22px,5vw,0.8in); display:flex; align-items:center; gap:18px; }
+
+  /* --- Ladder --- */
+  .ladder{ display:flex; flex-direction:column; gap:9px; margin-top:6px; }
+  .rung{ display:grid; grid-template-columns:26px 1fr; gap:12px; align-items:stretch; background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:12px; padding:12px 14px; transition:box-shadow .2s, transform .25s, border-color .15s; }
+  .rung:hover{ border-color:var(--ep-neutral-300); }
+  .rung-rank{ font-family:var(--font-heading); font-weight:500; font-size:14px; color:var(--ep-neutral-400); display:flex; align-items:center; justify-content:center; }
+  .rung-body{ display:flex; flex-direction:column; gap:9px; min-width:0; }
+  .rung-top{ display:flex; align-items:center; gap:10px; }
+  .rung-label{ flex:1; min-width:0; border:none; background:transparent; font-family:var(--font-body); font-weight:400; font-size:15px; color:var(--ep-ink); padding:2px 0; outline:none; border-bottom:1px solid transparent; transition:border-color .15s; }
+  .rung-label:focus{ border-bottom-color:var(--ep-pine); }
+  .rung-label::placeholder{ color:var(--ep-neutral-400); font-weight:300; }
+  .rung-val{ font-family:var(--font-heading); font-weight:500; font-size:20px; line-height:1; min-width:34px; text-align:right; flex:none; }
+  .rung-bar{ height:8px; border-radius:99px; background:var(--ep-neutral-200); overflow:hidden; }
+  .rung-bar > i{ display:block; height:100%; border-radius:99px; transition:width .3s ease, background .3s; }
+  .rung-ctrl{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .suds{ flex:1; min-width:140px; height:20px; margin:0; cursor:pointer; }
+  #act-root input[type=range]{ -webkit-appearance:none; appearance:none; height:20px; background:transparent; cursor:pointer; }
+  #act-root input[type=range]::-webkit-slider-runnable-track{ height:6px; border-radius:99px; background:var(--track, var(--ep-neutral-200)); }
+  #act-root input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:16px; height:16px; margin-top:-5px; border-radius:50%; background:var(--fill, var(--ep-pine)); border:2px solid #fff; box-shadow:0 1px 3px rgba(46,46,46,.3); }
+  #act-root input[type=range]::-moz-range-track{ height:6px; border-radius:99px; background:var(--ep-neutral-200); }
+  #act-root input[type=range]::-moz-range-progress{ height:6px; border-radius:99px; background:var(--fill, var(--ep-pine)); }
+  #act-root input[type=range]::-moz-range-thumb{ width:16px; height:16px; border:2px solid #fff; border-radius:50%; background:var(--fill, var(--ep-pine)); box-shadow:0 1px 3px rgba(46,46,46,.3); }
+  .rung-meta{ display:flex; align-items:center; gap:10px; font-size:12px; color:var(--ep-neutral-500); flex:none; }
+  .ghost{ color:var(--ep-neutral-400); }
+  .delta{ display:inline-flex; align-items:center; gap:2px; font-weight:600; }
+  .spark{ flex:none; }
+  .rung-remove{ border:none; background:transparent; color:var(--ep-neutral-400); cursor:pointer; padding:2px; border-radius:6px; display:inline-flex; line-height:0; transition:color .12s, background .12s; }
+  .rung-remove:hover{ color:var(--ep-clay); background:var(--ep-neutral-100); }
+
+  /* --- Exposure log tabs --- */
+  .log-tabs{ display:flex; flex-wrap:wrap; gap:7px; margin-top:6px; }
+  .log-tab{ display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-weight:600; font-size:13px; padding:7px 13px; border-radius:99px; border:1px solid var(--ep-neutral-300); background:var(--ep-neutral-50); color:var(--ep-neutral-600); cursor:pointer; transition:all .14s; }
+  .log-tab:hover{ border-color:var(--ep-pine); color:var(--ep-pine-700); }
+  .log-tab[data-active="1"]{ background:var(--accent-ui); border-color:var(--accent-ui); color:#fff; }
+  .log-card{ margin-top:16px; border:1px solid var(--ep-neutral-200); border-radius:14px; padding:19px 20px; background:#fff; }
+  .subhead{ font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--ep-ink); letter-spacing:-0.01em; margin-top:18px; display:flex; align-items:center; gap:8px; }
+  .subhead:first-child{ margin-top:0; }
+  .field-grid{ display:grid; gap:11px; margin-top:10px; }
+  .sel{ width:100%; font-family:var(--font-body); font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:9px 12px; outline:none; }
+  .sel:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); }
+  .suds-row{ display:grid; grid-template-columns:120px 1fr 42px; gap:12px; align-items:center; }
+  .suds-row label{ font-size:14px; color:var(--ep-neutral-700); }
+  .suds-row .rv{ font-family:var(--font-heading); font-weight:500; font-size:17px; text-align:right; }
+  .mini-remove{ border:none; background:transparent; color:var(--ep-neutral-400); cursor:pointer; padding:4px; border-radius:6px; line-height:0; }
+  .mini-remove:hover{ color:var(--ep-clay); }
+  .graph-wrap{ margin-top:12px; border:1px solid var(--ep-neutral-200); border-radius:12px; padding:14px 14px 8px; background:var(--ep-neutral-50); }
+  .graph-cap{ font-size:12px; color:var(--ep-neutral-500); text-align:center; margin-top:4px; }
+  .seg{ display:inline-flex; border:1px solid var(--ep-neutral-300); border-radius:8px; overflow:hidden; }
+  .seg button{ border:none; background:transparent; font-family:var(--font-body); font-weight:600; font-size:12.5px; color:var(--ep-neutral-600); padding:6px 12px; cursor:pointer; transition:background .12s, color .12s; }
+  .seg button[data-on="1"]{ background:var(--ep-pine-tint); color:var(--ep-pine-700); }
+  .empty{ text-align:center; padding:34px 20px; color:var(--ep-neutral-500); font-size:14.5px; border:1px dashed var(--ep-neutral-300); border-radius:14px; background:var(--ep-neutral-50); }
+
+  .blank{ min-height:46px; background:#fff; }
+
+  @media (max-width:620px){
+    .toolbar-inner{ flex-wrap:wrap; gap:8px; padding:8px 16px !important; max-width:100vw !important; box-sizing:border-box; }
+    .toolbar-inner > div:first-child{ flex:1 1 100%; min-width:0; }
+    .sw [data-remember-label]{ display:none; }
+    .btn{ font-size:0 !important; padding:9px 12px !important; gap:0 !important; }
+    .btn svg{ display:block; width:18px; height:18px; }
+    .btn-ghost{ padding:9px 12px !important; }
+    .suds-row{ grid-template-columns:96px 1fr 38px; }
+  }
+
+  @page{ size:letter; margin:0; }
+  @media print{
+    html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    html,body{ margin:0; padding:0; background:#fff; }
+    body{ font-size:11pt; }
+    .doc{ max-width:none !important; margin:0 !important; box-shadow:none !important; padding:0 0.7in !important; }
+    .body-pad{ padding:0 !important; }
+    .pad-top,.pad-bottom{ display:table-cell; height:0.7in; }
+    .screen-only{ display:none !important; }
+    .ta,.inp,.blank,.log-card,.graph-wrap{ background:#fff !important; }
+    .cover{ break-after:page; }
+    [data-breaks="1"] .section{ break-before:page; }
+    .section > header{ break-inside:avoid; break-after:avoid; }
+    h1,h2,h3,h4{ break-after:avoid; }
+    .q-label,.subhead{ break-after:avoid; }
+    .note,.cbx,.tile,.step,.rung,.log-card,.graph-wrap,.two-path{ break-inside:avoid; }
+    .log-card{ break-before:page; }
+    .log-card:first-of-type{ break-before:auto; }
+    .ta{ overflow:visible; }
+    .print-all{ display:block !important; }
+  }
+  [data-guidance="0"] .note{ display:none !important; }
+</style>
+</helmet>
+
+<div id="act-root" data-breaks="1" data-guidance="1">
+
+  <div class="toolbar screen-only">
+    <div class="toolbar-inner">
+      <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:0;">
+        <img src="assets/tools/fisbs-assets/fisbs-01.png" alt="" width="22" style="flex:none; height:auto;" data-logo-symbol="">
+        <div style="flex:1; min-width:130px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:5px;">
+            <span style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-700);" data-progress-label="">0 of 4 sections started</span>
+            <span data-saved="" style="font-size:12px; font-weight:600; color:var(--ep-sage); opacity:0; transition:opacity .25s;">Saved</span>
+          </div>
+          <div style="height:6px; background:var(--ep-neutral-200); border-radius:99px; overflow:hidden;">
+            <div data-progress-bar="" style="height:100%; width:0%; background:var(--accent-ui); border-radius:99px; transition:width .3s;"></div>
+          </div>
+        </div>
+      </div>
+      <label class="sw" title="On: your progress is saved in this browser so you can return later. Off: nothing is stored, and your answers clear when you leave.">
+        <input type="checkbox" data-action="remember">
+        <span class="track"></span>
+        <span data-remember-label="">Saving on this device</span>
+      </label>
+      <div style="display:flex; gap:8px; flex:none;">
+        <button class="btn btn-ghost" data-action="clear" type="button" aria-label="Clear"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg><span>Clear</span></button>
+        <button class="btn" data-action="print" type="button">
+          <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="m7 10 5 5 5-5"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg>
+          Download as PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc">
+    <sc-raw-table class="doc-frame" role="presentation">
+      <sc-raw-thead><sc-raw-tr><sc-raw-td class="pad-top"></sc-raw-td></sc-raw-tr></sc-raw-thead>
+      <sc-raw-tbody><sc-raw-tr><sc-raw-td>
+        <div class="body-pad">
+
+          <section class="cover" data-screen-label="Cover" style="text-align:center; padding:34px 0 22px;">
+            <img src="assets/tools/fisbs-assets/fisbs-01.png" alt="Expedition Psychology" width="56" style="display:block; margin:0 auto; height:auto;" data-logo-symbol="">
+            <h1 style="font-size:clamp(33px,6.2vw,52px); margin-top:14px; max-width:15ch; margin-left:auto; margin-right:auto;">Facing It, Step by Step</h1>
+            <p style="font-size:clamp(16px,2.4vw,19px); color:var(--ep-neutral-600); max-width:52ch; margin:18px auto 0; font-weight:300;">A graded exposure workbook, from Expedition Psychology — turning towards fear, one rung at a time.</p>
+            <hr class="rule" style="max-width:110px; margin:30px auto 0; border-top-color:var(--ep-neutral-300);">
+          </section>
+
+          <section class="about" data-screen-label="About" style="padding-top:34px;">
+            <div class="eyebrow">About this workbook</div>
+            <h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:11px; max-width:22ch;">How facing fear, gently, sets you free</h2>
+            <div style="margin-top:16px; display:grid; gap:13px; max-width:66ch; color:var(--ep-neutral-700);">
+              <p>Fear is a normal part of being human — but when it starts making our choices for us, our world can quietly shrink. This workbook is built on one of the most reliable tools in psychology for loosening fear's grip: <strong style="font-weight:600;">graded exposure</strong>. The idea is simple, though not always easy — we turn towards what frightens us, in small, manageable steps, and stay long enough to learn that we can cope.</p>
+              <p>Below is the short version of how and why it works. Take it in at your own pace — understanding the <em>why</em> makes the <em>doing</em> far easier.</p>
+            </div>
+
+            <h3 style="font-size:20px; margin-top:30px;">How anxiety works</h3>
+            <p style="margin-top:10px; max-width:66ch; color:var(--ep-neutral-700); font-size:15.5px;">Anxiety is your body's protective alarm — the fight-or-flight response doing its job. It can feel intense, but it isn't dangerous, and it can't keep climbing forever. Left to run its course, it rises, peaks, and comes back down every single time.</p>
+
+            <h3 style="font-size:20px; margin-top:26px;">The avoidance trap</h3>
+            <p style="margin-top:10px; max-width:66ch; color:var(--ep-neutral-700); font-size:15.5px;">When something frightens us, avoiding it brings instant relief — and that relief is exactly why avoidance is so sticky. But it's a short-term fix with a long-term cost: every time we avoid, we teach our brain the situation really was dangerous, the fear stays strong, and bit by bit our world gets smaller.</p>
+
+            <div class="two-path tile" style="margin-top:18px; padding:20px 22px;">
+              <div class="eyebrow" style="color:var(--ep-pine-700);">Two paths, two outcomes</div>
+              <div style="margin-top:14px;" data-om-raster="">
+                <figure style="margin:0;">
+                  <svg sc-camel-view-box="0 0 560 236" width="100%" height="auto" style="aspect-ratio:560/236;" role="img" aria-label="One diagram contrasting exposure and avoidance. Both share the same rising anxiety; if you stay with it (exposure) anxiety peaks and falls far below the catastrophe you fear; if you escape (avoidance) you get instant relief but the fear stays and returns.">
+                    <line x1="52" y1="16" x2="52" y2="192" stroke="#d4d4cd" stroke-width="1"></line>
+                    <line x1="52" y1="192" x2="540" y2="192" stroke="#d4d4cd" stroke-width="1"></line>
+                    <text x="46" y="24" font-family="Nunito, sans-serif" font-size="9" fill="#aeaea6" text-anchor="end">100</text>
+                    <text x="46" y="192" font-family="Nunito, sans-serif" font-size="9" fill="#aeaea6" text-anchor="end">0</text>
+                    <text transform="rotate(-90 18 108)" x="18" y="108" font-family="Nunito, sans-serif" font-size="10" fill="#84847c" text-anchor="middle">anxiety</text>
+                    <text x="540" y="212" font-family="Nunito, sans-serif" font-size="10" fill="#84847c" text-anchor="end">time →</text>
+                    <!-- exposure curve (stay with it) -->
+                    <path d="M64 188 C104 176 128 150 150 118 C188 66 226 46 264 46 C330 46 372 104 430 142 C470 168 508 180 536 184" fill="none" stroke="#4b7a6e" stroke-width="2.8" stroke-linecap="round"></path>
+                    <!-- avoidance curve (escape → relief) -->
+                    <path d="M64 188 C104 176 128 150 150 118 C160 106 170 128 180 150 C190 172 200 186 216 189 L246 190" fill="none" stroke="#c97a4a" stroke-width="2.8" stroke-linecap="round"></path>
+                    <!-- escape marker -->
+                    <circle cx="150" cy="118" r="3.2" fill="#fff" stroke="#c97a4a" stroke-width="2"></circle>
+                    <text x="140" y="106" font-family="Nunito, sans-serif" font-size="10" fill="#c97a4a" text-anchor="end">escape</text>
+                    <text x="252" y="188" font-family="Nunito, sans-serif" font-size="9.5" fill="#84847c" text-anchor="start">instant relief</text>
+                    <!-- legend -->
+                    <rect x="404" y="34" width="12" height="12" rx="2" fill="#4b7a6e"></rect>
+                    <text x="422" y="44" font-family="Nunito, sans-serif" font-size="10" fill="#444440">Exposure — stay with it</text>
+                    <rect x="404" y="54" width="12" height="12" rx="2" fill="#c97a4a"></rect>
+                    <text x="422" y="64" font-family="Nunito, sans-serif" font-size="10" fill="#444440">Avoidance — escape</text>
+                  </svg>
+                  <figcaption style="font-size:13.5px; color:var(--ep-neutral-600); margin-top:10px; max-width:70ch;">Both paths start the same way — the anxiety climbs. If you <strong style="font-weight:600; color:var(--ep-pine-700);">stay with it</strong>, the anxiety peaks and falls far below the catastrophe you feared, and starts lower next time. If you <strong style="font-weight:600; color:#c97a4a;">escape</strong>, you get instant relief — but the fear stays strong and is waiting again next time, and bit by bit your world gets smaller.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <h3 style="font-size:20px; margin-top:30px;">How exposure helps</h3>
+            <p style="margin-top:10px; max-width:66ch; color:var(--ep-neutral-700); font-size:15.5px;">Exposure is the opposite move: gently, deliberately turning towards what we fear, in steps we can manage, and staying long enough to let the anxiety settle. Do that and something changes — the body learns the alarm can be ridden out, and that the feared outcome usually doesn't come. The fear loses its grip. This is the engine of everything that follows.</p>
+
+            <h3 style="font-size:20px; margin-top:30px;">The four rules of exposure</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(228px,1fr)); gap:14px; margin-top:14px;">
+              <div class="tile"><div class="eyebrow" style="color:var(--ep-pine-700);">Rule one</div><h4 style="font-size:17px; margin-top:7px;">Graded</h4><p style="font-size:14px; margin-top:6px; color:var(--ep-neutral-600);">Build a ladder and climb one rung at a time. Choose steps that take you just outside your comfort zone — enough to feel the anxiety, but not so much that you tip into panic. If a rung feels overwhelming, break it into a smaller one.</p></div>
+              <div class="tile"><div class="eyebrow" style="color:var(--ep-pine-700);">Rule two</div><h4 style="font-size:17px; margin-top:7px;">Prolonged</h4><p style="font-size:14px; margin-top:6px; color:var(--ep-neutral-600);">Stay with it long enough for the anxiety to rise and then ease. Rather than watching for a set number, let the moment run until you feel genuinely calmer and more settled. Leaving while you're still highly anxious teaches your brain the situation really was a threat.</p></div>
+              <div class="tile"><div class="eyebrow" style="color:var(--ep-pine-700);">Rule three</div><h4 style="font-size:17px; margin-top:7px;">Repeated</h4><p style="font-size:14px; margin-top:6px; color:var(--ep-neutral-600);">Practise often. Repeat a rung until it reliably feels easier before you move up.</p></div>
+              <div class="tile"><div class="eyebrow" style="color:var(--ep-pine-700);">Rule four</div><h4 style="font-size:17px; margin-top:7px;">Without safety behaviours</h4><p style="font-size:14px; margin-top:6px; color:var(--ep-neutral-600);">Face it without the crutches, props, or distractions you lean on to feel safe. They feel helpful, but they stop you learning that you're okay without them.</p></div>
+            </div>
+
+            <h3 style="font-size:20px; margin-top:30px;">How to use this workbook</h3>
+            <div style="display:grid; gap:12px; margin-top:14px; max-width:66ch;">
+              <div class="step"><span class="n">1</span><p style="font-size:15px;"><strong style="font-weight:600;">Build your ladder.</strong> List the situations you've been avoiding and rate how anxious each one feels, from calm to your most anxious. They'll sort themselves into a hierarchy you can climb.</p></div>
+              <div class="step"><span class="n">2</span><p style="font-size:15px;"><strong style="font-weight:600;">Pack your strategies.</strong> Choose a few ways to stay with the anxiety rather than escape it — you'll carry these up the ladder with you.</p></div>
+              <div class="step"><span class="n">3</span><p style="font-size:15px;"><strong style="font-weight:600;">Plan, do, and reflect.</strong> Work one rung at a time. Log each attempt, watch the anxiety rise and fall, and note what you learned.</p></div>
+              <div class="step"><span class="n">4</span><p style="font-size:15px;"><strong style="font-weight:600;">Watch it soften.</strong> Re-rate your rungs and track your peaks over time. The proof is in the trend — what once felt like an 80 starts to feel like a 40.</p></div>
+            </div>
+
+            <div class="note note-plum">
+              <svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <div><strong>A note on looking after yourself.</strong> This is a self-help tool, not a substitute for therapy. It works best for everyday fears and avoidance. If your anxiety is severe or overwhelming, feels unmanageable, or is linked to trauma, please work through it alongside a qualified professional — you deserve that support, and exposure is far safer and more effective with the right guidance. There's no rush, and going gently is not going backwards.</div>
+            </div>
+
+            <div class="note note-neutral">
+              <svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ep-neutral-500);"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <div><strong style="color:var(--ep-ink); font-weight:600;">Your privacy.</strong> Everything you write stays on this device, in your browser only. It is never uploaded, sent to us, or shared with anyone. You can turn saving off at any time with the <strong style="font-weight:600;">Save on this device</strong> switch at the top. On a shared or public computer, switch it off or select <strong style="font-weight:600;">Clear</strong> when you finish, so nothing is left behind.</div>
+            </div>
+          </section>
+
+          <section class="section" id="sec1" data-section="ladder" data-screen-label="01 Ladder" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">01</span><div style="flex:1;"><div class="eyebrow">The anxiety hierarchy</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Build your ladder</h2></div></div>
+              <hr class="rule">
+              <p class="purpose">List the situations you've been avoiding, and rate how anxious each one feels right now — from 0 (completely calm) to 100 (the most anxious you can imagine). As you rate them, they arrange themselves into a ladder: the hardest rungs at the top, the gentlest at the bottom, ready to climb.</p>
+            </header>
+
+            <div class="ladder" id="ladder-list"></div>
+
+            <div class="screen-only" style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+              <button class="btn btn-ghost" type="button" data-action="add-rung">
+                <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+                Add a rung
+              </button>
+            </div>
+
+            <div class="note">
+              <svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              <div>Aim for a good spread of ratings — a few gentle rungs low down for early wins, not a ladder that jumps straight to the top. When you're choosing which rung to work on next, pick one that sits <strong>just beyond your comfort zone</strong>: challenging enough to feel it, but not so much that it tips into panic. Come back and re-rate any rung as it starts to feel easier — watching the numbers fall is the whole point.</div>
+            </div>
+          </section>
+
+          <section class="section" id="sec2" data-section="strategies" data-screen-label="02 Strategies" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">02</span><div style="flex:1;"><div class="eyebrow">Your coping toolkit</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Pack your strategies</h2></div></div>
+              <hr class="rule">
+              <p class="purpose">Before you face anything, decide how you'll stay with the anxiety. These are ways to <em>stay engaged</em> with the feeling until it settles — not ways to dampen, distract from, or escape it. Tick the ones you'll lean on, and add your own.</p>
+            </header>
+            <div class="q">
+              <span class="q-label">Which strategies will help you stay present and ride the wave?</span>
+              <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:8px; margin-top:4px;">
+                <label class="cbx"><input type="checkbox" data-k="st_breathing"><span>Slow, steady breathing — to settle the body, not to make the anxiety vanish</span></label>
+                <label class="cbx"><input type="checkbox" data-k="st_selftalk"><span>Realistic self-talk — "this is uncomfortable, not dangerous"; "this feeling always passes"</span></label>
+                <label class="cbx"><input type="checkbox" data-k="st_process"><span>Focus on the process, not the outcome</span></label>
+                <label class="cbx"><input type="checkbox" data-k="st_ride"><span>Allow the anxiety to be there and ride the wave, rather than fighting it</span></label>
+                <label class="cbx"><input type="checkbox" data-k="st_ground"><span>Ground yourself in the present — your five senses, right here, right now</span></label>
+                <label class="cbx"><input type="checkbox" data-k="st_why"><span>Remind yourself why this matters — picture the life on the other side of the fear</span></label>
+                <label class="cbx"><input type="checkbox" data-k="st_compassion"><span>Self-compassion — speak to yourself as you would to a good friend</span></label>
+                <label class="cbx"><input type="checkbox" data-k="st_dropsafety"><span>Notice, and gently drop, your safety behaviours</span></label>
+              </div>
+            </div>
+            <div class="q">
+              <span class="q-label">Add any strategies of your own.</span>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px;"><input class="inp" data-k="st_own1" placeholder="Your strategy…"><input class="inp" data-k="st_own2" placeholder="Your strategy…"><input class="inp" data-k="st_own3" placeholder="Your strategy…"></div>
+            </div>
+            <div class="note note-plum">
+              <svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg>
+              <div><strong>Coping vs. escaping — the crucial difference.</strong> Genuine coping keeps you <em>in</em> the moment: breathing, kind and realistic self-talk, accepting the feeling, staying present. Safety behaviours and distraction pull you <em>out</em> of it — scrolling your phone, gripping a lucky object, seeking reassurance, or mentally checking out. They feel helpful, but they quietly stop the learning from happening, which is exactly what rule four is about. If a strategy is helping you stay and feel the anxiety soften, it's coping. If it's helping you not really be there, it's a safety behaviour to notice and, over time, let go.</div>
+            </div>
+          </section>
+
+          <section class="section" id="sec3" data-section="log" data-screen-label="03 Exposure log" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">03</span><div style="flex:1;"><div class="eyebrow">Plan · do · reflect</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Your exposure log</h2></div></div>
+              <hr class="rule">
+              <p class="purpose">This is where you plan each exposure, carry it out, and reflect on what happened. Each attempt draws its own anxiety graph — the "it came, and it went" picture. Log a new one every time you practise, and build up a running record.</p>
+            </header>
+
+            <div class="log-tabs screen-only" id="log-tabs"></div>
+            <div id="log-cards"></div>
+          </section>
+
+          <section class="section" id="sec4" data-section="progress" data-screen-label="04 Progress" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">04</span><div style="flex:1;"><div class="eyebrow">The proof it works</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Your progress</h2></div></div>
+              <hr class="rule">
+              <p class="purpose">As you repeat a rung, its peak anxiety tends to fall. This chart plots the peak of each exposure across your attempts, so you can watch the line trend downward — the clearest evidence that repeated, prolonged exposure is doing its work.</p>
+            </header>
+
+            <div class="screen-only" style="display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap;">
+              <span style="font-size:14px; color:var(--ep-neutral-600);">Show peaks for</span>
+              <sc-raw-select class="sel" id="progress-rung" style="width:auto; min-width:200px;"></sc-raw-select>
+            </div>
+
+            <div id="progress-graph" style="margin-top:14px;"></div>
+
+            <label class="q"><span class="q-label">What's shifted since you started? What can you do now, or feel now, that you couldn't at the beginning?</span><textarea class="ta" data-k="pr_shifted" placeholder="Write here…"></textarea></label>
+            <label class="q"><span class="q-label">What's the next rung — and when will you take it on?</span><textarea class="ta" data-k="pr_next" placeholder="Write here…"></textarea></label>
+          </section>
+
+          <section data-screen-label="Closing" style="padding-top:46px; text-align:center;">
+            <img src="assets/tools/fisbs-assets/fisbs-01.png" alt="" width="44" style="display:block; margin:0 auto; height:auto;" data-logo-symbol="">
+            <p style="font-family:var(--font-heading); font-weight:500; color:var(--ep-plum); font-size:clamp(19px,3vw,24px); margin-top:18px; max-width:26ch; margin-left:auto; margin-right:auto; line-height:1.3;">Courage isn't the absence of fear — it's turning towards it, one rung at a time.</p>
+            <p style="color:var(--ep-neutral-500); font-size:15px; margin-top:14px; max-width:48ch; margin-left:auto; margin-right:auto;">Come back to this workbook whenever you're ready for the next rung. Progress isn't always linear, and a wobble is information, not failure.</p>
+            <img src="assets/tools/fisbs-assets/fisbs-00.png" alt="Expedition Psychology" width="150" style="opacity:.7; margin:30px auto 0; display:block;">
+          </section>
+
+        </div>
+      </sc-raw-td></sc-raw-tr></sc-raw-tbody>
+      <sc-raw-tfoot><sc-raw-tr><sc-raw-td class="pad-bottom"></sc-raw-td></sc-raw-tr></sc-raw-tfoot>
+    </sc-raw-table>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;accentTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Slate Plum&quot;,&quot;Pine&quot;],&quot;default&quot;:&quot;Slate Plum&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;showGuidance&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;pageBreaks&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Print &amp; PDF&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.getElementById('act-root');
+    if(!this.root) return;
+    this.KEY = 'ep-graded-exposure-workbook-v1';
+    this.PREF = 'ep-graded-exposure-workbook-remember';
+    this.STOPS = [[0,[106,151,126]],[40,[214,184,108]],[70,[201,122,74]],[100,[182,83,75]]];
+    let pref = '1';
+    try { const p = localStorage.getItem(this.PREF); if(p !== null) pref = p; } catch(e){}
+    this.remember = pref !== '0';
+    this.model = { ladder: [], exposures: [], active: 0, progressRung: '__all__' };
+    this.applyOptions();
+    if(this.remember) this.restore();
+    else { try { localStorage.removeItem(this.KEY); } catch(e){} }
+    if(!this.model.ladder.length){
+      for(let i=0;i<3;i++) this.model.ladder.push(this.newRung());
+    }
+    if(!this.model.exposures.length){
+      this.model.exposures.push(this.newExposure());
+    }
+    this.renderLadder();
+    this.renderLog();
+    this.renderProgress();
+    this.wireStatic();
+    this.updateProgress();
+
+    const tog = this.root.querySelector('[data-action="remember"]');
+    if(tog){ tog.checked = this.remember; tog.addEventListener('change', () => this.setRemember(tog.checked)); }
+    this.updateRememberLabel();
+    const p = this.root.querySelector('[data-action="print"]');
+    if(p) p.addEventListener('click', () => window.print());
+    const c = this.root.querySelector('[data-action="clear"]');
+    if(c) c.addEventListener('click', () => this.clearAll());
+    const ar = this.root.querySelector('[data-action="add-rung"]');
+    if(ar) ar.addEventListener('click', () => this.addRung());
+    const prSel = this.root.querySelector('#progress-rung');
+    if(prSel) prSel.addEventListener('change', () => { this.model.progressRung = prSel.value; this.renderProgress(); this.save(); });
+  }
+
+  /* ---------- factories ---------- */
+  uid(){ return 'x' + Math.random().toString(36).slice(2,9); }
+  newRung(){ return { id:this.uid(), label:'', current:0, start:null, history:[] }; }
+  newExposure(){ return { id:this.uid(), rung:'', what:'', where:'', when:'', times:'', strat:{}, mode:'simple', before:0, peak:0, after:0, points:[{t:0,v:0},{t:5,v:0},{t:15,v:0}], happened:'', noticed:'', learned:'', nextStep:'' }; }
+  paintRange(el, v, color){
+    el.style.setProperty('--fill', color);
+    el.style.setProperty('--track', 'linear-gradient(to right, '+color+' '+v+'%, var(--ep-neutral-200) '+v+'%)');
+  }
+
+  /* ---------- colour ---------- */
+  sudColor(v){
+    v = Math.max(0, Math.min(100, v));
+    const s = this.STOPS;
+    for(let i=0;i<s.length-1;i++){
+      if(v <= s[i+1][0]){
+        const [a,ca]=s[i], [b,cb]=s[i+1];
+        const t=(v-a)/(b-a);
+        const r=Math.round(ca[0]+(cb[0]-ca[0])*t);
+        const g=Math.round(ca[1]+(cb[1]-ca[1])*t);
+        const bl=Math.round(ca[2]+(cb[2]-ca[2])*t);
+        return 'rgb('+r+','+g+','+bl+')';
+      }
+    }
+    return 'rgb(182,83,75)';
+  }
+
+  /* ---------- persistence ---------- */
+  setRemember(on){
+    this.remember = on;
+    try { localStorage.setItem(this.PREF, on ? '1' : '0'); } catch(e){}
+    if(on) this.save();
+    else { try { localStorage.removeItem(this.KEY); } catch(e){} }
+    this.updateRememberLabel();
+  }
+  updateRememberLabel(){
+    const lab = this.root.querySelector('[data-remember-label]');
+    if(lab) lab.textContent = this.remember ? 'Saving on this device' : 'Not saving';
+    const tog = this.root.querySelector('[data-action="remember"]');
+    if(tog) tog.checked = this.remember;
+  }
+  loadData(){ try { return JSON.parse(localStorage.getItem(this.KEY)) || {}; } catch(e){ return {}; } }
+  save(){
+    if(!this.remember) return;
+    const fields = {};
+    this.root.querySelectorAll('[data-k]').forEach(el => {
+      if(el.type === 'checkbox'){ if(el.checked) fields[el.dataset.k] = true; }
+      else if(el.value && el.value.length) fields[el.dataset.k] = el.value;
+    });
+    const data = { fields, ladder:this.model.ladder, exposures:this.model.exposures, active:this.model.active, progressRung:this.model.progressRung };
+    try { localStorage.setItem(this.KEY, JSON.stringify(data)); } catch(e){}
+    this.flashSaved();
+  }
+  restore(){
+    const data = this.loadData();
+    if(Array.isArray(data.ladder)) this.model.ladder = data.ladder.map(r => Object.assign(this.newRung(), r));
+    if(Array.isArray(data.exposures)) this.model.exposures = data.exposures.map(e => Object.assign(this.newExposure(), e));
+    if(typeof data.active === 'number') this.model.active = data.active;
+    if(data.progressRung) this.model.progressRung = data.progressRung;
+    this._pendingFields = data.fields || {};
+  }
+  restoreFields(){
+    const f = this._pendingFields; if(!f) return;
+    this.root.querySelectorAll('[data-k]').forEach(el => {
+      const v = f[el.dataset.k];
+      if(v === undefined) return;
+      if(el.type === 'checkbox') el.checked = !!v; else el.value = v;
+    });
+  }
+
+  wireStatic(){
+    this.restoreFields();
+    let t;
+    const onInput = () => { clearTimeout(t); t = setTimeout(() => { this.save(); this.updateProgress(); }, 300); };
+    this.root.querySelectorAll('[data-k]').forEach(el => {
+      if(el.type === 'checkbox') el.addEventListener('change', () => { this.save(); this.updateProgress(); this.renderLog(); });
+      else el.addEventListener('input', onInput);
+    });
+  }
+
+  /* ---------- options / props ---------- */
+  componentDidUpdate(){ this.applyOptions(); }
+  applyOptions(){
+    const r = this.root; if(!r) return;
+    const theme = this.props.accentTheme || 'Slate Plum';
+    r.style.setProperty('--accent-ui', theme === 'Pine' ? 'var(--ep-pine)' : 'var(--ep-plum)');
+    const resolve = (window.__epRes) || function(id, fb){ return fb; };
+    const sym = theme === 'Pine'
+      ? resolve('symGreen', 'assets/img/logo-symbol-green.png')
+      : resolve('symPurple', 'assets/img/logo-symbol-purple.png');
+    r.querySelectorAll('[data-logo-symbol]').forEach(im => { im.src = sym; });
+    r.dataset.guidance = (this.props.showGuidance === false) ? '0' : '1';
+    r.dataset.breaks = (this.props.pageBreaks === false) ? '0' : '1';
+  }
+
+  /* ================= LADDER ================= */
+  addRung(){ this.model.ladder.push(this.newRung()); this.renderLadder(); this.refreshRungRefs(); this.save(); this.updateProgress(); }
+  removeRung(id){
+    this.model.ladder = this.model.ladder.filter(r => r.id !== id);
+    this.renderLadder(); this.refreshRungRefs(); this.save(); this.updateProgress();
+  }
+  sortedLadder(){
+    return this.model.ladder.map((r,i)=>({r,i})).sort((a,b)=> (b.r.current - a.r.current) || (a.i - b.i)).map(o=>o.r);
+  }
+  renderLadder(){
+    const wrap = this.root.querySelector('#ladder-list'); if(!wrap) return;
+    wrap.innerHTML = '';
+    const rungs = this.sortedLadder();
+    rungs.forEach((r, idx) => wrap.appendChild(this.rungEl(r, idx+1, rungs.length)));
+  }
+  rungEl(r, rank, total){
+    const el = document.createElement('div');
+    el.className = 'rung';
+    el.style.borderLeft = '3px solid ' + this.sudColor(r.current);
+    const col = this.sudColor(r.current);
+    el.innerHTML =
+      '<div class="rung-rank">'+rank+'</div>'+
+      '<div class="rung-body">'+
+        '<div class="rung-top">'+
+          '<input class="rung-label" placeholder="Name a situation you\u2019ve been avoiding\u2026" value="">'+
+          '<span class="rung-val" style="color:'+col+'">'+r.current+'</span>'+
+          '<button class="rung-remove screen-only" title="Remove rung" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>'+
+        '</div>'+
+        '<div class="rung-bar"><i style="width:'+r.current+'%; background:'+col+'"></i></div>'+
+        '<div class="rung-ctrl">'+
+          '<input class="suds" type="range" min="0" max="100" step="1" value="'+r.current+'">'+
+        '</div>'+
+      '</div>';
+    const labelInput = el.querySelector('.rung-label');
+    labelInput.value = r.label || '';
+    const range = el.querySelector('.suds');
+    this.paintRange(range, r.current, col);
+    const valEl = el.querySelector('.rung-val');
+    const barI = el.querySelector('.rung-bar > i');
+
+    let lt;
+    labelInput.addEventListener('input', () => {
+      r.label = labelInput.value;
+      clearTimeout(lt); lt = setTimeout(()=>{ this.save(); this.updateProgress(); this.refreshRungRefs(); }, 300);
+    });
+    range.addEventListener('input', () => {
+      const v = parseInt(range.value,10);
+      r.current = v;
+      const c = this.sudColor(v);
+      valEl.textContent = v; valEl.style.color = c;
+      barI.style.width = v+'%'; barI.style.background = c;
+      this.paintRange(range, v, c);
+      el.style.borderLeft = '3px solid '+c;
+    });
+    range.addEventListener('change', () => {
+      this.save(); this.updateProgress();
+      this.renderLadder();
+    });
+    el.querySelector('.rung-remove').addEventListener('click', () => this.removeRung(r.id));
+    return el;
+  }
+  sparkline(hist){
+    if(!hist || hist.length < 2) return '';
+    const w=64, h=20, pad=2;
+    const max=100, min=0;
+    const step = (w - pad*2) / (hist.length - 1);
+    const pts = hist.map((v,i)=>{
+      const x = pad + i*step;
+      const y = pad + (h - pad*2) * (1 - (v-min)/(max-min));
+      return x.toFixed(1)+','+y.toFixed(1);
+    }).join(' ');
+    const last = hist[hist.length-1];
+    const lc = this.sudColor(last);
+    const lx = pad + (hist.length-1)*step, ly = pad + (h-pad*2)*(1-last/100);
+    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" title="Re-rating history">'+
+      '<polyline points="'+pts+'" fill="none" stroke="#aeaea6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline>'+
+      '<circle cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="2.2" fill="'+lc+'"></circle></svg>';
+  }
+  namedRungs(){ return this.model.ladder.filter(r => (r.label||'').trim()); }
+
+  /* ================= EXPOSURE LOG ================= */
+  refreshRungRefs(){
+    // update rung dropdowns in log cards + progress selector without full rerender
+    this.root.querySelectorAll('[data-rung-select]').forEach(sel => {
+      const cur = sel.value;
+      sel.innerHTML = this.rungOptions(cur);
+    });
+    this.renderProgressSelect();
+  }
+  rungOptions(selected){
+    let html = '<option value="">Choose a rung from your ladder\u2026</option>';
+    this.namedRungs().forEach(r => {
+      const s = (r.label === selected) ? ' selected' : '';
+      html += '<option value="'+this.esc(r.label)+'"'+s+'>'+this.esc(r.label)+' &middot; '+r.current+'</option>';
+    });
+    if(selected && !this.namedRungs().some(r=>r.label===selected)){
+      html += '<option value="'+this.esc(selected)+'" selected>'+this.esc(selected)+'</option>';
+    }
+    return html;
+  }
+  esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  addExposure(){ this.model.exposures.push(this.newExposure()); this.model.active = this.model.exposures.length-1; this.renderLog(); this.renderProgress(); this.save(); this.updateProgress(); }
+  removeExposure(id){
+    const idx = this.model.exposures.findIndex(e=>e.id===id);
+    this.model.exposures = this.model.exposures.filter(e=>e.id!==id);
+    if(!this.model.exposures.length) this.model.exposures.push(this.newExposure());
+    this.model.active = Math.max(0, Math.min(this.model.active, this.model.exposures.length-1));
+    this.renderLog(); this.renderProgress(); this.save(); this.updateProgress();
+  }
+  chosenStrategies(){
+    const map = {
+      st_breathing:'Slow, steady breathing', st_selftalk:'Realistic self-talk', st_process:'Focus on the process, not the outcome',
+      st_ride:'Ride the wave — allow it to be there', st_ground:'Ground in the present (five senses)', st_why:'Remind myself why this matters',
+      st_compassion:'Self-compassion', st_dropsafety:'Drop my safety behaviours'
+    };
+    const out = [];
+    Object.keys(map).forEach(k => { const el = this.root.querySelector('[data-k="'+k+'"]'); if(el && el.checked) out.push({key:k, label:map[k]}); });
+    ['st_own1','st_own2','st_own3'].forEach(k => { const el = this.root.querySelector('[data-k="'+k+'"]'); if(el && el.value.trim()) out.push({key:k, label:el.value.trim()}); });
+    return out;
+  }
+  renderLog(){
+    const tabs = this.root.querySelector('#log-tabs');
+    const cards = this.root.querySelector('#log-cards');
+    if(!tabs || !cards) return;
+    tabs.innerHTML = '';
+    this.model.exposures.forEach((e, i) => {
+      const b = document.createElement('button');
+      b.className = 'log-tab'; b.type='button';
+      b.dataset.active = (i===this.model.active)?'1':'0';
+      const name = (e.rung||'').trim() || ('Exposure '+(i+1));
+      b.innerHTML = '<span>'+this.esc(name)+'</span>';
+      b.addEventListener('click', () => { this.model.active = i; this.renderLog(); this.save(); });
+      tabs.appendChild(b);
+    });
+    const add = document.createElement('button');
+    add.className='log-tab'; add.type='button';
+    add.style.borderStyle='dashed';
+    add.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg><span>Plan another exposure</span>';
+    add.addEventListener('click', () => this.addExposure());
+    tabs.appendChild(add);
+
+    cards.innerHTML = '';
+    this.model.exposures.forEach((e, i) => {
+      const card = this.exposureCard(e, i);
+      card.classList.add('log-card');
+      // on screen only active shows; in print all show
+      if(i !== this.model.active) card.classList.add('screen-only-hide');
+      cards.appendChild(card);
+    });
+    // apply screen visibility
+    cards.querySelectorAll('.screen-only-hide').forEach(c => { c.style.display='none'; });
+    // ensure print shows all (handled via media query overriding inline? use class toggle)
+    this.applyPrintHook(cards);
+  }
+  applyPrintHook(cards){
+    // Add a style that on print un-hides all cards
+    if(this._printHook) return;
+    const st = document.createElement('style');
+    st.textContent = '@media print{ #log-cards .screen-only-hide{ display:block !important; } }';
+    document.head.appendChild(st);
+    this._printHook = true;
+  }
+  exposureCard(e, i){
+    const card = document.createElement('div');
+    const strategies = this.chosenStrategies();
+    let stratHtml;
+    if(strategies.length){
+      stratHtml = '<div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:7px; margin-top:10px;">' +
+        strategies.map(s => {
+          const on = e.strat[s.key] ? ' checked' : '';
+          return '<label class="cbx"><input type="checkbox" data-ex-strat="'+s.key+'"'+on+'><span>'+this.esc(s.label)+'</span></label>';
+        }).join('') + '</div>';
+    } else {
+      stratHtml = '<p style="font-size:13.5px; color:var(--ep-neutral-500); margin-top:8px;">Tick some strategies in Section 2 and they\u2019ll appear here as a checklist to carry into this exposure.</p>';
+    }
+    card.innerHTML =
+      '<div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">'+
+        '<div class="eyebrow" style="color:var(--ep-pine-700);">Exposure '+(i+1)+'</div>'+
+        '<button class="mini-remove screen-only" title="Delete this exposure" type="button" data-ex-remove><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>'+
+      '</div>'+
+
+      '<div class="subhead"><span>Which rung are you working on?</span></div>'+
+      '<select class="sel" data-rung-select style="margin-top:8px;">'+this.rungOptions(e.rung)+'</select>'+
+
+      '<div class="subhead">The plan</div>'+
+      '<p style="font-size:13.5px; color:var(--ep-neutral-500); margin-top:2px;">Aim to stay with it until you feel calmer and more settled — not just until the anxiety peaks.</p>'+
+      '<div class="field-grid">'+
+        '<textarea class="ta" data-ex="what" placeholder="Exactly what will you do?" style="min-height:52px;">'+this.esc(e.what)+'</textarea>'+
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:11px;">'+
+          '<input class="inp" data-ex="where" placeholder="Where?" value="'+this.esc(e.where)+'">'+
+          '<input class="inp" data-ex="when" placeholder="When?" value="'+this.esc(e.when)+'">'+
+        '</div>'+
+        '<input class="inp" data-ex="times" placeholder="How many times / how long will you stay?" value="'+this.esc(e.times)+'">'+
+      '</div>'+
+
+      '<div class="subhead">Strategies I\u2019ll use</div>'+
+      stratHtml+
+
+      '<div class="subhead"><span>Rate your anxiety (0\u2013100)</span></div>'+
+      '<p style="font-size:13.5px; color:var(--ep-neutral-500); margin-top:2px;">How anxious you felt beforehand, at its peak during, and once you stayed with it.</p>'+
+      '<div data-rate-body></div>'+
+
+      '<div class="graph-wrap"><div data-graph></div><div class="graph-cap">Your anxiety, from start to finish</div></div>'+
+
+      '<div class="subhead">Reflection</div>'+
+      '<div class="field-grid">'+
+        '<label><span class="q-label" style="margin-bottom:6px;">What actually happened? Did the thing you feared occur?</span><textarea class="ta" data-ex="happened" placeholder="Write here\u2026">'+this.esc(e.happened)+'</textarea></label>'+
+        '<label><span class="q-label" style="margin-bottom:6px;">What did you notice? Did the anxiety ease if you stayed with it until you felt calmer?</span><textarea class="ta" data-ex="noticed" placeholder="Write here\u2026">'+this.esc(e.noticed)+'</textarea></label>'+
+        '<label><span class="q-label" style="margin-bottom:6px;">What did you learn?</span><textarea class="ta" data-ex="learned" placeholder="Write here\u2026">'+this.esc(e.learned)+'</textarea></label>'+
+        '<label><span class="q-label" style="margin-bottom:6px;">Ready to repeat this rung, or move up?</span><textarea class="ta" data-ex="nextStep" placeholder="Write here\u2026" style="min-height:52px;">'+this.esc(e.nextStep)+'</textarea></label>'+
+      '</div>';
+
+    // wire rung select
+    const sel = card.querySelector('[data-rung-select]');
+    sel.addEventListener('change', () => { e.rung = sel.value; this.renderLog(); this.renderProgress(); this.save(); this.updateProgress(); });
+    // wire text fields
+    let t;
+    card.querySelectorAll('[data-ex]').forEach(el => {
+      const key = el.dataset.ex;
+      el.addEventListener('input', () => { e[key] = el.value; clearTimeout(t); t = setTimeout(()=>{ this.save(); this.updateProgress(); }, 300); });
+    });
+    // strategies
+    card.querySelectorAll('[data-ex-strat]').forEach(cb => {
+      cb.addEventListener('change', () => { e.strat[cb.dataset.exStrat] = cb.checked; this.save(); });
+    });
+    // remove
+    const rm = card.querySelector('[data-ex-remove]');
+    if(rm) rm.addEventListener('click', () => this.removeExposure(e.id));
+    this.renderRateBody(card, e);
+    this.drawExposureGraph(card, e);
+    return card;
+  }
+  renderRateBody(card, e){
+    const body = card.querySelector('[data-rate-body]');
+    body.innerHTML =
+      this.sudsRow('Before (anticipation)', 'before', e.before) +
+      this.sudsRow('Peak (during)', 'peak', e.peak) +
+      this.sudsRow('After', 'after', e.after);
+    body.querySelectorAll('[data-suds]').forEach(r => {
+      const key = r.dataset.suds;
+      const rng = r.querySelector('input'); const rv = r.querySelector('.rv');
+      const paint = () => { const v=parseInt(rng.value,10); rv.textContent=v; rv.style.color=this.sudColor(v); this.paintRange(rng, v, this.sudColor(v)); };
+      paint();
+      rng.addEventListener('input', () => { e[key]=parseInt(rng.value,10); paint(); this.drawExposureGraph(card, e); });
+      rng.addEventListener('change', () => { this.save(); this.renderProgress(); this.updateProgress(); });
+    });
+  }
+  renderPoints(card, e){
+    const host = card.querySelector('[data-points]'); if(!host) return;
+    host.innerHTML = '';
+    e.points.forEach((pt, idx) => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:grid; grid-template-columns:78px 1fr 40px 26px; gap:10px; align-items:center; margin-top:8px;';
+      row.innerHTML =
+        '<div style="display:flex; align-items:center; gap:4px;"><input class="inp" type="number" min="0" step="1" value="'+pt.t+'" style="padding:7px 8px; text-align:right;"><span style="font-size:12px; color:var(--ep-neutral-500);">min</span></div>'+
+        '<input type="range" min="0" max="100" step="1" value="'+pt.v+'" style="width:100%;">'+
+        '<span class="rv" style="font-family:var(--font-heading); font-weight:500; font-size:16px; text-align:right;">'+pt.v+'</span>'+
+        '<button class="mini-remove screen-only" type="button" title="Remove point"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>';
+      const numEl = row.querySelector('input[type=number]');
+      const rng = row.querySelector('input[type=range]');
+      const rv = row.querySelector('.rv');
+      const paint = () => { const v=parseInt(rng.value,10); rv.textContent=v; rv.style.color=this.sudColor(v); rng.style.accentColor=this.sudColor(v); };
+      paint();
+      numEl.addEventListener('input', () => { pt.t = parseInt(numEl.value,10)||0; this.drawExposureGraph(card, e); });
+      numEl.addEventListener('change', () => { this.save(); });
+      rng.addEventListener('input', () => { pt.v = parseInt(rng.value,10); paint(); this.drawExposureGraph(card, e); });
+      rng.addEventListener('change', () => { this.save(); this.renderProgress(); this.updateProgress(); });
+      row.querySelector('.mini-remove').addEventListener('click', () => {
+        if(e.points.length <= 2){ return; }
+        e.points.splice(idx,1); this.renderPoints(card, e); this.drawExposureGraph(card, e); this.save();
+      });
+      host.appendChild(row);
+    });
+  }
+  sudsRow(label, key, v){
+    return '<div class="suds-row" data-suds="'+key+'" style="margin-top:9px;">'+
+      '<label>'+label+'</label>'+
+      '<input type="range" min="0" max="100" step="1" value="'+v+'">'+
+      '<span class="rv">'+v+'</span></div>';
+  }
+  exposurePeak(e){
+    if(e.mode === 'detailed' && e.points && e.points.length) return Math.max.apply(null, e.points.map(p=>p.v));
+    return e.peak;
+  }
+  drawExposureGraph(card, e){
+    const host = card.querySelector('[data-graph]'); if(!host) return;
+    const series = [ {x:0, v:e.before, lab:'before'}, {x:0.42, v:e.peak, lab:'peak'}, {x:1, v:e.after, lab:'after'} ];
+    host.innerHTML = this.lineGraph(series, { height:180, showAxis:true, area:true });
+  }
+
+  /* ================= PROGRESS ================= */
+  renderProgressSelect(){
+    const sel = this.root.querySelector('#progress-rung'); if(!sel) return;
+    const cur = this.model.progressRung || '__all__';
+    let html = '<option value="__all__">All exposures</option>';
+    // unique rung labels used in exposures
+    const used = [];
+    this.model.exposures.forEach(e => { const r=(e.rung||'').trim(); if(r && !used.includes(r)) used.push(r); });
+    this.namedRungs().forEach(r => { if(!used.includes(r.label)) used.push(r.label); });
+    used.forEach(r => { const s = (r===cur)?' selected':''; html += '<option value="'+this.esc(r)+'"'+s+'>'+this.esc(r)+'</option>'; });
+    if(cur==='__all__') html = html.replace('value="__all__"','value="__all__" selected');
+    sel.innerHTML = html;
+  }
+  renderProgress(){
+    this.renderProgressSelect();
+    const host = this.root.querySelector('#progress-graph'); if(!host) return;
+    const filter = this.model.progressRung || '__all__';
+    let list = this.model.exposures.filter(e => {
+      const rated = (e.mode==='detailed' ? (e.points && e.points.length) : true);
+      const hasData = (e.rung||'').trim() || e.what || e.before!==50 || e.peak!==70 || e.after!==30;
+      return hasData;
+    });
+    if(filter !== '__all__') list = list.filter(e => (e.rung||'').trim() === filter);
+    // require at least meaningful attempts
+    const usable = list.filter(e => this.exposurePeak(e) != null);
+    if(usable.length < 2){
+      host.innerHTML = '<div class="empty">'+
+        '<div style="font-family:var(--font-heading); font-weight:500; color:var(--ep-neutral-600); font-size:16px;">Your progress chart is waiting</div>'+
+        '<p style="margin-top:6px; max-width:44ch; margin-left:auto; margin-right:auto;">Log at least two exposures'+(filter!=='__all__'?' for this rung':'')+' and the peaks will plot here, so you can watch them trend downward with each repetition. You\u2019re just getting started \u2014 that\u2019s exactly where this begins.</p>'+
+        '</div>';
+      return;
+    }
+    const series = usable.map((e, i) => ({ x: usable.length>1 ? i/(usable.length-1) : 0, v: this.exposurePeak(e), lab: '#'+(i+1) }));
+    const first = series[0].v, last = series[series.length-1].v;
+    let cap = '';
+    if(last < first) cap = '<div class="graph-cap" style="color:var(--ep-sage); font-weight:600;">Down '+(first-last)+' points from your first attempt \u2014 that\u2019s exposure working.</div>';
+    else cap = '<div class="graph-cap">Peak anxiety at each attempt. Keep going \u2014 the trend reveals itself with repetition.</div>';
+    host.innerHTML = '<div class="graph-wrap">'+this.lineGraph(series, { height:220, showAxis:true, area:true, xlabel:'attempts \u2192' })+cap+'</div>';
+  }
+
+  /* ================= SHARED GRAPH ================= */
+  smoothPath(pts, yMin, yMax){
+    if(!pts.length) return '';
+    if(pts.length === 1) return 'M'+pts[0].x.toFixed(1)+','+pts[0].y.toFixed(1);
+    const clamp = y => Math.max(yMin-4, Math.min(yMax+4, y));
+    let d = 'M'+pts[0].x.toFixed(1)+','+pts[0].y.toFixed(1);
+    for(let i=0;i<pts.length-1;i++){
+      const p0 = pts[i-1] || pts[i];
+      const p1 = pts[i];
+      const p2 = pts[i+1];
+      const p3 = pts[i+2] || p2;
+      const cp1x = p1.x + (p2.x - p0.x)/6;
+      const cp1y = clamp(p1.y + (p2.y - p0.y)/6);
+      const cp2x = p2.x - (p3.x - p1.x)/6;
+      const cp2y = clamp(p2.y - (p3.y - p1.y)/6);
+      d += ' C'+cp1x.toFixed(1)+','+cp1y.toFixed(1)+' '+cp2x.toFixed(1)+','+cp2y.toFixed(1)+' '+p2.x.toFixed(1)+','+p2.y.toFixed(1);
+    }
+    return d;
+  }
+  lineGraph(series, opts){
+    opts = opts || {};
+    const W=560, H=opts.height||190;
+    const padL=34, padR=16, padT=16, padB=28;
+    const iw = W - padL - padR, ih = H - padT - padB;
+    const X = x => padL + x*iw;
+    const Y = v => padT + (1 - v/100)*ih;
+    let g = '<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block;" data-om-raster>';
+    // gridlines
+    [0,25,50,75,100].forEach(v => {
+      const y = Y(v);
+      g += '<line x1="'+padL+'" y1="'+y.toFixed(1)+'" x2="'+(W-padR)+'" y2="'+y.toFixed(1)+'" stroke="#e6e6e1" stroke-width="1"></line>';
+      g += '<text x="'+(padL-6)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end" font-family="Nunito, sans-serif" font-size="9" fill="#aeaea6">'+v+'</text>';
+    });
+    // smooth (wave) path through the points
+    const coords = series.map(p => ({ x:X(p.x), y:Y(p.v) }));
+    const yMin = padT, yMax = padT+ih;
+    const lineD = this.smoothPath(coords, yMin, yMax);
+    const rid = Math.random().toString(36).slice(2,7);
+    if(opts.area && series.length>1){
+      const baseY = Y(0).toFixed(1);
+      const area = lineD + ' L'+coords[coords.length-1].x.toFixed(1)+','+baseY+' L'+coords[0].x.toFixed(1)+','+baseY+' Z';
+      g += '<defs><linearGradient id="ga'+rid+'" x1="0" y1="0" x2="0" y2="1">'+
+           '<stop offset="0%" stop-color="'+this.sudColor(Math.max.apply(null,series.map(p=>p.v)))+'" stop-opacity="0.26"></stop>'+
+           '<stop offset="100%" stop-color="#6a977e" stop-opacity="0.03"></stop></linearGradient></defs>';
+      g += '<path d="'+area+'" fill="url(#ga'+rid+')"></path>';
+    }
+    // colour-graded stroke following the wave
+    let stops = '';
+    series.forEach(p => { stops += '<stop offset="'+Math.round(p.x*100)+'%" stop-color="'+this.sudColor(p.v)+'"></stop>'; });
+    g += '<defs><linearGradient id="gl'+rid+'" x1="0" y1="0" x2="1" y2="0">'+stops+'</linearGradient></defs>';
+    g += '<path d="'+lineD+'" fill="none" stroke="url(#gl'+rid+')" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path>';
+    // points + labels
+    series.forEach((p, i) => {
+      const x=X(p.x), y=Y(p.v), c=this.sudColor(p.v);
+      const first = i===0, last = i===series.length-1;
+      const anchor = first ? 'start' : (last ? 'end' : 'middle');
+      const vx = first ? x+5 : (last ? x-5 : x);
+      g += '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.6" fill="#fff" stroke="'+c+'" stroke-width="2"></circle>';
+      g += '<text x="'+vx.toFixed(1)+'" y="'+(y-9).toFixed(1)+'" text-anchor="'+anchor+'" font-family="arboria, Nunito, sans-serif" font-size="11" font-weight="500" fill="'+c+'">'+p.v+'</text>';
+      g += '<text x="'+x.toFixed(1)+'" y="'+(H-9)+'" text-anchor="'+anchor+'" font-family="Nunito, sans-serif" font-size="9.5" fill="#84847c">'+this.esc(p.lab)+'</text>';
+    });
+    g += '</svg>';
+    return g;
+  }
+
+  /* ================= PROGRESS TRACKING ================= */
+  updateProgress(){
+    const started = {};
+    // ladder
+    started.ladder = this.model.ladder.some(r => (r.label||'').trim() || r.start != null || r.current > 0);
+    // strategies
+    let strat = false;
+    this.root.querySelectorAll('#sec2 [data-k]').forEach(el => { if(el.type==='checkbox'){ if(el.checked) strat=true; } else if(el.value && el.value.trim()) strat=true; });
+    started.strategies = strat;
+    // log
+    started.log = this.model.exposures.some(e => (e.rung||'').trim() || e.what || e.where || e.when || e.times || e.happened || e.noticed || e.learned || e.nextStep || Object.values(e.strat||{}).some(Boolean));
+    // progress
+    let prog = false;
+    this.root.querySelectorAll('#sec4 [data-k]').forEach(el => { if(el.value && el.value.trim()) prog=true; });
+    started.progress = prog;
+
+    const order = ['ladder','strategies','log','progress'];
+    let n = 0; order.forEach(k => { if(started[k]) n++; });
+    const total = order.length;
+    const bar = this.root.querySelector('[data-progress-bar]');
+    if(bar) bar.style.width = Math.round(n/total*100)+'%';
+    const lab = this.root.querySelector('[data-progress-label]');
+    if(lab) lab.textContent = n + ' of ' + total + ' sections started';
+  }
+  flashSaved(){
+    const ind = this.root.querySelector('[data-saved]'); if(!ind) return;
+    ind.style.opacity = '1';
+    clearTimeout(this._s);
+    this._s = setTimeout(() => { ind.style.opacity = '0'; }, 1300);
+  }
+  clearAll(){
+    if(!window.confirm('Clear all your answers? This cannot be undone.')) return;
+    try { localStorage.removeItem(this.KEY); } catch(e){}
+    this.model = { ladder:[this.newRung(),this.newRung(),this.newRung()], exposures:[this.newExposure()], active:0, progressRung:'__all__' };
+    this.root.querySelectorAll('[data-k]').forEach(el => { if(el.type === 'checkbox') el.checked = false; else el.value = ''; });
+    this.renderLadder(); this.renderLog(); this.renderProgress(); this.updateProgress();
+  }
+}
+</script>
+
+
+</body></html>

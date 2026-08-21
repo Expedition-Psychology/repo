@@ -11,6 +11,8 @@
   .ep-back-bar a { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:#5f5f59; text-decoration:none; }
   .ep-back-bar a:hover { color:#4b7a6e; }
 </style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
 </head>
 <body>
 <div class="ep-back-bar screen-only"><a href="free-tools.html">&larr; Back to Free Tools</a></div>
@@ -1254,7 +1256,12 @@ hr {
   .blank{ min-height:46px; background:#fff; }
 
   @media (max-width:640px){
-    .toolbar-inner{ flex-wrap:wrap; gap:11px; }
+    .toolbar-inner{ flex-wrap:wrap; gap:8px; padding:8px 16px !important; max-width:100vw !important; box-sizing:border-box; }
+    .toolbar-inner > div:first-child{ flex:1 1 100%; min-width:0; }
+    .sw [data-remember-label]{ display:none; }
+    .btn{ font-size:0 !important; padding:9px 12px !important; gap:0 !important; }
+    .btn svg{ display:block; width:18px; height:18px; }
+    .btn-ghost{ padding:9px 12px !important; }
   }
 
   @page{ size:letter; margin:0; }
@@ -1302,7 +1309,7 @@ hr {
         <span data-remember-label="">Saving on this device</span>
       </label>
       <div style="display:flex; gap:8px; flex:none;">
-        <button class="btn btn-ghost" data-action="clear" type="button">Clear</button>
+        <button class="btn btn-ghost" data-action="clear" type="button" aria-label="Clear"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg><span>Clear</span></button>
         <button class="btn" data-action="print" type="button">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="m7 10 5 5 5-5"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg>
           Download as PDF

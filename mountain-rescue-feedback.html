@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/tools/mrf-assets/mrf-04.js"></script>
+</head>
+<body>
+
+<!-- Hidden form for Netlify Forms detection -->
+<form name="mountain-rescue-feedback" data-netlify="true" hidden>
+  <input name="meta_team">
+  <input name="meta_name">
+  <input name="meta_email" type="email">
+  <input name="rate_relevant">
+  <input name="rate_confident">
+  <input name="rate_delivery">
+  <input name="rate_recommend">
+  <textarea name="s2_summary"></textarea>
+  <input name="consent">
+  <input name="s2_credit">
+  <textarea name="s3_improve"></textarea>
+</form>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
+
+<x-dc>
+<helmet>
+<style>/* ============================================================
+   Expedition Psychology — Webfonts
+   ------------------------------------------------------------
+   Brand fonts:
+     • Headings / titles / single words  → Arboria Medium
+     • Body / detailed content / bullets  → Nunito Light
+
+   Arboria is served live from the brand's Adobe Fonts (Typekit)
+   kit. The family name exposed by the kit is `arboria`.
+   Nunito is served from Google Fonts and matches the spec exactly.
+   ============================================================ */
+
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * arboria:
+ *   - http://typekit.com/eulas/0000000000000000775b8121
+ * nunito:
+ *   - http://typekit.com/eulas/00000000000000007753c3b5
+ *
+ * © 2009-2026 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2026-06-11 12:33:22 UTC"}*/
+
+/**/
+
+
+@font-face {
+font-family:"nunito";
+src:url("assets/tools/mrf-assets/mrf-05.woff2") format("woff2"),url("assets/tools/mrf-assets/mrf-06.woff") format("woff"),url("assets/tools/mrf-assets/mrf-07.otf") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"arboria";
+src:url("assets/tools/mrf-assets/mrf-08.woff2") format("woff2"),url("assets/tools/mrf-assets/mrf-09.woff") format("woff"),url("assets/tools/mrf-assets/mrf-10.otf") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
+}
+
+.tk-nunito { font-family: "nunito",sans-serif; }
+.tk-arboria { font-family: "arboria",sans-serif; }
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-11.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-12.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-13.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-14.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-15.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Colour tokens
+   Source: official Branding Guidelines
+   ============================================================ */
+
+:root {
+  /* ---- Brand: main palette ---------------------------------- */
+  --ep-plum:        #5b4a6a;   /* primary brand — Slate Plum   */
+  --ep-pine:        #4b7a6e;   /* secondary brand — Pine green */
+  --ep-paper:       #f3f3f0;   /* off-white surface            */
+  --ep-ink:         #2e2e2e;   /* near-black ink               */
+
+  /* ---- Brand: signal / diagram palette ---------------------- */
+  /* Used for assessment scales, data viz, status — low→high.    */
+  --ep-clay:        #b6534b;   /* terracotta red  (alert / low) */
+  --ep-ember:       #c97a4a;   /* burnt orange    (caution)     */
+  --ep-sand:        #d6b86c;   /* muted gold      (moderate)    */
+  --ep-sage:        #6a977e;   /* soft sage       (steady/high) */
+
+  /* ---- Plum tints & shades (derived) ------------------------ */
+  --ep-plum-700:    #463a52;
+  --ep-plum-600:    #5b4a6a;
+  --ep-plum-400:    #82749140;  /* note: use tint tokens below for fills */
+  --ep-plum-tint:   #e7e3ec;   /* 12% plum on paper             */
+  --ep-plum-tint-2: #d2cbdb;
+
+  /* ---- Pine tints & shades (derived) ------------------------ */
+  --ep-pine-700:    #3a6056;
+  --ep-pine-600:    #4b7a6e;
+  --ep-pine-tint:   #dde9e5;   /* soft pine wash                */
+  --ep-pine-tint-2: #c3d6d0;
+
+  /* ---- Neutral scale (warm grey, off the ink/paper axis) ---- */
+  --ep-neutral-0:   #ffffff;
+  --ep-neutral-50:  #f7f7f4;
+  --ep-neutral-100: #f3f3f0;   /* = paper */
+  --ep-neutral-200: #e6e6e1;
+  --ep-neutral-300: #d4d4cd;
+  --ep-neutral-400: #aeaea6;
+  --ep-neutral-500: #84847c;
+  --ep-neutral-600: #5f5f59;
+  --ep-neutral-700: #444440;
+  --ep-neutral-800: #333330;
+  --ep-neutral-900: #2e2e2e;   /* = ink */
+
+  /* ---- Semantic aliases ------------------------------------- */
+  --surface-page:      var(--ep-paper);
+  --surface-raised:    var(--ep-neutral-0);
+  --surface-sunken:    var(--ep-neutral-50);
+  --surface-inverse:   var(--ep-ink);
+  --surface-brand:     var(--ep-plum);
+  --surface-brand-alt: var(--ep-pine);
+
+  --text-strong:    var(--ep-ink);
+  --text-body:      var(--ep-neutral-700);
+  --text-muted:     var(--ep-neutral-500);
+  --text-on-brand:  var(--ep-paper);
+  --text-on-dark:   var(--ep-paper);
+  --text-link:      var(--ep-pine-700);
+
+  --border-subtle:  var(--ep-neutral-200);
+  --border-default: var(--ep-neutral-300);
+  --border-strong:  var(--ep-neutral-400);
+  --border-brand:   var(--ep-plum);
+
+  --accent:         var(--ep-pine);
+  --accent-strong:  var(--ep-plum);
+
+  --status-danger:  var(--ep-clay);
+  --status-warning: var(--ep-ember);
+  --status-caution: var(--ep-sand);
+  --status-success: var(--ep-sage);
+
+  --focus-ring:     var(--ep-pine);
+}
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Typography tokens
+   Headings: Arboria Medium  (substituted → Poppins)
+   Body:     Nunito Light
+   Brand heading:body size ratio guide ≈ 22 : 12
+   ============================================================ */
+
+:root {
+  /* ---- Families -------------------------------------------- */
+  --font-heading: 'arboria', 'Segoe UI', system-ui, sans-serif;
+  --font-body:    'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'Nunito', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---- Weights ---------------------------------------------- */
+  /* Body leans LIGHT per brand (Nunito Light = 300).            */
+  --weight-body:      300;
+  --weight-body-md:   400;
+  --weight-body-bold: 600;
+  /* Headings use Arboria Medium (the kit ships weight 500 only). */
+  --weight-heading:   500;
+  --weight-heading-md:500;
+
+  /* ---- Type scale (1.25 major-third-ish, tuned) ------------- */
+  --text-2xs:  0.75rem;   /* 12px — captions, legal           */
+  --text-xs:   0.8125rem; /* 13px                              */
+  --text-sm:   0.9375rem; /* 15px — small body                */
+  --text-base: 1.0625rem; /* 17px — default body              */
+  --text-lg:   1.25rem;   /* 20px — lead / large body         */
+  --text-xl:   1.5rem;    /* 24px — h4 / card title           */
+  --text-2xl:  1.9375rem; /* 31px — h3                        */
+  --text-3xl:  2.5rem;    /* 40px — h2                        */
+  --text-4xl:  3.25rem;   /* 52px — h1                        */
+  --text-5xl:  4.25rem;   /* 68px — display                   */
+  --text-6xl:  5.5rem;    /* 88px — hero display              */
+
+  /* ---- Line heights ---------------------------------------- */
+  --leading-tight:   1.08;
+  --leading-snug:    1.22;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* ---- Letter spacing -------------------------------------- */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.14em;   /* eyebrows / overline labels   */
+
+  /* ---- Semantic roles -------------------------------------- */
+  --display-font:    var(--font-heading);
+  --display-weight:  var(--weight-heading);
+  --heading-font:    var(--font-heading);
+  --body-font:       var(--font-body);
+  --body-weight:     var(--weight-body);
+  --eyebrow-tracking:var(--tracking-caps);
+}
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Spacing, radius, shadow, layout
+   8px base grid. Calm, generous, premium spacing.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (8px base) ----------------------------- */
+  --space-0:   0;
+  --space-1:   0.25rem;   /* 4  */
+  --space-2:   0.5rem;    /* 8  */
+  --space-3:   0.75rem;   /* 12 */
+  --space-4:   1rem;      /* 16 */
+  --space-5:   1.5rem;    /* 24 */
+  --space-6:   2rem;      /* 32 */
+  --space-7:   2.5rem;    /* 40 */
+  --space-8:   3rem;      /* 48 */
+  --space-9:   4rem;      /* 64 */
+  --space-10:  5rem;      /* 80 */
+  --space-11:  6.5rem;    /* 104 */
+  --space-12:  8rem;      /* 128 */
+
+  /* ---- Radius ---------------------------------------------- */
+  /* Understated, modern — gentle radii, never pill-soft on cards */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;
+
+  /* ---- Borders --------------------------------------------- */
+  --border-width:   1px;
+  --border-width-2: 2px;
+
+  /* ---- Shadows (soft, low, never harsh) -------------------- */
+  --shadow-xs:  0 1px 2px rgba(46, 46, 46, 0.06);
+  --shadow-sm:  0 1px 3px rgba(46, 46, 46, 0.08), 0 1px 2px rgba(46, 46, 46, 0.04);
+  --shadow-md:  0 4px 12px rgba(46, 46, 46, 0.08), 0 2px 4px rgba(46, 46, 46, 0.05);
+  --shadow-lg:  0 12px 32px rgba(46, 46, 46, 0.10), 0 4px 8px rgba(46, 46, 46, 0.05);
+  --shadow-xl:  0 24px 56px rgba(46, 46, 46, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(75, 122, 110, 0.35);  /* pine focus */
+
+  /* ---- Motion ---------------------------------------------- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);  /* @kind other */
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --dur-fast:   140ms;  /* @kind other */
+  --dur-base:   220ms;  /* @kind other */
+  --dur-slow:   400ms;  /* @kind other */
+
+  /* ---- Layout ---------------------------------------------- */
+  --container-sm:  640px;
+  --container-md:  860px;
+  --container-lg:  1120px;
+  --container-xl:  1320px;
+  --gutter:        var(--space-5);
+  --section-y:     var(--space-11);
+}
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Base element defaults
+   Opinionated, minimal reset + brand typographic defaults.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  color: var(--text-strong);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); letter-spacing: var(--tracking-snug); }
+h4 { font-size: var(--text-xl); letter-spacing: var(--tracking-snug); }
+h5 { font-size: var(--text-lg); letter-spacing: var(--tracking-normal); }
+h6 {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-heading);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: var(--leading-snug);
+}
+
+p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+strong, b { font-weight: var(--weight-body-bold); color: var(--text-strong); }
+
+small { font-size: var(--text-2xs); }
+
+hr {
+  border: 0;
+  border-top: var(--border-width) solid var(--border-subtle);
+  margin: var(--space-6) 0;
+}
+
+::selection { background: var(--ep-pine-tint-2); color: var(--text-strong); }
+
+/* Eyebrow / overline label utility */
+.ep-eyebrow {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading-md);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+</style>
+<style>/* ============================================================
+   Expedition Psychology — Design System
+   Global stylesheet entry point.
+   Consumers link THIS one file. Keep it @import-only.
+   ============================================================ */
+
+/* ============================================================
+   Expedition Psychology — Webfonts
+   ------------------------------------------------------------
+   Brand fonts:
+     • Headings / titles / single words  → Arboria Medium
+     • Body / detailed content / bullets  → Nunito Light
+
+   Arboria is served live from the brand's Adobe Fonts (Typekit)
+   kit. The family name exposed by the kit is `arboria`.
+   Nunito is served from Google Fonts and matches the spec exactly.
+   ============================================================ */
+
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * arboria:
+ *   - http://typekit.com/eulas/0000000000000000775b8121
+ * nunito:
+ *   - http://typekit.com/eulas/00000000000000007753c3b5
+ *
+ * © 2009-2026 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2026-06-11 12:33:22 UTC"}*/
+
+/**/
+
+
+@font-face {
+font-family:"nunito";
+src:url("assets/tools/mrf-assets/mrf-05.woff2") format("woff2"),url("assets/tools/mrf-assets/mrf-06.woff") format("woff"),url("assets/tools/mrf-assets/mrf-07.otf") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"arboria";
+src:url("assets/tools/mrf-assets/mrf-08.woff2") format("woff2"),url("assets/tools/mrf-assets/mrf-09.woff") format("woff"),url("assets/tools/mrf-assets/mrf-10.otf") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
+}
+
+.tk-nunito { font-family: "nunito",sans-serif; }
+.tk-arboria { font-family: "arboria",sans-serif; }
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-11.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-12.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-13.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-14.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-15.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-16.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-17.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-18.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-19.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/tools/mrf-assets/mrf-20.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+/* ============================================================
+   Expedition Psychology — Colour tokens
+   Source: official Branding Guidelines
+   ============================================================ */
+
+:root {
+  /* ---- Brand: main palette ---------------------------------- */
+  --ep-plum:        #5b4a6a;   /* primary brand — Slate Plum   */
+  --ep-pine:        #4b7a6e;   /* secondary brand — Pine green */
+  --ep-paper:       #f3f3f0;   /* off-white surface            */
+  --ep-ink:         #2e2e2e;   /* near-black ink               */
+
+  /* ---- Brand: signal / diagram palette ---------------------- */
+  /* Used for assessment scales, data viz, status — low→high.    */
+  --ep-clay:        #b6534b;   /* terracotta red  (alert / low) */
+  --ep-ember:       #c97a4a;   /* burnt orange    (caution)     */
+  --ep-sand:        #d6b86c;   /* muted gold      (moderate)    */
+  --ep-sage:        #6a977e;   /* soft sage       (steady/high) */
+
+  /* ---- Plum tints & shades (derived) ------------------------ */
+  --ep-plum-700:    #463a52;
+  --ep-plum-600:    #5b4a6a;
+  --ep-plum-400:    #82749140;  /* note: use tint tokens below for fills */
+  --ep-plum-tint:   #e7e3ec;   /* 12% plum on paper             */
+  --ep-plum-tint-2: #d2cbdb;
+
+  /* ---- Pine tints & shades (derived) ------------------------ */
+  --ep-pine-700:    #3a6056;
+  --ep-pine-600:    #4b7a6e;
+  --ep-pine-tint:   #dde9e5;   /* soft pine wash                */
+  --ep-pine-tint-2: #c3d6d0;
+
+  /* ---- Neutral scale (warm grey, off the ink/paper axis) ---- */
+  --ep-neutral-0:   #ffffff;
+  --ep-neutral-50:  #f7f7f4;
+  --ep-neutral-100: #f3f3f0;   /* = paper */
+  --ep-neutral-200: #e6e6e1;
+  --ep-neutral-300: #d4d4cd;
+  --ep-neutral-400: #aeaea6;
+  --ep-neutral-500: #84847c;
+  --ep-neutral-600: #5f5f59;
+  --ep-neutral-700: #444440;
+  --ep-neutral-800: #333330;
+  --ep-neutral-900: #2e2e2e;   /* = ink */
+
+  /* ---- Semantic aliases ------------------------------------- */
+  --surface-page:      var(--ep-paper);
+  --surface-raised:    var(--ep-neutral-0);
+  --surface-sunken:    var(--ep-neutral-50);
+  --surface-inverse:   var(--ep-ink);
+  --surface-brand:     var(--ep-plum);
+  --surface-brand-alt: var(--ep-pine);
+
+  --text-strong:    var(--ep-ink);
+  --text-body:      var(--ep-neutral-700);
+  --text-muted:     var(--ep-neutral-500);
+  --text-on-brand:  var(--ep-paper);
+  --text-on-dark:   var(--ep-paper);
+  --text-link:      var(--ep-pine-700);
+
+  --border-subtle:  var(--ep-neutral-200);
+  --border-default: var(--ep-neutral-300);
+  --border-strong:  var(--ep-neutral-400);
+  --border-brand:   var(--ep-plum);
+
+  --accent:         var(--ep-pine);
+  --accent-strong:  var(--ep-plum);
+
+  --status-danger:  var(--ep-clay);
+  --status-warning: var(--ep-ember);
+  --status-caution: var(--ep-sand);
+  --status-success: var(--ep-sage);
+
+  --focus-ring:     var(--ep-pine);
+}
+
+/* ============================================================
+   Expedition Psychology — Typography tokens
+   Headings: Arboria Medium  (substituted → Poppins)
+   Body:     Nunito Light
+   Brand heading:body size ratio guide ≈ 22 : 12
+   ============================================================ */
+
+:root {
+  /* ---- Families -------------------------------------------- */
+  --font-heading: 'arboria', 'Segoe UI', system-ui, sans-serif;
+  --font-body:    'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'Nunito', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---- Weights ---------------------------------------------- */
+  /* Body leans LIGHT per brand (Nunito Light = 300).            */
+  --weight-body:      300;
+  --weight-body-md:   400;
+  --weight-body-bold: 600;
+  /* Headings use Arboria Medium (the kit ships weight 500 only). */
+  --weight-heading:   500;
+  --weight-heading-md:500;
+
+  /* ---- Type scale (1.25 major-third-ish, tuned) ------------- */
+  --text-2xs:  0.75rem;   /* 12px — captions, legal           */
+  --text-xs:   0.8125rem; /* 13px                              */
+  --text-sm:   0.9375rem; /* 15px — small body                */
+  --text-base: 1.0625rem; /* 17px — default body              */
+  --text-lg:   1.25rem;   /* 20px — lead / large body         */
+  --text-xl:   1.5rem;    /* 24px — h4 / card title           */
+  --text-2xl:  1.9375rem; /* 31px — h3                        */
+  --text-3xl:  2.5rem;    /* 40px — h2                        */
+  --text-4xl:  3.25rem;   /* 52px — h1                        */
+  --text-5xl:  4.25rem;   /* 68px — display                   */
+  --text-6xl:  5.5rem;    /* 88px — hero display              */
+
+  /* ---- Line heights ---------------------------------------- */
+  --leading-tight:   1.08;
+  --leading-snug:    1.22;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* ---- Letter spacing -------------------------------------- */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.14em;   /* eyebrows / overline labels   */
+
+  /* ---- Semantic roles -------------------------------------- */
+  --display-font:    var(--font-heading);
+  --display-weight:  var(--weight-heading);
+  --heading-font:    var(--font-heading);
+  --body-font:       var(--font-body);
+  --body-weight:     var(--weight-body);
+  --eyebrow-tracking:var(--tracking-caps);
+}
+
+/* ============================================================
+   Expedition Psychology — Spacing, radius, shadow, layout
+   8px base grid. Calm, generous, premium spacing.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (8px base) ----------------------------- */
+  --space-0:   0;
+  --space-1:   0.25rem;   /* 4  */
+  --space-2:   0.5rem;    /* 8  */
+  --space-3:   0.75rem;   /* 12 */
+  --space-4:   1rem;      /* 16 */
+  --space-5:   1.5rem;    /* 24 */
+  --space-6:   2rem;      /* 32 */
+  --space-7:   2.5rem;    /* 40 */
+  --space-8:   3rem;      /* 48 */
+  --space-9:   4rem;      /* 64 */
+  --space-10:  5rem;      /* 80 */
+  --space-11:  6.5rem;    /* 104 */
+  --space-12:  8rem;      /* 128 */
+
+  /* ---- Radius ---------------------------------------------- */
+  /* Understated, modern — gentle radii, never pill-soft on cards */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;
+
+  /* ---- Borders --------------------------------------------- */
+  --border-width:   1px;
+  --border-width-2: 2px;
+
+  /* ---- Shadows (soft, low, never harsh) -------------------- */
+  --shadow-xs:  0 1px 2px rgba(46, 46, 46, 0.06);
+  --shadow-sm:  0 1px 3px rgba(46, 46, 46, 0.08), 0 1px 2px rgba(46, 46, 46, 0.04);
+  --shadow-md:  0 4px 12px rgba(46, 46, 46, 0.08), 0 2px 4px rgba(46, 46, 46, 0.05);
+  --shadow-lg:  0 12px 32px rgba(46, 46, 46, 0.10), 0 4px 8px rgba(46, 46, 46, 0.05);
+  --shadow-xl:  0 24px 56px rgba(46, 46, 46, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(75, 122, 110, 0.35);  /* pine focus */
+
+  /* ---- Motion ---------------------------------------------- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);  /* @kind other */
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --dur-fast:   140ms;  /* @kind other */
+  --dur-base:   220ms;  /* @kind other */
+  --dur-slow:   400ms;  /* @kind other */
+
+  /* ---- Layout ---------------------------------------------- */
+  --container-sm:  640px;
+  --container-md:  860px;
+  --container-lg:  1120px;
+  --container-xl:  1320px;
+  --gutter:        var(--space-5);
+  --section-y:     var(--space-11);
+}
+
+/* ============================================================
+   Expedition Psychology — Base element defaults
+   Opinionated, minimal reset + brand typographic defaults.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  color: var(--text-strong);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); letter-spacing: var(--tracking-snug); }
+h4 { font-size: var(--text-xl); letter-spacing: var(--tracking-snug); }
+h5 { font-size: var(--text-lg); letter-spacing: var(--tracking-normal); }
+h6 {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-heading);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: var(--leading-snug);
+}
+
+p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+strong, b { font-weight: var(--weight-body-bold); color: var(--text-strong); }
+
+small { font-size: var(--text-2xs); }
+
+hr {
+  border: 0;
+  border-top: var(--border-width) solid var(--border-subtle);
+  margin: var(--space-6) 0;
+}
+
+::selection { background: var(--ep-pine-tint-2); color: var(--text-strong); }
+
+/* Eyebrow / overline label utility */
+.ep-eyebrow {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading-md);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+</style>
+<script src="assets/tools/mrf-assets/mrf-03.js"></script>
+<style>
+  :root{ --accent-ui: var(--ep-plum); --sheet:#ffffff; --rule:#e6e6e1; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; }
+  body{ background:var(--ep-neutral-200); color:var(--ep-neutral-700); font-family:var(--font-body); font-weight:300; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  h1,h2,h3,h4{ font-family:var(--font-heading); font-weight:500; color:var(--ep-ink); margin:0; line-height:1.14; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:inherit; }
+  em{ font-style:italic; }
+
+  .doc{ max-width:8.5in; margin:28px auto; background:var(--sheet); box-shadow:0 12px 54px rgba(46,46,46,.13); padding:0 clamp(22px,5vw,0.8in); }
+  .doc-frame{ width:100%; border-collapse:collapse; }
+  .doc-frame td{ padding:0; }
+  .pad-top,.pad-bottom{ display:none; }
+  .body-pad{ padding:42px 0 70px; }
+
+  .eyebrow{ font-family:var(--font-body); text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--accent-ui); }
+  .rule{ border:none; border-top:1px solid var(--rule); margin:16px 0 0; }
+  .num{ font-family:var(--font-heading); font-weight:500; font-size:30px; line-height:0.9; color:var(--accent-ui); flex:none; min-width:38px; }
+  .purpose{ color:var(--ep-neutral-500); font-size:15.5px; margin-top:12px; max-width:64ch; }
+
+  .q{ display:block; margin-top:18px; }
+  .q-label{ display:block; font-size:15.5px; font-weight:400; color:var(--ep-neutral-700); margin-bottom:8px; }
+  .ta{ display:block; width:100%; font-family:var(--font-body); font-weight:300; font-size:15.5px; line-height:1.6; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; min-height:62px; field-sizing:content; resize:vertical; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .ta:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .ta::placeholder{ color:var(--ep-neutral-400); }
+  .inp{ width:100%; font-family:var(--font-body); font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:9px 12px; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .inp:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .inp::placeholder{ color:var(--ep-neutral-400); }
+
+  .field-lbl{ display:block; font-family:var(--font-body); text-transform:uppercase; letter-spacing:0.1em; font-size:10.5px; font-weight:700; color:var(--ep-neutral-500); margin-bottom:5px; }
+
+  /* rating rows */
+  .rate-legend{ display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:600; color:var(--ep-neutral-500); margin:6px 2px 4px; }
+  .rate-row{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px 20px; align-items:center; padding:15px 0; border-bottom:1px solid var(--rule); }
+  .rate-row:first-of-type{ border-top:1px solid var(--rule); }
+  .rate-stmt{ font-size:15.5px; color:var(--ep-neutral-700); }
+  .rate-scale{ display:flex; gap:9px; flex:none; }
+  .dot{ position:relative; cursor:pointer; }
+  .dot input{ position:absolute; opacity:0; width:0; height:0; }
+  .dot span{ display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; border:1.5px solid var(--ep-neutral-300); background:var(--ep-neutral-50); font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--ep-neutral-500); transition:all .13s; }
+  .dot:hover span{ border-color:var(--accent-ui); color:var(--accent-ui); }
+  .dot input:checked + span{ background:var(--accent-ui); border-color:var(--accent-ui); color:#fff; }
+  .dot input:focus-visible + span{ box-shadow:0 0 0 3px rgba(75,122,110,.30); }
+
+  /* consent radio pills */
+  .cbx{ display:flex; align-items:center; gap:10px; padding:11px 14px; border:1px solid var(--ep-neutral-200); border-radius:10px; background:var(--ep-neutral-50); font-size:14.5px; color:var(--ep-neutral-700); cursor:pointer; transition:border-color .12s, background .12s; user-select:none; }
+  .cbx:hover{ border-color:var(--ep-pine); }
+  .cbx input{ accent-color:var(--ep-pine); width:17px; height:17px; flex:none; margin:0; }
+  .cbx:has(input:checked){ background:var(--ep-pine-tint); border-color:var(--ep-pine); color:var(--ep-pine-700); }
+
+  .note{ display:flex; align-items:flex-start; gap:13px; margin-top:18px; padding:14px 17px; background:var(--ep-neutral-100); border:1px solid var(--ep-neutral-200); border-radius:12px; font-size:14px; line-height:1.55; color:var(--ep-neutral-600); }
+  .note strong{ font-weight:600; color:var(--ep-ink); }
+  .note svg{ flex:none; margin-top:2px; color:var(--ep-neutral-500); }
+
+  .btn{ display:inline-flex; align-items:center; gap:7px; font-family:var(--font-body); font-weight:600; font-size:14px; padding:9px 16px; border-radius:9px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer; transition:background .15s, transform .05s, border-color .15s; }
+  .btn:hover{ background:var(--ep-plum-700); }
+  .btn:active{ transform:translateY(1px); }
+  .btn-ghost{ background:transparent; color:var(--ep-neutral-600); border-color:var(--ep-neutral-300); }
+  .btn-ghost:hover{ background:var(--ep-neutral-100); border-color:var(--ep-neutral-400); }
+  .btn-send{ background:var(--accent-ui); font-size:16px; padding:14px 28px; border-radius:11px; }
+  .btn-send:hover{ filter:brightness(.92); background:var(--accent-ui); }
+
+  .sw{ display:inline-flex; align-items:center; gap:9px; cursor:pointer; user-select:none; font-size:12.5px; font-weight:600; color:var(--ep-neutral-700); flex:none; }
+  .sw input{ position:absolute; opacity:0; width:0; height:0; }
+  .sw .track{ width:38px; height:22px; border-radius:99px; background:var(--ep-neutral-300); transition:background .18s; flex:none; position:relative; }
+  .sw .track::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(46,46,46,.28); transition:transform .18s; }
+  .sw input:checked + .track{ background:var(--ep-pine); }
+  .sw input:checked + .track::after{ transform:translateX(16px); }
+  .sw input:focus-visible + .track{ box-shadow:0 0 0 3px rgba(75,122,110,.30); }
+
+  .toolbar{ position:sticky; top:0; z-index:30; background:rgba(243,243,240,.88); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); border-bottom:1px solid var(--ep-neutral-300); }
+  .toolbar-inner{ max-width:8.5in; margin:0 auto; padding:10px clamp(22px,5vw,0.8in); display:flex; align-items:center; gap:18px; }
+
+  @media (max-width:640px){
+    html, body { overflow-x:hidden; width:100%; max-width:100%; }
+    .doc { margin:0 !important; max-width:100% !important; box-sizing:border-box; padding:0 16px !important; }
+    .doc-frame { width:100% !important; max-width:100% !important; table-layout:fixed; }
+    .doc-frame td { max-width:100% !important; overflow:hidden; }
+    .body-pad { padding:20px 0 40px !important; }
+    [style*="minmax(200px"] { grid-template-columns:1fr !important; }
+    [style*="minmax(200px"] > * { min-width:0; }
+    [style*="max-width:60ch"], [style*="max-width:64ch"], [style*="max-width:54ch"] { max-width:100% !important; }
+    .toolbar-inner { flex-wrap:wrap; gap:8px; }
+    .sw { flex-shrink:1; min-width:0; }
+    .sw span:last-child { font-size:12px; }
+    .btn.btn-ghost { padding:7px 10px; font-size:12px; white-space:nowrap; }
+    .rate-row { grid-template-columns:1fr; gap:11px; }
+    .rate-scale { justify-content:space-between; gap:4px; }
+    .dot span { width:42px; height:42px; font-size:14px; }
+  }
+
+  @page{ size:letter; margin:0; }
+  @media print{
+    html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    html,body{ margin:0; padding:0; background:#fff; }
+    body{ font-size:11pt; }
+    .doc{ max-width:none !important; margin:0 !important; box-shadow:none !important; padding:0 0.7in !important; }
+    .body-pad{ padding:0 !important; }
+    .pad-top,.pad-bottom{ display:table-cell; height:0.7in; }
+    .screen-only{ display:none !important; }
+    .ta,.inp{ background:#fff !important; }
+    .dot span{ background:#fff !important; }
+    .section > header{ break-inside:avoid; break-after:avoid; }
+    h1,h2,h3,h4{ break-after:avoid; }
+    .q-label{ break-after:avoid; }
+    .note,.cbx,.rate-row,.tile{ break-inside:avoid; }
+    [data-breaks="1"] .section{ break-before:page; }
+    .ta{ overflow:visible; }
+  }
+</style>
+</helmet>
+
+<div id="fb-root" data-breaks="0">
+
+  <div class="toolbar screen-only">
+    <div class="toolbar-inner">
+      <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:0;">
+        <img src="assets/tools/mrf-assets/mrf-01.png" alt="" width="22" style="flex:none; height:auto;">
+        <div style="flex:1; min-width:130px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:5px;">
+            <span style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-700);" data-progress-label="">Not started</span>
+            <span data-saved="" style="font-size:12px; font-weight:600; color:var(--ep-sage); opacity:0; transition:opacity .25s;">Saved</span>
+          </div>
+          <div style="height:6px; background:var(--ep-neutral-200); border-radius:99px; overflow:hidden;">
+            <div data-progress-bar="" style="height:100%; width:0%; background:var(--accent-ui); border-radius:99px; transition:width .3s;"></div>
+          </div>
+        </div>
+      </div>
+      <label class="sw" title="On: your answers are kept in this browser so you can finish later. Off: nothing is stored, and your answers clear when you leave.">
+        <input type="checkbox" data-action="remember">
+        <span class="track"></span>
+        <span data-remember-label="">Saving on this device</span>
+      </label>
+      <div style="display:flex; gap:8px; flex:none;">
+        <button class="btn btn-ghost" data-action="clear" type="button">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc">
+    <table class="doc-frame" role="presentation">
+      <thead><tr><td class="pad-top"></td></tr></thead>
+      <tbody><tr><td>
+        <div class="body-pad">
+
+          <section class="cover" data-screen-label="Header" style="padding: 6px 0 4px; text-align: center;">
+            <img src="assets/tools/mrf-assets/mrf-01.png" alt="Expedition Psychology" width="46" style="display: block; height: auto; margin: 0 auto;">
+            <div class="eyebrow" style="margin-top:20px;">Mountain Rescue Talk &nbsp;·&nbsp; Feedback Form</div>
+            
+            <h1 style="font-size: clamp(30px,5.4vw,46px); margin: 12px auto 0; max-width: 20ch;">Mountain Rescue Talk</h1><p style="font-size: clamp(16px,2.4vw,19px); color: var(--ep-neutral-600); max-width: 54ch; margin: 14px auto 0; font-weight: 300;">Supporting casualties with heightened emotions and building resilience to trauma — a short talk for rescue teams.</p>
+            <p style="font-size: 15.5px; color: var(--ep-neutral-600); max-width: 60ch; margin: 18px auto 0;">Thanks for coming along — this takes about 90 seconds. Honest feedback, good or bad, is what makes future sessions better.</p>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; text-align:left; max-width:60ch; margin:26px auto 0;">
+              <div style="grid-column:1 / -1;"><span class="field-lbl">Which mountain rescue team are you from?</span><input class="inp" name="meta_team" data-k="meta_team" placeholder="e.g. Keswick MRT"></div>
+              <div><span class="field-lbl">Your name </span><input class="inp" name="meta_name" data-k="meta_name" placeholder="Name"></div>
+              <div><span class="field-lbl">Email </span><input class="inp" name="meta_email" type="email" data-k="meta_email" placeholder="you@example.com"></div>
+            </div>
+
+            <hr class="rule" style="margin-top:26px;">
+          </section>
+
+          <section class="section" id="sec1" data-section="sec1" data-screen-label="01 Ratings" style="padding-top:30px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">01</span><div style="flex:1;"><div class="eyebrow">Quick ratings</div><h2 style="font-size:clamp(22px,3.4vw,29px); margin-top:3px;">How was the session?</h2></div></div>
+              <hr class="rule">
+              <p class="purpose">Tap a number for each — 1 is Strongly Disagree, 5 is Strongly Agree.</p>
+            </header>
+
+            <div class="rate-legend" style="margin-top:14px;"><span>Strongly Disagree</span><span>Strongly Agree</span></div>
+
+            <div class="rate-row">
+              <div class="rate-stmt">This was relevant and useful to my role in mountain rescue</div>
+              <div class="rate-scale">
+                <label class="dot"><input type="radio" name="rate_relevant" data-k="rate_relevant" value="1"><span>1</span></label>
+                <label class="dot"><input type="radio" name="rate_relevant" data-k="rate_relevant" value="2"><span>2</span></label>
+                <label class="dot"><input type="radio" name="rate_relevant" data-k="rate_relevant" value="3"><span>3</span></label>
+                <label class="dot"><input type="radio" name="rate_relevant" data-k="rate_relevant" value="4"><span>4</span></label>
+                <label class="dot"><input type="radio" name="rate_relevant" data-k="rate_relevant" value="5"><span>5</span></label>
+              </div>
+            </div>
+            <div class="rate-row">
+              <div class="rate-stmt">I feel more confident supporting a casualty with heightened emotions as a result</div>
+              <div class="rate-scale">
+                <label class="dot"><input type="radio" name="rate_confident" data-k="rate_confident" value="1"><span>1</span></label>
+                <label class="dot"><input type="radio" name="rate_confident" data-k="rate_confident" value="2"><span>2</span></label>
+                <label class="dot"><input type="radio" name="rate_confident" data-k="rate_confident" value="3"><span>3</span></label>
+                <label class="dot"><input type="radio" name="rate_confident" data-k="rate_confident" value="4"><span>4</span></label>
+                <label class="dot"><input type="radio" name="rate_confident" data-k="rate_confident" value="5"><span>5</span></label>
+              </div>
+            </div>
+            <div class="rate-row">
+              <div class="rate-stmt">The talk was well delivered and easy to follow</div>
+              <div class="rate-scale">
+                <label class="dot"><input type="radio" name="rate_delivery" data-k="rate_delivery" value="1"><span>1</span></label>
+                <label class="dot"><input type="radio" name="rate_delivery" data-k="rate_delivery" value="2"><span>2</span></label>
+                <label class="dot"><input type="radio" name="rate_delivery" data-k="rate_delivery" value="3"><span>3</span></label>
+                <label class="dot"><input type="radio" name="rate_delivery" data-k="rate_delivery" value="4"><span>4</span></label>
+                <label class="dot"><input type="radio" name="rate_delivery" data-k="rate_delivery" value="5"><span>5</span></label>
+              </div>
+            </div>
+            <div class="rate-row">
+              <div class="rate-stmt">I'd recommend this session to another team</div>
+              <div class="rate-scale">
+                <label class="dot"><input type="radio" name="rate_recommend" data-k="rate_recommend" value="1"><span>1</span></label>
+                <label class="dot"><input type="radio" name="rate_recommend" data-k="rate_recommend" value="2"><span>2</span></label>
+                <label class="dot"><input type="radio" name="rate_recommend" data-k="rate_recommend" value="3"><span>3</span></label>
+                <label class="dot"><input type="radio" name="rate_recommend" data-k="rate_recommend" value="4"><span>4</span></label>
+                <label class="dot"><input type="radio" name="rate_recommend" data-k="rate_recommend" value="5"><span>5</span></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="sec2" data-section="sec2" data-screen-label="02 In your own words" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">02</span><div style="flex:1;"><div class="eyebrow">In your own words</div><h2 style="font-size:clamp(22px,3.4vw,29px); margin-top:3px;">The bit that helps most</h2></div></div>
+              <hr class="rule">
+            </header>
+            <label class="q"><span class="q-label">How would you sum up this session to a teammate who missed it?</span><textarea class="ta" name="s2_summary" data-k="s2_summary" placeholder="Write here…" style="min-height:96px;"></textarea></label>
+
+            <div class="note">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+              <div>We'd love to share a few of these comments on the Expedition Psychology website and in materials for other teams — entirely optional, and only with your say-so.</div>
+            </div>
+
+            <div class="q">
+              <span class="q-label">May we use your comment?</span>
+              <div style="display:grid; gap:9px;">
+                <label class="cbx"><input type="radio" name="consent" data-k="consent" value="named"><span>Yes, you can quote my comment above on your website / materials</span></label>
+                
+                <label class="cbx"><input type="radio" name="consent" data-k="consent" value="no"><span>No, please don't use my comment publicly</span></label>
+              </div>
+            </div>
+
+            <label class="q"></label>
+          </section>
+
+          <section class="section" id="sec3" data-section="sec3" data-screen-label="03 Improve" style="padding-top:34px;">
+            <header>
+              <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">03</span><div style="flex:1;"><div class="eyebrow">One more thing</div><h2 style="font-size:clamp(22px,3.4vw,29px); margin-top:3px;">Anything we should improve?</h2></div></div>
+              <hr class="rule">
+              <p class="purpose">Optional — skip if nothing comes to mind.</p>
+            </header>
+            <label class="q"><textarea class="ta" name="s3_improve" data-k="s3_improve" placeholder="Write here…" style="min-height:96px;"></textarea></label>
+          </section>
+
+          <section data-screen-label="Finish" style="padding-top:38px;">
+            <hr class="rule">
+            <div style="display:grid; justify-items:center; text-align:center; gap:26px; padding-top:34px;">
+              <div data-submit-wrap="">
+                <button class="btn btn-send" data-action="send" type="button">
+                  Send Feedback
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+              </div>
+              <div data-submit-done="" style="display:none; align-items:center; gap:13px; justify-content:center; text-align:left; padding:18px 20px; background:var(--ep-pine-tint); border:1px solid var(--ep-pine); border-radius:12px; color:var(--ep-pine-700); font-size:15px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M20 6 9 17l-5-5"></path></svg>
+                <span>Thank you — your feedback has been sent!</span>
+              </div>
+              <p style="font-family:var(--font-heading); font-weight:500; color:var(--ep-plum); font-size:clamp(19px,3vw,23px);">Thank you — genuinely appreciated.</p>
+              <img src="assets/tools/mrf-assets/mrf-02.png" alt="Expedition Psychology" width="150" style="opacity:.7;">
+            </div>
+          </section>
+
+        </div>
+      </td></tr></tbody>
+      <tfoot><tr><td class="pad-bottom"></td></tr></tfoot>
+    </table>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;820px&quot;,&quot;height&quot;:&quot;1400px&quot;},&quot;sendTo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;hello@expeditionpsychology.co.uk&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Feedback&quot;},&quot;accentTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Slate Plum&quot;,&quot;Pine&quot;],&quot;default&quot;:&quot;Slate Plum&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;pageBreaks&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Print &amp; PDF&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.getElementById('fb-root');
+    if(!this.root) return;
+    this.KEY = 'ep-mountain-rescue-feedback-v1';
+    this.PREF = 'ep-mountain-rescue-feedback-remember';
+    let pref = '1';
+    try { const p = localStorage.getItem(this.PREF); if(p !== null) pref = p; } catch(e){}
+    this.remember = pref !== '0';
+    this.applyOptions();
+    if(this.remember) this.restore();
+    else { try { localStorage.removeItem(this.KEY); } catch(e){} }
+    this.wire();
+    this.updateProgress();
+    const tog = this.root.querySelector('[data-action="remember"]');
+    if(tog){ tog.checked = this.remember; tog.addEventListener('change', () => this.setRemember(tog.checked)); }
+    this.updateRememberLabel();
+    const c = this.root.querySelector('[data-action="clear"]');
+    if(c) c.addEventListener('click', () => this.clearAll());
+    const s = this.root.querySelector('[data-action="send"]');
+    if(s) s.addEventListener('click', () => this.sendFeedback());
+  }
+  sendFeedback(){
+    const g = k => { const el = this.root.querySelector('[data-k="'+k+'"]:checked, textarea[data-k="'+k+'"], input[data-k="'+k+'"]'); return el ? (el.value||'') : ''; };
+    const rate = k => { const el = this.root.querySelector('[data-k="'+k+'"]:checked'); return el ? el.value + ' / 5' : '—'; };
+    const consentMap = { named:'Yes — may be quoted with credit', anon:'Yes — anonymous only', no:'No — do not use publicly' };
+    const L = [];
+    L.push('MOUNTAIN RESCUE TALK — FEEDBACK');
+    L.push('Supporting Casualties With Heightened Emotions & Building Resilience to Trauma');
+    L.push('');
+    if(g('meta_team')) L.push('Team: ' + g('meta_team'));
+    if(g('meta_name')) L.push('Name: ' + g('meta_name'));
+    if(g('meta_email')) L.push('Email: ' + g('meta_email'));
+    if(g('meta_team') || g('meta_name') || g('meta_email')) L.push('');
+    L.push('QUICK RATINGS (Strongly Disagree 1 → Strongly Agree 5)');
+    L.push('• Relevant & useful to my role: ' + rate('rate_relevant'));
+    L.push('• More confident supporting a casualty: ' + rate('rate_confident'));
+    L.push('• Well delivered & easy to follow: ' + rate('rate_delivery'));
+    L.push('• Would recommend to another team: ' + rate('rate_recommend'));
+    L.push('');
+    L.push('IN YOUR OWN WORDS');
+    L.push('Summary for a teammate who missed it:');
+    L.push(g('s2_summary') || '—');
+    L.push('');
+    const cons = this.root.querySelector('[data-k="consent"]:checked');
+    L.push('Permission to use comment: ' + (cons ? (consentMap[cons.value]||cons.value) : '—'));
+    if(g('s2_credit')) L.push('Credit as: ' + g('s2_credit'));
+    L.push('');
+    L.push('ANYTHING WE SHOULD IMPROVE?');
+    L.push(g('s3_improve') || '—');
+    const wrap = this.root.querySelector('[data-submit-wrap]');
+    const done = this.root.querySelector('[data-submit-done]');
+    const fd = new FormData();
+    fd.append('form-name', 'mountain-rescue-feedback');
+    fd.append('meta_team', g('meta_team') || '');
+    fd.append('meta_name', g('meta_name') || '');
+    fd.append('meta_email', g('meta_email') || '');
+    fd.append('rate_relevant', (this.root.querySelector('[name="rate_relevant"]:checked') || {}).value || '');
+    fd.append('rate_confident', (this.root.querySelector('[name="rate_confident"]:checked') || {}).value || '');
+    fd.append('rate_delivery', (this.root.querySelector('[name="rate_delivery"]:checked') || {}).value || '');
+    fd.append('rate_recommend', (this.root.querySelector('[name="rate_recommend"]:checked') || {}).value || '');
+    fd.append('s2_summary', g('s2_summary') || '');
+    fd.append('consent', (this.root.querySelector('[name="consent"]:checked') || {}).value || '');
+    fd.append('s2_credit', g('s2_credit') || '');
+    fd.append('s3_improve', g('s3_improve') || '');
+    fetch('/', { method: 'POST', body: fd })
+      .then(() => {
+        if(wrap) wrap.style.display = 'none';
+        if(done) done.style.display = 'flex';
+      })
+      .catch(() => {
+        if(wrap) wrap.style.display = 'none';
+        if(done) done.style.display = 'flex';
+      });
+  }
+  setRemember(on){
+    this.remember = on;
+    try { localStorage.setItem(this.PREF, on ? '1' : '0'); } catch(e){}
+    if(on) this.save();
+    else { try { localStorage.removeItem(this.KEY); } catch(e){} }
+    this.updateRememberLabel();
+  }
+  updateRememberLabel(){
+    const lab = this.root.querySelector('[data-remember-label]');
+    if(lab) lab.textContent = this.remember ? 'Saving on this device' : 'Not saving';
+    const tog = this.root.querySelector('[data-action="remember"]');
+    if(tog) tog.checked = this.remember;
+  }
+  componentDidUpdate(){ this.applyOptions(); }
+  applyOptions(){
+    const r = this.root; if(!r) return;
+    const theme = this.props.accentTheme || 'Slate Plum';
+    r.style.setProperty('--accent-ui', theme === 'Pine' ? 'var(--ep-pine)' : 'var(--ep-plum)');
+    r.dataset.breaks = (this.props.pageBreaks === true) ? '1' : '0';
+  }
+  loadData(){ try { return JSON.parse(localStorage.getItem(this.KEY)) || {}; } catch(e){ return {}; } }
+  save(){
+    if(!this.remember) return;
+    const data = {};
+    this.root.querySelectorAll('[data-k]').forEach(el => {
+      if(el.type === 'radio'){ if(el.checked) data[el.dataset.k] = el.value; }
+      else if(el.type === 'checkbox'){ if(el.checked) data[el.dataset.k] = true; }
+      else if(el.value && el.value.length) data[el.dataset.k] = el.value;
+    });
+    try { localStorage.setItem(this.KEY, JSON.stringify(data)); } catch(e){}
+    this.flashSaved();
+  }
+  restore(){
+    const data = this.loadData();
+    this.root.querySelectorAll('[data-k]').forEach(el => {
+      const v = data[el.dataset.k];
+      if(v === undefined) return;
+      if(el.type === 'radio') el.checked = (el.value === v);
+      else if(el.type === 'checkbox') el.checked = !!v;
+      else el.value = v;
+    });
+  }
+  wire(){
+    let t;
+    const onInput = () => { clearTimeout(t); t = setTimeout(() => { this.save(); this.updateProgress(); }, 300); };
+    this.root.querySelectorAll('[data-k]').forEach(el => {
+      if(el.type === 'radio' || el.type === 'checkbox') el.addEventListener('change', () => { this.save(); this.updateProgress(); });
+      else el.addEventListener('input', onInput);
+    });
+  }
+  updateProgress(){
+    const secs = [...this.root.querySelectorAll('[data-section]')];
+    let started = 0;
+    secs.forEach(s => {
+      let has = false;
+      s.querySelectorAll('[data-k]').forEach(el => {
+        if(el.type === 'radio' || el.type === 'checkbox'){ if(el.checked) has = true; }
+        else if(el.value && el.value.trim()) has = true;
+      });
+      if(has) started++;
+    });
+    const total = secs.length;
+    const bar = this.root.querySelector('[data-progress-bar]');
+    if(bar) bar.style.width = (total ? Math.round(started / total * 100) : 0) + '%';
+    const lab = this.root.querySelector('[data-progress-label]');
+    if(lab) lab.textContent = started === 0 ? 'Not started' : (started >= total ? 'All done — thank you' : started + ' of ' + total + ' sections done');
+  }
+  flashSaved(){
+    const ind = this.root.querySelector('[data-saved]'); if(!ind) return;
+    ind.style.opacity = '1';
+    clearTimeout(this._s);
+    this._s = setTimeout(() => { ind.style.opacity = '0'; }, 1300);
+  }
+  clearAll(){
+    if(!window.confirm('Clear all your answers? This cannot be undone.')) return;
+    try { localStorage.removeItem(this.KEY); } catch(e){}
+    this.root.querySelectorAll('[data-k]').forEach(el => { if(el.type === 'radio' || el.type === 'checkbox') el.checked = false; else el.value = ''; });
+    this.updateProgress();
+  }
+}
+</script>
+
+
+</body></html>

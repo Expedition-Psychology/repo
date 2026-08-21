@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alpine Kit List — Expedition Psychology</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon-64.png">
+  <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
+  <script src="support.js"></script>
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/colors.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/typography.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/base.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+<script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<style>
+  :root{ --accent-ui: var(--ep-plum); --sheet:#ffffff; --rule:#e6e6e1; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; }
+  [hidden]{ display:none !important; }
+  body{ background:var(--ep-neutral-200); color:var(--ep-neutral-700); font-family:var(--font-body); font-weight:300; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  h1,h2,h3,h4{ font-family:var(--font-heading); font-weight:500; color:var(--ep-ink); margin:0; line-height:1.14; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:inherit; }
+  em{ font-style:italic; }
+
+  .doc{ max-width:8.5in; margin:28px auto; background:var(--sheet); box-shadow:0 12px 54px rgba(46,46,46,.13); padding:0 clamp(22px,5vw,0.8in); }
+  .doc-frame{ width:100%; border-collapse:collapse; }
+  .doc-frame td{ padding:0; }
+  .pad-top,.pad-bottom{ display:none; }
+  .body-pad{ padding:42px 0 70px; }
+
+  .eyebrow{ font-family:var(--font-body); text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--accent-ui); }
+  .num{ font-family:var(--font-heading); font-weight:500; font-size:30px; line-height:0.9; color:var(--accent-ui); flex:none; min-width:38px; }
+  .purpose{ color:var(--ep-neutral-500); font-size:15.5px; margin-top:12px; max-width:64ch; }
+  .rule{ border:none; border-top:1px solid var(--rule); margin:16px 0 0; }
+
+  .count{ flex:none; font-family:var(--font-heading); font-weight:500; font-size:13px; letter-spacing:0.02em; color:var(--ep-neutral-500); background:var(--ep-neutral-100); border:1px solid var(--ep-neutral-200); border-radius:99px; padding:4px 12px; white-space:nowrap; margin-top:4px; transition:color .2s, background .2s, border-color .2s; }
+  .count[data-full="1"]{ color:var(--ep-pine-700); background:var(--ep-pine-tint); border-color:var(--ep-pine-tint-2); }
+
+  .items{ margin-top:16px; }
+  .item{ display:flex; align-items:flex-start; gap:12px; padding:11px 14px; border:1px solid var(--rule); border-radius:11px; background:var(--ep-neutral-50); cursor:pointer; transition:border-color .12s, background .12s; }
+  .item + .item{ margin-top:8px; }
+  .item:hover{ border-color:var(--ep-pine); }
+  .item input{ accent-color:var(--ep-pine); width:19px; height:19px; flex:none; margin:1px 0 0; cursor:pointer; }
+  .item-body{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+  .item-name{ font-family:var(--font-body); font-weight:600; font-size:15px; color:var(--ep-ink); transition:color .15s; }
+  .item-note{ font-size:13.5px; color:var(--ep-neutral-500); line-height:1.5; }
+  .item:has(input:checked){ background:var(--ep-pine-tint); border-color:var(--ep-pine-tint-2); }
+  .item:has(input:checked) .item-name{ color:var(--ep-pine-700); text-decoration:line-through; text-decoration-color:var(--ep-pine); text-decoration-thickness:1.5px; }
+  .item:has(input:checked) .item-note{ color:var(--ep-pine-700); opacity:.72; }
+
+  .note{ display:flex; align-items:flex-start; gap:13px; margin-top:20px; padding:15px 18px; background:color-mix(in srgb, var(--ep-sand) 26%, #fff); border:1px solid color-mix(in srgb, var(--ep-sand) 55%, #fff); border-radius:12px; font-size:14.5px; line-height:1.58; color:var(--ep-neutral-700); }
+  .note strong{ font-weight:600; color:var(--ep-ink); }
+  .note svg{ flex:none; margin-top:2px; color:var(--ep-ember); }
+
+  .tile{ background:var(--ep-neutral-50); border:1px solid var(--rule); border-radius:14px; padding:17px 19px; }
+
+  .toc-link{ display:flex; align-items:center; gap:14px; padding:11px 4px; border-bottom:1px solid var(--rule); text-decoration:none; color:var(--ep-ink); transition:color .12s; }
+  .toc-link:hover{ color:var(--accent-ui); }
+  .toc-dot{ width:10px; height:10px; border-radius:50%; border:1.5px solid var(--ep-neutral-300); background:transparent; flex:none; transition:background .2s, border-color .2s; }
+  .toc-num{ font-family:var(--font-heading); font-weight:500; color:var(--accent-ui); font-size:14.5px; width:22px; flex:none; }
+  .toc-title{ font-size:15.5px; flex:1; }
+  .toc-count{ font-family:var(--font-body); font-size:13px; color:var(--ep-neutral-400); flex:none; }
+
+  .ta{ display:block; width:100%; font-family:var(--font-body); font-weight:300; font-size:15.5px; line-height:1.6; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; min-height:70px; field-sizing:content; resize:vertical; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; }
+  .ta:focus{ border-color:var(--ep-pine); box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff; }
+  .ta::placeholder{ color:var(--ep-neutral-400); }
+  .q{ display:block; margin-top:18px; }
+  .q-label{ display:block; font-size:15.5px; font-weight:400; color:var(--ep-neutral-700); margin-bottom:8px; }
+
+  .btn{ display:inline-flex; align-items:center; gap:7px; font-family:var(--font-body); font-weight:600; font-size:14px; padding:9px 16px; border-radius:9px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer; transition:background .15s, transform .05s, border-color .15s; }
+  .btn:hover{ background:var(--ep-plum-700); }
+  .btn:active{ transform:translateY(1px); }
+  .btn-ghost{ background:transparent; color:var(--ep-neutral-600); border-color:var(--ep-neutral-300); }
+  .btn-ghost:hover{ background:var(--ep-neutral-100); border-color:var(--ep-neutral-400); }
+
+  .sw{ display:inline-flex; align-items:center; gap:9px; cursor:pointer; user-select:none; font-size:12.5px; font-weight:600; color:var(--ep-neutral-700); flex:none; }
+  .sw input{ position:absolute; opacity:0; width:0; height:0; }
+  .sw .track{ width:38px; height:22px; border-radius:99px; background:var(--ep-neutral-300); transition:background .18s; flex:none; position:relative; }
+  .sw .track::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(46,46,46,.28); transition:transform .18s; }
+  .sw input:checked + .track{ background:var(--ep-pine); }
+  .sw input:checked + .track::after{ transform:translateX(16px); }
+  .sw input:focus-visible + .track{ box-shadow:0 0 0 3px rgba(75,122,110,.30); }
+
+  .toolbar{ position:sticky; top:0; z-index:30; background:rgba(243,243,240,.88); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); border-bottom:1px solid var(--ep-neutral-300); }
+  .toolbar-inner{ max-width:8.5in; margin:0 auto; padding:10px clamp(22px,5vw,0.8in); display:flex; align-items:center; gap:18px; }
+
+  .tabs{ display:flex; gap:8px; margin-top:30px; }
+  .tab{ flex:1; font-family:var(--font-heading); font-weight:500; font-size:15px; padding:11px 12px 10px; border-radius:12px; border:1px solid var(--ep-neutral-200); background:var(--ep-neutral-50); color:var(--ep-neutral-600); cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:2px; transition:background .15s, color .15s, border-color .15s; }
+  .tab:hover{ border-color:var(--ep-pine); }
+  .tab small{ font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; opacity:.72; }
+  .tab[aria-selected="true"]{ background:var(--accent-ui); color:var(--ep-paper); border-color:var(--accent-ui); }
+  .tab[aria-selected="true"] small{ opacity:.82; }
+
+  .meta{ display:inline-flex; flex-wrap:wrap; justify-content:center; gap:9px 16px; font-family:var(--font-body); font-weight:600; font-size:12.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ep-neutral-500); }
+  .meta span{ display:inline-flex; align-items:center; gap:16px; }
+  .meta span::before{ content:""; width:4px; height:4px; border-radius:50%; background:var(--ep-neutral-400); }
+  .meta span:first-child::before{ display:none; }
+
+  @media (max-width:640px){
+    .toolbar-inner{ flex-wrap:wrap; gap:11px; }
+    .tabs{ flex-wrap:wrap; }
+    .tab{ flex:1 1 40%; }
+  }
+
+  @page{ size:letter; margin:0; }
+  @media print{
+    html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    html,body{ margin:0; padding:0; background:#fff; }
+    body{ font-size:11pt; }
+    .doc{ max-width:none !important; margin:0 !important; box-shadow:none !important; padding:0 0.7in !important; }
+    .body-pad{ padding:0 !important; }
+    .pad-top,.pad-bottom{ display:table-cell; height:0.7in; }
+    .screen-only{ display:none !important; }
+    .ta{ background:#fff !important; }
+    .cover{ break-after:page; }
+    .contents{ break-before:page; break-after:page; }
+    [data-breaks="1"] [data-tab-panel="trip"] .section{ break-before:page; }
+    .section > header{ break-inside:avoid; break-after:avoid; }
+    h1,h2,h3,h4{ break-after:avoid; }
+    .item,.note,.tile{ break-inside:avoid; }
+  }
+  [data-guidance="0"] .note{ display:none !important; }
+</style>
+  <style>
+    @media (max-width:640px) {
+      html, body { overflow-x:hidden; width:100%; max-width:100vw; }
+      .toolbar-inner { max-width:100vw !important; box-sizing:border-box !important; padding:8px 12px !important; flex-wrap:wrap; gap:6px; }
+      /* Progress row takes full width */
+      .toolbar-inner > div:first-child { width:100%; flex:none; }
+      /* Toggle + buttons row */
+      .toolbar-inner > label,
+      .toolbar-inner > div:last-child { flex:none; }
+      .sw span:not(.track) { display:none; } /* hide "Saving on this device" text */
+      .btn { font-size:0 !important; padding:9px 11px !important; gap:0 !important; }
+      .btn svg { display:block; width:18px; height:18px; }
+      .btn-ghost { padding:9px 11px; font-size:0 !important; }
+      .btn-ghost svg { display:block; width:18px; height:18px; }
+      .doc { margin:0 !important; max-width:100vw !important; box-sizing:border-box; padding:0 16px !important; }
+      .doc-frame { table-layout:fixed !important; width:100% !important; }
+      .doc-frame td { overflow:hidden; }
+      .tabs { gap:6px; }
+      .tab { flex:1 1 calc(50% - 3px); min-width:0; font-size:13px; padding:10px 8px 9px; }
+    }
+  </style>
+</head>
+<body>
+<div style="background:var(--ep-ink);padding:12px 20px;display:flex;align-items:center;gap:10px;">
+  <a href="free-tools.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--ep-paper);opacity:0.75;font-family:var(--font-heading);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    Free Tools
+  </a>
+</div>
+<div id="kit-root" data-breaks="1" data-guidance="1">
+
+  <div class="toolbar screen-only">
+    <div class="toolbar-inner">
+      <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:0;">
+        <img src="assets/img/logo-symbol-purple.png" alt="" width="22" style="flex:none; height:auto;">
+        <div style="flex:1; min-width:130px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:5px;">
+            <span style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-700);" data-progress-label="">0 of 0 items packed</span>
+            <span data-saved="" style="font-size:12px; font-weight:600; color:var(--ep-sage); opacity:0; transition:opacity .25s;">Saved</span>
+          </div>
+          <div style="height:6px; background:var(--ep-neutral-200); border-radius:99px; overflow:hidden;">
+            <div data-progress-bar="" style="height:100%; width:0%; background:var(--accent-ui); border-radius:99px; transition:width .3s;"></div>
+          </div>
+        </div>
+      </div>
+      <label class="sw" title="On: your ticks are saved in this browser so you can return later. Off: nothing is stored, and your list resets when you leave.">
+        <input type="checkbox" data-action="remember">
+        <span class="track"></span>
+        <span data-remember-label="">Saving on this device</span>
+      </label>
+      <div style="display:flex; gap:8px; flex:none;">
+        <button class="btn btn-ghost" data-action="clear" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset</button>
+        <button class="btn" data-action="print" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="m7 10 5 5 5-5"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg>
+          Download as PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc">
+    <table class="doc-frame" role="presentation">
+      <thead><tr><td class="pad-top"></td></tr></thead>
+      <tbody><tr><td>
+        <div class="body-pad">
+
+          <section class="cover" data-screen-label="Cover" style="text-align:center; padding:34px 0 6px;">
+            <img src="assets/img/logo-symbol-purple.png" alt="Expedition Psychology" width="56" style="display:block; margin:0 auto; height:auto;">
+            <div class="eyebrow" style="margin-top:20px; color:var(--ep-pine-700);">Alpine Climbing Kit</div>
+            <h1 style="font-size:clamp(33px,6.2vw,52px); margin-top:12px; max-width:14ch; margin-left:auto; margin-right:auto;">Alpine Kit List</h1>
+            <p style="font-size:clamp(16px,2.4vw,19px); color:var(--ep-neutral-600); max-width:54ch; margin:18px auto 0; font-weight:300;">Alpine climbing, glacier travel, and mixed nights out — three lists for three trip lengths. Tick as you pack; each list saves in your browser.</p>
+            <hr class="rule" style="max-width:110px; margin:28px auto 22px; border-top-color:var(--ep-neutral-300);">
+            <div class="meta"><span>Day Climb</span><span>Two-Day Outing</span><span>Extended Trip</span></div>
+          </section>
+
+          <div class="tabs screen-only" role="tablist" aria-label="Kit list length">
+            <button class="tab" type="button" role="tab" data-tab="day" aria-selected="true">Day Climb<small>Single day</small></button>
+            <button class="tab" type="button" role="tab" data-tab="two" aria-selected="false">Two-Day<small>+ overnight</small></button>
+            <button class="tab" type="button" role="tab" data-tab="trip" aria-selected="false">Extended Trip<small>Multi-week</small></button>
+          </div>
+
+          <!-- ============ DAY CLIMB ============ -->
+          <div data-tab-panel="day">
+            <section data-screen-label="Day — Intro" style="padding-top:32px;">
+              <div class="eyebrow">Single-Day Climb</div>
+              <h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:11px; max-width:24ch;">Light and fast, back the same day</h2>
+              <p class="purpose" style="margin-top:14px;">Climb the route from a hut or valley base and return the same day. Assumes a granite line with a glacier or snow approach — drop the glacier kit if your approach is dry.</p>
+              <div class="note">
+                <svg width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="height:auto;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <div><strong>The discipline that matters more than any item:</strong> alpine start, hard turnaround time. Afternoon storms are the default in the high mountains — be off the route before they build.</div>
+              </div>
+            </section>
+
+            <section class="section" data-section="d_worn" data-screen-label="Day — Worn" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">01</span><div style="flex:1;"><div class="eyebrow">On the go</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Worn &amp; On the Go</h2></div><span class="count" data-count="d_worn">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">What you set off in for the walk-in.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="d_baselayer"><span class="item-body"><span class="item-name">Base layer top + sun hoody</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_softshell"><span class="item-body"><span class="item-name">Softshell trousers</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_approach"><span class="item-body"><span class="item-name">Approach shoes</span><span class="item-note">Or boots if the approach is glaciated.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_sunglasses"><span class="item-body"><span class="item-name">Sunglasses</span><span class="item-note">Glacier-rated.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_suncap"><span class="item-body"><span class="item-name">Sun cap + sunscreen + SPF lip balm</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" data-section="d_tech" data-screen-label="Day — Technical" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">02</span><div style="flex:1;"><div class="eyebrow">On the rope</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Technical</h2></div><span class="count" data-count="d_tech">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">The rack and hardware for a single granite line.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="d_harness"><span class="item-body"><span class="item-name">Harness</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_rockshoes"><span class="item-body"><span class="item-name">Rock shoes</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_helmet"><span class="item-body"><span class="item-name">Helmet</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_bootscrampons"><span class="item-body"><span class="item-name">Boots + crampons + ice axe</span><span class="item-note">Only if the approach or descent holds snow or glacier.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_rope"><span class="item-body"><span class="item-name">Rope</span><span class="item-note">One 60m (half or single per the route); a pair if the descent is by abseil.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_rack"><span class="item-body"><span class="item-name">Rack</span><span class="item-note">Cams, wires, quickdraws, alpine draws, 2–3 slings.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_device"><span class="item-body"><span class="item-name">Belay / abseil device + 3–4 lockers</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_nuttool"><span class="item-body"><span class="item-name">Nut tool</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_prusiks"><span class="item-body"><span class="item-name">Prusiks ×2</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_glacierbits"><span class="item-body"><span class="item-name">Glacier bits</span><span class="item-note">1 ice screw + a spare sling / krab for crevasse rescue, if crossing glacier.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_tat"><span class="item-body"><span class="item-name">Spare tat</span><span class="item-note">For an abseil retreat.</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" data-section="d_packed" data-screen-label="Day — Packed" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">03</span><div style="flex:1;"><div class="eyebrow">In the pack</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Packed</h2></div><span class="count" data-count="d_packed">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Warmth, safety, food, and navigation for the day.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="d_insul"><span class="item-body"><span class="item-name">Light insulated jacket</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_hardshell"><span class="item-body"><span class="item-name">Hardshell jacket</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_hatgloves"><span class="item-body"><span class="item-name">Warm hat + buff + gloves</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_torch"><span class="item-body"><span class="item-name">Head torch</span><span class="item-note">Dawn starts and benightment insurance.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_bothy"><span class="item-body"><span class="item-name">Bothy bag</span><span class="item-note">Small emergency group shelter.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_firstaid"><span class="item-body"><span class="item-name">First aid + blister kit</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_food"><span class="item-body"><span class="item-name">Food for the day + emergency bar</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_water"><span class="item-body"><span class="item-name">Water 1.5–2L</span><span class="item-note">Plus treatment if refilling from melt.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_topo"><span class="item-body"><span class="item-name">Route topo / guidebook page + phone with offline maps</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_knife"><span class="item-body"><span class="item-name">Knife / multitool + a little tape</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_plb"><span class="item-body"><span class="item-name">Satellite messenger / PLB</span><span class="item-note">Committing terrain, patchy signal.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_cash"><span class="item-body"><span class="item-name">Cash for hut refreshments</span></span></label>
+                <label class="item"><input type="checkbox" data-k="d_pack"><span class="item-body"><span class="item-name">30–35L pack</span></span></label>
+              </div>
+            </section>
+          </div>
+
+          <!-- ============ TWO-DAY OUTING ============ -->
+          <div data-tab-panel="two" hidden="">
+            <section data-screen-label="Two-Day — Intro" style="padding-top:32px;">
+              <div class="eyebrow">Two-Day Outing</div>
+              <h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:11px; max-width:26ch;">Your day kit, plus a night out</h2>
+              <p class="purpose" style="margin-top:14px;">Everything in the Day Climb list, plus the overnight system below — so you're not re-checking the rack twice. Swap up to a 40–50L pack to carry it.</p>
+              <div class="tile" style="margin-top:18px; display:flex; align-items:center; gap:13px;">
+                <img src="assets/img/logo-symbol-green.png" alt="" width="26" style="flex:none; height:auto;">
+                <p style="font-size:14.5px; color:var(--ep-neutral-700);">Start from the <strong style="font-weight:600;">Day Climb</strong> tab, then add these. Your day-kit hat, gloves, and insulated jacket double as camp warmth.</p>
+              </div>
+              <div class="note">
+                <svg width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="height:auto;"><path d="m12 2 3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"></path></svg>
+                <div><strong>Honest note on the overnight choice:</strong> a bivy bag is lighter and faster but grim if the weather turns; a tent is the safer call if there's any chance of being pinned down. Let the forecast, not the gram count, make that decision.</div>
+              </div>
+            </section>
+
+            <section class="section" data-section="t_sleep" data-screen-label="Two-Day — Sleep" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">01</span><div style="flex:1;"><div class="eyebrow">The night</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Sleep System</h2></div><span class="count" data-count="t_sleep">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Warm and dry through a cold alpine night.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="t_bivy"><span class="item-body"><span class="item-name">Bivy bag</span><span class="item-note">Or a lightweight tent if there are two of you sharing the weight.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_bag"><span class="item-body"><span class="item-name">Sleeping bag</span><span class="item-note">Light down — alpine nights are cold even in summer.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_mat"><span class="item-body"><span class="item-name">Sleeping mat</span><span class="item-note">Short / light inflatable; a scrap of foam backs up a puncture and insulates on snow.</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" data-section="t_cook" data-screen-label="Two-Day — Cook" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">02</span><div style="flex:1;"><div class="eyebrow">Fuel &amp; water</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Cook System</h2></div><span class="count" data-count="t_cook">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">A hot meal and a brew at camp.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="t_stove"><span class="item-body"><span class="item-name">Stove + gas canister</span><span class="item-note">Buy fuel locally — you can't fly with it.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_pot"><span class="item-body"><span class="item-name">Pot + lighter / matches</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_spork"><span class="item-body"><span class="item-name">Spork + insulated mug</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" data-section="t_clothing" data-screen-label="Two-Day — Clothing" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">03</span><div style="flex:1;"><div class="eyebrow">Camp warmth</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Extra Clothing for the Night</h2></div><span class="count" data-count="t_clothing">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">A little more on top of your day layers.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="t_midlayer"><span class="item-body"><span class="item-name">Spare warm midlayer</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_socks"><span class="item-body"><span class="item-name">Dry warm socks</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" data-section="t_consum" data-screen-label="Two-Day — Consumables" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">04</span><div style="flex:1;"><div class="eyebrow">Two days off-grid</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">More Consumables</h2></div><span class="count" data-count="t_consum">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Extra food, water, and power for a second day.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="t_meals"><span class="item-body"><span class="item-name">Evening meal + breakfast + a spare day's food</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_water"><span class="item-body"><span class="item-name">Extra water capacity + treatment</span><span class="item-note">Camp cooking and refills.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_powerbank"><span class="item-body"><span class="item-name">Power bank + cable</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_batteries"><span class="item-body"><span class="item-name">Head torch spare batteries</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" data-section="t_house" data-screen-label="Two-Day — Housekeeping" style="padding-top:30px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">05</span><div style="flex:1;"><div class="eyebrow">Leave no trace</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Housekeeping</h2></div><span class="count" data-count="t_house">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Keep the bivy clean and the descent covered.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="t_trowel"><span class="item-body"><span class="item-name">Trowel + bags</span><span class="item-note">Leave-no-trace on the bivy.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="t_tathouse"><span class="item-body"><span class="item-name">A little extra tat</span><span class="item-note">In case the descent needs more abseil anchors than a day route.</span></span></label>
+              </div>
+            </section>
+          </div>
+
+          <!-- ============ EXTENDED TRIP ============ -->
+          <div data-tab-panel="trip" hidden="">
+            <section class="about" data-screen-label="Strategy" style="padding-top:32px;">
+              <div class="eyebrow">Before you start ticking</div>
+              <h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:11px; max-width:22ch;">Decide your strategy first</h2>
+              <div style="margin-top:16px; display:grid; gap:13px; max-width:66ch; color:var(--ep-neutral-700);">
+                <p>The honest tension on a long trip is weight. A fully self-sufficient bivy, tent, and stove setup plus two weeks of kit is a heavy haul. Most people base out of a hut or the valley and carry a stripped kit for each objective, rather than moving everything every day.</p>
+                <p>Decide your approach before you pack — it changes what actually goes on your back on route versus what stays in a barrel or base bag.</p>
+              </div>
+
+              <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:24px;">
+                <div class="tile">
+                  <div class="eyebrow" style="color:var(--ep-pine-700);">On your back</div>
+                  <h4 style="font-size:17px; margin-top:8px;">The route kit</h4>
+                  <p style="font-size:14.5px; margin-top:6px; color:var(--ep-neutral-600);">The stripped, weighed selection you carry for a single objective — nothing spare.</p>
+                </div>
+                <div class="tile">
+                  <div class="eyebrow" style="color:var(--ep-pine-700);">In the barrel</div>
+                  <h4 style="font-size:17px; margin-top:8px;">The base bag</h4>
+                  <p style="font-size:14.5px; margin-top:6px; color:var(--ep-neutral-600);">Everything that stays at the hut or in the valley between climbs.</p>
+                </div>
+              </div>
+
+              <label class="q"><span class="q-label">Your plan for this trip — where you'll base, and how you'll split route kit from base kit.</span><textarea class="ta" data-k="plan_text" placeholder="e.g. Base at the valley huts, carry a stripped rack + bivy per objective, barrel of spares below…"></textarea></label>
+
+              <div class="note">
+                <svg width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="height:auto;"><path d="m12 2 3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"></path></svg>
+                <div><strong>Weigh every item against the route.</strong> On granite objectives the classics are overwhelmingly rock, so bias the rack over the ice kit. Your ticks save only in this browser, on this device — nothing is sent to us. Return any time to keep packing, or turn saving off with the switch above.</div>
+              </div>
+            </section>
+
+            <section class="contents" data-screen-label="Contents" style="padding-top:34px;">
+              <div class="eyebrow">Contents</div>
+              <h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:11px;">Nine kit categories</h2>
+              <p class="purpose" style="margin-bottom:10px;">Work through each list and tick as you pack. The dots fill in as a category is fully packed.</p>
+              <div>
+                <a class="toc-link" href="#sec1" data-toc="sec1"><span class="toc-dot" data-dot=""></span><span class="toc-num">01</span><span class="toc-title">Technical Climbing</span><span class="toc-count" data-toc-count="sec1"></span></a>
+                <a class="toc-link" href="#sec2" data-toc="sec2"><span class="toc-dot" data-dot=""></span><span class="toc-num">02</span><span class="toc-title">The Rack</span><span class="toc-count" data-toc-count="sec2"></span></a>
+                <a class="toc-link" href="#sec3" data-toc="sec3"><span class="toc-dot" data-dot=""></span><span class="toc-num">03</span><span class="toc-title">Glacier &amp; Crevasse Rescue</span><span class="toc-count" data-toc-count="sec3"></span></a>
+                <a class="toc-link" href="#sec4" data-toc="sec4"><span class="toc-dot" data-dot=""></span><span class="toc-num">04</span><span class="toc-title">Sleeping &amp; Shelter</span><span class="toc-count" data-toc-count="sec4"></span></a>
+                <a class="toc-link" href="#sec5" data-toc="sec5"><span class="toc-dot" data-dot=""></span><span class="toc-num">05</span><span class="toc-title">Cooking &amp; Hydration</span><span class="toc-count" data-toc-count="sec5"></span></a>
+                <a class="toc-link" href="#sec6" data-toc="sec6"><span class="toc-dot" data-dot=""></span><span class="toc-num">06</span><span class="toc-title">Clothing — Layer System</span><span class="toc-count" data-toc-count="sec6"></span></a>
+                <a class="toc-link" href="#sec7" data-toc="sec7"><span class="toc-dot" data-dot=""></span><span class="toc-num">07</span><span class="toc-title">Navigation, Safety &amp; Personal</span><span class="toc-count" data-toc-count="sec7"></span></a>
+                <a class="toc-link" href="#sec8" data-toc="sec8"><span class="toc-dot" data-dot=""></span><span class="toc-num">08</span><span class="toc-title">Documents &amp; Admin</span><span class="toc-count" data-toc-count="sec8"></span></a>
+                <a class="toc-link" href="#sec9" data-toc="sec9" style="border-bottom:none;"><span class="toc-dot" data-dot=""></span><span class="toc-num">09</span><span class="toc-title">Food</span><span class="toc-count" data-toc-count="sec9"></span></a>
+              </div>
+            </section>
+
+            <section class="section" id="sec1" data-section="sec1" data-screen-label="01 Technical Climbing" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">01</span><div style="flex:1;"><div class="eyebrow">On the rope</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Technical Climbing</h2></div><span class="count" data-count="sec1">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">The hardware that keeps you on the rock and moving safely over mixed ground.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="tc_harness"><span class="item-body"><span class="item-name">Harness</span><span class="item-note">Lightweight alpine, with adjustable leg loops for layering.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_rockshoes"><span class="item-body"><span class="item-name">Rock shoes</span><span class="item-note">Comfortable all-day fit, not your bouldering shoes — long granite pitches.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_approach"><span class="item-body"><span class="item-name">Approach shoes</span><span class="item-note">Sticky rubber for the walk-ins and easier ground.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_boots"><span class="item-body"><span class="item-name">Mountaineering boots</span><span class="item-note">Crampon-compatible — B2/C2 is the usual compromise; B3 for more on icy sections.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_crampons"><span class="item-body"><span class="item-name">Crampons</span><span class="item-note">Aluminium saves weight for dry glacier travel; steel if you expect hard ice or mixed.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_axe"><span class="item-body"><span class="item-name">Ice axe</span><span class="item-note">Single lightweight mountaineering axe. A second technical tool only if a specific objective needs it — the classics are overwhelmingly rock.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_helmet"><span class="item-body"><span class="item-name">Helmet</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_ropes"><span class="item-body"><span class="item-name">Ropes</span><span class="item-note">Half / double ropes (2×50m or 2×60m) are the norm for long granite lines with abseil descents; a single 60m only if your objectives allow.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_device"><span class="item-body"><span class="item-name">Belay / abseil device</span><span class="item-note">Guide-mode plate (Reverso / ATC Guide).</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_lockers"><span class="item-body"><span class="item-name">Locking carabiners ×3–4</span></span></label>
+                <label class="item"><input type="checkbox" data-k="tc_nuttool"><span class="item-body"><span class="item-name">Nut tool</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec2" data-section="sec2" data-screen-label="02 The Rack" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">02</span><div style="flex:1;"><div class="eyebrow">Granite protection</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">The Rack</h2></div><span class="count" data-count="sec2">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Granite eats cams and takes wires beautifully — build a rack for long trad lines.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="rk_cams"><span class="item-body"><span class="item-name">Cams</span><span class="item-note">Single set roughly BD 0.3–3 (or 0.4–4), doubles in the mid sizes for the classics.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="rk_nuts"><span class="item-body"><span class="item-name">Nuts / wires</span><span class="item-note">Full set, plus offsets.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="rk_draws"><span class="item-body"><span class="item-name">Quickdraws ×6–8</span></span></label>
+                <label class="item"><input type="checkbox" data-k="rk_alpine"><span class="item-body"><span class="item-name">Alpine draws / extendable slings ×6+</span></span></label>
+                <label class="item"><input type="checkbox" data-k="rk_slings"><span class="item-body"><span class="item-name">Slings</span><span class="item-note">120cm ×2, 240cm ×1, plus spare krabs.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="rk_cord"><span class="item-body"><span class="item-name">Cordelette / anchor material</span></span></label>
+                <label class="item"><input type="checkbox" data-k="rk_prusik"><span class="item-body"><span class="item-name">Prusik loops ×2</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec3" data-section="sec3" data-screen-label="03 Glacier &amp; Rescue" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">03</span><div style="flex:1;"><div class="eyebrow">On the ice</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Glacier &amp; Crevasse Rescue</h2></div><span class="count" data-count="sec3">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Light kit for dry glacier travel and getting yourself out of a crevasse.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="gt_screws"><span class="item-body"><span class="item-name">Ice screws ×1–2</span></span></label>
+                <label class="item"><input type="checkbox" data-k="gt_hauling"><span class="item-body"><span class="item-name">Prusiks / Tibloc / micro-traxion</span><span class="item-note">For hauling and self-rescue.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="gt_stake"><span class="item-body"><span class="item-name">Snow stake</span><span class="item-note">Optional — if soft snow anchors are likely.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="gt_tat"><span class="item-body"><span class="item-name">Spare tat / cord</span><span class="item-note">For abseil retreats and threading anchors.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="gt_abalakov"><span class="item-body"><span class="item-name">Abalakov hook</span><span class="item-note">Optional.</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec4" data-section="sec4" data-screen-label="04 Sleeping &amp; Shelter" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">04</span><div style="flex:1;"><div class="eyebrow">High camps</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Sleeping &amp; Shelter</h2></div><span class="count" data-count="sec4">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Warm, dry nights on moraine, glacier, and the odd refuge.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="sl_bivy"><span class="item-body"><span class="item-name">Bivy bag</span><span class="item-note">Breathable (Gore-Tex or equivalent).</span></span></label>
+                <label class="item"><input type="checkbox" data-k="sl_bag"><span class="item-body"><span class="item-name">Sleeping bag</span><span class="item-note">3-season down — high alpine nights bite even in summer (aim comfort around −2 to −5°C).</span></span></label>
+                <label class="item"><input type="checkbox" data-k="sl_mat"><span class="item-body"><span class="item-name">Sleeping mat</span><span class="item-note">Lightweight inflatable; a short closed-cell foam pad adds insulation on snow/rock and backs up a puncture.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="sl_tent"><span class="item-body"><span class="item-name">Tent</span><span class="item-note">Lightweight, genuinely wind-resistant 2-person for moraine / glacier camps.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="sl_footprint"><span class="item-body"><span class="item-name">Groundsheet / footprint</span><span class="item-note">If your tent needs one.</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec5" data-section="sec5" data-screen-label="05 Cooking &amp; Hydration" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">05</span><div style="flex:1;"><div class="eyebrow">Fuel &amp; water</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Cooking &amp; Hydration</h2></div><span class="count" data-count="sec5">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">A stove that works cold, and clean water from silty melt.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="ck_stove"><span class="item-body"><span class="item-name">Stove</span><span class="item-note">Gas canister type; consider a remote / inverted canister setup for cold high camps.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="ck_fuel"><span class="item-body"><span class="item-name">Fuel canisters</span><span class="item-note">Buy locally — you can't fly with them.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="ck_pot"><span class="item-body"><span class="item-name">Pot + lid, spork, insulated mug</span></span></label>
+                <label class="item"><input type="checkbox" data-k="ck_lighter"><span class="item-body"><span class="item-name">Lighter + backup matches / firesteel</span></span></label>
+                <label class="item"><input type="checkbox" data-k="ck_bottles"><span class="item-body"><span class="item-name">Water bottles / bladder</span><span class="item-note">1.5–2L capacity total.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="ck_treatment"><span class="item-body"><span class="item-name">Water treatment</span><span class="item-note">Filter or tablets — glacial melt is drinkable but silty.</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec6" data-section="sec6" data-screen-label="06 Clothing" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">06</span><div style="flex:1;"><div class="eyebrow">Layer system</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Clothing</h2></div><span class="count" data-count="sec6">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">One system, layered — from sun on the glacier to storms on the summit.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="cl_basetop"><span class="item-body"><span class="item-name">Base layer top ×2</span><span class="item-note">Synthetic or merino.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_basebottom"><span class="item-body"><span class="item-name">Base layer bottoms / leggings</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_sunhoody"><span class="item-body"><span class="item-name">Sun hoody or light long-sleeve</span><span class="item-note">Serious sun protection on the glacier.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_softshell"><span class="item-body"><span class="item-name">Softshell climbing trousers</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_midlayer"><span class="item-body"><span class="item-name">Midlayer</span><span class="item-note">Light fleece or active-insulation.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_belay"><span class="item-body"><span class="item-name">Insulated belay jacket</span><span class="item-note">Synthetic — shrugs off damp better than down for belaying.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_hardshelltop"><span class="item-body"><span class="item-name">Hardshell jacket</span><span class="item-note">Waterproof / breathable.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_hardshellbottom"><span class="item-body"><span class="item-name">Hardshell trousers</span><span class="item-note">Full / side-zip for putting on over boots.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_hats"><span class="item-body"><span class="item-name">Warm hat + sun cap + buff / neck gaiter</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_gloves"><span class="item-body"><span class="item-name">Gloves</span><span class="item-note">Liner pair + warm pair (+ light waterproof shells if wet conditions likely).</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_socks"><span class="item-body"><span class="item-name">Socks ×3–4 pairs</span><span class="item-note">Wool.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_underwear"><span class="item-body"><span class="item-name">Underwear</span></span></label>
+                <label class="item"><input type="checkbox" data-k="cl_gaiters"><span class="item-body"><span class="item-name">Gaiters</span><span class="item-note">Short, for snow / scree.</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec7" data-section="sec7" data-screen-label="07 Navigation &amp; Safety" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">07</span><div style="flex:1;"><div class="eyebrow">Getting home</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Navigation, Safety &amp; Personal</h2></div><span class="count" data-count="sec7">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Route-finding, communication, and the kit that gets you home.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="nv_sunglasses"><span class="item-body"><span class="item-name">Sunglasses</span><span class="item-note">Glacier-rated (cat 3–4), plus a spare pair.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_sunscreen"><span class="item-body"><span class="item-name">Sunscreen (high factor) + SPF lip balm</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_torch"><span class="item-body"><span class="item-name">Head torch + spare batteries</span><span class="item-note">Early starts are non-negotiable — afternoon storms are the norm.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_map"><span class="item-body"><span class="item-name">Map(s) + compass</span><span class="item-note">1:25k / 1:50k for the massif.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_guidebook"><span class="item-body"><span class="item-name">Guidebook + route topos</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_phone"><span class="item-body"><span class="item-name">Phone with offline maps</span><span class="item-note">Plus a GPS if you carry one.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_plb"><span class="item-body"><span class="item-name">Satellite messenger / PLB</span><span class="item-note">Garmin inReach or similar — committing terrain, patchy signal.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_firstaid"><span class="item-body"><span class="item-name">First aid kit + blister kit + personal medication</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_bothy"><span class="item-body"><span class="item-name">Emergency group shelter (bothy bag)</span><span class="item-note">For when you're not carrying the tent on route.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_whistle"><span class="item-body"><span class="item-name">Whistle</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_powerbank"><span class="item-body"><span class="item-name">Power bank + charging cables</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_repair"><span class="item-body"><span class="item-name">Repair kit</span><span class="item-note">Tape, spare cord, multitool / knife, needle &amp; thread.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="nv_drybags"><span class="item-body"><span class="item-name">Small dry bags / stuff sacks</span><span class="item-note">To organise the barrel.</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec8" data-section="sec8" data-screen-label="08 Documents &amp; Admin" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">08</span><div style="flex:1;"><div class="eyebrow">Before you fly</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Documents &amp; Admin</h2></div><span class="count" data-count="sec8">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Paperwork, rescue cover, and cash for the huts.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="dc_passport"><span class="item-body"><span class="item-name">Passport / ID</span></span></label>
+                <label class="item"><input type="checkbox" data-k="dc_alpineclub"><span class="item-body"><span class="item-name">Alpine club membership</span><span class="item-note">Hut discounts and often bundled rescue cover.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="dc_rega"><span class="item-body"><span class="item-name">Air rescue / patron membership</span><span class="item-note">Genuinely worth it for a committing trip. Check it covers the region you're in.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="dc_insurance"><span class="item-body"><span class="item-name">Travel + rescue insurance</span><span class="item-note">Must explicitly cover mountaineering / alpinism — read the altitude and activity exclusions carefully.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="dc_huts"><span class="item-body"><span class="item-name">Hut reservations</span><span class="item-note">Confirm — huts book up and expect notice.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="dc_cash"><span class="item-body"><span class="item-name">Cash</span><span class="item-note">Huts are cash-first; carry local currency (both sides if you cross a border).</span></span></label>
+                <label class="item"><input type="checkbox" data-k="dc_cards"><span class="item-body"><span class="item-name">Bank cards</span></span></label>
+              </div>
+            </section>
+
+            <section class="section" id="sec9" data-section="sec9" data-screen-label="09 Food" style="padding-top:34px;">
+              <header>
+                <div style="display:flex; align-items:flex-start; gap:14px;"><span class="num">09</span><div style="flex:1;"><div class="eyebrow">On the go</div><h2 style="font-size:clamp(23px,3.6vw,30px); margin-top:3px;">Food</h2></div><span class="count" data-count="sec9">0 / 0</span></div>
+                <hr class="rule">
+                <p class="purpose">Enough to move fast, plus a day in reserve.</p>
+              </header>
+              <div class="items">
+                <label class="item"><input type="checkbox" data-k="fd_dehydrated"><span class="item-body"><span class="item-name">Dehydrated meals</span><span class="item-note">For bivy / tent nights.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="fd_trail"><span class="item-body"><span class="item-name">Trail food, bars, electrolytes</span><span class="item-note">For long days.</span></span></label>
+                <label class="item"><input type="checkbox" data-k="fd_emergency"><span class="item-body"><span class="item-name">Emergency day's rations</span></span></label>
+                <label class="item"><input type="checkbox" data-k="fd_halfboard"><span class="item-body"><span class="item-name">Hut half-board budget</span><span class="item-note">Huts do half-board — budget for it rather than carrying every meal.</span></span></label>
+              </div>
+            </section>
+          </div>
+
+          <section data-screen-label="Closing" style="padding-top:46px; text-align:center;">
+            <img src="assets/img/logo-symbol-purple.png" alt="" width="44" style="display:block; margin:0 auto; height:auto;">
+            <p style="font-family:var(--font-heading); font-weight:500; color:var(--ep-plum); font-size:clamp(19px,3vw,23px); margin-top:18px; max-width:26ch; margin-left:auto; margin-right:auto; line-height:1.3;">Take what you need.</p>
+            <p style="color:var(--ep-neutral-500); font-size:15px; margin-top:14px; max-width:48ch; margin-left:auto; margin-right:auto;">Weigh every item against the route, tick as you pack, and leave the rest in the barrel.</p>
+            <img src="assets/img/logo-wordmark-black.png" alt="Expedition Psychology" width="180" style="display:block; margin:30px auto 0; height:auto;">
+          </section>
+
+        </div>
+      </td></tr></tbody>
+      <tfoot><tr><td class="pad-bottom"></td></tr></tfoot>
+    </table>
+  </main>
+</div>
+<script>
+(function(){
+  var root = document.getElementById('kit-root');
+  var STORE_KEY = 'ep_kit_bregaglia';
+  var rememberOn = false;
+
+  // --- localStorage helpers ---
+  function load() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e) { return {}; }
+  }
+  function save(state) {
+    if (!rememberOn) return;
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  // --- Tabs ---
+  var tabs = root.querySelectorAll('[data-tab]');
+  var panels = root.querySelectorAll('[data-tab-panel]');
+
+  function switchTab(name) {
+    tabs.forEach(function(t) {
+      t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false');
+    });
+    panels.forEach(function(p) {
+      if (p.dataset.tabPanel === name) { p.removeAttribute('hidden'); }
+      else { p.setAttribute('hidden', ''); }
+    });
+    updateProgress();
+  }
+
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { switchTab(t.dataset.tab); });
+  });
+
+  // --- Checkboxes ---
+  var boxes = root.querySelectorAll('input[data-k]');
+
+  function updateCounts() {
+    var sections = root.querySelectorAll('[data-section]');
+    sections.forEach(function(sec) {
+      var id = sec.dataset.section;
+      var badge = root.querySelector('[data-count="' + id + '"]');
+      if (!badge) return;
+      var all = sec.querySelectorAll('input[data-k]');
+      var checked = sec.querySelectorAll('input[data-k]:checked');
+      badge.textContent = checked.length + ' / ' + all.length;
+      badge.setAttribute('data-full', checked.length === all.length && all.length > 0 ? '1' : '0');
+    });
+  }
+
+  function updateProgress() {
+    // only count visible panel
+    var activeTab = null;
+    tabs.forEach(function(t) { if (t.getAttribute('aria-selected') === 'true') activeTab = t.dataset.tab; });
+    var panel = activeTab ? root.querySelector('[data-tab-panel="' + activeTab + '"]') : null;
+    var scope = panel || root;
+    var all = scope.querySelectorAll('input[data-k]');
+    var checked = scope.querySelectorAll('input[data-k]:checked');
+    var pct = all.length ? Math.round(checked.length / all.length * 100) : 0;
+    var bar = root.querySelector('[data-progress-bar]');
+    var label = root.querySelector('[data-progress-label]');
+    if (bar) bar.style.width = pct + '%';
+    if (label) label.textContent = checked.length + ' of ' + all.length + ' items packed';
+  }
+
+  function flashSaved() {
+    var el = root.querySelector('[data-saved]');
+    if (!el) return;
+    el.style.opacity = '1';
+    setTimeout(function() { el.style.opacity = '0'; }, 1400);
+  }
+
+  boxes.forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      var state = {};
+      boxes.forEach(function(b) { state[b.dataset.k] = b.checked; });
+      save(state);
+      if (rememberOn) flashSaved();
+      updateCounts();
+      updateProgress();
+    });
+  });
+
+  // --- Remember toggle ---
+  var rememberInput = root.querySelector('input[data-action="remember"]');
+  var rememberLabel = root.querySelector('[data-remember-label]');
+  if (rememberInput) {
+    rememberInput.addEventListener('change', function() {
+      rememberOn = rememberInput.checked;
+      if (rememberLabel) rememberLabel.textContent = rememberOn ? 'Saving on this device' : 'Not saving';
+      if (rememberOn) {
+        var state = {};
+        boxes.forEach(function(b) { state[b.dataset.k] = b.checked; });
+        save(state);
+        flashSaved();
+      } else {
+        try { localStorage.removeItem(STORE_KEY); } catch(e) {}
+      }
+    });
+  }
+
+  // --- Clear ---
+  var clearBtn = root.querySelector('[data-action="clear"]');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function() {
+      boxes.forEach(function(b) { b.checked = false; });
+      try { localStorage.removeItem(STORE_KEY); } catch(e) {}
+      updateCounts();
+      updateProgress();
+    });
+  }
+
+  // --- Print ---
+  var printBtn = root.querySelector('[data-action="print"]');
+  if (printBtn) {
+    printBtn.addEventListener('click', function() { window.print(); });
+  }
+
+  // --- Init: restore saved state ---
+  var saved = load();
+  var hasSaved = Object.keys(saved).length > 0;
+  if (hasSaved && rememberInput) {
+    rememberOn = true;
+    rememberInput.checked = true;
+    if (rememberLabel) rememberLabel.textContent = 'Saving on this device';
+    boxes.forEach(function(b) { if (saved[b.dataset.k]) b.checked = true; });
+  }
+  updateCounts();
+  updateProgress();
+  // show first tab by default
+  if (tabs.length) switchTab(tabs[0].dataset.tab);
+})();
+</script>
+</body>
+</html>
