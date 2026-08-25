@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+<title>Services for Individuals — Expedition Psychology</title>
+<link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+<script src="cookie-consent.js" defer></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+  <style>
+    html, body { margin: 0; scroll-behavior: smooth; }
+    body { background: var(--ep-paper); color: var(--text-body); font-family: var(--font-body); font-weight: var(--weight-body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--ep-pine); text-decoration: none; }
+    a:hover { color: var(--ep-plum); }
+    .ep-marquee { animation: ep-scroll 38s linear infinite; }
+    .ep-strip:hover .ep-marquee { animation-play-state: paused; }
+    @keyframes ep-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .ep-marquee { animation: none; } }
+    .ep-track { scrollbar-width: none; -ms-overflow-style: none; }
+    .ep-track::-webkit-scrollbar { display: none; }
+    @media (max-width: 900px) {
+      .ep-desk { display: none !important; }
+      .ep-mobbtn { display: inline-flex !important; }
+      .ep-two, .ep-grid3, .ep-grid4, .ep-grid2 { grid-template-columns: 1fr !important; }
+      .ep-h1 { font-size: 42px !important; }
+      .ep-h2 { font-size: 29px !important; }
+      .ep-trust { flex-direction: column !important; align-items: flex-start !important; }
+    }
+    @media (min-width: 901px) and (max-width: 1180px) {
+      .ep-grid3 { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: var(--ep-paper)">
+
+  <nav ref="{{ navRef }}" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 50; transition: background .4s ease, border-color .4s ease; border-bottom: 1px solid transparent">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px">
+        <img ref="{{ logoRef }}" src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height: 32px; width: 32px; object-fit: contain; transition: filter .4s ease">
+      </a>
+      <div class="ep-desk" style="display: flex; align-items: center; gap: 28px">
+        <div style="position: relative; display: inline-flex; align-items: center" onMouseEnter="{{ openServices }}" onMouseLeave="{{ closeDrop }}">
+          <a href="services-individuals.html" ref="{{ activeRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: #fff; padding-bottom: 4px; border-bottom: 1.5px solid var(--ep-pine)">Services
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: transform .2s ease; transform: {{ servicesChevron }}"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 240px; padding-top: 12px; z-index: 200; transition: opacity .18s ease; opacity: {{ servicesOpacity }}; pointer-events: {{ servicesEvents }}">
+            <div style="background: rgba(243,243,240,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(46,46,46,.10); border-radius: var(--radius-lg); box-shadow: 0 8px 32px rgba(0,0,0,.13); padding: 6px">
+              <a href="services-individuals.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--ep-pine); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap; background: var(--surface-sunken)">For Individuals</a>
+              <a href="services-teams.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">For Teams &amp; Organisations</a>
+              <a href="courses.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Courses</a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#about" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">About</a>
+        <div style="position: relative; display: inline-flex; align-items: center" onMouseEnter="{{ openWork }}" onMouseLeave="{{ closeDrop }}">
+          <a href="our-work.html" ref="{{ linkRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Our Work
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: transform .2s ease; transform: {{ workChevron }}"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; padding-top: 12px; z-index: 200; transition: opacity .18s ease; opacity: {{ workOpacity }}; pointer-events: {{ workEvents }}">
+            <div style="background: rgba(243,243,240,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(46,46,46,.10); border-radius: var(--radius-lg); box-shadow: 0 8px 32px rgba(0,0,0,.13); padding: 6px">
+              <a href="wem-case-study.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">World Extreme Medicine</a>
+              <a href="rnli-case-study.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">RNLI</a>
+              <a href="mountain-rescue-case-study.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Mountain Rescue</a>
+              <a href="tor-divide-case-study.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">The Tor Divide</a>
+              <div style="height: 1px; background: var(--border-subtle); margin: 4px 8px"></div>
+              <a href="performance-anxiety.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Performance Anxiety</a>
+              <a href="social-comparison.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Social Comparison</a>
+            </div>
+          </div>
+        </div>
+        <a href="free-tools.html" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Resources</a>
+        <a href="events.html" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Events</a>
+        <a href="index.html#contact" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Contact</a>
+      </div>
+      <button class="ep-mobbtn" onClick="{{ toggleMenu }}" ref="{{ mobBtnRef }}" style="display: none; align-items: center; justify-content: center; background: none; border: none; padding: 4px; color: #fff; cursor: pointer">
+        <i data-lucide="menu" style="width: 24px; height: 24px"></i>
+      </button>
+    </div>
+    <div style="display: {{ menuDisplay }}; padding: 0 24px 24px; background: var(--surface-page); border-top: 1px solid rgba(46,46,46,.05)">
+      <a href="services-individuals.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--ep-pine)">Services — Individuals</a>
+      <a href="services-teams.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Services — Teams</a>
+      <a href="index.html#about" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">About</a>
+      <a href="our-work.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Our Work</a>
+      <a href="free-tools.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Resources</a>
+      <a href="courses.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Courses</a>
+      <a href="events.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Events</a>
+      <a href="index.html#contact" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Contact</a>
+    </div>
+  </nav>
+
+  <section data-screen-label="Hero" style="position: relative; min-height: 72vh; display: flex; align-items: flex-end; overflow: hidden; background: var(--ep-ink)">
+    <div style="position: absolute; inset: 0">
+      <img src="assets/img/svc-stanage-68.jpg" alt="Runner on a gritstone trail at Stanage" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,15,22,.96) 0%, rgba(10,15,22,.76) 34%, rgba(10,15,22,.40) 70%, rgba(10,15,22,.52) 100%)"></div>
+    </div>
+    <div style="position: relative; z-index: 10; width: 100%; max-width: 1152px; margin: 0 auto; padding: 168px 24px 76px">
+      <p class="ep-eyebrow" style="margin: 0 0 18px; color: rgba(169,211,198,.9)">For Individuals</p>
+      <h1 class="ep-h1" style="font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-tight); font-size: 64px; line-height: 1.05; color: #fff; margin: 0 0 22px; max-width: 860px">Looking For Support One-To-One?</h1>
+      <p style="font-size: 21px; font-weight: 300; line-height: var(--leading-relaxed); color: rgba(243,243,240,.64); margin: 0 0 36px; max-width: 620px">We offer one-to-one sessions no matter what your challenge.</p>
+      <a href="index.html#contact" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-pill); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-sm); letter-spacing: var(--tracking-wide); text-transform: uppercase; padding: 16px 36px; background: var(--ep-pine); color: #fff; transition: transform .2s var(--ease-out), box-shadow .2s ease" style-hover="transform: translateY(-2px); box-shadow: var(--shadow-lg); color: #fff">
+        Book a Free Call
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" data-om-id="feb65a9a:66" style="width: 16px; height: 16px;" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </section>
+
+  <section id="services" data-screen-label="Areas of expertise" style="padding: 96px 0 104px; background: var(--surface-sunken); border-top: var(--border-width) solid var(--border-subtle)">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 0 24px; text-align: center">
+      <p class="ep-eyebrow" style="margin: 0 0 14px; font-size: 16px">WHERE WE CAN HELP</p>
+      
+      
+    </div>
+    <div ref="{{ trackRef }}" class="ep-track" onMouseEnter="{{ pause }}" onMouseLeave="{{ resume }}" style="display: flex; overflow-x: hidden; max-width: 1160px; margin: 0 auto; padding: 0 24px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+        <div style="flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 8px 40px; min-height: 300px">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px">
+            <div data-icon="{{ s.icon }}" style="display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <i data-lucide="{{ s.icon }}" style="width: 26px; height: 26px; color: {{ s.colour }}"></i>
+            </div>
+            <h3 class="ep-h2" style="font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-tight); font-size: 34px; line-height: 1.2; color: var(--text-strong); margin: 0">{{ s.title }}</h3>
+          </div>
+          <p style="font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0 auto 24px; max-width: 660px">{{ s.body }}</p>
+          <p style="font-size: var(--text-2xs); font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted); margin: 0">{{ s.who }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px">
+      <button onClick="{{ prev }}" aria-label="Previous" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: none; border: none; padding: 0; color: var(--text-muted); cursor: pointer; transition: color .18s ease" style-hover="color: var(--ep-pine)">
+        <i data-lucide="chevron-left" style="width: 18px; height: 18px"></i>
+      </button>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
+          <button onClick="{{ d.go }}" aria-label="Go to slide" style="width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: background .2s ease; background: {{ d.bg }}"></button>
+        </sc-for>
+      </div>
+      <button onClick="{{ next }}" aria-label="Next" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: none; border: none; padding: 0; color: var(--text-muted); cursor: pointer; transition: color .18s ease" style-hover="color: var(--ep-pine)">
+        <i data-lucide="chevron-right" style="width: 18px; height: 18px"></i>
+      </button>
+    </div>
+  </section>
+
+  <section data-screen-label="Why us" style="padding: 96px 24px; background: var(--ep-ink)">
+    <div style="max-width: 1160px; margin: 0 auto">
+      <div class="ep-two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 56px">
+        <div>
+          <p class="ep-eyebrow" style="margin: 0 0 16px; color: rgba(169,211,198,.85)">Why Expedition Psychology</p>
+          <h2 class="ep-h2" style="font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-tight); font-size: 36px; line-height: 1.15; color: #fff; margin: 0">Performance doesn't have to be at the Peak.&nbsp;</h2>
+        </div>
+        <p style="line-height: var(--leading-relaxed); color: rgba(243,243,240,.62); margin: 0; align-self: center">Performance shows up in every area of life — from managing everyday responsibilities to competing for an Olympic gold medal. While the context and stakes may differ, many of the psychological skills that help us perform, adapt and thrive remain fundamentally the same.</p>
+      </div>
+      <div class="ep-grid4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px">
+        <div style="padding: 30px; border-radius: var(--radius-xl); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08)">
+          <i data-lucide="stethoscope" style="width: 22px; height: 22px; color: var(--ep-pine); display: block; margin-bottom: 20px"></i>
+          <h3 style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: 18px; color: #fff; margin: 0 0 10px">Clinical depth, not just coaching</h3>
+          <p style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: rgba(243,243,240,.55); margin: 0">Led by a Chartered Clinical Psychologist, HCPC-registered and practising within the NHS — equipped for the serious end as well as the everyday, and clear about the difference.</p>
+        </div>
+        <div style="padding: 30px; border-radius: var(--radius-xl); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08)">
+          <i data-lucide="mountain" style="width: 22px; height: 22px; color: var(--ep-pine); display: block; margin-bottom: 20px"></i>
+          <h3 style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: 18px; color: #fff; margin: 0 0 10px">We have been where you are going</h3>
+          <p style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: rgba(243,243,240,.55); margin: 0">Lived experience of high-consequence environments — climbing, expeditions, diving. RCI-certified and PADI scuba instructor. We understand pressure because we have been under it.</p>
+        </div>
+        <div style="padding: 30px; border-radius: var(--radius-xl); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08)">
+          <i data-lucide="globe" style="width: 22px; height: 22px; color: var(--ep-pine); display: block; margin-bottom: 20px"></i>
+          <h3 style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: 18px; color: #fff; margin: 0 0 10px">Four languages</h3>
+          <p style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: rgba(243,243,240,.55); margin: 0">Delivery in English, French, Spanish and Italian — so you can do this work in the language you think in.</p>
+        </div>
+        <div style="padding: 30px; border-radius: var(--radius-xl); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08)">
+          <i data-lucide="repeat" style="width: 22px; height: 22px; color: var(--ep-pine); display: block; margin-bottom: 20px"></i>
+          <h3 style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: 18px; color: #fff; margin: 0 0 10px">Support between sessions</h3>
+          <p style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: rgba(243,243,240,.55); margin: 0">Every client gets bespoke interactive resources built around what they are working on — the work continues in your own time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Between sessions" style="padding: 100px 24px; background: var(--ep-paper)">
+    <div class="ep-two" style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: .95fr 1.05fr; gap: 72px; align-items: center">
+      <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md)">
+        <img src="assets/img/svc-peak-district.jpg" alt="Walkers on a Peak District moor" style="width: 100%; height: 520px; object-fit: cover; display: block">
+      </div>
+      <div>
+        <p class="ep-eyebrow" style="margin: 0 0 16px; color: var(--ep-pine)">Between Sessions</p>
+        <h2 class="ep-h2" style="font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-tight); font-size: 36px; line-height: 1.15; color: var(--text-strong); margin: 0 0 20px">The work doesn't stop when the session ends.</h2>
+        <p style="line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0 0 32px">Change happens between sessions, not just in them. For every client we build bespoke interactive digital resources — designed around exactly what you are working on. They are practical, evidence-based, and yours to keep.</p>
+        <div class="ep-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 32px">
+          <div style="padding: 20px 22px; border-radius: var(--radius-lg); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle)">
+            <i data-lucide="book-open" style="width: 18px; height: 18px; color: var(--ep-pine); display: block; margin-bottom: 12px"></i>
+            <p style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-sm); color: var(--text-strong); margin: 0 0 4px">Interactive workbooks</p>
+            <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0">Goals, values, and making sense of how you got here</p>
+          </div>
+          <div style="padding: 20px 22px; border-radius: var(--radius-lg); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle)">
+            <i data-lucide="clipboard-check" style="width: 18px; height: 18px; color: var(--ep-plum); display: block; margin-bottom: 12px"></i>
+            <p style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-sm); color: var(--text-strong); margin: 0 0 4px">Scored self-assessments</p>
+            <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0">With personalised feedback, not just a number</p>
+          </div>
+          <div style="padding: 20px 22px; border-radius: var(--radius-lg); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle)">
+            <i data-lucide="trending-up" style="width: 18px; height: 18px; color: var(--ep-ember); display: block; margin-bottom: 12px"></i>
+            <p style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-sm); color: var(--text-strong); margin: 0 0 4px">Exposure &amp; process tools</p>
+            <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0">Facing it step by step, and focusing on the process</p>
+          </div>
+          <div style="padding: 20px 22px; border-radius: var(--radius-lg); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle)">
+            <i data-lucide="map" style="width: 18px; height: 18px; color: var(--ep-sage); display: block; margin-bottom: 12px"></i>
+            <p style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-sm); color: var(--text-strong); margin: 0 0 4px">Expedition-prep tools</p>
+            <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0">Kit lists and route risk assessments with PDF export</p>
+          </div>
+        </div>
+        <a href="free-tools.html" style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-sm)">See free versions of these tools
+          <i data-lucide="arrow-right" style="width: 15px; height: 15px"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Credentials" style="padding: 64px 24px 40px; background: var(--surface-sunken); border-top: var(--border-width) solid var(--border-subtle)">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 30px">
+      <p style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0; max-width: 560px; text-align: center">Delivered by, or supervised by, a Chartered Clinical Psychologist. We work to professional ethical standards, are fully insured and DBS-cleared.</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap">
+        <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: var(--radius-pill); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted)"><i data-lucide="badge-check" style="width: 15px; height: 15px; color: var(--ep-pine)"></i>HCPC Registered</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: var(--radius-pill); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted)"><i data-lucide="award" style="width: 15px; height: 15px; color: var(--ep-pine)"></i>BPS Chartered</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: var(--radius-pill); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted)"><i data-lucide="cross" style="width: 15px; height: 15px; color: var(--ep-pine)"></i>NHS Practising</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: var(--radius-pill); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted)"><i data-lucide="shield" style="width: 15px; height: 15px; color: var(--ep-pine)"></i>Fully Insured</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: var(--radius-pill); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted)"><i data-lucide="user-check" style="width: 15px; height: 15px; color: var(--ep-pine)"></i>DBS Cleared</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section data-screen-label="Accredited By" style="padding: 34px 0 44px; background: var(--surface-sunken); border-bottom: var(--border-width) solid var(--border-subtle)">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; align-items: center; gap: 24px">
+      <p style="margin: 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted)">Accredited By</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 56px; flex-wrap: wrap">
+        <img src="assets/img/logos/hcpc.png" alt="HCPC registered" style="height: 50px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .72">
+        <img src="assets/img/logos/bps.png" alt="The British Psychological Society" style="height: 44px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .72">
+        <img src="assets/img/logos/mountain-training.png" alt="Mountain Training Association" style="height: 52px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .72">
+        <img src="assets/img/logos/padi.png" alt="PADI" style="height: 52px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .72">
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="padding: 104px 24px; background: var(--ep-paper)">
+    <div style="max-width: 760px; margin: 0 auto; text-align: center">
+      <h2 class="ep-h2" style="font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-tight); font-size: 38px; line-height: 1.15; color: var(--text-strong); margin: 0 0 18px">Start with a conversation.</h2>
+      <p style="line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0 0 36px">Twenty minutes, free, and no obligation. We will work out what you need and whether we are the right people for it. If cost is the barrier, say so — we hold a small number of reduced-fee places each month.</p>
+      <a href="index.html#contact" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-pill); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-sm); letter-spacing: var(--tracking-wide); text-transform: uppercase; padding: 17px 40px; background: var(--ep-plum); color: #fff; transition: transform .2s var(--ease-out), box-shadow .2s ease" style-hover="transform: translateY(-2px); box-shadow: var(--shadow-lg); color: #fff">
+        Book a Free Call
+        <i data-lucide="arrow-right" style="width: 16px; height: 16px"></i>
+      </a>
+      <p style="margin: 32px 0 0; font-size: var(--text-sm); color: var(--text-muted)">Supporting a team or an organisation instead? <a href="services-teams.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading)">See services for teams</a></p>
+    </div>
+  </section>
+
+  <footer style="padding: 48px 24px; background: var(--ep-ink); border-top: 1px solid rgba(255,255,255,.06)">
+    <div style="max-width: 1152px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <img src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height: 28px; opacity: .6">
+        <span style="color: rgba(243,243,240,.3); font-size: var(--text-xs); font-family: var(--font-heading)">Expedition Psychology</span>
+      </div>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap">
+        <a href="services-individuals.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Individuals</a>
+        <a href="services-teams.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Teams</a>
+        <a href="events.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Events</a>
+        <a href="courses.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Courses</a>
+        <a href="index.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Home</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4b7a6e&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#4b7a6e&quot;,&quot;#5b4a6a&quot;,&quot;#6a977e&quot;],&quot;section&quot;:&quot;Theme&quot;}}">
+const ALL = [
+  { kind: 'Performance', icon: 'target', title: 'Performance under pressure',
+    body: 'Competition nerves, choking, redpoint pressure, selection days, the moment it counts. We build attention, arousal control, pre-performance routines and process focus — so your training shows up when it matters.',
+    who: 'Club level to elite' },
+  { kind: 'Performance', icon: 'mountain', title: 'Fear & risk management',
+    body: 'Fear of falling, hesitation after a scare, the creeping caution shrinking what you will attempt. Graduated exposure and evidence-based techniques put you back in charge of the call.',
+    who: 'Climbers and adventure athletes' },
+  { kind: 'Performance', icon: 'calendar-check', title: 'Event & expedition preparation',
+    body: 'A focused mental preparation plan for a specific objective — a race, a season, a first ascent, an expedition — with the hard moments rehearsed and a plan for the days that do not go to plan.',
+    who: 'Anyone with a date on it' },
+  { kind: 'Performance', icon: 'compass', title: 'Motivation & direction',
+    body: 'When the drive has gone flat or you are at a crossroads in sport, work or life. We work out what actually matters to you, set goals that hold, and get you moving with intent again.',
+    who: 'Athletes between chapters' },
+  { kind: 'Clinical', icon: 'life-buoy', title: 'Trauma, accidents & recovery',
+    body: 'Accidents, near-misses and critical incidents leave a mark. Assessment-led, evidence-based treatment for trauma and PTSD, and support to find your feet again afterwards.',
+    who: 'Clinical psychology' },
+  { kind: 'Clinical', icon: 'cloud-rain', title: 'Anxiety, low mood & difficult periods',
+    body: 'Therapy for anxiety, low mood, stress and the times life feels like too much — grounded in approaches like CBT and ACT, and open to anyone whatever your line of work.',
+    who: 'Clinical psychology' }
+];
+
+class Component extends DCLogic {
+  state = { menuOpen: false, drop: null, slide: 0 };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const nav = this._nav, logo = this._logo;
+      if (!nav) return;
+      const on = window.scrollY > 80;
+      nav.style.background = on ? 'rgba(243,243,240,0.93)' : 'transparent';
+      nav.style.backdropFilter = on ? 'blur(20px)' : 'none';
+      nav.style.webkitBackdropFilter = on ? 'blur(20px)' : 'none';
+      nav.style.borderBottomColor = on ? 'var(--border-subtle)' : 'transparent';
+      if (logo) logo.style.filter = on ? 'brightness(0) opacity(.65)' : '';
+      (this._links || []).forEach(l => { if (l) l.style.color = on ? 'var(--text-muted)' : 'rgba(255,255,255,.7)'; });
+      if (this._active) this._active.style.color = on ? 'var(--ep-pine)' : '#fff';
+      if (this._mobBtn) this._mobBtn.style.color = on ? 'var(--ep-neutral-700)' : '#fff';
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    this.loadIcons();
+    this.timer = setInterval(() => { if (!this._paused) this.step(1); }, 7000);
+  }
+
+  componentDidUpdate() {
+    document.querySelectorAll('[data-icon]').forEach(w => {
+      const want = w.getAttribute('data-icon');
+      const svg = w.querySelector('svg');
+      if (svg && svg.getAttribute('class') !== 'lucide lucide-' + want) {
+        svg.remove();
+        const i = document.createElement('i');
+        i.setAttribute('data-lucide', want);
+        i.style.width = '26px'; i.style.height = '26px';
+        i.style.color = svg.style.color || 'currentColor';
+        w.appendChild(i);
+      }
+    });
+    this.icons();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    clearInterval(this.timer);
+    cancelAnimationFrame(this._raf);
+  }
+
+  loadIcons() {
+    if (window.lucide) { this.icons(); return; }
+    let s = document.getElementById('lucide-cdn');
+    if (!s) {
+      s = document.createElement('script');
+      s.id = 'lucide-cdn';
+      s.src = 'https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js';
+      document.head.appendChild(s);
+    }
+    s.addEventListener('load', () => this.icons());
+  }
+
+  icons() { if (window.lucide) window.lucide.createIcons(); }
+
+  step(dir) {
+    const n = ALL.length;
+    this.goTo((((this.state.slide + dir) % n) + n) % n);
+  }
+
+  goTo(i) {
+    this.setState({ slide: i });
+    const t = this._track;
+    if (!t || !t.children[i]) return;
+    this.tween(t, t.children[i].offsetLeft - t.children[0].offsetLeft);
+  }
+
+  tween(t, to) {
+    cancelAnimationFrame(this._raf);
+    const from = t.scrollLeft, dist = to - from, t0 = performance.now(), dur = 520;
+    const frame = now => {
+      const k = Math.min(1, (now - t0) / dur);
+      t.scrollLeft = from + dist * (1 - Math.pow(1 - k, 3));
+      if (k < 1) this._raf = requestAnimationFrame(frame);
+    };
+    this._raf = requestAnimationFrame(frame);
+  }
+
+  renderVals() {
+    this._links = this._links || [];
+    const pine = this.props.accentColor ?? '#4b7a6e';
+    const plum = '#5b4a6a';
+    const services = ALL.map(s => {
+      const c = s.kind === 'Clinical' ? plum : pine;
+      const rgb = s.kind === 'Clinical' ? '91,74,106' : '75,122,110';
+      return { ...s, colour: c, iconBg: 'rgba(' + rgb + ',.10)', tagBg: 'rgba(' + rgb + ',.10)', hoverBorder: 'rgba(' + rgb + ',.35)' };
+    });
+    const drop = this.state.drop;
+    const dots = ALL.map((_, i) => ({
+      bg: i === this.state.slide ? plum : 'rgba(46,46,46,.18)',
+      go: () => this.goTo(i)
+    }));
+    return {
+      services,
+      dots,
+      prev: () => this.step(-1),
+      next: () => this.step(1),
+      trackRef: el => { this._track = el; },
+      pause: () => { this._paused = true; },
+      resume: () => { this._paused = false; },
+      menuDisplay: this.state.menuOpen ? 'block' : 'none',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      openServices: () => this.setState({ drop: 'services' }),
+      openWork: () => this.setState({ drop: 'work' }),
+      closeDrop: () => this.setState({ drop: null }),
+      servicesOpacity: drop === 'services' ? 1 : 0,
+      servicesEvents: drop === 'services' ? 'auto' : 'none',
+      servicesChevron: drop === 'services' ? 'rotate(180deg)' : 'rotate(0deg)',
+      workOpacity: drop === 'work' ? 1 : 0,
+      workEvents: drop === 'work' ? 'auto' : 'none',
+      workChevron: drop === 'work' ? 'rotate(180deg)' : 'rotate(0deg)',
+      navRef: el => { this._nav = el; },
+      logoRef: el => { this._logo = el; },
+      activeRef: el => { this._active = el; },
+      mobBtnRef: el => { this._mobBtn = el; },
+      linkRef: el => { if (el && !this._links.includes(el)) this._links.push(el); }
+    };
+  }
+}
+</script>
+</body>
+</html>

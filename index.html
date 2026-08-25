@@ -419,7 +419,14 @@
       <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
     </a>
     <div class="hidden md:flex items-center gap-7">
-      <a href="#services"  class="nav-link text-white/70 hover:text-white">Services</a>
+      <div class="nav-drop-wrap">
+        <a href="services-individuals.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Services <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="services-individuals.html" class="nav-drop-item">For Individuals</a>
+          <a href="services-teams.html" class="nav-drop-item">For Teams &amp; Organisations</a>
+          <a href="courses.html" class="nav-drop-item">Courses</a>
+        </div></div>
+      </div>
       <a href="#about"     class="nav-link text-white/70 hover:text-white">About</a>
       <div class="nav-drop-wrap">
         <a href="our-work.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Our Work <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
@@ -434,16 +441,7 @@
         </div></div>
       </div>
       <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
-      <div class="nav-drop-wrap">
-        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-        <div class="nav-dropdown"><div class="nav-dropdown-inner">
-          <a href="courses.html" class="nav-drop-item">All Courses</a>
-          <div class="nav-drop-divider"></div>
-          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
-          <a href="courses.html#performance" class="nav-drop-item">Peak Performance</a>
-          <a href="courses.html#leadership" class="nav-drop-item">Leadership Under Pressure</a>
-        </div></div>
-      </div>
+      <a href="events.html" class="nav-link text-white/70 hover:text-white">Events</a>
       <a href="#contact"   class="nav-link text-white/70 hover:text-white">Contact</a>
     </div>
     <button id="mob-btn" class="md:hidden text-white p-1">
@@ -451,7 +449,8 @@
     </button>
   </div>
   <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-1 border-t border-ep-text/5" style="background:var(--surface-page)">
-    <a href="#services" class="block py-2 nav-link" style="color:var(--text-muted)">Services</a>
+    <a href="services-individuals.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — For Individuals</a>
+    <a href="services-teams.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — For Teams</a>
     <a href="#about" class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
     <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Our Work<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     <div class="mob-accordion-panel">
@@ -464,6 +463,7 @@
       <a href="social-comparison.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Social Comparison</a>
     </div>
     <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
+    <a href="events.html" class="block py-2 nav-link" style="color:var(--text-muted)">Events</a>
     <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Courses<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     <div class="mob-accordion-panel">
       <a href="courses.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">All Courses</a>
@@ -611,7 +611,7 @@
           <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:var(--ep-clay)"></span>Recovery after setbacks</li>
           <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:var(--ep-clay)"></span>Identity &amp; transition</li>
         </ul>
-        <a href="#contact" class="link-cta" style="color:var(--ep-clay)">Book a Free Consultation <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        <a href="services-individuals.html" class="link-cta" style="color:var(--ep-clay)">Explore Individual Support <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </div>
 
       <div class="service-card reveal reveal-delay-1">
@@ -636,7 +636,7 @@
           <span class="ep-tag ep-tag-pine">Expedition Teams</span>
           <span class="ep-tag ep-tag-pine">Events</span>
         </div>
-        <a href="#contact" class="link-cta" style="color:var(--ep-pine)">Discuss Your Team Needs <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        <a href="services-teams.html" class="link-cta" style="color:var(--ep-pine)">Explore Team Support <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </div>
 
       <div class="service-card reveal reveal-delay-2">
