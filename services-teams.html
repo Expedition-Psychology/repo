@@ -53,13 +53,13 @@
       </a>
       <div class="ep-desk" style="display: flex; align-items: center; gap: 28px">
         <div style="position: relative; display: inline-flex; align-items: center" onMouseEnter="{{ openServices }}" onMouseLeave="{{ closeDrop }}">
-          <a href="services-teams.html" ref="{{ activeRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: #fff; padding-bottom: 4px; border-bottom: 1.5px solid var(--ep-pine)">Services
+          <a href="services-teams.html" ref="{{ activeRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: #fff">Services
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: transform .2s ease; transform: {{ servicesChevron }}"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </a>
           <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 240px; padding-top: 12px; z-index: 200; transition: opacity .18s ease; opacity: {{ servicesOpacity }}; pointer-events: {{ servicesEvents }}">
             <div style="background: rgba(243,243,240,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(46,46,46,.10); border-radius: var(--radius-lg); box-shadow: 0 8px 32px rgba(0,0,0,.13); padding: 6px">
-              <a href="services-individuals.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">For Individuals</a>
-              <a href="services-teams.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--ep-pine); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap; background: var(--surface-sunken)">For Teams &amp; Organisations</a>
+              <a href="services-individuals.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">One-to-one</a>
+              <a href="services-teams.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--ep-pine); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap; background: var(--surface-sunken)">Teams</a>
               <a href="courses.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Courses</a>
             </div>
           </div>
@@ -90,7 +90,7 @@
       </button>
     </div>
     <div style="display: {{ menuDisplay }}; padding: 0 24px 24px; background: var(--surface-page); border-top: 1px solid rgba(46,46,46,.05)">
-      <a href="services-individuals.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Services — Individuals</a>
+      <a href="services-individuals.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Services — One-to-one</a>
       <a href="services-teams.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--ep-pine)">Services — Teams</a>
       <a href="index.html#about" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">About</a>
       <a href="our-work.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Our Work</a>
@@ -306,6 +306,11 @@
         <a href="index.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Home</a>
       </div>
     </div>
+    <div data-epx-legal style="max-width: 1152px; margin: 22px auto 0; display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: center">
+      <a href="privacy-policy.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Privacy Policy</a>
+      <a href="#" class="epx-cookie-prefs" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Cookie Preferences</a>
+      <a href="#" class="epx-do-not-sell" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Do Not Sell or Share My Personal Information</a>
+    </div>
   </footer>
 </div>
 </x-dc>
@@ -351,7 +356,7 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this.onScroll, { passive: true });
     this.onScroll();
     this.loadIcons();
-    this.timer = setInterval(() => { if (!this._paused) this.step(1); }, 7000);
+    this.timer = setInterval(() => { if (!this._paused) this.step(1); }, 5000);
   }
 
   componentDidUpdate() {

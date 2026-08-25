@@ -131,10 +131,7 @@
   };
 
   /* ---------- legal links bar (footer of every page) ---------- */
-  function ensureLegalBar() {
-    // If the page already has static legal links, don't duplicate them.
-    if (document.querySelector("[data-epx-legal]")) return;
-    if (document.getElementById("epx-legal-bar")) return;
+  function buildLegalBar() {
     var bar = document.createElement("div");
     bar.id = "epx-legal-bar";
     bar.setAttribute("data-epx-legal", "");
@@ -147,8 +144,41 @@
       '<a href="privacy-policy.html" style="color:#4b7a6e;text-decoration:none;">Privacy Policy</a>' +
       '<a href="#" onclick="epxOpenConsent();return false;" style="color:#4b7a6e;text-decoration:none;">Cookie Preferences</a>' +
       '<a href="#" onclick="epxDoNotSell();return false;" style="color:#4b7a6e;text-decoration:none;">Do Not Sell or Share My Personal Information</a>';
-    document.body.appendChild(bar);
+    return bar;
   }
+
+  function ensureLegalBar() {
+    // If the page already has static legal links (marketing footers, or the
+    // service/event pages' own footers), don't inject a bar.
+    if (document.querySelector("[data-epx-legal]")) return;
+
+    // Regular (non x-dc) pages: content is already in the DOM, append now.
+    if (!document.querySelector("x-dc") && !document.getElementById("dc-root")) {
+      document.body.appendChild(buildLegalBar());
+      return;
+    }
+    // x-dc pages render after this script. Wait: if the page renders its own
+    // legal links (data-epx-legal), skip; otherwise append a bar at the end.
+    var tries = 0;
+    var iv = setInterval(function () {
+      if (document.querySelector("[data-epx-legal]")) { clearInterval(iv); return; }
+      if (++tries > 15) { // ~3s
+        clearInterval(iv);
+        if (!document.getElementById("epx-legal-bar")) document.body.appendChild(buildLegalBar());
+      }
+    }, 200);
+  }
+
+  // Wire up the static footer legal controls (works even for content rendered
+  // later by x-dc) via event delegation.
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    while (t && t.nodeType === 1) {
+      if (t.classList && t.classList.contains("epx-cookie-prefs")) { e.preventDefault(); window.epxOpenConsent(); return; }
+      if (t.classList && t.classList.contains("epx-do-not-sell")) { e.preventDefault(); window.epxDoNotSell(); return; }
+      t = t.parentNode;
+    }
+  });
 
   /* ---------- init ---------- */
   function init() {
