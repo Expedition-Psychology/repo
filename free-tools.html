@@ -44,9 +44,23 @@
     .reveal-delay-4 { transition-delay: 0.48s; }
 .reveal-delay-2{transition-delay:.24s;}
 
-    /* Filter tags */
-    .r-tag{border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;padding:8px 18px;cursor:pointer;background:transparent;border:var(--border-width) solid var(--border-default);color:var(--text-muted);transition:background .2s ease,color .2s ease,border-color .2s ease;}
-    .r-tag:hover,.r-tag.active{background:var(--ep-pine);color:var(--ep-paper);border-color:var(--ep-pine);}
+    /* Guided picker */
+    .picker-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+    .picker-btn{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:22px 14px;border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);background:var(--surface-raised);cursor:pointer;text-decoration:none;transition:transform .2s var(--ease-out),box-shadow .2s ease,border-color .2s ease;}
+    .picker-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--ep-pine);text-decoration:none;}
+    .picker-btn .pk-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);}
+    .picker-btn span:last-child{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-strong);line-height:1.35;}
+    @media(max-width:900px){.picker-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.picker-grid{grid-template-columns:1fr;}}
+    /* Search */
+    .res-search{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:var(--radius-pill);border:var(--border-width) solid var(--border-default);background:var(--surface-raised);transition:border-color .2s ease;}
+    .res-search:focus-within{border-color:var(--ep-pine);}
+    .res-search i,.res-search svg{color:var(--text-muted);flex-shrink:0;}
+    .res-search input{border:none;outline:none;background:transparent;width:100%;font-family:var(--font-body);font-size:var(--text-base);color:var(--text-body);}
+    /* Topic sections */
+    .res-section{margin-top:72px;scroll-margin-top:110px;}
+    .res-section-head{display:flex;align-items:center;gap:16px;margin-bottom:26px;}
+    .res-section-icon{width:50px;height:50px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);}
 
     /* Resource cards */
     .resource-card{background:var(--surface-raised);border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);padding:var(--space-7);transition:transform .25s var(--ease-out),box-shadow .25s ease;}
@@ -153,237 +167,250 @@
 <!-- RESOURCES -->
 <section class="py-20 md:py-28 px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="flex flex-wrap gap-3 mb-12 reveal">
-      <button class="r-tag active" onclick="filterRes('all',this)">All</button>
-      <button class="r-tag" onclick="filterRes('wellbeing',this)">Wellbeing</button>
-      <button class="r-tag" onclick="filterRes('expedition',this)">Expedition Prep</button>
-      <button class="r-tag" onclick="filterRes('performance',this)">Performance</button>
+
+    <!-- Guided picker -->
+    <p class="ep-eyebrow reveal" style="color:var(--ep-pine);text-align:center;margin-bottom:16px">What are you looking for?</p>
+    <div class="picker-grid reveal">
+      <a href="#topic-wellbeing" class="picker-btn"><span class="pk-icon"><i data-lucide="heart" class="w-5 h-5"></i></span><span>Support my wellbeing</span></a>
+      <a href="#topic-fear" class="picker-btn"><span class="pk-icon"><i data-lucide="activity" class="w-5 h-5"></i></span><span>Work through fear or anxiety</span></a>
+      <a href="#topic-performance" class="picker-btn"><span class="pk-icon"><i data-lucide="target" class="w-5 h-5"></i></span><span>Perform at my best</span></a>
+      <a href="#topic-expedition" class="picker-btn"><span class="pk-icon"><i data-lucide="mountain" class="w-5 h-5"></i></span><span>Prepare for an expedition</span></a>
+      <a href="#topic-assessment" class="picker-btn"><span class="pk-icon"><i data-lucide="clipboard-list" class="w-5 h-5"></i></span><span>Take an assessment</span></a>
     </div>
 
-    <div id="res-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <a href="understanding-who-you-are.html" class="resource-card reveal" data-cat="wellbeing expedition" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Understanding Who You Are</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A free, printable self-discovery workbook — explore your influences, strengths, values, and the story that makes you who you are.</p>
-      </a>
-
-      <a href="suicide-support-prevention-guide.html" class="resource-card reveal reveal-delay-1" data-cat="wellbeing" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Guide</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Suicide Support and Prevention</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A compassionate guide for anyone experiencing thoughts of suicide, or supporting someone who is — with practical steps, safety planning, and UK crisis resources.</p>
-      </a>
-
-      <a href="making-sense-of-a-moment.html" class="resource-card reveal reveal-delay-2" data-cat="wellbeing performance" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Making Sense of a Moment</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A CBT situational formulation workbook — map a difficult moment using the ABCO model to see how your thoughts, feelings, and responses connect.</p>
-      </a>
-
-      <a href="understanding-how-you-got-here.html" class="resource-card reveal" data-cat="wellbeing" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Understanding How You Got Here</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A guided CBT workbook for understanding how earlier experiences shaped your beliefs, coping patterns, and the difficulties you live with today.</p>
-      </a>
-
-      <a href="my-safety-plan.html" class="resource-card reveal reveal-delay-1" data-cat="wellbeing" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Worksheet</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">My Safety Plan</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A personal safety plan worksheet — fill it in at a calmer moment so you have clear steps and contacts ready for when things feel most difficult.</p>
-      </a>
-
-      <a href="four-pillars-resilience-check-in.html" class="resource-card reveal reveal-delay-2" data-cat="wellbeing" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Four Pillars of Resilience</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A weekly check-in to notice how balanced and supported you feel across the four pillars — and take one small, doable step for whichever needs attention.</p>
-      </a>
-
-      <a href="performance-anxiety-test.html" class="resource-card reveal reveal-delay-1" data-cat="performance wellbeing" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="clipboard-list" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Assessment</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Performance Anxiety Measure</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A free 20-question measure of your level of performance anxiety — with a scored result and personalised guidance on what it means.</p>
-      </a>
-
-      <a href="cognitive-restructuring-worksheet.html" class="resource-card reveal reveal-delay-2" data-cat="performance wellbeing" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Worksheet</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Challenging Negative Thoughts</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A structured tool for examining and reframing the thoughts and beliefs that hold you back.</p>
-      </a>
-
-      <a href="behavioural-experiment-worksheet.html" class="resource-card reveal reveal-delay-2" data-cat="performance wellbeing" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Worksheet</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Testing Negative Beliefs</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A structured way to test the beliefs and predictions that drive how you act — and see what really happens.</p>
-      </a>
-
-      <a href="bregaglia-kit-list.html" class="resource-card reveal" data-cat="expedition" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="check-square" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Kit List</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Alpine Kit List</h3>
-        <p class="text-sm" style="color:var(--text-muted)">An interactive packing list for alpine climbing, glacier travel, and mixed nights out — three lists for three trip lengths, with progress tracking and PDF download.</p>
-      </a>
-
-      <a href="alpine-route-risk-assessment.html" class="resource-card reveal reveal-delay-1" data-cat="expedition" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Worksheet</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Alpine Route Risk Assessment</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A structured planning tool for rating objective hazards, checking your readiness, and making a deliberate go/no-go decision before a summer alpine route.</p>
-      </a>
-
-      <a href="becoming-yourself.html" class="resource-card reveal" data-cat="wellbeing performance" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Becoming Yourself</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A values-based workbook for clarifying who you want to be and what matters most — and using that clarity to guide how you act under pressure.</p>
-      </a>
-
-      <a href="facing-it-step-by-step.html" class="resource-card reveal reveal-delay-1" data-cat="wellbeing performance" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Facing It, Step by Step</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A structured exposure workbook for building tolerance to difficult situations — mapping your ladder, planning each step, and tracking what you learn.</p>
-      </a>
-
-      <a href="focus-on-the-process.html" class="resource-card reveal reveal-delay-2" data-cat="performance" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Focus on the Process</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A workbook for shifting attention from outcome to process — identifying the controllable actions that lead to performance, and anchoring to them in high-stakes moments.</p>
-      </a>
-
-      <a href="goal-workbook.html" class="resource-card reveal reveal-delay-1" data-cat="performance expedition" style="display:block;text-decoration:none">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong)">Setting Goals</h3>
-        <p class="text-sm" style="color:var(--text-muted)">A practical, evidence-based workbook for turning meaningful goals into a plan you can actually live — with weekly actions and progress tracking.</p>
-      </a>
-
-      <div class="resource-card reveal reveal-delay-2" data-cat="performance" style="position:relative;pointer-events:none;user-select:none">
-        <div class="flex items-center gap-3 mb-4" style="opacity:0.4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-clay) 10%,transparent)">
-            <i data-lucide="video" class="w-4 h-4" style="color:var(--ep-clay)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-clay)">Video</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong);opacity:0.4">Understanding Fear Response</h3>
-        <p class="text-sm" style="color:var(--text-muted);opacity:0.4">How fear works in the body and mind — and how to work with it rather than against it.</p>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-lg)">
-          <span style="background:var(--surface-raised);border:1px solid var(--border-default);border-radius:var(--radius-pill);padding:6px 16px;font-family:var(--font-heading);font-size:var(--text-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Coming Soon</span>
-        </div>
-      </div>
-
-      <div class="resource-card reveal reveal-delay-2" data-cat="wellbeing" style="position:relative;pointer-events:none;user-select:none">
-        <div class="flex items-center gap-3 mb-4" style="opacity:0.4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-            <i data-lucide="clipboard" class="w-4 h-4" style="color:var(--ep-pine)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Worksheet</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong);opacity:0.4">Resilience Self-Assessment</h3>
-        <p class="text-sm" style="color:var(--text-muted);opacity:0.4">Evaluate your current resilience across the key domains that matter in high-consequence work.</p>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-lg)">
-          <span style="background:var(--surface-raised);border:1px solid var(--border-default);border-radius:var(--radius-pill);padding:6px 16px;font-family:var(--font-heading);font-size:var(--text-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Coming Soon</span>
-        </div>
-      </div>
-
-      <div class="resource-card reveal" data-cat="performance" style="position:relative;pointer-events:none;user-select:none">
-        <div class="flex items-center gap-3 mb-4" style="opacity:0.4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-ember) 12%,transparent)">
-            <i data-lucide="mic" class="w-4 h-4" style="color:var(--ep-ember)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-ember)">Podcast</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong);opacity:0.4">Leading Under Uncertainty</h3>
-        <p class="text-sm" style="color:var(--text-muted);opacity:0.4">How to make clear, values-based decisions when the information is incomplete and stakes are high.</p>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-lg)">
-          <span style="background:var(--surface-raised);border:1px solid var(--border-default);border-radius:var(--radius-pill);padding:6px 16px;font-family:var(--font-heading);font-size:var(--text-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Coming Soon</span>
-        </div>
-      </div>
-
-      <div class="resource-card reveal reveal-delay-2" data-cat="expedition" style="position:relative;pointer-events:none;user-select:none">
-        <div class="flex items-center gap-3 mb-4" style="opacity:0.4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-            <i data-lucide="file-text" class="w-4 h-4" style="color:var(--ep-plum)"></i>
-          </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs)">PDF Guide</span>
-        </div>
-        <h3 class="text-lg mb-2" style="color:var(--text-strong);opacity:0.4">Fear of Falling: Quick Guide</h3>
-        <p class="text-sm" style="color:var(--text-muted);opacity:0.4">Practical, evidence-based strategies for managing climbing anxiety and fear of falling.</p>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-lg)">
-          <span style="background:var(--surface-raised);border:1px solid var(--border-default);border-radius:var(--radius-pill);padding:6px 16px;font-family:var(--font-heading);font-size:var(--text-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Coming Soon</span>
-        </div>
-      </div>
-
+    <!-- Search -->
+    <div class="reveal" style="max-width:520px;margin:28px auto 0">
+      <label class="res-search">
+        <i data-lucide="search" class="w-4 h-4"></i>
+        <input id="res-search-input" type="search" placeholder="Search resources by name or keyword…" autocomplete="off" aria-label="Search resources">
+      </label>
     </div>
+
+    <p id="res-noresults" style="display:none;text-align:center;color:var(--text-muted);margin-top:48px">
+      No resources match your search. <a href="#" onclick="epClearResSearch();return false;" style="color:var(--ep-pine)">Clear search</a>
+    </p>
+
+    <!-- Topic sections -->
+    <div class="res-section" id="topic-wellbeing" data-res-section>
+      <div class="res-section-head reveal">
+        <div class="res-section-icon"><i data-lucide="heart" class="w-6 h-6"></i></div>
+        <div>
+          <h2 class="text-2xl md:text-3xl" style="color:var(--text-strong)">Mental Health &amp; Wellbeing</h2>
+          <p class="text-sm mt-1" style="color:var(--text-muted)">Understand yourself, build resilience, and find support when things are hard.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="understanding-who-you-are.html" class="resource-card reveal" data-cat="wellbeing expedition" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Understanding Who You Are</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A free, printable self-discovery workbook — explore your influences, strengths, values, and the story that makes you who you are.</p>
+        </a>
+
+        <a href="understanding-how-you-got-here.html" class="resource-card reveal" data-cat="wellbeing" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Understanding How You Got Here</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A guided CBT workbook for understanding how earlier experiences shaped your beliefs, coping patterns, and the difficulties you live with today.</p>
+        </a>
+
+        <a href="making-sense-of-a-moment.html" class="resource-card reveal reveal-delay-2" data-cat="wellbeing performance" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Making Sense of a Moment</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A CBT situational formulation workbook — map a difficult moment using the ABCO model to see how your thoughts, feelings, and responses connect.</p>
+        </a>
+
+        <a href="four-pillars-resilience-check-in.html" class="resource-card reveal reveal-delay-2" data-cat="wellbeing" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Four Pillars of Resilience</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A weekly check-in to notice how balanced and supported you feel across the four pillars — and take one small, doable step for whichever needs attention.</p>
+        </a>
+
+        <a href="suicide-support-prevention-guide.html" class="resource-card reveal reveal-delay-1" data-cat="wellbeing" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Guide</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Suicide Support and Prevention</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A compassionate guide for anyone experiencing thoughts of suicide, or supporting someone who is — with practical steps, safety planning, and UK crisis resources.</p>
+        </a>
+
+        <a href="my-safety-plan.html" class="resource-card reveal reveal-delay-1" data-cat="wellbeing" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Worksheet</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">My Safety Plan</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A personal safety plan worksheet — fill it in at a calmer moment so you have clear steps and contacts ready for when things feel most difficult.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-section" id="topic-fear" data-res-section>
+      <div class="res-section-head reveal">
+        <div class="res-section-icon"><i data-lucide="activity" class="w-6 h-6"></i></div>
+        <div>
+          <h2 class="text-2xl md:text-3xl" style="color:var(--text-strong)">Managing Fear &amp; Anxiety</h2>
+          <p class="text-sm mt-1" style="color:var(--text-muted)">Work with fear, anxiety, and the thoughts that hold you back.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="facing-it-step-by-step.html" class="resource-card reveal reveal-delay-1" data-cat="wellbeing performance" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Facing It, Step by Step</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A structured exposure workbook for building tolerance to difficult situations — mapping your ladder, planning each step, and tracking what you learn.</p>
+        </a>
+
+        <a href="cognitive-restructuring-worksheet.html" class="resource-card reveal reveal-delay-2" data-cat="performance wellbeing" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Worksheet</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Challenging Negative Thoughts</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A structured tool for examining and reframing the thoughts and beliefs that hold you back.</p>
+        </a>
+
+        <a href="behavioural-experiment-worksheet.html" class="resource-card reveal reveal-delay-2" data-cat="performance wellbeing" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Worksheet</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Testing Negative Beliefs</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A structured way to test the beliefs and predictions that drive how you act — and see what really happens.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-section" id="topic-performance" data-res-section>
+      <div class="res-section-head reveal">
+        <div class="res-section-icon"><i data-lucide="target" class="w-6 h-6"></i></div>
+        <div>
+          <h2 class="text-2xl md:text-3xl" style="color:var(--text-strong)">Performance &amp; Purpose</h2>
+          <p class="text-sm mt-1" style="color:var(--text-muted)">Clarify what matters, focus on the process, and set goals you'll keep.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="becoming-yourself.html" class="resource-card reveal" data-cat="wellbeing performance" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Becoming Yourself</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A values-based workbook for clarifying who you want to be and what matters most — and using that clarity to guide how you act under pressure.</p>
+        </a>
+
+        <a href="focus-on-the-process.html" class="resource-card reveal reveal-delay-2" data-cat="performance" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Focus on the Process</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A workbook for shifting attention from outcome to process — identifying the controllable actions that lead to performance, and anchoring to them in high-stakes moments.</p>
+        </a>
+
+        <a href="goal-workbook.html" class="resource-card reveal reveal-delay-1" data-cat="performance expedition" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Workbook</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Setting Goals</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A practical, evidence-based workbook for turning meaningful goals into a plan you can actually live — with weekly actions and progress tracking.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-section" id="topic-expedition" data-res-section>
+      <div class="res-section-head reveal">
+        <div class="res-section-icon"><i data-lucide="mountain" class="w-6 h-6"></i></div>
+        <div>
+          <h2 class="text-2xl md:text-3xl" style="color:var(--text-strong)">Expedition &amp; Adventure</h2>
+          <p class="text-sm mt-1" style="color:var(--text-muted)">Plan and prepare for your time in the mountains.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="bregaglia-kit-list.html" class="resource-card reveal" data-cat="expedition" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+              <i data-lucide="check-square" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Kit List</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Alpine Kit List</h3>
+          <p class="text-sm" style="color:var(--text-muted)">An interactive packing list for alpine climbing, glacier travel, and mixed nights out — three lists for three trip lengths, with progress tracking and PDF download.</p>
+        </a>
+
+        <a href="alpine-route-risk-assessment.html" class="resource-card reveal reveal-delay-1" data-cat="expedition" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+              <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-plum)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Worksheet</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Alpine Route Risk Assessment</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A structured planning tool for rating objective hazards, checking your readiness, and making a deliberate go/no-go decision before a summer alpine route.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-section" id="topic-assessment" data-res-section>
+      <div class="res-section-head reveal">
+        <div class="res-section-icon"><i data-lucide="clipboard-list" class="w-6 h-6"></i></div>
+        <div>
+          <h2 class="text-2xl md:text-3xl" style="color:var(--text-strong)">Assessment Tools</h2>
+          <p class="text-sm mt-1" style="color:var(--text-muted)">Measure where you're at, with a scored result and personalised guidance.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="performance-anxiety-test.html" class="resource-card reveal reveal-delay-1" data-cat="performance wellbeing" style="display:block;text-decoration:none">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+              <i data-lucide="clipboard-list" class="w-4 h-4" style="color:var(--ep-plum)"></i>
+            </div>
+            <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-plum)">Assessment</span>
+          </div>
+          <h3 class="text-lg mb-2" style="color:var(--text-strong)">Performance Anxiety Measure</h3>
+          <p class="text-sm" style="color:var(--text-muted)">A free 20-question measure of your level of performance anxiety — with a scored result and personalised guidance on what it means.</p>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -429,17 +456,28 @@
     entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
-  function filterRes(cat,btn){
-    document.querySelectorAll('.r-tag').forEach(function(t){t.classList.remove('active');});
-    btn.classList.add('active');
-    document.querySelectorAll('[data-cat]').forEach(function(card){
-      var show=cat==='all'||card.dataset.cat.includes(cat);
-      card.style.transition='opacity 0.3s, transform 0.3s';
-      card.style.opacity=show?'1':'0.25';
-      card.style.transform=show?'':'scale(0.97)';
-      card.style.pointerEvents=show?'':'none';
+  function epRunResSearch(q){
+    q=(q||'').trim().toLowerCase();
+    var picker=document.querySelector('.picker-grid'); if(picker) picker.style.display=q?'none':'';
+    var eyebrow=document.querySelector('.ep-eyebrow'); // "What are you looking for?"
+    var any=false;
+    document.querySelectorAll('[data-res-section]').forEach(function(sec){
+      var vis=false;
+      sec.querySelectorAll('.resource-card').forEach(function(card){
+        var match=!q||card.textContent.toLowerCase().indexOf(q)>=0;
+        card.style.display=match?'':'none';
+        if(match) vis=true;
+      });
+      sec.style.display=vis?'':'none';
+      if(vis) any=true;
     });
+    var nr=document.getElementById('res-noresults'); if(nr) nr.style.display=any?'none':'block';
   }
+  function epClearResSearch(){var i=document.getElementById('res-search-input'); if(i){i.value='';} epRunResSearch('');}
+  (function(){
+    var i=document.getElementById('res-search-input');
+    if(i) i.addEventListener('input',function(){epRunResSearch(this.value);});
+  })();
   lucide.createIcons();
 </script>
 </body>
