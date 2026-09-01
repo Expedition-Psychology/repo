@@ -151,32 +151,19 @@
       
       
     </div>
-    <div ref="{{ trackRef }}" class="ep-track" onMouseEnter="{{ pause }}" onMouseLeave="{{ resume }}" style="display: flex; overflow-x: hidden; max-width: 1160px; margin: 0 auto; padding: 0 24px">
-      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
-        <div style="flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 8px 40px; min-height: 300px">
-          <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px">
-            <div data-icon="{{ s.icon }}" style="display: flex; align-items: center; justify-content: center; flex-shrink: 0">
-              <i data-lucide="{{ s.icon }}" style="width: 26px; height: 26px; color: {{ s.colour }}"></i>
+        <div style="max-width: 1160px; margin: 44px auto 0; padding: 0 24px">
+      <div class="ep-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <div style="padding: 30px 28px; border-radius: var(--radius-xl); background: var(--surface-raised); border: var(--border-width) solid var(--border-subtle); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease" style-hover="transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: {{ s.hoverBorder }}">
+            <div style="width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; background: {{ s.iconBg }}; margin-bottom: 18px">
+              <i data-lucide="{{ s.icon }}" style="width: 22px; height: 22px; color: {{ s.colour }}"></i>
             </div>
-            <h3 class="ep-h2" style="font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-tight); font-size: 34px; line-height: 1.2; color: var(--text-strong); margin: 0">{{ s.title }}</h3>
+            <h3 style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: 20px; line-height: 1.25; color: var(--text-strong); margin: 0 0 10px">{{ s.title }}</h3>
+            <p style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0 0 14px">{{ s.body }}</p>
+            <span style="font-size: var(--text-2xs); font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: {{ s.colour }}">{{ s.who }}</span>
           </div>
-          <p style="font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0 auto 24px; max-width: 660px">{{ s.body }}</p>
-          <p style="font-size: var(--text-2xs); font-family: var(--font-heading); font-weight: var(--weight-heading); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted); margin: 0">{{ s.who }}</p>
-        </div>
-      </sc-for>
-    </div>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px">
-      <button onClick="{{ prev }}" aria-label="Previous" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: none; border: none; padding: 0; color: var(--text-muted); cursor: pointer; transition: color .18s ease" style-hover="color: var(--ep-pine)">
-        <i data-lucide="chevron-left" style="width: 18px; height: 18px"></i>
-      </button>
-      <div style="display: flex; align-items: center; gap: 10px">
-        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
-          <button onClick="{{ d.go }}" aria-label="Go to slide" style="width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: background .2s ease; background: {{ d.bg }}"></button>
         </sc-for>
       </div>
-      <button onClick="{{ next }}" aria-label="Next" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: none; border: none; padding: 0; color: var(--text-muted); cursor: pointer; transition: color .18s ease" style-hover="color: var(--ep-pine)">
-        <i data-lucide="chevron-right" style="width: 18px; height: 18px"></i>
-      </button>
     </div>
   </section>
 
@@ -317,22 +304,22 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4b7a6e&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#4b7a6e&quot;,&quot;#5b4a6a&quot;,&quot;#6a977e&quot;],&quot;section&quot;:&quot;Theme&quot;}}">
 const ALL = [
   { kind: 'Performance', icon: 'users', title: 'High-performing teams',
-    body: 'Cohesion, shared standards, communication and the psychology of performing together under load — for elite squads, academies and workplace teams alike.',
+    body: 'Cohesion, communication and the psychology of performing together under load.',
     who: 'Sport, corporate and operational' },
   { kind: 'Performance', icon: 'compass', title: 'Leadership & decision-making',
-    body: 'Workshops and coaching for leaders on judgement, communication and clear decision-making in high-stakes, time-poor situations — because good decisions get harder exactly when they matter most.',
+    body: 'Judgement and clear decisions in high-stakes, time-poor moments.',
     who: 'Leaders and team staff' },
   { kind: 'Performance', icon: 'mountain', title: 'Expedition & mission preparation',
-    body: 'Team selection and cohesion, coping with isolation and confinement including polar and remote settings, and conflict resilience. Multilingual delivery for international teams.',
+    body: 'Selection, cohesion and coping with isolation — including remote and polar settings.',
     who: 'Remote and high-stakes operations' },
   { kind: 'Clinical', icon: 'life-buoy', title: 'Post-incident & critical-incident support',
-    body: 'Structured post-incident support and debriefs, psychological first aid, and planned follow-up — delivered by a Chartered Clinical Psychologist. Rapid deployment available.',
+    body: 'Structured debriefs and psychological first aid, with rapid deployment available.',
     who: 'When the day went wrong' },
   { kind: 'Clinical', icon: 'shield', title: 'Trauma resilience & psychological safety',
-    body: 'Training that builds resilience before the incident: how stress and trauma work, what protects people, how to spot a colleague in trouble, and how to build a culture where it is safe to say so.',
+    body: 'Build resilience before the incident — and a culture where it is safe to speak up.',
     who: 'Preventative training' },
   { kind: 'Clinical', icon: 'heart-handshake', title: 'Supporting casualties & bystanders',
-    body: 'Practical training in managing casualties, families and bystanders in acute distress: de-escalation, communication under pressure, and holding a scene together psychologically.',
+    body: 'Managing casualties, families and bystanders in acute distress.',
     who: 'Rescue, guiding and frontline roles' }
 ];
 
@@ -356,7 +343,7 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this.onScroll, { passive: true });
     this.onScroll();
     this.loadIcons();
-    this.timer = setInterval(() => { if (!this._paused) this.step(1); }, 5000);
+    this.timer = null;
   }
 
   componentDidUpdate() {
