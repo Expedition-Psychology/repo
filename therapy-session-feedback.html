@@ -320,7 +320,8 @@ font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
 
   .field-lbl{ display:block; font-family:var(--font-body); text-transform:uppercase; letter-spacing:0.1em; font-size:10.5px; font-weight:700; color:var(--ep-neutral-500); margin-bottom:5px; }
 
-  .rate-legend{ display:flex; justify-content:space-between; align-items:center; font-size:12.5px; font-weight:600; color:var(--ep-neutral-500); margin:6px 2px 4px; }
+  .rate-legend{ display:flex; justify-content:flex-end; align-items:center; margin:6px 2px 4px; }
+  .rate-legend .lg{ display:flex; justify-content:space-between; width:226px; font-size:12.5px; font-weight:600; color:var(--ep-neutral-500); }
   .rate-row{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px 20px; align-items:center; padding:15px 0; border-bottom:1px solid var(--rule); }
   .rate-row:first-of-type{ border-top:1px solid var(--rule); }
   .rate-stmt{ font-size:15.5px; color:var(--ep-neutral-700); }
@@ -363,6 +364,7 @@ font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
     .toolbar-inner{ flex-wrap:wrap; gap:11px; }
     .rate-row{ grid-template-columns:1fr; gap:11px; }
     .rate-scale{ justify-content:space-between; }
+    .rate-legend .lg{ width:100%; }
     .dot span{ width:44px; height:44px; }
   }
 </style>
@@ -422,7 +424,7 @@ font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
               <p class="purpose">Tap a number for each — 1 is Strongly Disagree, 5 is Strongly Agree.</p>
             </header>
 
-            <div class="rate-legend" style="margin-top:14px;"><span>Strongly Disagree</span><span>Strongly Agree</span></div>
+            <div class="rate-legend" style="margin-top:14px;"><div class="lg"><span>Strongly Disagree</span><span>Strongly Agree</span></div></div>
 
             <div class="rate-row">
               <div class="rate-stmt">I am noticeably better able to cope with what brought me to therapy</div>
