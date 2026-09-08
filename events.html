@@ -24,6 +24,8 @@
     body { background: var(--ep-paper); color: var(--text-body); font-family: var(--font-body); font-weight: var(--weight-body); -webkit-font-smoothing: antialiased; }
     a { color: var(--ep-pine); text-decoration: none; }
     a:hover { color: var(--ep-plum); }
+  .ep-cx:hover .ep-cx-menu { opacity: 1; pointer-events: auto; }
+  .ep-cx:hover .ep-cx-chev { transform: rotate(180deg); }
     @media (max-width: 900px) {
       .ep-desk { display: none !important; }
       .ep-mobbtn { display: inline-flex !important; }
@@ -44,20 +46,20 @@
       </a>
       <div class="ep-desk" style="display: flex; align-items: center; gap: 28px">
         <div style="position: relative; display: inline-flex; align-items: center" onMouseEnter="{{ openServices }}" onMouseLeave="{{ closeDrop }}">
-          <a href="services-individuals.html" ref="{{ linkRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Services
+          <a href="index.html#services" ref="{{ linkRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Services
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: transform .2s ease; transform: {{ servicesChevron }}"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </a>
           <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 240px; padding-top: 12px; z-index: 200; transition: opacity .18s ease; opacity: {{ servicesOpacity }}; pointer-events: {{ servicesEvents }}">
             <div style="background: rgba(243,243,240,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(46,46,46,.10); border-radius: var(--radius-lg); box-shadow: 0 8px 32px rgba(0,0,0,.13); padding: 6px">
               <a href="services-individuals.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">One-to-one</a>
               <a href="services-teams.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Teams</a>
-              <a href="courses.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Courses</a>
+              
             </div>
           </div>
         </div>
         <a href="index.html#about" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">About</a>
         <div style="position: relative; display: inline-flex; align-items: center" onMouseEnter="{{ openWork }}" onMouseLeave="{{ closeDrop }}">
-          <a href="our-work.html" ref="{{ linkRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Our Work
+          <a href="our-work.html" ref="{{ linkRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Recent Work
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: transform .2s ease; transform: {{ workChevron }}"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </a>
           <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; padding-top: 10px; z-index: 200; transition: opacity .18s ease; opacity: {{ workOpacity }}; pointer-events: {{ workEvents }}">
@@ -73,7 +75,17 @@
           </div>
         </div>
         <a href="free-tools.html" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Resources</a>
-        <a href="events.html" ref="{{ activeRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: #fff; position: relative; padding-bottom: 4px; border-bottom: 1.5px solid var(--ep-pine)">Events</a>
+        <div class="ep-cx" style="position: relative; display: inline-flex; align-items: center">
+          <a href="courses.html" ref="{{ linkRef }}" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Courses
+            <svg class="ep-cx-chev" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: transform .2s ease"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="ep-cx-menu" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; padding-top: 10px; z-index: 200; opacity: 0; pointer-events: none; transition: opacity .18s ease">
+            <div style="background: rgba(243,243,240,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(46,46,46,.10); border-radius: var(--radius-lg); box-shadow: 0 8px 32px rgba(0,0,0,.13); padding: 6px">
+              <a href="fear-of-falling.html" style="display: block; padding: 9px 14px; border-radius: var(--radius-md); color: var(--text-muted); font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; white-space: nowrap" style-hover="background: var(--surface-sunken); color: var(--ep-pine)">Fear of Falling Toolkit</a>
+            </div>
+          </div>
+        </div>
+        <a href="events.html" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Events</a>
         <a href="index.html#contact" ref="{{ linkRef }}" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(255,255,255,.7)" style-hover="color: #fff">Contact</a>
       </div>
       <button class="ep-mobbtn" onClick="{{ toggleMenu }}" ref="{{ mobBtnRef }}" style="display: none; align-items: center; justify-content: center; background: none; border: none; padding: 4px; color: #fff; cursor: pointer">
@@ -84,7 +96,7 @@
       <a href="services-individuals.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Services — One-to-one</a>
       <a href="services-teams.html" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">Services — Teams</a>
       <a href="index.html#about" style="display: block; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted)">About</a>
-      <button type="button" onClick="{{ toggleMobWork }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: none; border: none; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted); cursor: pointer; text-align: left">Our Work
+      <button type="button" onClick="{{ toggleMobWork }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: none; border: none; padding: 8px 0; font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted); cursor: pointer; text-align: left">Recent Work
         <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: transform .2s ease; transform: {{ mobWorkChevron }}"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </button>
       <div style="display: {{ mobWorkDisplay }}">
@@ -208,7 +220,7 @@
       <div style="display: flex; gap: 24px">
         <a href="events.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Events</a>
         <a href="courses.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">All Courses</a>
-        <a href="our-work.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Our Work</a>
+        <a href="our-work.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Recent Work</a>
         <a href="index.html" style="font-family: var(--font-heading); font-weight: var(--weight-heading); font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(243,243,240,.35)">Home</a>
       </div>
     </div>

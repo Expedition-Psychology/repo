@@ -157,12 +157,30 @@
       document.body.appendChild(buildLegalBar());
       return;
     }
-    // x-dc pages render after this script. Wait: if the page renders its own
-    // legal links (data-epx-legal), skip; otherwise append a bar at the end.
+    // x-dc pages render after this script, into a component root (e.g. #act-root)
+    // whose wrapper #dc-root can collapse to 0 height while its content overflows
+    // — so appending to <body> lands the bar mid-page. Wait for the content
+    // (.doc) to render, then append the bar into the content root (after .doc)
+    // so it flows to the very bottom, and pin it there while the page settles.
     var tries = 0;
     var iv = setInterval(function () {
       if (document.querySelector("[data-epx-legal]")) { clearInterval(iv); return; }
-      if (++tries > 15) { // ~3s
+      var doc = document.querySelector(".doc");
+      var host = (doc && doc.parentElement) ? doc.parentElement : null;
+      if (host) {
+        clearInterval(iv);
+        if (!document.getElementById("epx-legal-bar")) {
+          var bar = buildLegalBar();
+          host.appendChild(bar);
+          var c = 0;
+          var iv2 = setInterval(function () {
+            if (host.lastElementChild !== bar) host.appendChild(bar);
+            if (++c > 20) clearInterval(iv2);
+          }, 200);
+        }
+        return;
+      }
+      if (++tries > 25) { // ~5s fallback
         clearInterval(iv);
         if (!document.getElementById("epx-legal-bar")) document.body.appendChild(buildLegalBar());
       }
