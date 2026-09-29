@@ -75,20 +75,27 @@ them up.
 
 Automation → New automation.
 
-- **Trigger:** *Subscriber is added to a group* → **Fear of Falling Talk — Pending**
-- **Step 1 — Email:** the confirmation email. Paste the HTML from
-  `email-fof-talk-confirm.html`, or rebuild it in the drag-and-drop editor.
-  The button must link to:
-  `https://expedition-psychology.com/fof-talk-confirmed.html`
-  Subject suggestion: *Confirm your email to get the Fear of Falling talk*
-- **Step 2 — Delay:** 1 day (gives them time to click)
-- **Step 3 — Condition:** *Link is clicked* → the confirmation URL above
-- **Step 4 (clicked) — Action:** *Move to group* → **Fear of Falling Talk — Confirmed**
-- **Step 5 (clicked) — Email:** the talk. Paste `email-fof-talk-deliver.html`.
-  Subject suggestion: *Here's your Fear of Falling talk*
+Automation → **Create New Workflow**. Name it "Fear of Falling talk — double
+opt-in".
 
-Anyone who doesn't click stays in Pending and gets no marketing — which is the
-point.
+- **Trigger:** *Subscriber Added to a Group* → **Fear of Falling Talk — Pending**
+- **Step 1 — Email:** the confirmation email. Use the custom-HTML option and
+  paste `email-fof-talk-confirm.html`. The button must link to
+  `https://expedition-psychology.com/fof-talk-confirmed.html`.
+  Subject: *Confirm your email to get the Fear of Falling talk*
+- **Step 2 — Delay:** 1 day (gives them time to click)
+- **Step 3 — Condition:** *Workflow email activity* → pick the Step 1 email →
+  activity **clicked**. This creates Yes / No branches.
+  (Sender has no standalone "link is clicked" condition — it hangs off the
+  email's own activity.)
+- **Step 4 — Yes branch, Action:** *Move subscriber to group* →
+  **Fear of Falling Talk — Confirmed**
+- **Step 5 — Yes branch, Email:** the talk. Paste `email-fof-talk-deliver.html`.
+  Subject: *Here's your Fear of Falling talk*
+- **No branch:** leave empty.
+
+Then **Activate** (top right). Anyone who doesn't click stays in Pending and
+gets no marketing — which is the point.
 
 ### 5. Check the sending domain
 
