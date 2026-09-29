@@ -5,15 +5,20 @@ The funnel:
 ```
 Visitor  →  enters email (article page or Toolkit page)
          →  Netlify function adds them to Sender.net "Pending" group
-         →  Sender automation emails "Confirm your email"
-         →  they click  →  lands on /fof-talk-confirmed.html (talk plays)
-                        →  Sender moves them to "Confirmed" group
-                        →  Sender emails the talk (with Toolkit CTA)
+         →  Automation A emails "Confirm your email"
+         →  they click the confirm button
+              ├─ lands on /fof-talk-confirmed.html — talk plays immediately
+              └─ Automation B fires on that click:
+                   ├─ moves them to the "Confirmed" group
+                   └─ emails the talk (with Toolkit CTA), within a minute or two
          →  Toolkit
 ```
 
 Double opt-in: nobody joins the marketing list until they click the confirmation
 link. Only ever send campaigns to the **Confirmed** group.
+
+The talk reaches them twice over, both instantly: on screen when they confirm,
+and by email as a copy they can come back to.
 
 ## Files
 
@@ -71,31 +76,55 @@ Sender first (Subscribers → Fields), then set:
 Redeploy after adding these (Deploys → Trigger deploy) so the function picks
 them up.
 
-### 4. Sender.net — build the automation
+### 4. Sender.net — build two automations
 
-Automation → New automation.
+Two separate workflows, not one. The point is that the talk goes out the moment
+someone confirms — no delay, and nobody is missed however long they take to
+click.
 
-Automation → **Create New Workflow**. Name it "Fear of Falling talk — double
-opt-in".
+Do **not** build this as a single workflow with a delay and a condition. In that
+shape the delay runs before the condition is evaluated, so the talk email is
+held for the full delay even when the subscriber confirmed immediately — and
+anyone who confirms after the window is silently dropped down the No branch,
+leaving someone who consented and watched the talk off the list entirely.
+
+#### Automation A — "FoF talk: confirm"
+
+Automation → **Create New Workflow** → name it `FoF talk: confirm`.
 
 - **Trigger:** *Subscriber Added to a Group* → **Fear of Falling Talk — Pending**
-- **Step 1 — Email:** the confirmation email. Use the custom-HTML option and
-  paste `email-fof-talk-confirm.html`. The button must link to
-  `https://expedition-psychology.com/fof-talk-confirmed.html`.
-  Subject: *Confirm your email to get the Fear of Falling talk*
-- **Step 2 — Delay:** 1 day (gives them time to click)
-- **Step 3 — Condition:** *Workflow email activity* → pick the Step 1 email →
-  activity **clicked**. This creates Yes / No branches.
-  (Sender has no standalone "link is clicked" condition — it hangs off the
-  email's own activity.)
-- **Step 4 — Yes branch, Action:** *Move subscriber to group* →
-  **Fear of Falling Talk — Confirmed**
-- **Step 5 — Yes branch, Email:** the talk. Paste `email-fof-talk-deliver.html`.
-  Subject: *Here's your Fear of Falling talk*
-- **No branch:** leave empty.
+- **Step 1 — Email:**
+  - Email title (internal): `FoF talk — confirm`
+  - Sender name: Fin Haley · From: your expedition-psychology.com address
+  - Subject: *Confirm your email to get the Fear of Falling talk*
+  - Content: **custom HTML**, paste `email-fof-talk-confirm.html` unedited. The
+    button must stay pointed at
+    `https://expedition-psychology.com/fof-talk-confirmed.html`.
 
-Then **Activate** (top right). Anyone who doesn't click stays in Pending and
-gets no marketing — which is the point.
+Nothing else. No delay, no condition. **Activate.**
+
+#### Automation B — "FoF talk: deliver"
+
+Automation → **Create New Workflow** → name it `FoF talk: deliver`.
+
+- **Trigger:** *A Link Is Clicked* → the confirmation URL
+  `https://expedition-psychology.com/fof-talk-confirmed.html`
+- **Step 1 — Action:** *Move subscriber to group* →
+  **Fear of Falling Talk — Confirmed**
+- **Step 2 — Email:**
+  - Email title (internal): `FoF talk — delivery`
+  - Subject: *Here's your Fear of Falling talk*
+  - Content: **custom HTML**, paste `email-fof-talk-deliver.html`.
+
+**Activate.**
+
+The click fires Automation B directly, so the talk email lands within a minute
+or two of confirming. Anyone who never clicks simply stays in Pending and
+receives nothing further — which is what keeps the list clean.
+
+If the click trigger won't let you select that URL (Sender's docs don't confirm
+whether it can target links inside automation emails), see
+*Fallback: single workflow* at the end of this document.
 
 ### 5. Check the sending domain
 
@@ -113,8 +142,10 @@ spam and the whole funnel stalls at step one.
 3. Sender → Subscribers: the address is in **Pending**.
 4. The confirmation email arrives; click the button.
 5. You land on `/fof-talk-confirmed.html` and the talk plays.
-6. Within the automation's delay window, Sender moves you to **Confirmed** and
-   sends the talk email.
+6. Within a minute or two, Sender moves you to **Confirmed** and the talk email
+   arrives. If it doesn't, Automation B's trigger isn't matching the click —
+   check the URL on its trigger matches the button in the confirmation email
+   exactly.
 
 If step 3 doesn't happen, check the function log: Netlify → Logs → Functions →
 `fof-talk-signup`. Missing env vars log
@@ -132,3 +163,30 @@ If step 3 doesn't happen, check the function log: Netlify → Logs → Functions
   one). Keep marketing to the Confirmed group.
 - The older `fof-waitlist` Netlify form (52 submissions) is untouched and
   unrelated — this funnel does not write to Netlify Forms.
+
+---
+
+## Fallback: single workflow
+
+Only if Sender's *A Link Is Clicked* trigger can't target the confirmation URL.
+This delivers the talk email late, so prefer the two-automation setup above.
+
+One workflow, `FoF talk — double opt-in`:
+
+- **Trigger:** *Subscriber Added to a Group* → **Pending**
+- **Step 1 — Email:** the confirmation email (`email-fof-talk-confirm.html`)
+- **Step 2 — Delay:** 1 day
+- **Step 3 — Condition:** *Workflow email activity* → the Step 1 email →
+  activity **clicked**
+- **Yes → Action:** move to **Confirmed**
+- **Yes → Email:** the talk (`email-fof-talk-deliver.html`)
+- **No:** leave empty
+
+Keep the delay at 1 day. Shortening it to minutes looks more responsive but is
+worse: the condition is evaluated once, when the delay expires, so anyone
+confirming after that point drops down the No branch permanently — consented,
+watched the talk, never added to the list. A long delay only costs a slow email;
+a short one loses subscribers silently.
+
+The talk still plays instantly on `/fof-talk-confirmed.html` either way — the
+delay only affects the emailed copy.
