@@ -121,6 +121,7 @@ If step 3 doesn't happen, check the function log: Netlify → Logs → Functions
 - The form has a honeypot field (`website`). Bots that fill it get a fake
   success and are never sent to Sender.
 - GDPR: consent is the confirmation click, and every email carries an
-  unsubscribe link (`{$unsubscribe}`). Keep marketing to the Confirmed group.
+  unsubscribe link (`{$unsubscribe_link}` — Sender refuses to send without
+  one). Keep marketing to the Confirmed group.
 - The older `fof-waitlist` Netlify form (52 submissions) is untouched and
   unrelated — this funnel does not write to Netlify Forms.
