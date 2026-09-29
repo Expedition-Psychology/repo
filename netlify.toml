@@ -1,0 +1,8 @@
+# Static site — no build step. This file exists so Netlify picks up the
+# serverless function in netlify/functions (the Fear of Falling talk signup).
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

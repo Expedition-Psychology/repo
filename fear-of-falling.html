@@ -98,6 +98,22 @@
     @media (max-width:640px) {
       .fof-hero-img { object-position:65% 20% !important; }
     }
+
+    /* ── Free talk signup ── */
+    .talk-form{margin-bottom:var(--space-4);}
+    .talk-row{display:flex;flex-wrap:wrap;gap:var(--space-3);}
+    .talk-input{flex:1 1 240px;min-width:0;padding:15px var(--space-5);border-radius:var(--radius-pill);border:1px solid var(--border-default);background:#fff;color:var(--text-body);font-size:var(--text-base);font-family:var(--font-body);outline:none;transition:border-color .2s;}
+    .talk-input::placeholder{color:var(--text-muted);}
+    .talk-input:focus{border-color:var(--ep-pine);}
+    .talk-submit{background:var(--ep-pine);color:#fff;padding:15px var(--space-7);}
+    .talk-submit[disabled]{opacity:.6;cursor:default;transform:none;}
+    .talk-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
+    .talk-note{font-size:var(--text-sm);color:var(--text-muted);margin:0;}
+    .talk-note a{color:var(--ep-pine);text-decoration:underline;}
+    .talk-msg{font-size:var(--text-sm);margin:0;display:none;}
+    .talk-msg.show{display:block;}
+    .talk-msg.ok{color:var(--ep-pine);font-weight:600;}
+    .talk-msg.err{color:#b3261e;}
   </style>
 <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
 <script src="cookie-consent.js" defer></script>
@@ -127,6 +143,7 @@
           <a href="mountain-rescue-case-study.html" class="nav-drop-item">Mountain Rescue</a>
           <a href="tor-divide-case-study.html" class="nav-drop-item">The Tor Divide</a>
           <div class="nav-drop-divider"></div>
+          <a href="fear-of-falling-article.html" class="nav-drop-item">Fear of Falling</a>
           <a href="performance-anxiety.html" class="nav-drop-item">Performance Anxiety</a>
           <a href="social-comparison.html" class="nav-drop-item">Social Comparison</a>
         </div></div>
@@ -154,6 +171,7 @@
       <a href="rnli-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">RNLI</a>
       <a href="mountain-rescue-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Mountain Rescue</a>
       <a href="tor-divide-case-study.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">The Tor Divide</a>
+      <a href="fear-of-falling-article.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Fear of Falling</a>
       <a href="performance-anxiety.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Performance Anxiety</a>
       <a href="social-comparison.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Social Comparison</a>
     </div>
@@ -392,6 +410,29 @@
   </div>
 </section>
 
+<!-- ═══ FREE TALK (not-ready-yet capture) ═══ -->
+<section id="free-talk" class="py-20 md:py-24 px-6" style="background:var(--surface-sunken);border-top:var(--border-width) solid var(--border-subtle);scroll-margin-top:80px">
+  <div class="max-w-4xl mx-auto grid md:grid-cols-[1fr_1fr] gap-12 items-center">
+    <div class="reveal">
+      <p class="ep-eyebrow mb-4" style="color:var(--ep-pine)">Not Ready Yet?</p>
+      <h2 class="text-3xl mb-4" style="color:var(--text-strong)">Start with the free talk</h2>
+      <p class="leading-relaxed mb-4" style="color:var(--text-muted)">Dr Fin Haley's recorded talk on the fear of falling — what fear actually is, why avoiding falls keeps it alive, and four tools you can start using at the wall. It stands on its own: no purchase needed, and genuinely useful whether or not you go on to the Toolkit.</p>
+      <p class="text-sm" style="color:var(--text-muted)">Prefer to read first? <a href="fear-of-falling-article.html" style="color:var(--ep-pine);text-decoration:underline">Read the article</a>.</p>
+    </div>
+    <div class="reveal rd1">
+      <form class="talk-form" data-source="toolkit-page" novalidate>
+        <div class="talk-row">
+          <input type="email" name="email" class="talk-input" placeholder="you@example.com" autocomplete="email" required>
+          <button type="submit" class="cta-btn talk-submit">Send me the talk</button>
+        </div>
+        <input type="text" name="website" class="talk-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </form>
+      <p class="talk-msg" role="status" aria-live="polite"></p>
+      <p class="talk-note">We'll email you a link to confirm, then send the talk. Occasional emails about fear of falling — unsubscribe any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -408,6 +449,7 @@
 </footer>
 
 <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script src="fof-talk-signup.js" defer></script>
 <script>
   // Nav scroll behaviour
   var nav=document.getElementById('main-nav');
