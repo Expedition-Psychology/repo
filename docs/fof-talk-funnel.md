@@ -101,7 +101,15 @@ Automation → **Create New Workflow** → name it `FoF talk: confirm`.
     button must stay pointed at
     `https://expedition-psychology.com/fof-talk-confirmed.html`.
 
-Nothing else. No delay, no condition. **Activate.**
+Nothing else. **No delay, no condition, no branches** — the workflow is exactly
+two blocks, trigger then email. Everything that happens after the click belongs
+to Automation B.
+
+> If subscribers receive the confirmation email twice, this is why: extra steps
+> were left on Automation A. Open it and delete everything below *Send an
+> email*.
+
+**Activate.**
 
 #### Automation B — "FoF talk: deliver"
 
@@ -177,7 +185,9 @@ One workflow, `FoF talk — double opt-in`:
 - **Step 1 — Email:** the confirmation email (`email-fof-talk-confirm.html`)
 - **Step 2 — Delay:** 1 day
 - **Step 3 — Condition:** *Workflow email activity* → the Step 1 email →
-  activity **clicked**
+  activity **clicked**. Not *opened* — Apple Mail Privacy Protection pre-fetches
+  images and marks messages opened whether or not anyone read them, so an
+  open-based branch fires for most iPhone users regardless.
 - **Yes → Action:** move to **Confirmed**
 - **Yes → Email:** the talk (`email-fof-talk-deliver.html`)
 - **No:** leave empty
