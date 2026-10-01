@@ -50,7 +50,11 @@
     .back-link:hover{color:rgba(243,243,240,.8);text-decoration:none;}
 
     /* Article body */
-    .article-body{max-width:680px;}
+    /* Prose keeps a 680px measure; figures and diagrams may use the full
+       column so they are not squeezed into the text width. */
+    .article-body{max-width:none;}
+    .article-body > *{max-width:680px;}
+    .article-body > figure{max-width:none;}
     .article-body p{color:var(--text-body);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);font-size:var(--text-base);}
     .article-body h2{color:var(--text-strong);font-size:var(--text-3xl);margin-top:var(--space-12);margin-bottom:var(--space-4);scroll-margin-top:110px;}
     .article-body h3{color:var(--text-strong);font-size:var(--text-xl);margin-top:var(--space-8);margin-bottom:var(--space-3);}
@@ -61,10 +65,6 @@
     /* Section number */
     .section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);font-family:var(--font-heading);font-size:var(--text-xs);font-weight:600;letter-spacing:.06em;flex-shrink:0;margin-right:var(--space-3);}
 
-    /* Diagram */
-    .ep-figure{margin:var(--space-10) 0;}
-    .ep-figure svg{width:100%;height:auto;display:block;border-radius:var(--radius-lg);background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);}
-    .ep-figure figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
 
     /* Instagram reel embed */
     .ep-video{margin:var(--space-12) 0 var(--space-10);}
@@ -86,11 +86,57 @@
       h1{font-size:1.9rem!important;}
       h2{font-size:1.5rem!important;}
       .article-body{max-width:100%!important;}
-      /* Diagrams carry a lot of small type. Let them scroll rather than
-         shrink to an unreadable size on a phone. */
-      .ep-figure{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-      .ep-figure svg{min-width:560px;}
-      .ep-figure figcaption::after{content:" — scroll to see the full diagram";text-transform:none;letter-spacing:0;opacity:.7;}
+    }
+
+    /* ── Shared diagram shell ── */
+    .ep-diagram{margin:var(--space-10) 0;}
+    .ep-diagram figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding-top:var(--space-4);}
+
+    /* ── Control / influence / outside bands ── */
+    .ctl{display:flex;flex-direction:column;gap:var(--space-3);}
+    .ctl-band{display:flex;align-items:flex-start;gap:var(--space-4);border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);border-left:4px solid var(--ep-pine);padding:var(--space-5);background:var(--surface-raised);}
+    .ctl-band--1{border-left-color:var(--ep-pine);background:color-mix(in srgb,var(--ep-pine) 6%,var(--surface-raised));}
+    .ctl-band--2{border-left-color:var(--ep-plum);background:color-mix(in srgb,var(--ep-plum) 6%,var(--surface-raised));}
+    .ctl-band--3{border-left-color:var(--ep-neutral-400);background:var(--surface-sunken);}
+    .ctl-main{flex:1;min-width:0;}
+    .ctl-k{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.09em;text-transform:uppercase;margin:0 0 var(--space-2)!important;}
+    .ctl-band--1 .ctl-k{color:var(--ep-pine);}
+    .ctl-band--2 .ctl-k{color:var(--ep-plum);}
+    .ctl-band--3 .ctl-k{color:var(--ep-neutral-600);}
+    .ctl-t{font-size:var(--text-sm)!important;color:var(--text-body)!important;margin:0!important;line-height:var(--leading-relaxed);}
+    .ctl-do{flex:none;font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.07em;text-transform:uppercase;padding-top:2px;white-space:nowrap;}
+    .ctl-band--1 .ctl-do{color:var(--ep-pine);}
+    .ctl-band--2 .ctl-do{color:var(--ep-plum);}
+    .ctl-band--3 .ctl-do{color:var(--ep-neutral-600);}
+    .ctl-ask{font-family:var(--font-heading);font-weight:600;font-size:var(--text-base)!important;color:var(--text-muted)!important;text-align:center;margin:var(--space-5) 0 0!important;}
+    @media (max-width:640px){
+      .ctl-band{flex-direction:column;gap:var(--space-2);padding:var(--space-4);}
+      .ctl-do{padding-top:0;}
+    }
+
+    /* ── Attentional grid ── */
+    .ag{display:grid;grid-template-columns:auto 1fr 1fr auto;grid-template-rows:auto 1fr 1fr auto;gap:var(--space-3);align-items:stretch;}
+    .ag-ax{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--ep-neutral-500);display:flex;align-items:center;justify-content:center;margin:0!important;}
+    .ag-ax--top{grid-column:2 / 4;grid-row:1;}
+    .ag-ax--bottom{grid-column:2 / 4;grid-row:4;}
+    .ag-ax--left{grid-column:1;grid-row:2 / 4;writing-mode:vertical-rl;transform:rotate(180deg);}
+    .ag-ax--right{grid-column:4;grid-row:2 / 4;writing-mode:vertical-rl;}
+    .ag-q{border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);padding:var(--space-5);display:flex;flex-direction:column;}
+    .ag-q--be{grid-column:2;grid-row:2;background:color-mix(in srgb,var(--ep-pine) 8%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-pine) 28%,transparent);}
+    .ag-q--bi{grid-column:3;grid-row:2;background:color-mix(in srgb,var(--ep-plum) 8%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-plum) 28%,transparent);}
+    .ag-q--ne{grid-column:2;grid-row:3;background:color-mix(in srgb,var(--ep-pine) 14%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-pine) 38%,transparent);}
+    .ag-q--ni{grid-column:3;grid-row:3;background:color-mix(in srgb,var(--ep-plum) 14%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-plum) 38%,transparent);}
+    .ag-k{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.07em;text-transform:uppercase;margin:0 0 var(--space-2)!important;}
+    .ag-q--be .ag-k,.ag-q--ne .ag-k{color:var(--ep-pine);}
+    .ag-q--bi .ag-k,.ag-q--ni .ag-k{color:var(--ep-plum);}
+    .ag-h{font-size:var(--text-lg)!important;color:var(--text-strong);margin:0 0 var(--space-2)!important;}
+    .ag-t{font-size:var(--text-sm)!important;color:var(--text-muted)!important;margin:0 0 var(--space-3)!important;line-height:var(--leading-relaxed);}
+    .ag-over{font-size:var(--text-sm)!important;color:var(--text-muted)!important;font-style:italic;margin:auto 0 0!important;line-height:var(--leading-relaxed);opacity:.85;}
+    @media (max-width:760px){
+      .ag{grid-template-columns:1fr;grid-template-rows:none;}
+      .ag-q{grid-column:1;grid-row:auto;}
+      .ag-ax--left,.ag-ax--right,.ag-ax--bottom{display:none;}
+      .ag-ax--top{grid-column:1;grid-row:auto;justify-content:flex-start;}
     }
   </style>
   <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
@@ -186,40 +232,31 @@
       <p>The distinction matters because different problems need different responses. Trying harder won't change the weather. Accepting uncertainty won't replace a missing technical skill.</p>
       <p>Ask: "Can I act on the situation, prepare my response, or do both?"</p>
 
-      <figure class="ep-figure reveal">
-        <svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three bands: what you can control, what you can influence, and what is outside your control, each with the response it needs.">
-          <defs>
-            <style>
-              .dg-h{font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;}
-              .dg-t{font-family:var(--font-body);font-size:12.5px;}
-              .dg-q{font-family:var(--font-heading);font-weight:600;font-size:13.5px;}
-              .dg-r{font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase;}
-            </style>
-          </defs>
-
-          <!-- band 1 -->
-          <rect x="24" y="26" width="632" height="68" rx="12" fill="#4b7a6e" fill-opacity="0.10" stroke="#4b7a6e" stroke-opacity="0.35"/>
-          <rect x="24" y="26" width="5" height="68" rx="2.5" fill="#4b7a6e"/>
-          <text x="48" y="50" class="dg-h" fill="#4b7a6e">Within your control</text>
-          <text x="48" y="72" class="dg-t" fill="#2e2e2e">Practise a skill &#183; prepare equipment &#183; clarify a role &#183; allow enough time</text>
-          <text x="636" y="50" class="dg-r" fill="#4b7a6e" text-anchor="end">Act on it</text>
-
-          <!-- band 2 -->
-          <rect x="24" y="106" width="632" height="68" rx="12" fill="#5b4a6a" fill-opacity="0.10" stroke="#5b4a6a" stroke-opacity="0.35"/>
-          <rect x="24" y="106" width="5" height="68" rx="2.5" fill="#5b4a6a"/>
-          <text x="48" y="130" class="dg-h" fill="#5b4a6a">You can influence</text>
-          <text x="48" y="152" class="dg-t" fill="#2e2e2e">How you recover &#183; how anxious you feel &#183; how well your routine holds</text>
-          <text x="636" y="130" class="dg-r" fill="#5b4a6a" text-anchor="end">Prepare your response</text>
-
-          <!-- band 3 -->
-          <rect x="24" y="186" width="632" height="68" rx="12" fill="#2e2e2e" fill-opacity="0.07" stroke="#2e2e2e" stroke-opacity="0.22"/>
-          <rect x="24" y="186" width="5" height="68" rx="2.5" fill="#2e2e2e" fill-opacity="0.55"/>
-          <text x="48" y="210" class="dg-h" fill="#5f5f59">Outside your control</text>
-          <text x="48" y="232" class="dg-t" fill="#2e2e2e">The weather &#183; another competitor&#8217;s performance &#183; a schedule change</text>
-          <text x="636" y="210" class="dg-r" fill="#5f5f59" text-anchor="end">Adapt to it</text>
-
-          <text x="340" y="278" class="dg-q" fill="#5f5f59" text-anchor="middle">&#8220;Can I act on the situation, prepare my response, or do both?&#8221;</text>
-        </svg>
+      <figure class="ep-diagram reveal">
+        <div class="ctl">
+          <div class="ctl-band ctl-band--1">
+            <div class="ctl-main">
+              <p class="ctl-k">Within your control</p>
+              <p class="ctl-t">Practise a skill &middot; prepare equipment &middot; clarify a role &middot; allow enough time</p>
+            </div>
+            <p class="ctl-do">Act on it</p>
+          </div>
+          <div class="ctl-band ctl-band--2">
+            <div class="ctl-main">
+              <p class="ctl-k">You can influence</p>
+              <p class="ctl-t">How you recover &middot; how anxious you feel &middot; how well your routine holds</p>
+            </div>
+            <p class="ctl-do">Prepare your response</p>
+          </div>
+          <div class="ctl-band ctl-band--3">
+            <div class="ctl-main">
+              <p class="ctl-k">Outside your control</p>
+              <p class="ctl-t">The weather &middot; another competitor&rsquo;s performance &middot; a schedule change</p>
+            </div>
+            <p class="ctl-do">Adapt to it</p>
+          </div>
+        </div>
+        <p class="ctl-ask">&ldquo;Can I act on the situation, prepare my response, or do both?&rdquo;</p>
         <figcaption>Different problems need different responses &mdash; trying harder will not change the weather.</figcaption>
       </figure>
 
