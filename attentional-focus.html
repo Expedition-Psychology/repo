@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attentional Focus — Expedition Psychology</title>
+  <meta name="description" content="Broad or narrow, internal or external — putting attention where the situation actually needs it.">
+  <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    h1,h2,h3,h4,h5{font-family:var(--font-heading)!important;font-weight:var(--weight-heading)!important;letter-spacing:var(--tracking-tight);}
+    html,body{margin:0;scroll-behavior:smooth;}
+    body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-body);}
+
+    /* Nav */
+    #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+    .nav-glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(243,243,240,.93);border-bottom:var(--border-width) solid var(--border-subtle);}
+    .nav-link{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none;transition:color .2s ease;}
+    .nav-link:hover{text-decoration:none;}
+    .nav-logo-icon{height:32px;width:32px;object-fit:contain;transition:filter .4s ease;}
+    .nav-drop-wrap{position:relative;display:inline-flex;align-items:center;}
+    .nav-drop-trigger{display:inline-flex!important;align-items:center;gap:4px;cursor:pointer;}
+    .nav-drop-wrap:hover .nav-chevron{transform:rotate(180deg);}
+    .nav-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;padding-top:10px;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:200;}
+    .nav-dropdown-inner{background:rgba(243,243,240,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,46,46,.10);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,.13);padding:6px;}
+    .nav-drop-wrap:hover .nav-dropdown{opacity:1;pointer-events:auto;}
+    .nav-drop-item{display:block;padding:9px 14px;border-radius:var(--radius-md);color:var(--text-muted)!important;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none!important;transition:background .15s ease,color .15s ease!important;white-space:nowrap;}
+    .nav-drop-item:hover{background:var(--surface-sunken);color:var(--ep-pine)!important;}
+    .nav-glass .nav-link{color:var(--ep-neutral-700)!important;}
+    .nav-glass .nav-link:hover{color:var(--ep-pine)!important;}
+    #mobile-menu .nav-link{color:var(--text-muted)!important;}
+    .nav-glass #mob-btn{color:var(--ep-neutral-700)!important;}
+    .mob-accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;background:none;border:none;padding:8px 0;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-align:left;}
+    .mob-accordion-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .mob-accordion-trigger.open .mob-accordion-chevron{transform:rotate(180deg);}
+    .mob-accordion-panel{display:none;}
+    .mob-accordion-panel.open{display:block;}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.12s;}
+    .reveal-delay-2{transition-delay:.24s;}
+
+    /* Back link */
+    .back-link{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.45);text-decoration:none;transition:color .2s;}
+    .back-link:hover{color:rgba(243,243,240,.8);text-decoration:none;}
+
+    /* Article body */
+    .article-body{max-width:680px;}
+    .article-body p{color:var(--text-body);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);font-size:var(--text-base);}
+    .article-body h2{color:var(--text-strong);font-size:var(--text-3xl);margin-top:var(--space-12);margin-bottom:var(--space-4);scroll-margin-top:110px;}
+    .article-body h3{color:var(--text-strong);font-size:var(--text-xl);margin-top:var(--space-8);margin-bottom:var(--space-3);}
+    .article-body ul{color:var(--text-body);margin-bottom:var(--space-5);padding-left:var(--space-5);}
+    .article-body ul li{margin-bottom:var(--space-2);line-height:var(--leading-relaxed);}
+    .article-body strong{color:var(--text-strong);font-weight:600;}
+
+    /* Section number */
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);font-family:var(--font-heading);font-size:var(--text-xs);font-weight:600;letter-spacing:.06em;flex-shrink:0;margin-right:var(--space-3);}
+
+    /* Diagram */
+    .ep-figure{margin:var(--space-10) 0;}
+    .ep-figure svg{width:100%;height:auto;display:block;border-radius:var(--radius-lg);background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);}
+    .ep-figure figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
+
+    /* Take-homes */
+    .takehome-card{background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);transition:box-shadow .2s,transform .2s;}
+    .takehome-card:hover{box-shadow:var(--shadow-sm);}
+    a.takehome-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+
+    /* CTA btn */
+    .cta-btn{display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none;}
+
+    @media (max-width:768px){
+      h1{font-size:1.9rem!important;}
+      h2{font-size:1.5rem!important;}
+      .article-body{max-width:100%!important;}
+      /* Diagrams carry a lot of small type. Let them scroll rather than
+         shrink to an unreadable size on a phone. */
+      .ep-figure{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+      .ep-figure svg{min-width:560px;}
+      .ep-figure figcaption::after{content:" — scroll to see the full diagram";text-transform:none;letter-spacing:0;opacity:.7;}
+    }
+  </style>
+  <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+  <script src="cookie-consent.js" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <div class="nav-drop-wrap">
+        <a href="index.html#services" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Services <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="services-individuals.html" class="nav-drop-item">One-to-one</a>
+          <a href="services-teams.html" class="nav-drop-item">Teams</a>
+        </div></div>
+      </div>
+      <a href="index.html#about" class="nav-link text-white/70 hover:text-white">About</a>
+      <a href="our-work.html" class="nav-link text-white/70 hover:text-white">Recent Work</a>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+        </div></div>
+      </div>
+      <a href="events.html" class="nav-link text-white/70 hover:text-white">Events</a>
+      <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-1 border-t border-ep-text/5" style="background:var(--surface-page)">
+    <a href="services-individuals.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — One-to-one</a>
+    <a href="services-teams.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — Teams</a>
+    <a href="index.html#about" class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
+    <a href="our-work.html" class="block py-2 nav-link" style="color:var(--text-muted)">Recent Work</a>
+    <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
+    <a href="events.html" class="block py-2 nav-link" style="color:var(--text-muted)">Events</a>
+    <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Courses<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+    <div class="mob-accordion-panel">
+      <a href="courses.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">All Courses</a>
+      <a href="fear-of-falling.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Fear of Falling Toolkit</a>
+    </div>
+    <a href="index.html#contact" class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[62vh] flex items-end overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="assets/img/blog/attentional-focus.jpg" alt="Attentional Focus" class="w-full h-full object-cover" style="object-position:center 55%">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(20,16,26,.96) 0%,rgba(20,16,26,.82) 40%,rgba(20,16,26,.5) 70%,rgba(20,16,26,.25) 100%)"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
+    <a href="our-work.html" class="back-link mb-8 inline-flex reveal"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Articles</a>
+    <p class="mb-5 reveal" style="font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.55)">Performance &middot; 3 min read</p>
+    <h1 class="text-4xl md:text-6xl text-white mb-5 reveal reveal-delay-1" style="max-width:clamp(100%,90vw,760px);line-height:1.07">Attentional Focus</h1>
+    <p class="text-lg font-light mb-8 reveal reveal-delay-2" style="color:rgba(243,243,240,.8);max-width:clamp(100%,90vw,560px);line-height:var(--leading-relaxed)">Concentration isn't only the ability to focus harder. It's the ability to put attention where the situation needs it.</p>
+    <div class="flex items-center gap-4 reveal reveal-delay-2">
+      <img src="assets/img/team-fin.jpg" alt="Dr Fin Haley" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)">
+      <div>
+        <p class="text-sm font-semibold" style="color:rgba(243,243,240,.8)">Dr Fin Haley</p>
+        <p class="text-xs" style="color:rgba(243,243,240,.4)">Clinical Psychologist &amp; Rock Climbing Instructor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+  <div class="grid lg:grid-cols-[1fr_280px] gap-16 items-start">
+
+    <article class="article-body">
+      <p class="text-xl leading-relaxed mb-8" style="color:var(--text-strong)">You're focused, but on the wrong thing.</p>
+      <p>You can hear someone talking behind you. You are calculating what a failed attempt would mean. You are monitoring every movement of your fingers, even though the next decision is about your feet.</p>
+      <p>The problem isn't necessarily a lack of effort. It may be that attention is doing a job the moment doesn't require.</p>
+      <p>Nideffer's attentional framework offers a practical way to notice this. It describes focus along two dimensions: broad or narrow, and internal or external. Each combination has a use, and each can become unhelpful.</p>
+
+      <h2 id="broad-external-take-in-the-situation" class="flex items-center gap-0"><span class="section-num">1</span>Broad-external: take in the situation</h2>
+      <p>This is attention directed towards several features of the world around you. A climber surveys a route and the conditions. A footballer scans teammates and opponents. An expedition leader notices the group's position and the changing environment.</p>
+      <p>It is useful for gathering information and spotting options.</p>
+      <p>The difficulty comes when you try to take in everything, including what is irrelevant. Noise, spectators and other people's performances can compete with the cues you actually need.</p>
+      <p>Ask, "What information matters for the next decision?" Broad focus should help you orient, not leave you permanently scanning.</p>
+
+      <h2 id="broad-internal-make-sense-of-the-informa" class="flex items-center gap-0"><span class="section-num">2</span>Broad-internal: make sense of the information</h2>
+      <p>Here you bring together ideas, plans and previous experience. You compare possible sequences, think through tactics, or review why an attempt didn't work.</p>
+      <p>This is valuable before performance, at suitable pauses, or when a plan genuinely needs changing.</p>
+      <p>It becomes less useful when analysis continues after the decision is clear enough. You keep rewriting the plan while the opportunity to act passes.</p>
+      <p>Ask, "Am I solving a problem, or repeatedly reconsidering a decision I've already made?"</p>
+      <p>Planning belongs in performance. It just doesn't need to occupy every moment of it.</p>
+
+      <figure class="ep-figure reveal">
+        <svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nideffer's attentional grid: broad or narrow focus across external or internal attention, giving four quadrants.">
+          <defs>
+            <style>
+              .ag-q{font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase;}
+              .ag-d{font-family:var(--font-heading);font-weight:600;font-size:15px;}
+              .ag-t{font-family:var(--font-body);font-size:12px;}
+              .ag-ax{font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
+            </style>
+          </defs>
+
+          <!-- axis labels -->
+          <text x="340" y="22" class="ag-ax" fill="#8a8a82" text-anchor="middle">Broad</text>
+          <text x="340" y="452" class="ag-ax" fill="#8a8a82" text-anchor="middle">Narrow</text>
+          <text x="22" y="238" class="ag-ax" fill="#8a8a82" text-anchor="middle" transform="rotate(-90 22 238)">External</text>
+          <text x="662" y="238" class="ag-ax" fill="#8a8a82" text-anchor="middle" transform="rotate(90 662 238)">Internal</text>
+
+          <!-- quadrants -->
+          <rect x="50" y="36" width="288" height="188" rx="12" fill="#4b7a6e" fill-opacity="0.10" stroke="#4b7a6e" stroke-opacity="0.35"/>
+          <text x="74" y="66" class="ag-q" fill="#4b7a6e">Broad &#183; External</text>
+          <text x="74" y="92" class="ag-d" fill="#2e2e2e">Take in the situation</text>
+          <text x="74" y="118" class="ag-t" fill="#5f5f59">Survey the route, the conditions,</text>
+          <text x="74" y="136" class="ag-t" fill="#5f5f59">where everyone is.</text>
+          <text x="74" y="170" class="ag-t" fill="#8a8a82" font-style="italic">Overused: permanently scanning,</text>
+          <text x="74" y="188" class="ag-t" fill="#8a8a82" font-style="italic">taking in what does not matter.</text>
+
+          <rect x="346" y="36" width="288" height="188" rx="12" fill="#5b4a6a" fill-opacity="0.10" stroke="#5b4a6a" stroke-opacity="0.35"/>
+          <text x="370" y="66" class="ag-q" fill="#5b4a6a">Broad &#183; Internal</text>
+          <text x="370" y="92" class="ag-d" fill="#2e2e2e">Make sense of it</text>
+          <text x="370" y="118" class="ag-t" fill="#5f5f59">Compare sequences, think through</text>
+          <text x="370" y="136" class="ag-t" fill="#5f5f59">tactics, review an attempt.</text>
+          <text x="370" y="170" class="ag-t" fill="#8a8a82" font-style="italic">Overused: rewriting the plan while</text>
+          <text x="370" y="188" class="ag-t" fill="#8a8a82" font-style="italic">the chance to act passes.</text>
+
+          <rect x="50" y="236" width="288" height="188" rx="12" fill="#4b7a6e" fill-opacity="0.16" stroke="#4b7a6e" stroke-opacity="0.45"/>
+          <text x="74" y="266" class="ag-q" fill="#4b7a6e">Narrow &#183; External</text>
+          <text x="74" y="292" class="ag-d" fill="#2e2e2e">Engage with a target</text>
+          <text x="74" y="318" class="ag-t" fill="#5f5f59">The chosen part of the hold, the</text>
+          <text x="74" y="336" class="ag-t" fill="#5f5f59">intended path of the ball.</text>
+          <text x="74" y="370" class="ag-t" fill="#8a8a82" font-style="italic">Overused: tunnel vision, missing</text>
+          <text x="74" y="388" class="ag-t" fill="#8a8a82" font-style="italic">what should change the plan.</text>
+
+          <rect x="346" y="236" width="288" height="188" rx="12" fill="#5b4a6a" fill-opacity="0.16" stroke="#5b4a6a" stroke-opacity="0.45"/>
+          <text x="370" y="266" class="ag-q" fill="#5b4a6a">Narrow &#183; Internal</text>
+          <text x="370" y="292" class="ag-d" fill="#2e2e2e">Use one cue</text>
+          <text x="370" y="318" class="ag-t" fill="#5f5f59">A cue word, comfortable breathing,</text>
+          <text x="370" y="336" class="ag-t" fill="#5f5f59">noticing tension.</text>
+          <text x="370" y="370" class="ag-t" fill="#8a8a82" font-style="italic">Overused: checking yourself</text>
+          <text x="370" y="388" class="ag-t" fill="#8a8a82" font-style="italic">endlessly, amplifying worry.</text>
+        </svg>
+        <figcaption>Each combination has a use, and each can become unhelpful &mdash; the skill is noticing when another would serve you better.</figcaption>
+      </figure>
+
+      <h2 id="narrow-internal-use-one-internal-cue" class="flex items-center gap-0"><span class="section-num">3</span>Narrow-internal: use one internal cue</h2>
+      <p>This means focusing on a particular sensation, thought or feeling. You might notice tension, use a brief cue word, or attend to comfortable breathing while preparing.</p>
+      <p>It can support regulation or a specific piece of learning. But monitoring a racing heart can also amplify worry, and scrutinising an established movement can become distracting.</p>
+      <p>The issue isn't that internal attention is bad. It is whether that focus helps with the task you are doing now.</p>
+      <p>A cue should direct you towards something useful rather than become an invitation to check yourself endlessly.</p>
+
+      <h2 id="narrow-external-engage-with-a-relevant-t" class="flex items-center gap-0"><span class="section-num">4</span>Narrow-external: engage with a relevant target</h2>
+      <p>This is attention on a specific feature outside you: the chosen part of a hold, the intended path of a ball, or a landing target in an appropriate practice task.</p>
+      <p>It can make execution clearer. But it can also become tunnel vision if you fail to notice information that requires a change of plan.</p>
+      <p>Motor-learning research has often supported external movement-effect cues, although later analyses have challenged the size and generality of that advantage. There is no sound reason to treat external focus as universally best in every moment.</p>
+      <p>Also distinguish a movement's immediate effect from a final result. "Send the ball towards that target" is not the same as "Win the match." Process focus and useful external cues can work together.</p>
+
+      <h2 id="put-the-shifts-into-practice">Put the shifts into practice</h2>
+      <p>At an appropriate pause, you might scan the route, make a plan, use a brief settling cue, and focus on the next relevant target. This is a practice sequence, not a rule requiring four conscious steps before every movement.</p>
+      <p>During the activity, shift again when circumstances require it. An unexpected hazard matters more than maintaining a chosen focus.</p>
+      <p>After training, review one moment when attention helped and one when it drifted. Identify the cue you needed, then practise returning to it next time.</p>
+      <p>The skill is not staying in one attentional state. It is noticing when another would serve you better.</p>
+
+    </article>
+
+    <aside class="lg:sticky lg:top-28 space-y-4 reveal reveal-delay-1">
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">In This Article</p>
+        <nav class="space-y-1">
+          <a href="#broad-external-take-in-the-situation" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">1. Broad-external: take in the situation</a>
+          <a href="#broad-internal-make-sense-of-the-informa" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">2. Broad-internal: make sense of the information</a>
+          <a href="#narrow-internal-use-one-internal-cue" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">3. Narrow-internal: use one internal cue</a>
+          <a href="#narrow-external-engage-with-a-relevant-t" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">4. Narrow-external: engage with a relevant target</a>
+          <a href="#put-the-shifts-into-practice" class="block py-2 text-sm" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.02em">Put the shifts into practice</a>
+        </nav>
+      </div>
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Put It Into Practice</p>
+        <a href="focus-on-the-process.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">Focus on the Process &rarr;</a>
+        <a href="self-talk-workbook.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">The Self-Talk Workbook &rarr;</a>
+      </div>
+      <div style="background:var(--ep-ink);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs);color:var(--ep-pine)">Work With Us</p>
+        <p class="text-sm mb-4" style="color:rgba(243,243,240,.6)">Want 1:1 support or team training in performance psychology?</p>
+        <a href="index.html#contact" class="cta-btn text-xs px-5 py-3" style="background:var(--ep-pine);color:var(--ep-paper)">Get In Touch</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- TAKE-HOMES -->
+<section class="py-20 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Take-Homes</p>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Three things to take away</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="takehome-card reveal">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="target" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Match attention to the job</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Scanning, planning, regulating and executing need different things.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-1">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+          <i data-lucide="activity" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Notice the costs of overuse</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Any focus can become unhelpful.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-2">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="message-circle" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Practise switching</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Flexibility matters more than one perfect attentional style.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUT IT INTO PRACTICE -->
+<section class="py-20 px-6" style="background:var(--surface-page)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Put It Into Practice</p>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Free resources to take this further</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="focus-on-the-process.html" class="takehome-card reveal" style="display:block;text-decoration:none">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+          </div>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free resource</span>
+        </div>
+        <h3 class="text-lg" style="color:var(--text-strong)">Focus on the Process</h3>
+      </a>
+      <a href="self-talk-workbook.html" class="takehome-card reveal reveal-delay-1" style="display:block;text-decoration:none">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+          </div>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free resource</span>
+        </div>
+        <h3 class="text-lg" style="color:var(--text-strong)">The Self-Talk Workbook</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height:28px;opacity:.6">
+      <span style="color:rgba(243,243,240,.3);font-size:var(--text-xs);font-family:var(--font-heading)">Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="our-work.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Recent Work</a>
+      <a href="free-tools.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Resources</a>
+      <a href="index.html#contact" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script>
+  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLinks.forEach(function(l){l.style.color=''});}
+  });
+  function toggleMobAccordion(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
+  document.querySelectorAll('.reveal').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>=0)el.classList.add('visible');});
+  var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+  lucide.createIcons();
+</script>
+</body>
+</html>

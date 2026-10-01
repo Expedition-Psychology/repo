@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Importance of Gamification — Expedition Psychology</title>
+  <meta name="description" content="What you score shapes what people practise. Designing play that still serves the learning.">
+  <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    h1,h2,h3,h4,h5{font-family:var(--font-heading)!important;font-weight:var(--weight-heading)!important;letter-spacing:var(--tracking-tight);}
+    html,body{margin:0;scroll-behavior:smooth;}
+    body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-body);}
+
+    /* Nav */
+    #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+    .nav-glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(243,243,240,.93);border-bottom:var(--border-width) solid var(--border-subtle);}
+    .nav-link{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none;transition:color .2s ease;}
+    .nav-link:hover{text-decoration:none;}
+    .nav-logo-icon{height:32px;width:32px;object-fit:contain;transition:filter .4s ease;}
+    .nav-drop-wrap{position:relative;display:inline-flex;align-items:center;}
+    .nav-drop-trigger{display:inline-flex!important;align-items:center;gap:4px;cursor:pointer;}
+    .nav-drop-wrap:hover .nav-chevron{transform:rotate(180deg);}
+    .nav-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;padding-top:10px;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:200;}
+    .nav-dropdown-inner{background:rgba(243,243,240,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,46,46,.10);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,.13);padding:6px;}
+    .nav-drop-wrap:hover .nav-dropdown{opacity:1;pointer-events:auto;}
+    .nav-drop-item{display:block;padding:9px 14px;border-radius:var(--radius-md);color:var(--text-muted)!important;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none!important;transition:background .15s ease,color .15s ease!important;white-space:nowrap;}
+    .nav-drop-item:hover{background:var(--surface-sunken);color:var(--ep-pine)!important;}
+    .nav-glass .nav-link{color:var(--ep-neutral-700)!important;}
+    .nav-glass .nav-link:hover{color:var(--ep-pine)!important;}
+    #mobile-menu .nav-link{color:var(--text-muted)!important;}
+    .nav-glass #mob-btn{color:var(--ep-neutral-700)!important;}
+    .mob-accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;background:none;border:none;padding:8px 0;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-align:left;}
+    .mob-accordion-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .mob-accordion-trigger.open .mob-accordion-chevron{transform:rotate(180deg);}
+    .mob-accordion-panel{display:none;}
+    .mob-accordion-panel.open{display:block;}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.12s;}
+    .reveal-delay-2{transition-delay:.24s;}
+
+    /* Back link */
+    .back-link{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.45);text-decoration:none;transition:color .2s;}
+    .back-link:hover{color:rgba(243,243,240,.8);text-decoration:none;}
+
+    /* Article body */
+    .article-body{max-width:680px;}
+    .article-body p{color:var(--text-body);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);font-size:var(--text-base);}
+    .article-body h2{color:var(--text-strong);font-size:var(--text-3xl);margin-top:var(--space-12);margin-bottom:var(--space-4);scroll-margin-top:110px;}
+    .article-body h3{color:var(--text-strong);font-size:var(--text-xl);margin-top:var(--space-8);margin-bottom:var(--space-3);}
+    .article-body ul{color:var(--text-body);margin-bottom:var(--space-5);padding-left:var(--space-5);}
+    .article-body ul li{margin-bottom:var(--space-2);line-height:var(--leading-relaxed);}
+    .article-body strong{color:var(--text-strong);font-weight:600;}
+
+    /* Section number */
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);font-family:var(--font-heading);font-size:var(--text-xs);font-weight:600;letter-spacing:.06em;flex-shrink:0;margin-right:var(--space-3);}
+
+    /* Diagram */
+    .ep-figure{margin:var(--space-10) 0;}
+    .ep-figure svg{width:100%;height:auto;display:block;border-radius:var(--radius-lg);background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);}
+    .ep-figure figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
+
+    /* Take-homes */
+    .takehome-card{background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);transition:box-shadow .2s,transform .2s;}
+    .takehome-card:hover{box-shadow:var(--shadow-sm);}
+    a.takehome-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+
+    /* CTA btn */
+    .cta-btn{display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none;}
+
+    @media (max-width:768px){
+      h1{font-size:1.9rem!important;}
+      h2{font-size:1.5rem!important;}
+      .article-body{max-width:100%!important;}
+      /* Diagrams carry a lot of small type. Let them scroll rather than
+         shrink to an unreadable size on a phone. */
+      .ep-figure{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+      .ep-figure svg{min-width:560px;}
+      .ep-figure figcaption::after{content:" — scroll to see the full diagram";text-transform:none;letter-spacing:0;opacity:.7;}
+    }
+  </style>
+  <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+  <script src="cookie-consent.js" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <div class="nav-drop-wrap">
+        <a href="index.html#services" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Services <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="services-individuals.html" class="nav-drop-item">One-to-one</a>
+          <a href="services-teams.html" class="nav-drop-item">Teams</a>
+        </div></div>
+      </div>
+      <a href="index.html#about" class="nav-link text-white/70 hover:text-white">About</a>
+      <a href="our-work.html" class="nav-link text-white/70 hover:text-white">Recent Work</a>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+        </div></div>
+      </div>
+      <a href="events.html" class="nav-link text-white/70 hover:text-white">Events</a>
+      <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-1 border-t border-ep-text/5" style="background:var(--surface-page)">
+    <a href="services-individuals.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — One-to-one</a>
+    <a href="services-teams.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — Teams</a>
+    <a href="index.html#about" class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
+    <a href="our-work.html" class="block py-2 nav-link" style="color:var(--text-muted)">Recent Work</a>
+    <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
+    <a href="events.html" class="block py-2 nav-link" style="color:var(--text-muted)">Events</a>
+    <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Courses<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+    <div class="mob-accordion-panel">
+      <a href="courses.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">All Courses</a>
+      <a href="fear-of-falling.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Fear of Falling Toolkit</a>
+    </div>
+    <a href="index.html#contact" class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[62vh] flex items-end overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="assets/img/blog/the-importance-of-gamification.jpg" alt="The Importance of Gamification" class="w-full h-full object-cover" style="object-position:center 40%">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(20,16,26,.96) 0%,rgba(20,16,26,.82) 40%,rgba(20,16,26,.5) 70%,rgba(20,16,26,.25) 100%)"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
+    <a href="our-work.html" class="back-link mb-8 inline-flex reveal"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Articles</a>
+    <p class="mb-5 reveal" style="font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.55)">Training &middot; 3 min read</p>
+    <h1 class="text-4xl md:text-6xl text-white mb-5 reveal reveal-delay-1" style="max-width:clamp(100%,90vw,760px);line-height:1.07">The Importance of Gamification</h1>
+    <p class="text-lg font-light mb-8 reveal reveal-delay-2" style="color:rgba(243,243,240,.8);max-width:clamp(100%,90vw,560px);line-height:var(--leading-relaxed)">Useful practice can be playful. The trick is to make the game reward the skill you actually want to learn.</p>
+    <div class="flex items-center gap-4 reveal reveal-delay-2">
+      <img src="assets/img/team-fin.jpg" alt="Dr Fin Haley" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)">
+      <div>
+        <p class="text-sm font-semibold" style="color:rgba(243,243,240,.8)">Dr Fin Haley</p>
+        <p class="text-xs" style="color:rgba(243,243,240,.4)">Clinical Psychologist &amp; Rock Climbing Instructor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+  <div class="grid lg:grid-cols-[1fr_280px] gap-16 items-start">
+
+    <article class="article-body">
+      <p class="text-xl leading-relaxed mb-8" style="color:var(--text-strong)">Ask someone to repeat a footwork drill for twenty minutes and you may lose their attention. Give them a clear challenge, a way to notice progress, and a partner who is interested, and the same movements can feel very different.</p>
+      <p>That is the appeal of gamification: bringing elements of games into an activity that isn't formally a game.</p>
+      <p>Levels, shared challenges, points and small constraints can give practice a purpose that is easy to engage with. But adding a scoreboard doesn't automatically make training more useful.</p>
+      <p>The design of the game matters.</p>
+
+      <h2 id="begin-with-the-learning-not-the-scoring" class="flex items-center gap-0"><span class="section-num">1</span>Begin with the learning, not the scoring</h2>
+      <p>Before inventing the rules, decide what you want to develop.</p>
+      <p>Perhaps it is deliberate foot placement, recognising a useful rest, communicating clearly, or trying more than one solution to a movement problem.</p>
+      <p>Then ask what behaviour the game will actually reward. A speed challenge may encourage rushing. A points system based only on finished routes may encourage choosing easy routes or avoiding experiments.</p>
+      <p>Neither is automatically wrong, but either could work against a technical learning goal.</p>
+      <p>Good game design makes the useful behaviour the thing worth doing. The score is feedback, not the purpose of the session.</p>
+
+      <h2 id="create-a-challenge-with-room-for-choice" class="flex items-center gap-0"><span class="section-num">2</span>Create a challenge with room for choice</h2>
+      <p>Imagine a low-level foot-placement game on an appropriate practice wall. The aim is to place the foot deliberately on a chosen target. Give yourself credit for an accurate placement, then notice whether you can use it effectively in the next move.</p>
+      <p>Start at a manageable level. As the task becomes reliable, choose a meaningful variation: a different direction or another suitable sequence.</p>
+      <p>The criteria should serve the skill. Silence, for example, can be a useful cue in some footwork exercises, but a quiet contact isn't automatically an effective one. Don't let the scoring replace judgement.</p>
+      <p>Allow choice between suitable versions. A person who understands the aim and helps shape the challenge has more ownership than someone simply obeying a rule.</p>
+
+      <h2 id="use-other-people-for-connection-not-just" class="flex items-center gap-0"><span class="section-num">3</span>Use other people for connection, not just comparison</h2>
+      <p>Competition can be enjoyable, but it isn't the only social ingredient available.</p>
+      <p>Two climbers could work together to find three workable solutions to a sequence. A team could earn a shared score for clear communication. Partners could alternate between practising and giving one specific piece of feedback.</p>
+      <p>These games make someone else's progress useful rather than threatening.</p>
+      <p>Research on game design suggests that different features can support different psychological needs. It does not show that every game, badge or leaderboard improves motivation, or that findings from digital tasks automatically transfer to climbing.</p>
+      <p>In practice, ask whether the game helps people feel capable, involved and connected. A leaderboard that repeatedly embarrasses one participant is not made helpful by calling it fun.</p>
+
+      <h2 id="keep-mistakes-informative-and-the-rules-" class="flex items-center gap-0"><span class="section-num">4</span>Keep mistakes informative and the rules flexible</h2>
+      <p>A level system can create a satisfying sense of progress. But sending someone back to the beginning after every mistake may produce frustration or cautious behaviour rather than useful exploration.</p>
+      <p>Sometimes a reset adds a light challenge. Sometimes it teaches people not to risk learning anything new. Use the response of the person in front of you as feedback.</p>
+      <p>Consider rewarding a thoughtful adjustment, a new solution or a useful observation alongside successful execution. End with a short review: what did the game help you practise, and did that skill appear when the game stopped?</p>
+      <p>Safety rules are never points to trade away. No game should reward bypassing checks, unnecessary risk, humiliating forfeits or pushing through pain.</p>
+      <p>Play works best when it supports the reasons you came to the sport in the first place: curiosity, movement, connection and the pleasure of getting better at something.</p>
+
+    </article>
+
+    <aside class="lg:sticky lg:top-28 space-y-4 reveal reveal-delay-1">
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">In This Article</p>
+        <nav class="space-y-1">
+          <a href="#begin-with-the-learning-not-the-scoring" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">1. Begin with the learning, not the scoring</a>
+          <a href="#create-a-challenge-with-room-for-choice" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">2. Create a challenge with room for choice</a>
+          <a href="#use-other-people-for-connection-not-just" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">3. Use other people for connection, not just comparison</a>
+          <a href="#keep-mistakes-informative-and-the-rules-" class="block py-2 text-sm" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.02em">4. Keep mistakes informative and the rules flexible</a>
+        </nav>
+      </div>
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Put It Into Practice</p>
+        <a href="training-drill-builder.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">The Drill Builder &rarr;</a>
+      </div>
+      <div style="background:var(--ep-ink);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs);color:var(--ep-pine)">Work With Us</p>
+        <p class="text-sm mb-4" style="color:rgba(243,243,240,.6)">Want 1:1 support or team training in performance psychology?</p>
+        <a href="index.html#contact" class="cta-btn text-xs px-5 py-3" style="background:var(--ep-pine);color:var(--ep-paper)">Get In Touch</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- TAKE-HOMES -->
+<section class="py-20 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Take-Homes</p>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Three things to take away</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="takehome-card reveal">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="target" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Reward the intended skill</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">What you score shapes what people practise.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-1">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
+          <i data-lucide="activity" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Offer choice and connection</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Competition is optional.</p>
+      </div>
+      <div class="takehome-card reveal reveal-delay-2">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+          <i data-lucide="message-circle" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+        </div>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Review the learning</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">A fun session should still serve its purpose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUT IT INTO PRACTICE -->
+<section class="py-20 px-6" style="background:var(--surface-page)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Put It Into Practice</p>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Free resource to take this further</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="training-drill-builder.html" class="takehome-card reveal" style="display:block;text-decoration:none">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+          </div>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free resource</span>
+        </div>
+        <h3 class="text-lg" style="color:var(--text-strong)">The Drill Builder</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height:28px;opacity:.6">
+      <span style="color:rgba(243,243,240,.3);font-size:var(--text-xs);font-family:var(--font-heading)">Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="our-work.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Recent Work</a>
+      <a href="free-tools.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Resources</a>
+      <a href="index.html#contact" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script>
+  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLinks.forEach(function(l){l.style.color=''});}
+  });
+  function toggleMobAccordion(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
+  document.querySelectorAll('.reveal').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>=0)el.classList.add('visible');});
+  var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+  lucide.createIcons();
+</script>
+</body>
+</html>

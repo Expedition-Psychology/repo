@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Challenge-Threat Framework — Expedition Psychology</title>
+  <meta name="description" content="How perceived demands and perceived resources shape your response to moments that matter.">
+  <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    h1,h2,h3,h4,h5{font-family:var(--font-heading)!important;font-weight:var(--weight-heading)!important;letter-spacing:var(--tracking-tight);}
+    html,body{margin:0;scroll-behavior:smooth;}
+    body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-body);}
+
+    /* Nav */
+    #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+    .nav-glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(243,243,240,.93);border-bottom:var(--border-width) solid var(--border-subtle);}
+    .nav-link{font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none;transition:color .2s ease;}
+    .nav-link:hover{text-decoration:none;}
+    .nav-logo-icon{height:32px;width:32px;object-fit:contain;transition:filter .4s ease;}
+    .nav-drop-wrap{position:relative;display:inline-flex;align-items:center;}
+    .nav-drop-trigger{display:inline-flex!important;align-items:center;gap:4px;cursor:pointer;}
+    .nav-drop-wrap:hover .nav-chevron{transform:rotate(180deg);}
+    .nav-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;padding-top:10px;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:200;}
+    .nav-dropdown-inner{background:rgba(243,243,240,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,46,46,.10);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,.13);padding:6px;}
+    .nav-drop-wrap:hover .nav-dropdown{opacity:1;pointer-events:auto;}
+    .nav-drop-item{display:block;padding:9px 14px;border-radius:var(--radius-md);color:var(--text-muted)!important;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none!important;transition:background .15s ease,color .15s ease!important;white-space:nowrap;}
+    .nav-drop-item:hover{background:var(--surface-sunken);color:var(--ep-pine)!important;}
+    .nav-glass .nav-link{color:var(--ep-neutral-700)!important;}
+    .nav-glass .nav-link:hover{color:var(--ep-pine)!important;}
+    #mobile-menu .nav-link{color:var(--text-muted)!important;}
+    .nav-glass #mob-btn{color:var(--ep-neutral-700)!important;}
+    .mob-accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;background:none;border:none;padding:8px 0;font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-align:left;}
+    .mob-accordion-chevron{transition:transform .2s ease;flex-shrink:0;}
+    .mob-accordion-trigger.open .mob-accordion-chevron{transform:rotate(180deg);}
+    .mob-accordion-panel{display:none;}
+    .mob-accordion-panel.open{display:block;}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.12s;}
+    .reveal-delay-2{transition-delay:.24s;}
+
+    /* Back link */
+    .back-link{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.45);text-decoration:none;transition:color .2s;}
+    .back-link:hover{color:rgba(243,243,240,.8);text-decoration:none;}
+
+    /* Article body */
+    .article-body{max-width:680px;}
+    .article-body p{color:var(--text-body);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);font-size:var(--text-base);}
+    .article-body h2{color:var(--text-strong);font-size:var(--text-3xl);margin-top:var(--space-12);margin-bottom:var(--space-4);scroll-margin-top:110px;}
+    .article-body h3{color:var(--text-strong);font-size:var(--text-xl);margin-top:var(--space-8);margin-bottom:var(--space-3);}
+    .article-body ul{color:var(--text-body);margin-bottom:var(--space-5);padding-left:var(--space-5);}
+    .article-body ul li{margin-bottom:var(--space-2);line-height:var(--leading-relaxed);}
+    .article-body strong{color:var(--text-strong);font-weight:600;}
+
+    /* Section number */
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);font-family:var(--font-heading);font-size:var(--text-xs);font-weight:600;letter-spacing:.06em;flex-shrink:0;margin-right:var(--space-3);}
+
+    /* Diagram */
+    .ep-figure{margin:var(--space-10) 0;}
+    .ep-figure svg{width:100%;height:auto;display:block;border-radius:var(--radius-lg);background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);}
+    .ep-figure figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
+
+    /* Take-homes */
+    .takehome-card{background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);transition:box-shadow .2s,transform .2s;}
+    .takehome-card:hover{box-shadow:var(--shadow-sm);}
+    a.takehome-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+
+    /* CTA btn */
+    .cta-btn{display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none;}
+
+    @media (max-width:768px){
+      h1{font-size:1.9rem!important;}
+      h2{font-size:1.5rem!important;}
+      .article-body{max-width:100%!important;}
+      /* Diagrams carry a lot of small type. Let them scroll rather than
+         shrink to an unreadable size on a phone. */
+      .ep-figure{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+      .ep-figure svg{min-width:560px;}
+      .ep-figure figcaption::after{content:" — scroll to see the full diagram";text-transform:none;letter-spacing:0;opacity:.7;}
+    }
+  </style>
+  <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+  <script src="cookie-consent.js" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" id="nav-logo" class="nav-logo-icon">
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <div class="nav-drop-wrap">
+        <a href="index.html#services" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Services <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="services-individuals.html" class="nav-drop-item">One-to-one</a>
+          <a href="services-teams.html" class="nav-drop-item">Teams</a>
+        </div></div>
+      </div>
+      <a href="index.html#about" class="nav-link text-white/70 hover:text-white">About</a>
+      <a href="our-work.html" class="nav-link text-white/70 hover:text-white">Recent Work</a>
+      <a href="free-tools.html" class="nav-link text-white/70 hover:text-white">Resources</a>
+      <div class="nav-drop-wrap">
+        <a href="courses.html" class="nav-link nav-drop-trigger text-white/70 hover:text-white">Courses <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
+        </div></div>
+      </div>
+      <a href="events.html" class="nav-link text-white/70 hover:text-white">Events</a>
+      <a href="index.html#contact" class="nav-link text-white/70 hover:text-white">Contact</a>
+    </div>
+    <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden px-6 pb-6 space-y-1 border-t border-ep-text/5" style="background:var(--surface-page)">
+    <a href="services-individuals.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — One-to-one</a>
+    <a href="services-teams.html" class="block py-2 nav-link" style="color:var(--text-muted)">Services — Teams</a>
+    <a href="index.html#about" class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
+    <a href="our-work.html" class="block py-2 nav-link" style="color:var(--text-muted)">Recent Work</a>
+    <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
+    <a href="events.html" class="block py-2 nav-link" style="color:var(--text-muted)">Events</a>
+    <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Courses<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+    <div class="mob-accordion-panel">
+      <a href="courses.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">All Courses</a>
+      <a href="fear-of-falling.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">Fear of Falling Toolkit</a>
+    </div>
+    <a href="index.html#contact" class="block py-2 nav-link" style="color:var(--text-muted)">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[62vh] flex items-end overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="assets/img/blog/challenge-threat-framework.jpg" alt="The Challenge-Threat Framework" class="w-full h-full object-cover" style="object-position:center 40%">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(20,16,26,.96) 0%,rgba(20,16,26,.82) 40%,rgba(20,16,26,.5) 70%,rgba(20,16,26,.25) 100%)"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
+    <a href="our-work.html" class="back-link mb-8 inline-flex reveal"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Articles</a>
+    <p class="mb-5 reveal" style="font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.55)">Performance &middot; 4 min read</p>
+    <h1 class="text-4xl md:text-6xl text-white mb-5 reveal reveal-delay-1" style="max-width:clamp(100%,90vw,760px);line-height:1.07">The Challenge-Threat Framework</h1>
+    <p class="text-lg font-light mb-8 reveal reveal-delay-2" style="color:rgba(243,243,240,.8);max-width:clamp(100%,90vw,560px);line-height:var(--leading-relaxed)">Challenge and threat are not two kinds of people. They are two ways the mind and body can organise around a demanding, meaningful situation.</p>
+    <div class="flex items-center gap-4 reveal reveal-delay-2">
+      <img src="assets/img/team-fin.jpg" alt="Dr Fin Haley" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)">
+      <div>
+        <p class="text-sm font-semibold" style="color:rgba(243,243,240,.8)">Dr Fin Haley</p>
+        <p class="text-xs" style="color:rgba(243,243,240,.4)">Clinical Psychologist &amp; Rock Climbing Instructor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+  <div class="grid lg:grid-cols-[1fr_280px] gap-16 items-start">
+
+    <article class="article-body">
+      <p class="text-xl leading-relaxed mb-8" style="color:var(--text-strong)">You stand below a difficult route. Your heart is racing, your breathing is quicker and the outcome matters to you.</p>
+      <p>That activation alone does not tell us whether you are in a challenge or threat state. The framework is interested in how you interpret the situation: what is being asked of you, what resources you believe you can bring, and how that appraisal shapes the response that follows.</p>
+      <p>This is why two athletes can face almost the same situation, experience similar nerves, and approach it very differently.</p>
+
+      <h2 id="where-the-framework-comes-from" class="flex items-center gap-0"><span class="section-num">1</span>Where the framework comes from</h2>
+      <p>The challenge-threat framework grew from the biopsychosocial model of challenge and threat and was adapted specifically to sport in the Theory of Challenge and Threat States in Athletes. The revised sport model describes challenge and threat as patterns that emerge before and during motivated performance situations - situations that matter, require effort and contain uncertainty.</p>
+      <p>At the centre of the framework is appraisal. We judge the demands in front of us and the resources available to meet them. Demands might include difficulty, uncertainty, effort, danger or the importance of the result. Resources can include skill, experience, preparation, perceived control, confidence, social support and strategies we trust.</p>
+      <p>When resources feel sufficient relative to demands, a challenge response becomes more likely. When demands feel greater than the resources available, a threat response becomes more likely. This is a perception, not an objective verdict on ability. A highly capable athlete can feel threatened; a less experienced athlete can feel challenged by an appropriately scaled task.</p>
+
+      <h2 id="challenge-and-threat-are-patterns-not-la" class="flex items-center gap-0"><span class="section-num">2</span>Challenge and threat are patterns, not labels</h2>
+      <p>The framework does not say that challenge means calm and threat means nervous. Both can involve strong sympathetic activation: a racing heart, butterflies, increased alertness and a sense that something important is about to happen.</p>
+      <p>The proposed difference is in the wider pattern. Challenge has been associated with a more efficient cardiovascular response, including relatively higher cardiac output and lower vascular resistance. Threat is associated with a less efficient pattern, including relatively greater vascular resistance. These are group-level research findings, not sensations that an athlete can reliably diagnose in themselves.</p>
+      <p>Psychologically, challenge is more likely to involve an approach orientation: attention to opportunities, useful resources and what can be done next. Threat is more likely to involve avoidance, possible loss, failure and the consequences of things going wrong. The revised theory also emphasises that these states are not perfectly binary. Appraisals can shift, and elements of challenge and threat can coexist.</p>
+
+      <h2 id="what-does-the-research-show" class="flex items-center gap-0"><span class="section-num">3</span>What does the research show?</h2>
+      <p>The important question is whether these patterns actually matter for performance. Early experimental and sporting studies found that cardiovascular responses consistent with challenge predicted better performance than responses consistent with threat. A 2018 meta-analysis found small but relatively stable associations between challenge-like cardiovascular patterns and better performance, while also identifying publication bias and limitations in the evidence base.</p>
+      <p>A newer review and meta-analysis, covering 62 studies published between 2017 and 2024 and 7,418 participants, again found better performance in challenge states than threat states across domains including sport and education. The effects were small. In other words, the framework appears useful, but challenge is not a guarantee of success and threat does not make poor performance inevitable.</p>
+      <p>That distinction matters. The framework is best used to understand one influence on performance, not as a test you have passed or failed.</p>
+
+      <h2 id="why-your-available-evidence-matters" class="flex items-center gap-0"><span class="section-num">4</span>Why your available evidence matters</h2>
+      <p>When pressure rises, the evidence that comes to mind can change the balance of the appraisal. If your attention is filled with previous failures, doubts and what might go wrong, the demands can feel enormous while your resources become difficult to see.</p>
+      <p>This is one reason reflective journaling can be useful. After training or at the end of a week, record your strengths, what you enjoyed, what went well, what you learned and what you are looking forward to. The aim is not forced positivity and it is not to ignore mistakes. It is to build a fuller, more accessible record of your resources and positive experiences, so that difficult moments are not the only examples that are easy to retrieve when the stakes rise.</p>
+      <p>For example: "I stayed patient on the crux", "I enjoyed moving well on the slab", "I asked for feedback instead of getting frustrated", or "I am looking forward to trying the route again with a better sequence." Over time, this gives confidence something concrete to draw on.</p>
+
+      <h2 id="building-a-challenge-mindset" class="flex items-center gap-0"><span class="section-num">5</span>Building a challenge mindset</h2>
+      <p>A challenge mindset is therefore not created by telling yourself to be confident. It grows from changing the relationship between demands and resources.</p>
+      <p>That may mean building the resources themselves through preparation and effective training. It may mean using process goals so attention stays on controllable actions. It may mean a routine that helps you access the right cues under pressure, or self-talk that brings useful evidence back into focus.</p>
+      <p>The other articles in this series develop those pieces in more detail. Goal Setting: Process Over Outcome explores controllable process goals; The Importance of Preparation looks at matching preparation to likely demands; The Importance of Routines considers how to make useful states and cues more repeatable; and Self-Talk focuses on how to respond to the thoughts that appear under pressure.</p>
+      <p>The aim is not to eliminate threat. Sometimes feeling threatened is informative: the demands really are high, preparation is incomplete, or the safest decision is to step back. The framework is useful when it helps you see that relationship more clearly and respond intelligently.</p>
+
+      <h2 id="related-reading-and-resources">Related reading and resources</h2>
+      <p>Read: Goal Setting: Process Over Outcome  |  Preparation [LINK TO ADD]  |  Routines [LINK TO ADD]  |  Self-Talk [LINK TO ADD]  |  Approach &amp; Performance resource [LINK TO ADD]</p>
+
+    </article>
+
+    <aside class="lg:sticky lg:top-28 space-y-4 reveal reveal-delay-1">
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">In This Article</p>
+        <nav class="space-y-1">
+          <a href="#where-the-framework-comes-from" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">1. Where the framework comes from</a>
+          <a href="#challenge-and-threat-are-patterns-not-la" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">2. Challenge and threat are patterns, not labels</a>
+          <a href="#what-does-the-research-show" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">3. What does the research show?</a>
+          <a href="#why-your-available-evidence-matters" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">4. Why your available evidence matters</a>
+          <a href="#building-a-challenge-mindset" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">5. Building a challenge mindset</a>
+          <a href="#related-reading-and-resources" class="block py-2 text-sm" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.02em">Related reading and resources</a>
+        </nav>
+      </div>
+      <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Put It Into Practice</p>
+        <a href="preparation-workbook.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">The Preparation Workbook &rarr;</a>
+        <a href="performance-anxiety-test.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">Performance Anxiety Measure &rarr;</a>
+      </div>
+      <div style="background:var(--ep-ink);border-radius:var(--radius-lg);padding:var(--space-6)">
+        <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs);color:var(--ep-pine)">Work With Us</p>
+        <p class="text-sm mb-4" style="color:rgba(243,243,240,.6)">Want 1:1 support or team training in performance psychology?</p>
+        <a href="index.html#contact" class="cta-btn text-xs px-5 py-3" style="background:var(--ep-pine);color:var(--ep-paper)">Get In Touch</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- TAKE-HOMES -->
+<section class="py-20 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-3xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Take-Homes</p>
+    <h2 class="text-3xl md:text-4xl mb-8 reveal" style="color:var(--text-strong)">What to take away</h2>
+    <ul class="reveal" style="color:var(--text-muted);line-height:var(--leading-relaxed);padding-left:var(--space-5)">
+      <li>Challenge and threat describe responses to meaningful demands, not personality types.</li>
+      <li>The key relationship is between perceived demands and perceived resources.</li>
+      <li>Both states can include strong arousal.</li>
+      <li>Research links challenge states with somewhat better performance on average, but the effects are small and neither state determines the outcome.</li>
+      <li>Build genuine resources - and keep a record of the strengths, enjoyment, progress and future opportunities that remind you what those resources are.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PUT IT INTO PRACTICE -->
+<section class="py-20 px-6" style="background:var(--surface-page)">
+  <div class="max-w-6xl mx-auto">
+    <p class="ep-eyebrow mb-4 reveal">Put It Into Practice</p>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Free resources to take this further</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="preparation-workbook.html" class="takehome-card reveal" style="display:block;text-decoration:none">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+          </div>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free resource</span>
+        </div>
+        <h3 class="text-lg" style="color:var(--text-strong)">The Preparation Workbook</h3>
+      </a>
+      <a href="performance-anxiety-test.html" class="takehome-card reveal reveal-delay-1" style="display:block;text-decoration:none">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+          </div>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free resource</span>
+        </div>
+        <h3 class="text-lg" style="color:var(--text-strong)">Performance Anxiety Measure</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/White_Logo.png" alt="Expedition Psychology" style="height:28px;opacity:.6">
+      <span style="color:rgba(243,243,240,.3);font-size:var(--text-xs);font-family:var(--font-heading)">Expedition Psychology</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="our-work.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Recent Work</a>
+      <a href="free-tools.html" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Resources</a>
+      <a href="index.html#contact" class="nav-link" style="color:rgba(243,243,240,.35);font-size:var(--text-2xs)">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script>
+  var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLinks.forEach(function(l){l.style.color=''});}
+  });
+  function toggleMobAccordion(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+  document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
+  document.querySelectorAll('.reveal').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>=0)el.classList.add('visible');});
+  var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+  lucide.createIcons();
+</script>
+</body>
+</html>
