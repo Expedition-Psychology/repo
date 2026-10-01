@@ -66,6 +66,13 @@
     .ep-figure svg{width:100%;height:auto;display:block;border-radius:var(--radius-lg);background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);}
     .ep-figure figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
 
+    /* Instagram reel embed */
+    .ep-video{margin:var(--space-12) 0 var(--space-10);}
+    .ep-video-frame{position:relative;width:100%;max-width:400px;margin:0 auto;height:700px;border-radius:var(--radius-lg);overflow:hidden;border:var(--border-width) solid var(--border-subtle);background:var(--surface-raised);}
+    .ep-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .ep-video figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;text-align:center;}
+    @media (max-width:480px){.ep-video-frame{height:640px;}}
+
     /* Take-homes */
     .takehome-card{background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);transition:box-shadow .2s,transform .2s;}
     .takehome-card:hover{box-shadow:var(--shadow-sm);}
@@ -87,7 +94,7 @@
     }
   </style>
   <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
-  <script src="cookie-consent.js?v=2" defer></script>
+  <script src="cookie-consent.js" defer></script>
 </head>
 <body>
 
@@ -193,6 +200,13 @@
       <p>Later, try a suitable route you haven't used in the drill. This is the important test: does the skill appear when you aren't being explicitly walked through it?</p>
       <p>Useful variety can also make training more interesting, but novelty alone is not the target. Nor should variation involve removing safety equipment, bypassing supervision or adding dangerous consequences.</p>
       <p>You are developing a flexible skill, not trying to prove that you can cope with anything.</p>
+
+      <figure class="ep-video reveal">
+        <div class="ep-video-frame">
+          <iframe src="https://www.instagram.com/reel/DdrJ3c9oA7R/embed" title="The Importance of Variability — Expedition Psychology on Instagram" loading="lazy" scrolling="no" allowtransparency="true" allowfullscreen></iframe>
+        </div>
+        <figcaption>Watch on Instagram</figcaption>
+      </figure>
 
     </article>
 

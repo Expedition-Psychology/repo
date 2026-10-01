@@ -66,6 +66,13 @@
     .ep-figure svg{width:100%;height:auto;display:block;border-radius:var(--radius-lg);background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);}
     .ep-figure figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;}
 
+    /* Instagram reel embed */
+    .ep-video{margin:var(--space-12) 0 var(--space-10);}
+    .ep-video-frame{position:relative;width:100%;max-width:400px;margin:0 auto;height:700px;border-radius:var(--radius-lg);overflow:hidden;border:var(--border-width) solid var(--border-subtle);background:var(--surface-raised);}
+    .ep-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .ep-video figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;text-align:center;}
+    @media (max-width:480px){.ep-video-frame{height:640px;}}
+
     /* Take-homes */
     .takehome-card{background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);transition:box-shadow .2s,transform .2s;}
     .takehome-card:hover{box-shadow:var(--shadow-sm);}
@@ -87,7 +94,7 @@
     }
   </style>
   <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
-  <script src="cookie-consent.js?v=2" defer></script>
+  <script src="cookie-consent.js" defer></script>
 </head>
 <body>
 
@@ -138,7 +145,7 @@
 <!-- HERO -->
 <section class="relative min-h-[62vh] flex items-end overflow-hidden">
   <div class="absolute inset-0">
-    <img src="assets/img/blog/what-is-anxiety.jpg" alt="What Is Anxiety?" class="w-full h-full object-cover" style="object-position:center 40%">
+    <img src="assets/img/blog/what-is-anxiety.jpg" alt="What Is Anxiety?" class="w-full h-full object-cover" style="object-position:center 35%">
     <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(20,16,26,.96) 0%,rgba(20,16,26,.82) 40%,rgba(20,16,26,.5) 70%,rgba(20,16,26,.25) 100%)"></div>
   </div>
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
@@ -191,6 +198,13 @@
       <p>Avoidance can sometimes maintain fear, but stepping back from genuine danger is sensible. Psychological practice should never replace technical competence, risk assessment or appropriate supervision.</p>
       <p>Seek support when anxiety persistently affects sleep, relationships, work, enjoyment or participation. A GP or qualified mental-health professional can help you understand what is happening. New or concerning physical symptoms should not automatically be assumed to be anxiety.</p>
       <p>The aim is not to become a person without an alarm system. It is to understand it well enough that it doesn't make every decision for you.</p>
+
+      <figure class="ep-video reveal">
+        <div class="ep-video-frame">
+          <iframe src="https://www.instagram.com/reel/DdrJ3c9oA7R/embed" title="What Is Anxiety? — Expedition Psychology on Instagram" loading="lazy" scrolling="no" allowtransparency="true" allowfullscreen></iframe>
+        </div>
+        <figcaption>Watch on Instagram</figcaption>
+      </figure>
 
     </article>
 

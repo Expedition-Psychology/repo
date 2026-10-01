@@ -46,8 +46,13 @@
     .reveal-delay-2{transition-delay:.2s;}
 
     /* Cards */
-    .case-card{background:var(--surface-raised);border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);overflow:hidden;display:block;text-decoration:none;transition:transform .25s var(--ease-out),box-shadow .25s ease;}
+    /* Cards: equal-height columns so every row lines up and the read-more
+       link sits on the same baseline regardless of blurb length. */
+    .case-card{background:var(--surface-raised);border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:transform .25s var(--ease-out),box-shadow .25s ease;height:100%;}
     .case-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);text-decoration:none;}
+    .case-card .card-media{height:170px;overflow:hidden;position:relative;flex:none;}
+    .case-card .card-body{padding:var(--space-6);display:flex;flex-direction:column;flex:1;}
+    .case-card .card-more{margin-top:auto;padding-top:var(--space-4);}
 
     /* Category browser */
     .cat-bar{position:sticky;top:0;z-index:40;background:rgba(243,243,240,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:var(--border-width) solid var(--border-subtle);}
@@ -58,12 +63,19 @@
     .cat-btn .n{font-size:10px;opacity:.65;}
     .cat-btn.active .n{opacity:.85;}
 
-    .cat-section{padding:72px 24px;}
+    /* Vertical rhythm: 80 between sections, 48 between strands, 24 everywhere
+       inside a block. Mobile halves the section padding and keeps the rest. */
+    .cat-section{padding:80px 24px;}
     .cat-section:nth-child(even){background:var(--surface-sunken);}
     .cat-head{max-width:72rem;margin:0 auto 40px;}
+    .cat-head h2{margin-bottom:12px;}
     .strand{max-width:72rem;margin:0 auto;}
-    .strand + .strand{margin-top:56px;}
+    .strand + .strand{margin-top:48px;}
     .strand-head{border-left:3px solid var(--ep-pine);padding-left:16px;margin-bottom:24px;}
+    .strand-head h3{margin-bottom:4px;}
+    .cat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch;}
+    @media (max-width:1024px){.cat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:680px){.cat-grid{grid-template-columns:minmax(0,1fr);}}
 
     @media (max-width:760px){
       /* Keep the sticky bar one row deep — scroll it instead of wrapping,
@@ -71,8 +83,8 @@
       .cat-bar-inner{padding:12px 16px;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
       .cat-bar-inner::-webkit-scrollbar{display:none;}
       .cat-btn{padding:8px 14px;flex:0 0 auto;}
-      .cat-section{padding:52px 16px;}
-      .cat-head{margin-bottom:28px;}
+      .cat-section{padding:56px 16px;}
+      .cat-head{margin-bottom:32px;}
       .strand + .strand{margin-top:40px;}
     }
   </style>
@@ -126,7 +138,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="relative flex items-end overflow-hidden pt-32 pb-14 px-6" style="background:var(--ep-ink)">
+<section class="relative flex items-end overflow-hidden px-6" style="background:var(--ep-ink);padding-top:128px;padding-bottom:80px">
   <div class="max-w-6xl mx-auto w-full">
     <p class="ep-eyebrow mb-4 reveal" style="color:var(--ep-pine)">The Library</p>
     <h1 class="text-5xl md:text-6xl text-white mb-4 reveal" style="max-width:600px;line-height:1.08">Recent Work</h1>
@@ -151,53 +163,53 @@
     <h2 class="text-3xl md:text-4xl mb-3" style="color:var(--text-strong)">Work with teams in the field</h2>
     <p class="text-base" style="color:var(--text-muted);max-width:42rem">Psychology delivered with organisations working in demanding, high-consequence environments.</p>
   </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="cat-grid">
         <a href="wem-case-study.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/wem-card-hero.jpg" alt="World Extreme Medicine" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Healthcare · Emergency</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">World Extreme Medicine</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Managing trauma and building resilience in extreme medicine.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="rnli-case-study.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/rnli-card-hero.jpg" alt="RNLI" class="w-full h-full object-cover" style="object-position:center center" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Rescue Services</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">RNLI</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Building resilience and processing identity transitions for frontline lifeboat crews.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="mountain-rescue-case-study.html" class="case-card reveal reveal-delay-2">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/mr-card-hero.jpg" alt="Mountain Rescue" class="w-full h-full object-cover" style="object-position:center 60%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Search &amp; Rescue</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Mountain Rescue</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Supporting casualties in heightened emotional states and managing callout stress.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="tor-divide-case-study.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/tor-card-hero.jpg" alt="The Tor Divide" class="w-full h-full object-cover" style="object-position:center 35%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Ultra-Endurance</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Tor Divide</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Mental preparation for ultra-distance cycling across challenging terrain and unpredictable conditions.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
       </div>
@@ -210,29 +222,29 @@
     <h2 class="text-3xl md:text-4xl mb-3" style="color:var(--text-strong)">Writing for climbers</h2>
     <p class="text-base" style="color:var(--text-muted);max-width:42rem">Fear, falling and confidence on the wall — the psychology behind what holds climbers back.</p>
   </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="cat-grid">
         <a href="fear-of-falling-article.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/fof-article-hero.jpg" alt="Overcoming the Fear of Falling" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Climbing · Fear</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Overcoming the Fear of Falling</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Why avoiding falls keeps fear alive — and four tools that actually shift it. Includes a free recorded talk.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="managing-fear-through-experience.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
-            <img src="assets/img/blog/managing-fear-through-experience.jpg" alt="When the Consequences Are Real" class="w-full h-full object-cover" style="object-position:center 35%" loading="lazy">
+          <div class="card-media">
+            <img src="assets/img/blog/managing-fear-through-experience.jpg" alt="When the Consequences Are Real" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Climbing · Risk</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">When the Consequences Are Real</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">A three-step decision framework for serious routes, and a pyramid of experience to build the judgement beneath it.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
       </div>
@@ -250,65 +262,65 @@
           <h3 class="text-xl" style="color:var(--text-strong)">Foundations</h3>
           <p class="text-sm" style="color:var(--text-muted)">Goals, motivation, resilience, anxiety and preparation — the ground everything else stands on.</p>
         </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="cat-grid">
         <a href="goal-setting-process-over-outcome.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
-            <img src="assets/img/blog/goal-setting-process-over-outcome.jpg" alt="Goal Setting: Process Over Outcome" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
+          <div class="card-media">
+            <img src="assets/img/blog/goal-setting-process-over-outcome.jpg" alt="Goal Setting: Process Over Outcome" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Foundations</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Goal Setting: Process Over Outcome</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Outcome, performance and process goals — and why the things you do repeatedly are what move you towards the result.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="motivation-that-lasts.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
-            <img src="assets/img/blog/motivation-that-lasts.jpg" alt="Motivation That Lasts" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
+          <div class="card-media">
+            <img src="assets/img/blog/motivation-that-lasts.jpg" alt="Motivation That Lasts" class="w-full h-full object-cover" style="object-position:center 25%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Foundations</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Motivation That Lasts</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Competence, autonomy and relatedness — building a way of training that gives you reasons to return.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="building-resilience-four-pillars.html" class="case-card reveal reveal-delay-2">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/building-resilience-four-pillars.jpg" alt="Building Resilience: The Four Pillars" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Foundations</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Building Resilience: The Four Pillars</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Work, hobbies, relationships and personal growth — why resilience is about what supports you, not how tough you are.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="what-is-anxiety.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
-            <img src="assets/img/blog/what-is-anxiety.jpg" alt="What Is Anxiety?" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
+          <div class="card-media">
+            <img src="assets/img/blog/what-is-anxiety.jpg" alt="What Is Anxiety?" class="w-full h-full object-cover" style="object-position:center 35%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Foundations</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">What Is Anxiety?</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">What the anxiety response actually is, how thoughts, body and behaviour interact, and what genuinely helps.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="the-importance-of-preparation.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/the-importance-of-preparation.jpg" alt="The Importance of Preparation" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Foundations</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Importance of Preparation</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Identify the demands, separate what you can control from what you can't, and rehearse adapting to the rest.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
       </div>
@@ -318,65 +330,65 @@
           <h3 class="text-xl" style="color:var(--text-strong)">Training</h3>
           <p class="text-sm" style="color:var(--text-muted)">How to design practice so that what you learn is still there next week, and works somewhere new.</p>
         </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="cat-grid">
         <a href="challenge-point-framework.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
-            <img src="assets/img/blog/challenge-point-framework.jpg" alt="The Challenge Point Framework" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
+          <div class="card-media">
+            <img src="assets/img/blog/challenge-point-framework.jpg" alt="The Challenge Point Framework" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Training</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Challenge Point Framework</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Why the same task isn't equally hard for everyone, and how to pitch practice so errors become information.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="scaled-complexity.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/scaled-complexity.jpg" alt="Scaled Complexity" class="w-full h-full object-cover" style="object-position:center 35%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Training</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Scaled Complexity</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Reduce competing demands to make a skill accessible, then add complexity that earns its place.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="the-importance-of-spacing.html" class="case-card reveal reveal-delay-2">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/the-importance-of-spacing.jpg" alt="The Importance of Spacing" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Training</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Importance of Spacing</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Why distributed practice and intelligent breaks produce learning that is still there next week.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="the-importance-of-variability.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/the-importance-of-variability.jpg" alt="The Importance of Variability" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Training</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Importance of Variability</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Practising adaptation rather than repetition — and why transfer is the reason for the variation.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="the-importance-of-gamification.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/the-importance-of-gamification.jpg" alt="The Importance of Gamification" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Training</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Importance of Gamification</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">What you score shapes what people practise. Designing play that still serves the learning.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
       </div>
@@ -386,101 +398,101 @@
           <h3 class="text-xl" style="color:var(--text-strong)">Approach &amp; Performance</h3>
           <p class="text-sm" style="color:var(--text-muted)">What happens when it matters: routines, imagery, self-talk, attention and pressure.</p>
         </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="cat-grid">
         <a href="challenge-threat-framework.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/challenge-threat-framework.jpg" alt="The Challenge-Threat Framework" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Challenge-Threat Framework</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">How perceived demands and perceived resources shape your response to moments that matter.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="the-importance-of-routines.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/the-importance-of-routines.jpg" alt="The Importance of Routines" class="w-full h-full object-cover" style="object-position:center 45%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Importance of Routines</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Knowing what readiness looks like for you, and building a sequence where every element has a job.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="imagery-and-visualisation.html" class="case-card reveal reveal-delay-2">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/imagery-and-visualisation.jpg" alt="Imagery and Visualisation" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Imagery and Visualisation</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Rehearsing the actions that support performance, including how you will cope when it doesn't go to plan.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="self-talk.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/blog/self-talk.jpg" alt="Self-Talk" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Self-Talk</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Noticing the recurring script, and choosing cues that are believable and useful rather than simply positive.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="attentional-focus.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
-            <img src="assets/img/blog/attentional-focus.jpg" alt="Attentional Focus" class="w-full h-full object-cover" style="object-position:center 55%" loading="lazy">
+          <div class="card-media">
+            <img src="assets/img/blog/attentional-focus.jpg" alt="Attentional Focus" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Attentional Focus</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Broad or narrow, internal or external — putting attention where the situation actually needs it.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="choking-under-pressure.html" class="case-card reveal reveal-delay-2">
-          <div class="h-40 overflow-hidden" style="position:relative">
-            <img src="assets/img/blog/choking-under-pressure.jpg" alt="Choking Under Pressure" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
+          <div class="card-media">
+            <img src="assets/img/blog/choking-under-pressure.jpg" alt="Choking Under Pressure" class="w-full h-full object-cover" style="object-position:center 35%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">Choking Under Pressure</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">When a familiar skill breaks down under pressure, more conscious control isn't always the answer.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="performance-anxiety.html" class="case-card reveal">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/mammut-run1.webp" alt="How to Deal With Performance Anxiety in Sports" class="w-full h-full object-cover" style="object-position:center 60%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance · Resilience</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">How to Deal With Performance Anxiety in Sports</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Process focus, body grounding, and self-talk — the three levers that break the anxiety cycle.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
         <a href="social-comparison.html" class="case-card reveal reveal-delay-1">
-          <div class="h-40 overflow-hidden" style="position:relative">
+          <div class="card-media">
             <img src="assets/img/climb-stanage1.webp" alt="The Role of Social Comparison in Performance" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
           </div>
-          <div class="p-6">
+          <div class="card-body">
             <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Performance · Wellbeing</p>
             <h3 class="text-lg mb-2" style="color:var(--text-strong)">The Role of Social Comparison in Performance</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted)">How the comparisons we make quietly shape our performance — and how to work with them instead of against them.</p>
-            <p class="text-xs font-semibold mt-3 flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
       </div>
