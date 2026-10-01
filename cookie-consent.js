@@ -147,6 +147,39 @@
     return bar;
   }
 
+  // x-dc pages render into a component root (#dc-root) whose wrapper chain
+  // collapses to height 0 while the content inside it overflows. Appending the
+  // bar to <body> therefore lands it mid-page, over the content. Only some of
+  // these pages have a ".doc" wrapper, so find the content host by descending
+  // from the component root through the zero-height wrappers until we reach the
+  // element that actually carries the page's height.
+  function findContentHost() {
+    var doc = document.querySelector(".doc");
+    if (doc && doc.parentElement) return doc.parentElement;
+
+    var root = document.getElementById("dc-root") || document.querySelector("x-dc");
+    if (!root) return null;
+
+    var node = root;
+    for (var depth = 0; depth < 8; depth++) {
+      if (node.getBoundingClientRect().height > 0) {
+        // Only usable once the content has actually rendered into it.
+        return node === root ? null : node;
+      }
+      var kids = [];
+      for (var i = 0; i < node.children.length; i++) {
+        var c = node.children[i];
+        if (c.tagName !== "SCRIPT" && c.tagName !== "STYLE") kids.push(c);
+      }
+      if (!kids.length) return null;
+      kids.sort(function (a, b) {
+        return b.getBoundingClientRect().height - a.getBoundingClientRect().height;
+      });
+      node = kids[0];
+    }
+    return null;
+  }
+
   function ensureLegalBar() {
     // If the page already has static legal links (marketing footers, or the
     // service/event pages' own footers), don't inject a bar.
@@ -157,30 +190,31 @@
       document.body.appendChild(buildLegalBar());
       return;
     }
-    // x-dc pages render after this script, into a component root (e.g. #act-root)
-    // whose wrapper #dc-root can collapse to 0 height while its content overflows
-    // — so appending to <body> lands the bar mid-page. Wait for the content
-    // (.doc) to render, then append the bar into the content root (after .doc)
-    // so it flows to the very bottom, and pin it there while the page settles.
+
+    // Wait for the content to render, then append the bar as the last child of
+    // the content host so it flows to the very bottom, and pin it there while
+    // the page settles (steps and reveals can re-order things after first paint).
     var tries = 0;
     var iv = setInterval(function () {
       if (document.querySelector("[data-epx-legal]")) { clearInterval(iv); return; }
-      var doc = document.querySelector(".doc");
-      var host = (doc && doc.parentElement) ? doc.parentElement : null;
+      if (document.getElementById("epx-legal-bar")) { clearInterval(iv); return; }
+
+      var host = findContentHost();
       if (host) {
         clearInterval(iv);
-        if (!document.getElementById("epx-legal-bar")) {
-          var bar = buildLegalBar();
-          host.appendChild(bar);
-          var c = 0;
-          var iv2 = setInterval(function () {
-            if (host.lastElementChild !== bar) host.appendChild(bar);
-            if (++c > 20) clearInterval(iv2);
-          }, 200);
-        }
+        var bar = buildLegalBar();
+        host.appendChild(bar);
+        var c = 0;
+        var iv2 = setInterval(function () {
+          if (host.lastElementChild !== bar) host.appendChild(bar);
+          if (++c > 30) clearInterval(iv2);
+        }, 200);
         return;
       }
-      if (++tries > 25) { // ~5s fallback
+
+      // ~10s. If the content never rendered there is nothing to sit beneath,
+      // so fall back to <body> rather than leaving the page without the links.
+      if (++tries > 50) {
         clearInterval(iv);
         if (!document.getElementById("epx-legal-bar")) document.body.appendChild(buildLegalBar());
       }
