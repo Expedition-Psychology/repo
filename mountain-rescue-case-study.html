@@ -42,7 +42,7 @@
     #mobile-menu { display:none; }
     #mobile-menu.open { display:block; }
     .hero-bg { background:var(--ep-ink); }
-    .hero-photo { position:absolute;inset:0;background-image:url('assets/img/mr/mr-00603.jpg');background-size:cover;background-position:center 38%;opacity:.42; }
+    .hero-photo { position:absolute;inset:0;background-image:url('assets/img/mr/mr-00606.jpg');background-size:cover;background-position:center 38%;opacity:.42; }
     .hero-scrim { position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,22,.92) 0%,rgba(10,15,22,.5) 55%,rgba(10,15,22,.2) 100%); }
 
     /* ── Nav Dropdowns ── */
@@ -141,12 +141,15 @@
     .mob-accordion-trigger.open .mob-accordion-chevron { transform:rotate(180deg); }
     .mob-accordion-panel { display:none; }
     .mob-accordion-panel.open { display:block; }
-    /* Instagram reel embed */
+    /* Instagram reel embed — cropped to the video itself, without the post
+       chrome. Instagram renders a 54px header above a 4:5 frame and fits the
+       9:16 reel inside it, so the video occupies the centre ~70% of the frame
+       width. Sizing the iframe to 1/0.703 of the container and pulling it up
+       by the header height leaves just the video visible. */
     .ep-video{margin:var(--space-12) 0 var(--space-10);}
-    .ep-video-frame{position:relative;width:100%;max-width:400px;margin:0 auto;height:700px;border-radius:var(--radius-lg);overflow:hidden;border:var(--border-width) solid var(--border-subtle);background:var(--surface-raised);}
-    .ep-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .ep-video-frame{--ig-header:54px;--ig-fill:142.25%;position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9 / 16;overflow:hidden;border-radius:var(--radius-lg);background:var(--ep-ink);}
+    .ep-video-frame iframe{position:absolute;top:calc(-1 * var(--ig-header));left:50%;transform:translateX(-50%);width:var(--ig-fill);height:calc(100% + var(--ig-header) + 260px);border:0;}
     .ep-video figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;text-align:center;}
-    @media (max-width:480px){.ep-video-frame{height:640px;}}
   </style>
 <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
 <script src="cookie-consent.js?v=2" defer></script>
@@ -376,11 +379,6 @@
       <p>&ldquo;A very informative and engaging presentation that is very relatable to our work. It brought different perspectives to some techniques we regularly use.&rdquo;</p>
       <p style="font-size:var(--text-sm);font-style:normal;color:var(--text-muted);margin-top:var(--space-3);font-family:var(--font-heading)">&mdash; Rich Newby</p>
     </div>
-
-    <figure class="reveal reveal-delay-1" style="margin:var(--space-10) 0 0">
-      <img src="assets/img/mr/mr-00606.jpg" alt="Discussion between Dr Fin Haley and the Mountain Rescue team" style="width:100%;height:auto;display:block;border-radius:var(--radius-lg)" loading="lazy">
-      <figcaption style="font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding-top:var(--space-3)">Connecting psychological ideas to the realities of a callout</figcaption>
-    </figure>
   </div>
 </section>
 
