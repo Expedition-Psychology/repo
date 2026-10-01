@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recent Work — Expedition Psychology</title>
-  <meta name="description" content="Case studies, climbing articles and performance psychology writing from Expedition Psychology — 24 pieces on goals, motivation, training design, pressure and performance.">
+  <meta name="description" content="Case studies, climbing articles and performance psychology writing from Expedition Psychology — 25 pieces on goals, motivation, training design, pressure and performance.">
   <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
   <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -138,8 +138,10 @@
 </nav>
 
 <!-- HERO -->
-<section class="relative flex items-end overflow-hidden px-6" style="background:var(--ep-ink);padding-top:128px;padding-bottom:80px">
-  <div class="max-w-6xl mx-auto w-full">
+<section class="relative flex items-end overflow-hidden px-6" style="background:var(--ep-ink);padding-top:132px;padding-bottom:84px">
+  <img src="assets/img/our-work-hero.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover" style="object-position:center 42%;opacity:.5">
+  <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(20,16,26,.94) 0%,rgba(20,16,26,.78) 45%,rgba(20,16,26,.5) 100%)"></div>
+  <div class="relative z-10 max-w-6xl mx-auto w-full">
     <p class="ep-eyebrow mb-4 reveal" style="color:var(--ep-pine)">The Library</p>
     <h1 class="text-5xl md:text-6xl text-white mb-4 reveal" style="max-width:600px;line-height:1.08">Recent Work</h1>
     <p class="text-lg font-light reveal reveal-delay-1" style="color:rgba(243,243,240,.65);max-width:34rem;line-height:var(--leading-relaxed)">Case studies from the field, climbing writing, and 18 articles on the psychology of training and performance.</p>
@@ -149,8 +151,8 @@
 <!-- CATEGORY BAR -->
 <div class="cat-bar">
   <div class="cat-bar-inner">
-    <button class="cat-btn active" data-cat="all" onclick="showCat('all',this)">All <span class="n">24</span></button>
-    <button class="cat-btn" data-cat="case" onclick="showCat('case',this)">Case Studies <span class="n">4</span></button>
+    <button class="cat-btn active" data-cat="all" onclick="showCat('all',this)">All <span class="n">25</span></button>
+    <button class="cat-btn" data-cat="case" onclick="showCat('case',this)">Case Studies <span class="n">5</span></button>
     <button class="cat-btn" data-cat="climb" onclick="showCat('climb',this)">Climbing <span class="n">2</span></button>
     <button class="cat-btn" data-cat="perf" onclick="showCat('perf',this)">Performance Psychology <span class="n">18</span></button>
   </div>
@@ -163,7 +165,8 @@
     <h2 class="text-3xl md:text-4xl mb-3" style="color:var(--text-strong)">Work with teams in the field</h2>
     <p class="text-base" style="color:var(--text-muted);max-width:42rem">Psychology delivered with organisations working in demanding, high-consequence environments.</p>
   </div>
-      <div class="cat-grid">
+      <div class="strand">
+        <div class="cat-grid">
         <a href="wem-case-study.html" class="case-card reveal">
           <div class="card-media">
             <img src="assets/img/wem-card-hero.jpg" alt="World Extreme Medicine" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
@@ -188,7 +191,7 @@
             <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
-        <a href="mountain-rescue-case-study.html" class="case-card reveal reveal-delay-2">
+        <a href="northumberland-mountain-rescue-case-study.html" class="case-card reveal reveal-delay-2">
           <div class="card-media">
             <img src="assets/img/mr/mr-00603.jpg" alt="Northumberland Mountain Rescue" class="w-full h-full object-cover" style="object-position:center 38%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
@@ -200,7 +203,19 @@
             <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
-        <a href="tor-divide-case-study.html" class="case-card reveal">
+        <a href="buxton-mountain-rescue-case-study.html" class="case-card reveal">
+          <div class="card-media">
+            <img src="assets/img/mr-card-hero.jpg" alt="Buxton Mountain Rescue" class="w-full h-full object-cover" style="object-position:center 60%" loading="lazy">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
+          </div>
+          <div class="card-body">
+            <p class="text-xs font-semibold tracking-wide uppercase mb-2" style="color:var(--text-muted)">Search &amp; Rescue</p>
+            <h3 class="text-lg mb-2" style="color:var(--text-strong)">Buxton Mountain Rescue</h3>
+            <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Supporting casualties in heightened emotional states, and managing the stress of a callout.</p>
+            <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
+          </div>
+        </a>
+        <a href="tor-divide-case-study.html" class="case-card reveal reveal-delay-1">
           <div class="card-media">
             <img src="assets/img/tor-card-hero.jpg" alt="The Tor Divide" class="w-full h-full object-cover" style="object-position:center 35%" loading="lazy">
             <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,15,22,.5) 0%,transparent 60%)"></div>
@@ -212,6 +227,7 @@
             <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
+        </div>
       </div>
 </section>
 
@@ -222,7 +238,8 @@
     <h2 class="text-3xl md:text-4xl mb-3" style="color:var(--text-strong)">Writing for climbers</h2>
     <p class="text-base" style="color:var(--text-muted);max-width:42rem">Fear, falling and confidence on the wall — the psychology behind what holds climbers back.</p>
   </div>
-      <div class="cat-grid">
+      <div class="strand">
+        <div class="cat-grid">
         <a href="fear-of-falling-article.html" class="case-card reveal">
           <div class="card-media">
             <img src="assets/img/fof-article-hero.jpg" alt="Overcoming the Fear of Falling" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
@@ -247,6 +264,7 @@
             <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
+        </div>
       </div>
 </section>
 
@@ -262,7 +280,8 @@
           <h3 class="text-xl" style="color:var(--text-strong)">Foundations</h3>
           <p class="text-sm" style="color:var(--text-muted)">Goals, motivation, resilience, anxiety and preparation — the ground everything else stands on.</p>
         </div>
-      <div class="cat-grid">
+      <div class="strand">
+        <div class="cat-grid">
         <a href="goal-setting-process-over-outcome.html" class="case-card reveal">
           <div class="card-media">
             <img src="assets/img/blog/goal-setting-process-over-outcome.jpg" alt="Goal Setting: Process Over Outcome" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
@@ -323,6 +342,7 @@
             <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
+        </div>
       </div>
       </div>
       <div class="strand">
@@ -330,7 +350,8 @@
           <h3 class="text-xl" style="color:var(--text-strong)">Training</h3>
           <p class="text-sm" style="color:var(--text-muted)">How to design practice so that what you learn is still there next week, and works somewhere new.</p>
         </div>
-      <div class="cat-grid">
+      <div class="strand">
+        <div class="cat-grid">
         <a href="challenge-point-framework.html" class="case-card reveal">
           <div class="card-media">
             <img src="assets/img/blog/challenge-point-framework.jpg" alt="The Challenge Point Framework" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy">
@@ -391,6 +412,7 @@
             <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
+        </div>
       </div>
       </div>
       <div class="strand">
@@ -398,7 +420,8 @@
           <h3 class="text-xl" style="color:var(--text-strong)">Approach &amp; Performance</h3>
           <p class="text-sm" style="color:var(--text-muted)">What happens when it matters: routines, imagery, self-talk, attention and pressure.</p>
         </div>
-      <div class="cat-grid">
+      <div class="strand">
+        <div class="cat-grid">
         <a href="challenge-threat-framework.html" class="case-card reveal">
           <div class="card-media">
             <img src="assets/img/blog/challenge-threat-framework.jpg" alt="The Challenge-Threat Framework" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy">
@@ -495,6 +518,7 @@
             <p class="card-more text-xs font-semibold flex items-center gap-1" style="color:var(--ep-pine)">Read <i data-lucide="arrow-right" class="w-3 h-3"></i></p>
           </div>
         </a>
+        </div>
       </div>
       </div>
 </section>

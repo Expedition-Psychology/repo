@@ -116,15 +116,17 @@
     @media (max-width:640px){
       .fofa-hero-img{object-position:60% 30%!important;}
     }
-    /* Instagram reel embed — cropped to the video itself, without the post
-       chrome. Instagram renders a 54px header above a 4:5 frame and fits the
-       9:16 reel inside it, so the video occupies the centre ~70% of the frame
-       width. Sizing the iframe to 1/0.703 of the container and pulling it up
-       by the header height leaves just the video visible. */
-    .ep-video{margin:var(--space-12) 0 var(--space-10);}
-    .ep-video-frame{--ig-header:54px;--ig-fill:142.25%;position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9 / 16;overflow:hidden;border-radius:var(--radius-lg);background:var(--ep-ink);}
-    .ep-video-frame iframe{position:absolute;top:calc(-1 * var(--ig-header));left:50%;transform:translateX(-50%);width:var(--ig-fill);height:calc(100% + var(--ig-header) + 260px);border:0;}
-    .ep-video figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;text-align:center;}
+    /* Instagram reel — poster first, iframe only on click (so nothing loads
+       from Instagram, and no third-party cookie is set, until the reader asks
+       for it). The frame is 9:16 and clips Instagram's 54px header, caption
+       footer and side gutters so only the video shows. */
+    .ep-reel{--ig-header:54px;--ig-fill:142.25%;position:relative;width:100%;max-width:340px;margin:0 auto;aspect-ratio:9 / 16;overflow:hidden;border-radius:var(--radius-xl);background:#0a0a0a;box-shadow:var(--shadow-xl);cursor:pointer;}
+    .ep-reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .ep-reel .reel-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,22,.6) 0%,rgba(0,0,0,.12) 60%);}
+    .ep-reel .reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+    .ep-reel .reel-play span{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.3);transition:transform .2s ease,background .2s ease;}
+    .ep-reel:hover .reel-play span{background:rgba(255,255,255,.26);transform:scale(1.08);}
+    .ep-reel iframe{position:absolute;top:calc(-1 * var(--ig-header));left:50%;transform:translateX(-50%);width:var(--ig-fill);height:calc(100% + var(--ig-header) + 260px);border:0;}
   </style>
   <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
   <script src="cookie-consent.js?v=2" defer></script>
@@ -288,15 +290,6 @@
           <p>Fear that's only been tested one way tends to only improve one way. Mix up how you fall — going for a hold rather than from a static position, falling to the side, on top rope and on lead, on different walls and angles — so the confidence you build actually transfers to the climbing you want to do, not just the drill you practised.</p>
         </div>
       </div>
-
-    
-      <figure class="ep-video reveal">
-        <div class="ep-video-frame">
-          <iframe src="https://www.instagram.com/reel/DaS8yYPq97R/embed" title="Overcoming the fear of falling — Expedition Psychology on Instagram" loading="lazy" scrolling="no" allowtransparency="true" allowfullscreen></iframe>
-        </div>
-        <figcaption>Watch on Instagram</figcaption>
-      </figure>
-
     </article>
 
     <!-- SIDEBAR -->
@@ -369,6 +362,48 @@
     </div>
   </div>
 </section>
+
+
+<!-- WATCH -->
+<section class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4">Watch</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">Fear is a normal response</h2>
+        <p class="leading-relaxed mb-8" style="color:var(--text-muted)">A short piece on why avoiding falls keeps fear in place, and what it takes to retrain the response rather than wait for it to disappear.</p>
+        <p class="text-sm" style="color:var(--text-muted)">Dr Fin Haley &middot; Expedition Psychology on Instagram</p>
+      </div>
+      <div class="reveal reveal-delay-1 flex justify-center">
+        <div style="width:100%;max-width:340px">
+          <div class="ep-reel" data-reel="DaS8yYPq97R" onclick="loadReel(this)" role="button" tabindex="0"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();loadReel(this);}"
+               aria-label="Play the reel: Fear is a normal response">
+            <img src="assets/img/reels/DaS8yYPq97R.jpg" alt="Fear is a normal response" loading="lazy">
+            <div class="reel-scrim"></div>
+            <div class="reel-play"><span><svg viewBox="0 0 24 24" fill="white" width="26" height="26" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg></span></div>
+          </div>
+          <p class="text-center text-xs mt-3" style="color:var(--text-muted)">Watch on Instagram</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function loadReel(el){
+    var id = el.getAttribute('data-reel');
+    if (!id || el.querySelector('iframe')) return;
+    el.innerHTML = '';
+    var f = document.createElement('iframe');
+    f.src = 'https://www.instagram.com/reel/' + id + '/embed';
+    f.setAttribute('scrolling','no');
+    f.setAttribute('allowtransparency','true');
+    f.allowFullscreen = true;
+    el.style.cursor = 'default';
+    el.appendChild(f);
+  }
+</script>
 
 <!-- FOOTER -->
 <footer class="py-12 px-6" style="background:var(--ep-ink);border-top:1px solid rgba(255,255,255,.06)">

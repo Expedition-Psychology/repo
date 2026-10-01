@@ -6,3 +6,16 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+# The generic mountain-rescue URL was Buxton's before a second team was added.
+[[redirects]]
+  from = "/mountain-rescue-case-study"
+  to = "/buxton-mountain-rescue-case-study"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mountain-rescue-case-study.html"
+  to = "/buxton-mountain-rescue-case-study"
+  status = 301
+  force = true
