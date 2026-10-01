@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+<title>Pre-Performance Routine — Free Workbook — Expedition Psychology</title>
+<meta name="description" content="Build a reliable way into performance: identify your best state and the deliberate actions that get you there. Works for any sport.">
+<link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+<style>
+  .ep-back-bar { position:relative; z-index:40; padding:10px 24px; font-family:"arboria",sans-serif; background:rgba(243,243,240,.92); border-bottom:1px solid #ddddd8; }
+  .ep-back-bar a { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:#5f5f59; text-decoration:none; }
+  .ep-back-bar a:hover { color:#4b7a6e; }
+  @media (max-width:640px) {
+    html, body { max-width:100vw; overflow-x:hidden; }
+    .doc { max-width:100% !important; box-sizing:border-box; padding:0 22px !important; }
+  }
+  @media print { .ep-back-bar { display:none !important; } }
+</style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
+</head>
+<body>
+<div class="ep-back-bar screen-only"><a href="free-tools.html">&larr; Back to Free Tools</a></div>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/colors.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/typography.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/base.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+<style>
+html, body { margin:0; background:var(--ep-neutral-200); }
+body { font-family:"nunito",'Nunito',sans-serif; font-weight:300; color:var(--ep-neutral-700); -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4,p { margin:0; }
+a { color:var(--ep-pine-700); } a:hover { color:var(--ep-plum); }
+input, textarea, select, button { font-family:inherit; }
+input:focus, textarea:focus, select:focus { border-color:var(--ep-pine) !important; box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff !important; }
+::placeholder { color:var(--ep-neutral-400); }
+@keyframes epFade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+@page { size:letter; margin:0.7in; }
+@media print {
+  html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html, body { background:#fff; }
+  .screen-only { display:none !important; }
+  .sheet { box-shadow:none !important; margin:0 !important; padding:0 !important; }
+}
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding-bottom:70px;">
+
+  <div class="screen-only" style="position:sticky; top:0; z-index:30; background:rgba(243,243,240,.92); backdrop-filter:blur(9px); border-bottom:1px solid var(--ep-neutral-300);">
+    <div style="max-width:840px; margin:0 auto; padding:10px clamp(16px,4vw,28px); display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:190px;">
+        <img src="assets/img/logo-symbol-purple.png" alt="" width="22" style="flex:none; height:auto;">
+        <div style="flex:1; min-width:120px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:5px;">
+            <span style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-700);">{{ stepLabel }}</span>
+            <span style="font-size:12px; font-weight:600; color:var(--ep-pine-700);">{{ savedFlash }}</span>
+          </div>
+          <div style="height:6px; background:var(--ep-neutral-200); border-radius:99px; overflow:hidden;">
+            <div style="height:100%; border-radius:99px; background:var(--ep-plum); transition:width .3s; width:{{ pctText }}"></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; flex:none; align-items:center;">
+        <sc-if value="{{ remember }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ toggleRemember }}" title="Your answers are saved in this browser only." style="font-size:12.5px; font-weight:600; color:var(--ep-pine-700); background:var(--ep-pine-tint); border:1px solid var(--ep-pine); border-radius:99px; padding:7px 13px; cursor:pointer;">Saving on this device</button>
+        </sc-if>
+        <sc-if value="{{ notRemember }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleRemember }}" title="Nothing is stored. Your answers clear when you leave." style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-600); background:transparent; border:1px solid var(--ep-neutral-300); border-radius:99px; padding:7px 13px; cursor:pointer;">Not saving</button>
+        </sc-if>
+        <button type="button" onClick="{{ startOver }}" style="font-size:13px; font-weight:600; color:var(--ep-neutral-600); background:transparent; border:1px solid var(--ep-neutral-300); border-radius:9px; padding:8px 13px; cursor:pointer;">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <main style="max-width:840px; margin:26px auto 0; padding:0 clamp(14px,4vw,28px);">
+    <div class="sheet" style="background:#fff; border-radius:18px; box-shadow:0 12px 50px rgba(46,46,46,.12); padding:clamp(24px,4.5vw,46px);">
+
+      <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+        <header style="text-align:center; padding:16px 0 2px;">
+          <img src="assets/img/logo-symbol-purple.png" alt="Expedition Psychology" width="58" style="display:block; margin:0 auto; height:auto;">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:12px; font-weight:700; color:var(--ep-pine-700); margin-top:26px;">Performance · The Pre-Performance Routine</div>
+          <h1 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(33px,6.2vw,52px); line-height:1.1; letter-spacing:-0.015em; margin-top:16px;">Build a routine that gets you ready</h1>
+          <p style="color:var(--ep-neutral-600); font-size:clamp(15.5px,2.2vw,18px); line-height:1.65; margin:18px auto 0; max-width:56ch;">A good routine is a reliable way into performance, even when the day itself is unpredictable. It's a bridge between arriving and performing: a few deliberate actions that bring you to your best state. Works for any sport.</p>
+          <hr style="border:none; border-top:1px solid var(--ep-neutral-300); max-width:110px; margin:30px auto 0;">
+        </header>
+        <section style="padding-top:30px;" data-screen-label="00 Why">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-plum);">Before you start</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Why a routine helps</h2>
+          <div style="display:grid; gap:12px; margin-top:12px; font-size:15.5px; line-height:1.65; color:var(--ep-neutral-700); max-width:64ch;">
+            <p>The brain is a pattern-recognition machine. That's true of the moves in your sport, and just as true of emotional states: given the right cues, a particular state tends to follow. So there are two questions worth answering, and this workbook takes them in turn: <strong style="font-weight:600; color:var(--ep-ink);">what is my best state, and how do I get there?</strong></p>
+            <p>A routine isn't a guarantee or a lucky ritual. It's something useful to return to, deliberately built from the cues that reliably bring you to your best, and flexible enough to survive a day that doesn't go to plan.</p>
+          </div>
+
+          <div style="margin-top:22px; border:1px solid var(--ep-neutral-200); border-radius:16px; padding:18px 20px; background:var(--ep-neutral-50);">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-pine-700);">The idea behind it · the inverted-U</div>
+            <p style="font-size:14.5px; color:var(--ep-neutral-700); margin-top:9px; line-height:1.6; max-width:66ch;">Think less about happy or nervous, and more about <strong style="font-weight:600; color:var(--ep-ink);">arousal</strong>: your level of activation and alertness. Too low and performance is flat; too high and it falls apart; somewhere in the middle is your optimal zone. Where that zone sits depends on the task, so the first job is to find yours.</p>
+            <div style="margin-top:16px; display:flex; align-items:flex-end; gap:8px; height:84px;">
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:26px; background:var(--ep-clay); border-radius:6px 6px 0 0; opacity:.75;"></div><span style="font-size:11px; color:var(--ep-neutral-500); text-align:center;">Low · flat</span></div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:64px; background:var(--ep-sage); border-radius:6px 6px 0 0;"></div><span style="font-size:11px; color:var(--ep-pine-700); font-weight:700; text-align:center;">Optimal</span></div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:26px; background:var(--ep-clay); border-radius:6px 6px 0 0; opacity:.75;"></div><span style="font-size:11px; color:var(--ep-neutral-500); text-align:center;">High · panic</span></div>
+            </div>
+          </div>
+
+          <h3 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:19px; margin-top:26px;">The arc you'll build</h3>
+          <div style="display:grid; gap:10px; margin-top:12px;">
+            <sc-for list="{{ arc }}" as="a" hint-placeholder-count="4">
+              <div style="display:flex; gap:14px; align-items:flex-start; border:1px solid var(--ep-neutral-200); border-radius:13px; padding:14px 16px; background:var(--ep-neutral-50);">
+                <span style="flex:none; width:30px; height:30px; border-radius:50%; background:#fff; border:1.5px solid {{ a.color }}; color:{{ a.color }}; font-family:'arboria',sans-serif; font-weight:500; font-size:14px; display:flex; align-items:center; justify-content:center;">{{ a.n }}</span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:16.5px;">{{ a.title }}</div>
+                  <p style="font-size:14.5px; color:var(--ep-neutral-600); margin-top:4px; line-height:1.55;">{{ a.blurb }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:22px; padding:15px 18px; border-left:3px solid var(--ep-plum); background:var(--ep-plum-tint); border-radius:0 12px 12px 0; max-width:66ch;">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-plum);">One thread throughout</div>
+            <p style="font-size:14.5px; line-height:1.6; color:var(--ep-neutral-700); margin-top:6px;">Essential safety checks are never the part you shorten or skip. The flexibility in a routine belongs to the optional psychological elements, not to the warm-up and checks your sport requires.</p>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Build my routine</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ notIntro }}" hint-placeholder-val="{{ false }}">
+        <header style="display:flex; align-items:center; gap:13px; padding-bottom:20px; border-bottom:1px solid var(--ep-neutral-200);">
+          <img src="assets/img/logo-symbol-purple.png" alt="Expedition Psychology" width="28" style="height:auto; flex:none;">
+          <div style="flex:1; min-width:0;">
+            <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:19px; letter-spacing:-0.01em;">Performance Routine</div>
+            <div style="font-size:13.5px; color:var(--ep-neutral-500); margin-top:2px;">{{ contextLine }}</div>
+          </div>
+        </header>
+      </sc-if>
+
+      <sc-if value="{{ isState }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="01 Your best state">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step one · Your best state</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">What does ready feel like for you?</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Calm isn't the only useful state. A short, powerful effort may call for more charge; a delicate, precise one for something quieter. Name the performance you're preparing for, then the level of activation it tends to need.</p>
+
+          <label style="display:block; margin-top:22px;"><span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:8px;">The performance you're preparing for</span>
+            <input value="{{ context }}" onChange="{{ onContext }}" placeholder="A powerlifting attempt, a tennis serve, a boulder problem, a race start…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15.5px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:12px 13px; outline:none;"></label>
+
+          <div style="margin-top:20px;">
+            <span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:9px;">What level of activation does it call for?</span>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:9px;">
+              <sc-for list="{{ arousalBands }}" as="b" hint-placeholder-count="3">
+                <button type="button" onClick="{{ b.onPick }}" style="text-align:left; border:1.5px solid {{ b.border }}; background:{{ b.bg }}; border-radius:12px; padding:13px 15px; cursor:pointer;">
+                  <span style="display:block; font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:15.5px;">{{ b.label }}</span>
+                  <span style="display:block; font-size:13px; color:var(--ep-neutral-600); margin-top:4px; line-height:1.45;">{{ b.note }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin-top:24px; border:1px solid var(--ep-neutral-200); border-radius:16px; padding:18px 20px; background:var(--ep-neutral-50);">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-plum);">Think back to a performance that felt well managed</div>
+            <p style="font-size:14.5px; color:var(--ep-neutral-600); margin-top:7px; line-height:1.55; max-width:62ch;">Look for patterns, not one perfect emotion. This is the state your routine will aim for.</p>
+            <div style="display:grid; gap:13px; margin-top:16px;">
+              <sc-for list="{{ stateFields }}" as="f" hint-placeholder-count="4">
+                <label style="display:block;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">{{ f.label }}</span>
+                  <textarea value="{{ f.value }}" onChange="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:58px; resize:vertical; outline:none;"></textarea></label>
+              </sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">Don't copy someone else's build-up. Another athlete's aggressive hype may leave you rushed; forcing yourself totally calm may leave you flat. You're after a state that helps you engage, not another condition to satisfy before you're allowed to begin.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" disabled="{{ noContext }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Build the sequence</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isBuild }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="02 The sequence">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step two · The sequence</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Build a simple four-part sequence</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Every routine is personal, but it helps to follow the same arc. For each part, jot the cues and actions that reliably move you toward the state you just described. Keep every element purposeful: each should have a job.</p>
+
+          <div style="display:grid; gap:14px; margin-top:22px;">
+            <sc-for list="{{ parts }}" as="p" hint-placeholder-count="4">
+              <div style="border:1px solid var(--ep-neutral-200); border-left:5px solid {{ p.color }}; border-radius:14px; padding:16px 18px; background:var(--ep-neutral-50);">
+                <div style="display:flex; align-items:center; gap:11px;">
+                  <span style="flex:none; width:28px; height:28px; border-radius:50%; background:{{ p.color }}; color:#fff; font-family:'arboria',sans-serif; font-weight:500; font-size:13.5px; display:flex; align-items:center; justify-content:center;">{{ p.n }}</span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:17px;">{{ p.title }}</div>
+                    <div style="font-size:13px; color:var(--ep-neutral-500); margin-top:1px;">{{ p.purpose }}</div>
+                  </div>
+                  <span style="flex:none; font-size:12px; font-weight:600; color:var(--ep-plum); background:var(--ep-plum-tint); border-radius:99px; padding:5px 11px; display:inline-block; max-width:48%; text-align:right;">{{ p.question }}</span>
+                </div>
+                <textarea value="{{ p.value }}" onChange="{{ p.onChange }}" placeholder="{{ p.placeholder }}" style="width:100%; box-sizing:border-box; margin-top:13px; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:72px; resize:vertical; outline:none;"></textarea>
+                <sc-if value="{{ p.isTrigger }}" hint-placeholder-val="{{ false }}">
+                  <label style="display:block; margin-top:11px; max-width:320px;"><span style="display:block; font-size:13.5px; color:var(--ep-neutral-700); margin-bottom:5px;">Your trigger cue (one word or gesture)</span>
+                    <input value="{{ triggerCue }}" onChange="{{ onTriggerCue }}" placeholder="&ldquo;Smooth&rdquo;, &ldquo;Attack&rdquo;, one deep breath…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">Physical preparation includes the warm-up and any checks your sport requires, which stay essential and separate from the psychological parts. Mental preparation is where you clarify the plan, perhaps a process goal or a line of self-talk. Attentional control decides what deserves your focus right now, like a first target or an opening rhythm. The trigger is the simple signal that it's time to perform.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Make it adaptable</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isAdapt }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="03 Adaptable">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step three · Adaptable, not superstitious</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">A full version and a short version</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">A routine helps because of what it does for you, not because the universe rewards an exact set of gestures. Build a full version for ordinary preparation and a short version for when time is tight, so a missed step never means you can't perform.</p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:22px;">
+            <div style="border:1px solid var(--ep-pine); background:var(--ep-pine-tint); border-radius:14px; padding:16px 18px;">
+              <div style="text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-weight:700; color:var(--ep-pine-700);">Full version</div>
+              <h3 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:17px; margin-top:5px;">Ordinary preparation</h3>
+              <textarea value="{{ fullVersion }}" onChange="{{ onFullVersion }}" placeholder="The whole arc, in order, as you'd run it with time to spare…" style="width:100%; box-sizing:border-box; margin-top:11px; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:100px; resize:vertical; outline:none;"></textarea>
+            </div>
+            <div style="border:1px solid var(--ep-plum); background:var(--ep-plum-tint); border-radius:14px; padding:16px 18px;">
+              <div style="text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-weight:700; color:var(--ep-plum);">Short version</div>
+              <h3 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:17px; margin-top:5px;">When time is limited</h3>
+              <textarea value="{{ shortVersion }}" onChange="{{ onShortVersion }}" placeholder="Confirm the plan, settle attention, one cue. Keep essential safety checks in." style="width:100%; box-sizing:border-box; margin-top:11px; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:100px; resize:vertical; outline:none;"></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top:20px; border:1px solid var(--ep-neutral-200); border-radius:16px; padding:18px 20px; background:var(--ep-neutral-50);">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-pine-700);">Notice your starting state, then adjust</div>
+            <p style="font-size:14.5px; color:var(--ep-neutral-600); margin-top:7px; line-height:1.55; max-width:64ch;">The state you arrive in changes how you run the routine. Plan a move in each direction.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:13px; margin-top:15px;">
+              <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-ember); font-weight:600; margin-bottom:6px;">If I'm over-aroused (wired, rushing)…</span>
+                <textarea value="{{ adaptHigh }}" onChange="{{ onAdaptHigh }}" placeholder="Calmer music, slower breathing, cut the noise, simplify the plan…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:68px; resize:vertical; outline:none;"></textarea></label>
+              <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-pine-700); font-weight:600; margin-bottom:6px;">If I'm flat (sluggish, under-aroused)…</span>
+                <textarea value="{{ adaptLow }}" onChange="{{ onAdaptLow }}" placeholder="A more active warm-up, upbeat music, an energising cue…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:68px; resize:vertical; outline:none;"></textarea></label>
+            </div>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">There's a real difference between "these steps help me prepare" and "if I can't do every step exactly, I can't perform." The flexibility belongs in the optional psychological elements. Essential safety procedures are not the part to shorten.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Practise it</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isPractise }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="04 Practise">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step four · Practise it before you need it</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Rehearse it, and rehearse recovering it</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">A routine used for the first time at an important event is just another unfamiliar task. Try it in ordinary training, see what helps and what distracts, then practise getting back on track when it's interrupted.</p>
+
+          <div style="display:grid; gap:14px; margin-top:22px;">
+            <label style="display:block;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">When and where will you practise the routine in training?</span>
+              <input value="{{ prWhen }}" onChange="{{ onPrWhen }}" placeholder="Before every hard set this week; before Saturday's session…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:11px 13px; outline:none;"></label>
+            <label style="display:block;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">What will you watch for? (does the cue help, does anything distract or delay?)</span>
+              <textarea value="{{ prWatch }}" onChange="{{ onPrWatch }}" placeholder="Does the trigger make the shift into action clearer? Is any step just padding?" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:66px; resize:vertical; outline:none;"></textarea></label>
+            <label style="display:block;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">If the routine is interrupted, how will you return to a short, workable version?</span>
+              <textarea value="{{ prRecover }}" onChange="{{ onPrRecover }}" placeholder="Someone speaks to me, the start moves, a previous attempt went badly. My way back: confirm the plan, settle attention, one cue — without starting everything again." style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:80px; resize:vertical; outline:none;"></textarea></label>
+            <label style="display:block;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">After a mistake mid-performance, how will you reset and choose the next action?</span>
+              <textarea value="{{ prReset }}" onChange="{{ onPrReset }}" placeholder="Establish what matters now, reset where appropriate, pick the next move…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:68px; resize:vertical; outline:none;"></textarea></label>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">You don't need the perfect build-up to perform. A good routine helps you prepare adequately and then stop preparing. The ability to recover an interrupted routine is often worth more than running it flawlessly.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">See my routine</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isSummary }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="05 Summary">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-plum);">Your pre-performance routine</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">{{ contextTitle }}</h2>
+          <p style="font-size:15px; color:var(--ep-neutral-600); margin-top:6px; max-width:62ch;">{{ aimLine }}</p>
+
+          <sc-if value="{{ hasState }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:18px; border:1px solid var(--ep-neutral-200); border-radius:14px; padding:16px 20px; background:var(--ep-neutral-50);">
+              <div style="font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--ep-neutral-500);">The state I'm aiming for</div>
+              <div style="display:grid; gap:6px; margin-top:9px; font-size:15px; color:var(--ep-neutral-700); line-height:1.5;">
+                <sc-for list="{{ stateLines }}" as="l" hint-placeholder-count="2">
+                  <p><strong style="font-weight:600; color:var(--ep-ink);">{{ l.label }}</strong> {{ l.value }}</p>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <div style="display:grid; gap:12px; margin-top:14px;">
+            <sc-for list="{{ partCards }}" as="c" hint-placeholder-count="4">
+              <div style="border:1px solid var(--ep-neutral-200); border-left:5px solid {{ c.color }}; border-radius:12px; padding:15px 18px; background:#fff; break-inside:avoid;">
+                <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                  <h3 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:17px;">{{ c.n }}. {{ c.title }}</h3>
+                  <span style="font-size:12px; color:var(--ep-neutral-500);">{{ c.purpose }}</span>
+                </div>
+                <p style="font-size:15px; color:var(--ep-neutral-700); margin-top:8px; line-height:1.5; white-space:pre-wrap;">{{ c.value }}</p>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:14px;">
+            <sc-if value="{{ fullVersion }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px solid var(--ep-pine); background:var(--ep-pine-tint); border-radius:12px; padding:15px 18px; break-inside:avoid;"><div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ep-pine-700);">Full version</div><p style="font-size:15px; color:var(--ep-neutral-700); margin-top:7px; line-height:1.5; white-space:pre-wrap;">{{ fullVersion }}</p></div>
+            </sc-if>
+            <sc-if value="{{ shortVersion }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px solid var(--ep-plum); background:var(--ep-plum-tint); border-radius:12px; padding:15px 18px; break-inside:avoid;"><div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ep-plum);">Short version</div><p style="font-size:15px; color:var(--ep-neutral-700); margin-top:7px; line-height:1.5; white-space:pre-wrap;">{{ shortVersion }}</p></div>
+            </sc-if>
+          </div>
+
+          <sc-if value="{{ hasExtras }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px; border:1px solid var(--ep-neutral-200); border-radius:12px; padding:15px 18px; background:#fff; display:grid; gap:7px; font-size:15px; color:var(--ep-neutral-700); line-height:1.5; break-inside:avoid;">
+              <sc-for list="{{ extraLines }}" as="l" hint-placeholder-count="2">
+                <p><strong style="font-weight:600; color:var(--ep-ink);">{{ l.label }}</strong> {{ l.value }}</p>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;" class="screen-only">
+            <button type="button" onClick="{{ print }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid transparent; background:var(--ep-pine); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-pine-700);">Download as PDF</button>
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ startOver }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Build another routine</button>
+          </div>
+
+          <div style="margin-top:34px; padding-top:26px; border-top:1px solid var(--ep-neutral-200); text-align:center;">
+            <p style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-plum); font-size:clamp(17px,2.6vw,21px); max-width:34ch; margin:0 auto; line-height:1.35;">You don't need the perfect build-up to perform. A good routine helps you prepare, and then lets you stop.</p>
+            <img src="assets/img/logo-wordmark-black-trimmed.png" alt="Expedition Psychology" width="140" style="opacity:.65; margin:26px auto 0; display:block; height:auto;">
+          </div>
+        </section>
+      </sc-if>
+
+      <p class="screen-only" style="font-size:13px; color:var(--ep-neutral-500); margin-top:28px; padding-top:18px; border-top:1px solid var(--ep-neutral-200); line-height:1.6;">Everything you write stays in this browser, on this device. It is never uploaded or shared. On a shared computer, switch saving off or select <strong style="font-weight:600;">Clear</strong> when you finish.</p>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGuidance&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.KEY = 'ep-performance-routine-v1';
+    this.PREF = 'ep-performance-routine-remember';
+    let remember = true;
+    try { const p = localStorage.getItem(this.PREF); if(p !== null) remember = p !== '0'; } catch(e){}
+    let stored = {};
+    if(remember){ try { stored = JSON.parse(localStorage.getItem(this.KEY)) || {}; } catch(e){} }
+    this.state = Object.assign(this.base(), stored, { remember, saved:false });
+  }
+  base(){
+    return { step:0, context:'', arousal:'',
+      stThoughts:'', stBody:'', stAttention:'', stDoing:'',
+      physical:'', mental:'', attention:'', trigger:'', triggerCue:'',
+      fullVersion:'', shortVersion:'', adaptHigh:'', adaptLow:'',
+      prWhen:'', prWatch:'', prRecover:'', prReset:'' };
+  }
+  componentDidMount(){
+    this._touch = () => { this.touched = true; };
+    document.addEventListener('input', this._touch, true);
+    document.addEventListener('click', this._touch, true);
+  }
+  componentWillUnmount(){
+    document.removeEventListener('input', this._touch, true);
+    document.removeEventListener('click', this._touch, true);
+  }
+  KEYS = ['step','context','arousal','stThoughts','stBody','stAttention','stDoing','physical','mental','attention','trigger','triggerCue','fullVersion','shortVersion','adaptHigh','adaptLow','prWhen','prWatch','prRecover','prReset'];
+  componentDidUpdate(prev){
+    if(!this.state.remember || !this.touched) return;
+    if(this.KEYS.some(k => prev[k] !== this.state[k])) this.persist();
+  }
+  persist(){
+    const s = this.state, d = {};
+    this.KEYS.forEach(k => d[k] = s[k]);
+    try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch(e){}
+    this.setState({ saved:true });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ saved:false }), 1400);
+  }
+  toggleRemember = () => {
+    const on = !this.state.remember;
+    try { localStorage.setItem(this.PREF, on ? '1' : '0'); } catch(e){}
+    if(!on){ try { localStorage.removeItem(this.KEY); } catch(e){} }
+    this.setState({ remember:on }, () => { if(on) this.persist(); });
+  };
+  startOver = () => {
+    if(!window.confirm('Clear everything and start again? This cannot be undone.')) return;
+    try { localStorage.removeItem(this.KEY); } catch(e){}
+    this.setState(this.base());
+  };
+  ORDER = ['intro','state','build','adapt','practise','summary'];
+  next = () => this.setState(s => ({ step: Math.min(s.step + 1, this.ORDER.length - 1) }));
+  back = () => this.setState(s => ({ step: Math.max(s.step - 1, 0) }));
+  print = () => window.print();
+  set = (k) => (e) => this.setState({ [k]: e.target.value });
+
+  renderVals(){
+    const s = this.state, cur = this.ORDER[s.step] || 'intro';
+    const PL = '#5b4a6a', PI = '#4b7a6e';
+    const arc = [
+      { n:1, title:'Physical preparation', blurb:'Release tension and get the body ready. Am I physically ready?', color:PI },
+      { n:2, title:'Mental preparation', blurb:'Build confidence and clarity. Do I know what I\u2019m trying to do?', color:PL },
+      { n:3, title:'Attentional control', blurb:'Narrow onto the cues that matter. What should I focus on now?', color:PI },
+      { n:4, title:'Performance trigger', blurb:'Cross from preparing into action. It\u2019s time to perform.', color:PL }
+    ];
+    const bandDefs = [
+      { id:'low', label:'Lower & calmer', note:'Precision, fine detail, patience \u2014 a delicate or technical effort.' },
+      { id:'mid', label:'Moderate', note:'Balanced focus \u2014 most skill and endurance performances.' },
+      { id:'high', label:'Higher & charged', note:'Power in short bursts \u2014 explosive, maximal efforts.' }
+    ];
+    const arousalBands = bandDefs.map(b => ({ label:b.label, note:b.note, onPick:() => this.setState({ arousal:b.id }),
+      border: s.arousal === b.id ? PI : '#d4d4cd', bg: s.arousal === b.id ? '#dde9e5' : '#fff' }));
+    const arousalLabel = (bandDefs.find(b => b.id === s.arousal) || {}).label || '';
+
+    const stateFields = [
+      { key:'stThoughts', label:'What thoughts were you having?', placeholder:'Clear, quiet, one simple intention…' },
+      { key:'stBody', label:'What did your body feel like?', placeholder:'Loose, light, warm, a steady heartbeat…' },
+      { key:'stAttention', label:'Where was your attention?', placeholder:'On the target, the rhythm, the next move…' },
+      { key:'stDoing', label:'What had you done beforehand?', placeholder:'Warm-up, a cue word, a breath, music…' }
+    ].map(f => ({ label:f.label, placeholder:f.placeholder, value:s[f.key], onChange:this.set(f.key) }));
+
+    const partDefs = [
+      { key:'physical', n:1, title:'Physical preparation', purpose:'Release tension, get the body ready', question:'Am I physically ready?', color:PI, placeholder:'Nutrition and hydration, kit, dynamic warm-up, movement drills, mobility \u2014 and any checks your sport requires.' },
+      { key:'mental', n:2, title:'Mental preparation', purpose:'Build confidence and clarity', question:'Do I know what I\u2019m doing?', color:PL, placeholder:'A process goal, a self-talk line, music, watching footage, visualisation…' },
+      { key:'attention', n:3, title:'Attentional control', purpose:'Narrow onto the relevant cues', question:'What do I focus on?', color:PI, placeholder:'A focusing or breathing exercise; the one target, rhythm or feeling to tune into.' },
+      { key:'trigger', n:4, title:'Performance trigger', purpose:'Cross into action', question:'It\u2019s time to perform', color:PL, placeholder:'The simple cue that marks the shift into action.', isTrigger:true }
+    ];
+    const parts = partDefs.map(p => ({ n:p.n, title:p.title, purpose:p.purpose, question:p.question, color:p.color, placeholder:p.placeholder, isTrigger:!!p.isTrigger, value:s[p.key], onChange:this.set(p.key) }));
+
+    const line = (label, value) => value && String(value).trim() ? { label, value } : null;
+    const stateLines = [ line('Thoughts:', s.stThoughts), line('Body:', s.stBody), line('Attention:', s.stAttention), line('Beforehand:', s.stDoing) ].filter(Boolean);
+    const partCards = partDefs.map(p => ({ n:p.n, title:p.title, purpose:p.purpose, color:p.color,
+      value: (s[p.key] || '').trim() ? (s[p.key] + (p.isTrigger && s.triggerCue.trim() ? '\nTrigger cue: ' + s.triggerCue : '')) : (p.isTrigger && s.triggerCue.trim() ? 'Trigger cue: ' + s.triggerCue : 'Not filled in yet.') }));
+    const extraLines = [ line('When I\u2019m over-aroused:', s.adaptHigh), line('When I\u2019m flat:', s.adaptLow), line('Practise it:', s.prWhen), line('Watch for:', s.prWatch), line('If interrupted:', s.prRecover), line('After a mistake:', s.prReset) ].filter(Boolean);
+
+    const labels = { intro:'Why', state:'Your best state', build:'The sequence', adapt:'Adaptable', practise:'Practise', summary:'Your routine' };
+    return {
+      guidance: this.props.showGuidance !== false,
+      stepLabel: 'Step ' + s.step + ' of ' + (this.ORDER.length - 1) + ' \u00b7 ' + labels[cur],
+      pctText: Math.round(s.step / (this.ORDER.length - 1) * 100) + '%',
+      savedFlash: s.saved ? 'Saved' : '',
+      remember:s.remember, notRemember:!s.remember, toggleRemember:this.toggleRemember, startOver:this.startOver,
+      next:this.next, back:this.back, print:this.print,
+      isIntro:cur==='intro', notIntro:cur!=='intro', isState:cur==='state', isBuild:cur==='build', isAdapt:cur==='adapt', isPractise:cur==='practise', isSummary:cur==='summary',
+      arc, arousalBands, stateFields, parts,
+      context:s.context, contextLine: s.context || 'One performance at a time',
+      onContext:this.set('context'), noContext: !s.context.trim(),
+      triggerCue:s.triggerCue, onTriggerCue:this.set('triggerCue'),
+      fullVersion:s.fullVersion, shortVersion:s.shortVersion, adaptHigh:s.adaptHigh, adaptLow:s.adaptLow,
+      onFullVersion:this.set('fullVersion'), onShortVersion:this.set('shortVersion'), onAdaptHigh:this.set('adaptHigh'), onAdaptLow:this.set('adaptLow'),
+      prWhen:s.prWhen, prWatch:s.prWatch, prRecover:s.prRecover, prReset:s.prReset,
+      onPrWhen:this.set('prWhen'), onPrWatch:this.set('prWatch'), onPrRecover:this.set('prRecover'), onPrReset:this.set('prReset'),
+      contextTitle: s.context || 'My pre-performance routine',
+      aimLine: arousalLabel ? 'Aiming for: ' + arousalLabel.toLowerCase() + ' activation' : '',
+      hasState: stateLines.length > 0, stateLines,
+      partCards,
+      hasExtras: extraLines.length > 0, extraLines
+    };
+  }
+}
+</script>
+</body>
+</html>

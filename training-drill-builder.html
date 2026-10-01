@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+<title>The Drill Builder — Free Workbook — Expedition Psychology</title>
+<meta name="description" content="Shape one drill so every attempt teaches you something you can use, built on the principles of effective practice. Works for any sport.">
+<link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+<style>
+  .ep-back-bar { position:relative; z-index:40; padding:10px 24px; font-family:"arboria",sans-serif; background:rgba(243,243,240,.92); border-bottom:1px solid #ddddd8; }
+  .ep-back-bar a { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:#5f5f59; text-decoration:none; }
+  .ep-back-bar a:hover { color:#4b7a6e; }
+  @media (max-width:640px) {
+    html, body { max-width:100vw; overflow-x:hidden; }
+    .doc { max-width:100% !important; box-sizing:border-box; padding:0 22px !important; }
+  }
+  @media print { .ep-back-bar { display:none !important; } }
+</style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
+</head>
+<body>
+<div class="ep-back-bar screen-only"><a href="free-tools.html">&larr; Back to Free Tools</a></div>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/colors.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/typography.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/base.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+<style>
+html, body { margin:0; background:var(--ep-neutral-200); }
+body { font-family:"nunito",'Nunito',sans-serif; font-weight:300; color:var(--ep-neutral-700); -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4,p { margin:0; }
+a { color:var(--ep-pine-700); } a:hover { color:var(--ep-plum); }
+input, textarea, select, button { font-family:inherit; }
+input:focus, textarea:focus, select:focus { border-color:var(--ep-pine) !important; box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff !important; }
+::placeholder { color:var(--ep-neutral-400); }
+@keyframes epFade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+@page { size:letter; margin:0.7in; }
+@media print {
+  html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html, body { background:#fff; }
+  .screen-only { display:none !important; }
+  .sheet { box-shadow:none !important; margin:0 !important; padding:0 !important; }
+}
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding-bottom:70px;">
+
+  <div class="screen-only" style="position:sticky; top:0; z-index:30; background:rgba(243,243,240,.92); backdrop-filter:blur(9px); border-bottom:1px solid var(--ep-neutral-300);">
+    <div style="max-width:840px; margin:0 auto; padding:10px clamp(16px,4vw,28px); display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:190px;">
+        <img src="assets/img/logo-symbol-purple.png" alt="" width="22" style="flex:none; height:auto;">
+        <div style="flex:1; min-width:120px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:5px;">
+            <span style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-700);">{{ stepLabel }}</span>
+            <span style="font-size:12px; font-weight:600; color:var(--ep-pine-700);">{{ savedFlash }}</span>
+          </div>
+          <div style="height:6px; background:var(--ep-neutral-200); border-radius:99px; overflow:hidden;">
+            <div style="height:100%; border-radius:99px; background:var(--ep-plum); transition:width .3s; width:{{ pctText }}"></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; flex:none; align-items:center;">
+        <sc-if value="{{ remember }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ toggleRemember }}" title="Your answers are saved in this browser only." style="font-size:12.5px; font-weight:600; color:var(--ep-pine-700); background:var(--ep-pine-tint); border:1px solid var(--ep-pine); border-radius:99px; padding:7px 13px; cursor:pointer;">Saving on this device</button>
+        </sc-if>
+        <sc-if value="{{ notRemember }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleRemember }}" title="Nothing is stored. Your answers clear when you leave." style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-600); background:transparent; border:1px solid var(--ep-neutral-300); border-radius:99px; padding:7px 13px; cursor:pointer;">Not saving</button>
+        </sc-if>
+        <button type="button" onClick="{{ startOver }}" style="font-size:13px; font-weight:600; color:var(--ep-neutral-600); background:transparent; border:1px solid var(--ep-neutral-300); border-radius:9px; padding:8px 13px; cursor:pointer;">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <main style="max-width:840px; margin:26px auto 0; padding:0 clamp(14px,4vw,28px);">
+    <div class="sheet" style="background:#fff; border-radius:18px; box-shadow:0 12px 50px rgba(46,46,46,.12); padding:clamp(24px,4.5vw,46px);">
+
+      <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+        <header style="text-align:center; padding:16px 0 2px;">
+          <img src="assets/img/logo-symbol-purple.png" alt="Expedition Psychology" width="58" style="display:block; margin:0 auto; height:auto;">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:12px; font-weight:700; color:var(--ep-pine-700); margin-top:26px;">Training · The Drill Builder</div>
+          <h1 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(33px,6.2vw,52px); line-height:1.1; letter-spacing:-0.015em; margin-top:16px;">Build a drill that actually teaches</h1>
+          <p style="color:var(--ep-neutral-600); font-size:clamp(15.5px,2.2vw,18px); line-height:1.65; margin:18px auto 0; max-width:56ch;">The session that makes you look best isn't always the one that helps you learn most. Take one skill and one drill, and shape them so every attempt gives you information you can use. Works for any sport.</p>
+          <hr style="border:none; border-top:1px solid var(--ep-neutral-300); max-width:110px; margin:30px auto 0;">
+        </header>
+        <section style="padding-top:30px;" data-screen-label="00 Why">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-plum);">Before you start</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">What makes a drill worth doing?</h2>
+          <div style="display:grid; gap:12px; margin-top:12px; font-size:15.5px; line-height:1.65; color:var(--ep-neutral-700); max-width:64ch;">
+            <p>It's easy to repeat what you're already good at, or to batter away at something so hard every rep ends the same way. Neither reliably teaches you much. A good drill lives in between: hard enough to make you think, forgiving enough that your mistakes point to a fix.</p>
+            <p>You'll shape one drill in seven short moves, each drawn from a principle of effective practice: <strong style="font-weight:600; color:var(--ep-ink);">the right difficulty, a ladder of levels, intentional spacing, variety, and a bit of play</strong>. By the end you'll have a drill you can run and a way to tell whether it's working.</p>
+          </div>
+
+          <div style="display:grid; gap:10px; margin-top:22px;">
+            <sc-for list="{{ principles }}" as="p" hint-placeholder-count="5">
+              <div style="display:flex; gap:14px; align-items:flex-start; border:1px solid var(--ep-neutral-200); border-radius:13px; padding:14px 16px; background:var(--ep-neutral-50);">
+                <span style="flex:none; width:30px; height:30px; border-radius:50%; background:#fff; border:1.5px solid {{ p.color }}; color:{{ p.color }}; font-family:'arboria',sans-serif; font-weight:500; font-size:14px; display:flex; align-items:center; justify-content:center;">{{ p.n }}</span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:16.5px;">{{ p.title }}</div>
+                  <p style="font-size:14.5px; color:var(--ep-neutral-600); margin-top:4px; line-height:1.55;">{{ p.blurb }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:22px; padding:15px 18px; border-left:3px solid var(--ep-plum); background:var(--ep-plum-tint); border-radius:0 12px 12px 0; max-width:66ch;">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-plum);">One thread throughout</div>
+            <p style="font-size:14.5px; line-height:1.6; color:var(--ep-neutral-700); margin-top:6px;">Where mistakes could cause injury, safety comes first. You don't engineer a failure rate into anything with real consequences, remove supervision, or trade away checks for the sake of a drill or a game. Keep physical risk separate from learning difficulty.</p>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Build my drill</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ notIntro }}" hint-placeholder-val="{{ false }}">
+        <header style="display:flex; align-items:center; gap:13px; padding-bottom:20px; border-bottom:1px solid var(--ep-neutral-200);">
+          <img src="assets/img/logo-symbol-purple.png" alt="Expedition Psychology" width="28" style="height:auto; flex:none;">
+          <div style="flex:1; min-width:0;">
+            <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:19px; letter-spacing:-0.01em;">The Drill Builder</div>
+            <div style="font-size:13.5px; color:var(--ep-neutral-500); margin-top:2px;">{{ skillLine }}</div>
+          </div>
+        </header>
+      </sc-if>
+
+      <sc-if value="{{ isSkill }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="01 The skill">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step one</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">What skill are you trying to improve?</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Pick one movement or decision-making skill. The whole drill works best aimed at a single, clear thing rather than a whole session at once.</p>
+          <div style="display:grid; gap:16px; margin-top:22px;">
+            <label style="display:block;"><span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:8px;">The skill</span>
+              <input value="{{ skill }}" onChange="{{ onSkill }}" placeholder="First touch under pressure, serve accuracy, sprint start, tackling technique…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15.5px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:12px 13px; outline:none;"></label>
+            <label style="display:block;"><span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:8px;">Where do you currently stand with it?</span>
+              <sc-raw-select value="{{ level }}" onChange="{{ onLevel }}" style="width:100%; box-sizing:border-box; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; outline:none;">
+                <option value="">Choose one…</option>
+                <option value="new">New to it. I'm still working out the basic movement.</option>
+                <option value="developing">Developing. It works in easy, familiar conditions.</option>
+                <option value="reliable">Fairly reliable, but it breaks down under pressure or when things change.</option>
+              </sc-raw-select></label>
+            <label style="display:block;"><span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:8px;">What do you want to be able to do with it, and why?</span>
+              <textarea value="{{ goal }}" onChange="{{ onGoal }}" placeholder="Use it in a match without thinking about it, ready for the season opener…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15.5px; line-height:1.6; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:12px 13px; min-height:88px; resize:vertical; outline:none;"></textarea></label>
+          </div>
+          <div style="margin-top:18px; padding:15px 18px; border-left:3px solid var(--ep-plum); background:var(--ep-plum-tint); border-radius:0 12px 12px 0; max-width:66ch;">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-plum);">Why this matters</div>
+            <p style="font-size:14.5px; line-height:1.6; color:var(--ep-neutral-700); margin-top:6px;">The same task isn't equally hard for everyone. A drill is only "right" relative to the athlete doing it, so the build starts with you and this one skill. Naming where you stand and what the skill is ultimately for keeps every later choice pointed at learning you can use.</p>
+          </div>
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" disabled="{{ noSkill }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Choose a drill</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isDrill }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="02 The drill">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step two · The drill</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">What drill could help you improve it?</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Describe a simple, repeatable exercise that puts the important part of the skill front and centre. Keep it about <em style="font-style:italic;">this</em> skill, so competing demands don't quietly turn it into a different test.</p>
+          <div style="display:grid; gap:16px; margin-top:22px;">
+            <label style="display:block;"><span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:8px;">The drill, in a sentence or two</span>
+              <textarea value="{{ drill }}" onChange="{{ onDrill }}" placeholder="e.g. Receive a firm pass, control it into space with one touch, pass it back. 20 reps from both sides." style="width:100%; box-sizing:border-box; font-weight:300; font-size:15.5px; line-height:1.6; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:12px 13px; min-height:96px; resize:vertical; outline:none;"></textarea></label>
+            <label style="display:block;"><span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:8px;">What does one "good rep" look like? (how you'll know it went right)</span>
+              <input value="{{ drillSuccess }}" onChange="{{ onDrillSuccess }}" placeholder="Ball controlled within one stride, into space, under control" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:11px 13px; outline:none;"></label>
+          </div>
+          <div style="margin-top:18px; padding:15px 18px; border-left:3px solid var(--ep-plum); background:var(--ep-plum-tint); border-radius:0 12px 12px 0; max-width:66ch;">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-plum);">Why this matters</div>
+            <p style="font-size:14.5px; line-height:1.6; color:var(--ep-neutral-700); margin-top:6px;">Deciding what a good rep looks like now gives you something to measure against on every attempt. Without it, "did that work?" becomes a feeling rather than information, and you can't tell whether the drill is set at the right level.</p>
+          </div>
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" disabled="{{ noDrill }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Set the difficulty</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isChallenge }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="03 The right difficulty">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step three · The right difficulty</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Make it hard enough to get it right most of the time</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Aim for a drill you get right roughly <strong style="font-weight:600; color:var(--ep-ink);">seven or eight times out of ten</strong>. That's enough success to know what works, with enough misses to learn from. Too easy and it teaches nothing; too hard and everything goes wrong at once.</p>
+
+          <div style="margin-top:20px;">
+            <span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:9px;">Right now, how often do you get a good rep?</span>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px;">
+              <sc-for list="{{ hitBands }}" as="b" hint-placeholder-count="4">
+                <button type="button" onClick="{{ b.onPick }}" style="text-align:left; border:1.5px solid {{ b.border }}; background:{{ b.bg }}; border-radius:12px; padding:12px 13px; cursor:pointer;">
+                  <span style="display:block; font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:15px;">{{ b.label }}</span>
+                  <span style="display:block; font-size:13px; color:var(--ep-neutral-600); margin-top:3px; line-height:1.4;">{{ b.note }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasVerdict }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:18px; border:1.5px solid {{ verdictColor }}; background:{{ verdictBg }}; border-radius:14px; padding:16px 19px;">
+              <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:17.5px;">{{ verdictTitle }}</div>
+              <p style="font-size:14.5px; color:var(--ep-neutral-700); margin-top:7px; line-height:1.6;">{{ verdictBody }}</p>
+            </div>
+          </sc-if>
+
+          <label style="display:block; margin-top:20px;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">{{ adjustPrompt }}</span>
+            <textarea value="{{ cpAdjust }}" onChange="{{ onCpAdjust }}" placeholder="Shrink the target, add a time limit, defend the space, or make the feed less predictable…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; min-height:80px; resize:vertical; outline:none;"></textarea></label>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">The 70–80% figure is a handy rule of thumb, not a law; the right balance depends on the skill, your experience and the consequences of a mistake. Use three questions as your real guide: am I having to pay attention, can I tell what each miss is telling me, and am I finding changes that sometimes help? Where a mistake could cause harm, safety beats any target.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Add levels above</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isScaled }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="04 Levels">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step four · Levels</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">What levels above this raise the complexity?</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Plan the steps up <em style="font-style:italic;">before</em> you need them, so progress is a decision rather than a guess. Add one main demand per level, and be able to say what each level asks that the one before it didn't.</p>
+
+          <div style="display:grid; gap:14px; margin-top:22px;">
+            <sc-for list="{{ ladder }}" as="r" hint-placeholder-count="3">
+              <div style="border:1px solid var(--ep-neutral-200); border-radius:16px; padding:16px 18px; background:var(--ep-neutral-50);">
+                <div style="display:flex; align-items:center; gap:11px;">
+                  <span style="flex:none; width:30px; height:30px; border-radius:50%; background:{{ r.badgeBg }}; color:{{ r.badgeColor }}; border:1.5px solid {{ r.badgeColor }}; font-family:'arboria',sans-serif; font-weight:500; font-size:14px; display:flex; align-items:center; justify-content:center;">{{ r.n }}</span>
+                  <span style="flex:1; min-width:0; font-size:12.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--ep-neutral-500);">{{ r.label }}</span>
+                  <sc-if value="{{ r.canRemove }}" hint-placeholder-val="{{ true }}">
+                    <button type="button" onClick="{{ r.onRemove }}" aria-label="Remove level" class="screen-only" style="flex:none; font-size:13px; color:var(--ep-neutral-500); background:transparent; border:1px solid var(--ep-neutral-200); border-radius:8px; padding:7px 10px; cursor:pointer;" style-hover="color:var(--ep-clay); border-color:var(--ep-clay);">Remove</button>
+                  </sc-if>
+                </div>
+                <div style="display:grid; gap:11px; margin-top:13px;">
+                  <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">The drill at this level</span>
+                    <input value="{{ r.text }}" onChange="{{ r.onText }}" placeholder="{{ r.placeholder }}" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:11px;">
+                    <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">What does it add that the last didn't?</span>
+                      <input value="{{ r.adds }}" onChange="{{ r.onAdds }}" placeholder="One new demand: pressure, speed, a choice…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+                    <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">Ready to move up when…</span>
+                      <input value="{{ r.ready }}" onChange="{{ r.onReady }}" placeholder="Consistently a good rep + I can spot and fix a miss" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <button type="button" onClick="{{ addLevel }}" class="screen-only" style="margin-top:14px; font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px dashed var(--ep-neutral-400); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="border-color:var(--ep-pine); color:var(--ep-pine-700);">Add a level</button>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">Change one thing at a time, so when performance dips you know why. Nailing it once isn't the same as owning it, so move up on a pattern of good reps plus the ability to recognise and fix a miss, not a single lucky success. It's fine to drop back a level when a session is off; that's using feedback, not going backwards.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Set reps and breaks</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isSpacing }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="05 Reps and breaks">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step five · Reps and breaks</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Make the reps and breaks intentional</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Decide up front how long you'll work before you stop, and what the break is for. Spacing the practice, rather than grinding until it falls apart, is what makes the skill stick and keeps each rep deliberate.</p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:22px;">
+            <label style="display:block;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">How many reps, or how long, before a break?</span>
+              <input value="{{ spBlock }}" onChange="{{ onSpBlock }}" placeholder="e.g. 10 reps, or 8 minutes" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+            <label style="display:block;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">How long is the break?</span>
+              <input value="{{ spRecovery }}" onChange="{{ onSpRecovery }}" placeholder="e.g. 2 minutes, enough to reset" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+          </div>
+          <label style="display:block; margin-top:14px;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">How many blocks today, and when will you come back to it? (aim for more than one session)</span>
+            <input value="{{ spReturn }}" onChange="{{ onSpReturn }}" placeholder="3 blocks today; again Thursday and Saturday" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:14px;">
+            <label style="display:block;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">What's the one thing each block, so reps stay deliberate?</span>
+              <textarea value="{{ spTest }}" onChange="{{ onSpTest }}" placeholder="This block I'm only watching my first-touch direction…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:66px; resize:vertical; outline:none;"></textarea></label>
+            <label style="display:block;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">When you return, what will you check has stuck?</span>
+              <textarea value="{{ spRetain }}" onChange="{{ onSpRetain }}" placeholder="What I can do cold, before any warm-up reps…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:66px; resize:vertical; outline:none;"></textarea></label>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">A time limit organises your attention; the break and the return are what distribute the learning. Use the break to recover, notice what happened, and pick one change worth trying, then let rest be rest. These numbers are examples, not doses, so fit them around your sport and recovery. Describe what you saw ("my touch went square") rather than judging yourself ("I'm useless at this").</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Make it variable</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isVariability }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="06 Variety">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step six · Variety</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Practise it in different contexts</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">The goal isn't to be great at one drill; it's to use the skill when the situation changes. List ways to change the conditions around the drill so you practise adapting the skill, not memorising one answer. Change one feature at a time.</p>
+
+          <div style="margin-top:22px;">
+            <span style="display:block; font-size:15.5px; color:var(--ep-neutral-700); margin-bottom:9px;">Conditions you'll vary</span>
+            <div style="display:grid; gap:9px;">
+              <sc-for list="{{ variations }}" as="v" hint-placeholder-count="3">
+                <div style="display:flex; align-items:center; gap:9px;">
+                  <span style="flex:none; width:8px; height:8px; border-radius:50%; background:var(--ep-sage);"></span>
+                  <input value="{{ v.text }}" onChange="{{ v.onText }}" placeholder="Different angle, pace, surface, opponent, tired legs, both sides…" style="flex:1; min-width:0; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;">
+                  <sc-if value="{{ v.canRemove }}" hint-placeholder-val="{{ true }}">
+                    <button type="button" onClick="{{ v.onRemove }}" aria-label="Remove" class="screen-only" style="flex:none; font-size:13px; color:var(--ep-neutral-500); background:transparent; border:1px solid var(--ep-neutral-200); border-radius:8px; padding:8px 10px; cursor:pointer;" style-hover="color:var(--ep-clay); border-color:var(--ep-clay);">Remove</button>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <button type="button" onClick="{{ addVariation }}" class="screen-only" style="margin-top:11px; font-weight:600; font-size:14px; padding:9px 15px; border-radius:10px; border:1px dashed var(--ep-neutral-400); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="border-color:var(--ep-pine); color:var(--ep-pine-700);">Add a variation</button>
+          </div>
+
+          <label style="display:block; margin-top:20px;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">The real test: how will you check the skill shows up somewhere new, without being walked through it?</span>
+            <textarea value="{{ vrTransfer }}" onChange="{{ onVrTransfer }}" placeholder="In a small-sided game, or a scenario I haven't drilled, with one intention and no coaching cue." style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; min-height:80px; resize:vertical; outline:none;"></textarea></label>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">Expect varied practice to feel less tidy; the version that feels smoother isn't always the one that helps it transfer to competition. A beginner may need plenty of repetition to grasp the basics first, while a more experienced athlete usually needs variety to keep practice informative. Choose variety that serves your goal, not novelty for its own sake, and never by removing safety.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Make it fun</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isGame }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="07 Make it fun">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step seven · Make it fun</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Turn the drill into a game</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Attention is easier to hold with a clear challenge and a way to see progress. Pick a rule or two to build in, then write your own version. The trick is to make the game reward the good rep, not just finishing.</p>
+
+          <div style="display:grid; gap:9px; margin-top:20px;">
+            <sc-for list="{{ gameRules }}" as="g" hint-placeholder-count="4">
+              <button type="button" onClick="{{ g.onToggle }}" style="display:flex; gap:12px; align-items:flex-start; text-align:left; border:1.5px solid {{ g.border }}; background:{{ g.bg }}; border-radius:12px; padding:13px 15px; cursor:pointer; width:100%;">
+                <span style="flex:none; width:20px; height:20px; border-radius:6px; border:1.5px solid {{ g.mark }}; background:{{ g.markBg }}; margin-top:1px; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center;">{{ g.tick }}</span>
+                <span style="flex:1; min-width:0; font-size:15px; color:var(--ep-ink); line-height:1.45;">{{ g.text }}</span>
+              </button>
+            </sc-for>
+          </div>
+
+          <label style="display:block; margin-top:18px;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">Your game, in your words (rules, scoring, levels, who's involved)</span>
+            <textarea value="{{ gmRules }}" onChange="{{ onGmRules }}" placeholder="Climb a 5-level ladder: 5 good reps to move up, a miss drops you one rung. Beat yesterday's top rung…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:10px; padding:11px 13px; min-height:92px; resize:vertical; outline:none;"></textarea></label>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:14px;">
+            <label style="display:block;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">Who's involved, and how does it build connection, not just comparison?</span>
+              <textarea value="{{ gmSocial }}" onChange="{{ onGmSocial }}" placeholder="With a teammate: beat our combined best; swap doing and giving one piece of feedback…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:68px; resize:vertical; outline:none;"></textarea></label>
+            <label style="display:block;"><span style="display:block; font-size:14.5px; color:var(--ep-neutral-700); margin-bottom:6px;">Safety boundaries that are never traded for points</span>
+              <textarea value="{{ gmSafety }}" onChange="{{ onGmSafety }}" placeholder="No bypassing checks, no risky forfeits, no pushing through pain or fatigue…" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:68px; resize:vertical; outline:none;"></textarea></label>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">What you score shapes what you practise: a race against the clock can reward rushing, and points only for finishing can reward playing it safe. Let the score be feedback, not the point. A reset after a miss adds a nice challenge for some and teaches caution in others, so use how it feels as your guide. Finish with a quick review: what did the game help me practise, and did it show up when the game stopped?</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">See my drill</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isSummary }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="08 Summary">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-plum);">Your drill</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">{{ skill }}</h2>
+          <p style="font-size:15px; color:var(--ep-neutral-600); margin-top:6px; max-width:62ch;">{{ goalLine }}</p>
+
+          <div style="display:grid; gap:14px; margin-top:22px;">
+            <sc-for list="{{ summaryCards }}" as="c" hint-placeholder-count="6">
+              <div style="border:1px solid var(--ep-neutral-200); border-left:5px solid {{ c.color }}; border-radius:12px; padding:16px 18px; background:#fff; break-inside:avoid;">
+                <div style="text-transform:uppercase; letter-spacing:0.1em; font-size:11px; font-weight:700; color:{{ c.color }};">{{ c.eyebrow }}</div>
+                <h3 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:18px; margin-top:4px;">{{ c.title }}</h3>
+                <div style="display:grid; gap:6px; margin-top:10px; font-size:15px; color:var(--ep-neutral-700); line-height:1.5;">
+                  <sc-for list="{{ c.lines }}" as="l" hint-placeholder-count="2">
+                    <p><strong style="font-weight:600; color:var(--ep-ink);">{{ l.label }}</strong> {{ l.value }}</p>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ c.empty }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size:14px; color:var(--ep-neutral-500); margin-top:4px;">Nothing added yet.</p>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;" class="screen-only">
+            <button type="button" onClick="{{ print }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid transparent; background:var(--ep-pine); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-pine-700);">Download as PDF</button>
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ startOver }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Build another drill</button>
+          </div>
+
+          <div style="margin-top:34px; padding-top:26px; border-top:1px solid var(--ep-neutral-200); text-align:center;">
+            <p style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-plum); font-size:clamp(17px,2.6vw,21px); max-width:34ch; margin:0 auto; line-height:1.35;">Productive training isn't about proving how hard you can make a session. It's about choosing a difficulty from which you can learn.</p>
+            <img src="assets/img/logo-wordmark-black-trimmed.png" alt="Expedition Psychology" width="140" style="opacity:.65; margin:26px auto 0; display:block; height:auto;">
+          </div>
+        </section>
+      </sc-if>
+
+      <p class="screen-only" style="font-size:13px; color:var(--ep-neutral-500); margin-top:28px; padding-top:18px; border-top:1px solid var(--ep-neutral-200); line-height:1.6;">Everything you write stays in this browser, on this device. It is never uploaded or shared. On a shared computer, switch saving off or select <strong style="font-weight:600;">Clear</strong> when you finish.</p>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGuidance&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.KEY = 'ep-drill-builder-v1';
+    this.PREF = 'ep-drill-builder-remember';
+    let remember = true;
+    try { const p = localStorage.getItem(this.PREF); if(p !== null) remember = p !== '0'; } catch(e){}
+    let stored = {};
+    if(remember){ try { stored = JSON.parse(localStorage.getItem(this.KEY)) || {}; } catch(e){} }
+    this.state = Object.assign(this.base(), stored, { remember, saved:false });
+  }
+  base(){
+    return { step:0, skill:'', level:'', goal:'',
+      drill:'', drillSuccess:'',
+      hitBand:'', cpAdjust:'',
+      ladder:[this.lvl(),this.lvl(),this.lvl()],
+      spBlock:'', spRecovery:'', spReturn:'', spTest:'', spRetain:'',
+      variations:[this.vr(),this.vr(),this.vr()], vrTransfer:'',
+      gamePicks:{}, gmRules:'', gmSocial:'', gmSafety:'' };
+  }
+  lvl(){ return { id:'l'+Math.random().toString(36).slice(2,8), text:'', adds:'', ready:'' }; }
+  vr(){ return { id:'v'+Math.random().toString(36).slice(2,8), text:'' }; }
+  componentDidMount(){
+    this._touch = () => { this.touched = true; };
+    document.addEventListener('input', this._touch, true);
+    document.addEventListener('click', this._touch, true);
+  }
+  componentWillUnmount(){
+    document.removeEventListener('input', this._touch, true);
+    document.removeEventListener('click', this._touch, true);
+  }
+  KEYS = ['step','skill','level','goal','drill','drillSuccess','hitBand','cpAdjust','ladder','spBlock','spRecovery','spReturn','spTest','spRetain','variations','vrTransfer','gamePicks','gmRules','gmSocial','gmSafety'];
+  componentDidUpdate(prev){
+    if(!this.state.remember || !this.touched) return;
+    if(this.KEYS.some(k => prev[k] !== this.state[k])) this.persist();
+  }
+  persist(){
+    const s = this.state, d = {};
+    this.KEYS.forEach(k => d[k] = s[k]);
+    try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch(e){}
+    this.setState({ saved:true });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ saved:false }), 1400);
+  }
+  toggleRemember = () => {
+    const on = !this.state.remember;
+    try { localStorage.setItem(this.PREF, on ? '1' : '0'); } catch(e){}
+    if(!on){ try { localStorage.removeItem(this.KEY); } catch(e){} }
+    this.setState({ remember:on }, () => { if(on) this.persist(); });
+  };
+  startOver = () => {
+    if(!window.confirm('Clear everything and start again? This cannot be undone.')) return;
+    try { localStorage.removeItem(this.KEY); } catch(e){}
+    this.setState(this.base());
+  };
+  ORDER = ['intro','skill','drill','challenge','scaled','spacing','variability','game','summary'];
+  next = () => this.setState(s => ({ step: Math.min(s.step + 1, this.ORDER.length - 1) }));
+  back = () => this.setState(s => ({ step: Math.max(s.step - 1, 0) }));
+  print = () => window.print();
+
+  pickBand(id){ this.setState({ hitBand:id }); }
+  patchLvl(id, p){ this.setState(s => ({ ladder: s.ladder.map(l => l.id === id ? Object.assign({}, l, p) : l) })); }
+  addLevel = () => this.setState(s => ({ ladder: s.ladder.concat([this.lvl()]) }));
+  removeLevel(id){ this.setState(s => ({ ladder: s.ladder.length > 1 ? s.ladder.filter(l => l.id !== id) : s.ladder })); }
+  patchVr(id, p){ this.setState(s => ({ variations: s.variations.map(v => v.id === id ? Object.assign({}, v, p) : v) })); }
+  addVariation = () => this.setState(s => ({ variations: s.variations.concat([this.vr()]) }));
+  removeVariation(id){ this.setState(s => ({ variations: s.variations.length > 1 ? s.variations.filter(v => v.id !== id) : s.variations })); }
+  toggleRule(id){ this.setState(s => ({ gamePicks: Object.assign({}, s.gamePicks, { [id]: !s.gamePicks[id] }) })); }
+
+  renderVals(){
+    const s = this.state, cur = this.ORDER[s.step] || 'intro';
+    const PL = '#5b4a6a', PI = '#4b7a6e';
+    const principles = [
+      { n:1, title:'The right difficulty', blurb:'Pitch the drill so you get it right most of the time, but not every time.', color:PI },
+      { n:2, title:'Levels', blurb:'Plan harder versions in advance, adding one demand at a step.', color:PL },
+      { n:3, title:'Reps and breaks', blurb:'Decide how long you work and why you rest, so practice stays deliberate.', color:PI },
+      { n:4, title:'Variety', blurb:'Change the conditions so you can use the skill when things change.', color:PL },
+      { n:5, title:'Play', blurb:'Make a game that rewards the good rep, not just finishing.', color:PI }
+    ];
+    const bandDefs = [
+      { id:'low', label:'Less than half', note:'Most reps miss', verdict:{ title:'Too hard right now', body:'When almost everything goes wrong at once, a miss can\u2019t tell you what to fix. Make it easier so you land it most of the time, then build back up.', color:'#b6534b', bg:'#f6e6e4' }, prompt:'How will you make this easier so you get it right most of the time?' },
+      { id:'mid', label:'About half', note:'Hit and miss', verdict:{ title:'Getting close', body:'You\u2019re near a useful zone. Nudge the difficulty down a touch, or simplify one demand, to reach that seven-or-eight-in-ten feel.', color:'#c97a4a', bg:'#f7ebe0' }, prompt:'What one small change would lift you to roughly 70\u201380%?' },
+      { id:'good', label:'7\u20138 in 10', note:'The sweet spot', verdict:{ title:'A useful challenge', body:'Enough success to know what works, enough misses to learn from. Keep it here while it stays informative, and plan the next level up.', color:PI, bg:'#dde9e5' }, prompt:'What will you tweak to keep it here as you improve?' },
+      { id:'easy', label:'Nearly every time', note:'Rarely miss', verdict:{ title:'Too easy to teach much', body:'Fine for a warm-up or rebuilding confidence, but it\u2019s asking nothing new. Add one demand to make it harder so you get it right about 70\u201380% of the time.', color:'#d6b86c', bg:'#f5edd5' }, prompt:'How could you make this harder so you get it right about 70\u201380% of the time?' }
+    ];
+    const hitBands = bandDefs.map(b => ({ label:b.label, note:b.note, onPick:() => this.pickBand(b.id),
+      border: s.hitBand === b.id ? b.verdict.color : '#d4d4cd', bg: s.hitBand === b.id ? b.verdict.bg : '#fff' }));
+    const picked = bandDefs.find(b => b.id === s.hitBand);
+    const verdict = picked ? picked.verdict : null;
+
+    const ladder = s.ladder.map((l, i) => ({
+      id:l.id, n:i+1, label: i===0 ? 'Starting level (your drill)' : 'Level ' + (i+1), text:l.text, adds:l.adds, ready:l.ready,
+      placeholder: i===0 ? 'Your drill as it stands' : 'Same drill, one notch harder',
+      badgeBg: i===0 ? PI : '#fff', badgeColor: i===0 ? PI : PL,
+      canRemove: s.ladder.length > 1,
+      onText:e => this.patchLvl(l.id,{text:e.target.value}), onAdds:e => this.patchLvl(l.id,{adds:e.target.value}),
+      onReady:e => this.patchLvl(l.id,{ready:e.target.value}), onRemove:() => this.removeLevel(l.id)
+    }));
+    const variations = s.variations.map(v => ({ id:v.id, text:v.text, canRemove: s.variations.length > 1,
+      onText:e => this.patchVr(v.id,{text:e.target.value}), onRemove:() => this.removeVariation(v.id) }));
+
+    const ruleDefs = [
+      { id:'ladder', text:'Climb a ladder: get it right 5 times in a row to move up a level; a miss drops you a rung.' },
+      { id:'scratch', text:'Streak mode: build the longest run of good reps you can; one miss and you start the count from scratch.' },
+      { id:'beat', text:'Beat yesterday: record your best score and try to top it next session.' },
+      { id:'target', text:'Hit the target: set a number to reach in a fixed time (e.g. 8 good reps in 10 attempts).' },
+      { id:'partner', text:'Head to head: take turns with a partner and match or beat each other\u2019s round.' },
+      { id:'forfeit', text:'Light stakes: the lower score sets up the next drill or fetches the gear (keep forfeits safe and fun).' }
+    ];
+    const gameRules = ruleDefs.map(r => {
+      const on = !!s.gamePicks[r.id];
+      return { text:r.text, tick: on ? '\u2713' : '', onToggle:() => this.toggleRule(r.id),
+        border: on ? PI : '#d4d4cd', bg: on ? '#dde9e5' : '#fff', mark: on ? PI : '#aeaea6', markBg: on ? PI : '#fff' };
+    });
+    const pickedRules = ruleDefs.filter(r => s.gamePicks[r.id]).map(r => r.text);
+
+    const line = (label, value) => value && String(value).trim() ? { label, value } : null;
+    const levelLabel = { new:'New to it', developing:'Developing', reliable:'Reliable but breaks under pressure' }[s.level] || '';
+    const ladderLines = s.ladder.filter(l => l.text.trim()).map((l, i) => ({ label:(i===0?'Start:':'Level '+(i+1)+':'), value: l.text + (l.adds.trim() ? ' \u2014 adds: ' + l.adds : '') }));
+    const varLines = s.variations.filter(v => v.text.trim()).map(v => ({ label:'\u2022', value:v.text }));
+    const ruleLines = pickedRules.map(t => ({ label:'\u2022', value:t }));
+    const card = (eyebrow, title, color, lines) => { const ls = lines.filter(Boolean); return { eyebrow, title, color, lines: ls, empty: ls.length === 0 }; };
+    const summaryCards = [
+      card('The drill', 'What you\u2019ll run', PI, [ line('Drill:', s.drill), line('A good rep is:', s.drillSuccess) ]),
+      card('The right difficulty', 'Where it\u2019s pitched', PL, [ picked ? line('Current hit rate:', picked.label + ' \u2014 ' + picked.verdict.title) : null, line('Adjustment:', s.cpAdjust) ]),
+      card('Levels', 'How it gets harder', PI, ladderLines),
+      card('Reps and breaks', 'How you\u2019ll space it', PL, [ line('Work:', s.spBlock), line('Break:', s.spRecovery), line('Blocks / return:', s.spReturn), line('Focus each block:', s.spTest), line('I\u2019ll check has stuck:', s.spRetain) ]),
+      card('Variety', 'How you\u2019ll change it up', PI, varLines.concat([ line('Transfer test:', s.vrTransfer) ])),
+      card('Play', 'How you\u2019ll make it fun', PL, ruleLines.concat([ line('My game:', s.gmRules), line('People:', s.gmSocial), line('Safety, never traded:', s.gmSafety) ]))
+    ];
+
+    const labels = { intro:'Why', skill:'The skill', drill:'The drill', challenge:'The right difficulty', scaled:'Levels', spacing:'Reps and breaks', variability:'Variety', game:'Make it fun', summary:'Your drill' };
+    return {
+      guidance: this.props.showGuidance !== false,
+      stepLabel: 'Step ' + s.step + ' of ' + (this.ORDER.length - 1) + ' \u00b7 ' + labels[cur],
+      pctText: Math.round(s.step / (this.ORDER.length - 1) * 100) + '%',
+      savedFlash: s.saved ? 'Saved' : '',
+      remember:s.remember, notRemember:!s.remember, toggleRemember:this.toggleRemember, startOver:this.startOver,
+      next:this.next, back:this.back, print:this.print,
+      isIntro:cur==='intro', notIntro:cur!=='intro', isSkill:cur==='skill', isDrill:cur==='drill', isChallenge:cur==='challenge',
+      isScaled:cur==='scaled', isSpacing:cur==='spacing', isVariability:cur==='variability', isGame:cur==='game', isSummary:cur==='summary',
+      principles,
+      skill:s.skill, level:s.level, goal:s.goal, skillLine: s.skill || 'One skill, one drill',
+      onSkill:e => this.setState({ skill:e.target.value }), onLevel:e => this.setState({ level:e.target.value }), onGoal:e => this.setState({ goal:e.target.value }),
+      noSkill: !s.skill.trim(),
+      drill:s.drill, drillSuccess:s.drillSuccess, noDrill: !s.drill.trim(),
+      onDrill:e => this.setState({ drill:e.target.value }), onDrillSuccess:e => this.setState({ drillSuccess:e.target.value }),
+      hitBands, hasVerdict: !!verdict, verdictTitle: verdict && verdict.title, verdictBody: verdict && verdict.body,
+      verdictColor: verdict && verdict.color, verdictBg: verdict && verdict.bg,
+      adjustPrompt: picked ? picked.prompt : 'What one change will move this toward a 70\u201380% hit rate?',
+      cpAdjust:s.cpAdjust, onCpAdjust:e => this.setState({ cpAdjust:e.target.value }),
+      ladder, addLevel:this.addLevel,
+      spBlock:s.spBlock, spRecovery:s.spRecovery, spReturn:s.spReturn, spTest:s.spTest, spRetain:s.spRetain,
+      onSpBlock:e => this.setState({ spBlock:e.target.value }), onSpRecovery:e => this.setState({ spRecovery:e.target.value }),
+      onSpReturn:e => this.setState({ spReturn:e.target.value }), onSpTest:e => this.setState({ spTest:e.target.value }), onSpRetain:e => this.setState({ spRetain:e.target.value }),
+      variations, addVariation:this.addVariation, vrTransfer:s.vrTransfer, onVrTransfer:e => this.setState({ vrTransfer:e.target.value }),
+      gameRules, gmRules:s.gmRules, gmSocial:s.gmSocial, gmSafety:s.gmSafety,
+      onGmRules:e => this.setState({ gmRules:e.target.value }), onGmSocial:e => this.setState({ gmSocial:e.target.value }), onGmSafety:e => this.setState({ gmSafety:e.target.value }),
+      goalLine: s.goal ? s.goal : (levelLabel ? 'Starting point: ' + levelLabel : ''),
+      summaryCards
+    };
+  }
+}
+</script>
+</body>
+</html>

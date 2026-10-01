@@ -793,6 +793,8 @@
       <button onclick="showT(0)" class="t-dot w-2.5 h-2.5 rounded-full transition-all" style="background:var(--ep-plum)"></button>
       <button onclick="showT(1)" class="t-dot w-2.5 h-2.5 rounded-full transition-all" style="background:var(--border-default)"></button>
       <button onclick="showT(2)" class="t-dot w-2.5 h-2.5 rounded-full transition-all" style="background:var(--border-default)"></button>
+      <button onclick="showT(3)" class="t-dot w-2.5 h-2.5 rounded-full transition-all" style="background:var(--border-default)"></button>
+      <button onclick="showT(4)" class="t-dot w-2.5 h-2.5 rounded-full transition-all" style="background:var(--border-default)"></button>
     </div>
   </div>
 </section>
@@ -962,7 +964,9 @@
   var tData = [
     { text: '"Incredibly thought provoking and relevant session, thinking about the emotions of our casualties and team mates."', attr: '— Northumberland Mountain Rescue Team' },
     { text: '"Since starting the course, I\'ve climbed so much better than I ever have."', attr: '— Climber' },
-    { text: '"I\'ve never seen resilience explained in that way, it was a really valuable session."', attr: '— RNLI Volunteer' }
+    { text: '"I\'ve never seen resilience explained in that way, it was a really valuable session."', attr: '— RNLI Volunteer' },
+    { text: '"Fin\'s kind directness and honest truths challenged me and made the therapy genuinely useful."', attr: '— Therapy Client' },
+    { text: '"I now have a clearer understanding of my values and how they shape the direction I want my life to take. I feel confident in the goals I\'ve set, as they feel authentic to me."', attr: '— Therapy Client' }
   ];
   var tCur = 0;
 
@@ -980,7 +984,7 @@
       d.style.transform = j === i ? 'scale(1.3)' : 'scale(1)';
     });
   }
-  setInterval(function () { showT((tCur + 1) % 3); }, 6000);
+  setInterval(function () { showT((tCur + 1) % tData.length); }, 6000);
 
   // ── Resource filter ──
   function filterRes(cat, btn) {

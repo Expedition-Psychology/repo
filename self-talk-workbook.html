@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+<title>Self-Talk Workbook — Free Workbook — Expedition Psychology</title>
+<meta name="description" content="Make your inner commentary visible, then choose words that serve the task instead of adding pressure. Works for any sport.">
+<link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+<style>
+  .ep-back-bar { position:relative; z-index:40; padding:10px 24px; font-family:"arboria",sans-serif; background:rgba(243,243,240,.92); border-bottom:1px solid #ddddd8; }
+  .ep-back-bar a { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:#5f5f59; text-decoration:none; }
+  .ep-back-bar a:hover { color:#4b7a6e; }
+  @media (max-width:640px) {
+    html, body { max-width:100vw; overflow-x:hidden; }
+    .doc { max-width:100% !important; box-sizing:border-box; padding:0 22px !important; }
+  }
+  @media print { .ep-back-bar { display:none !important; } }
+</style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js" defer></script>
+</head>
+<body>
+<div class="ep-back-bar screen-only"><a href="free-tools.html">&larr; Back to Free Tools</a></div>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/colors.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/typography.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/tokens/base.css">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+<style>
+html, body { margin:0; background:var(--ep-neutral-200); }
+body { font-family:"nunito",'Nunito',sans-serif; font-weight:300; color:var(--ep-neutral-700); -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4,p { margin:0; }
+a { color:var(--ep-pine-700); } a:hover { color:var(--ep-plum); }
+input, textarea, select, button { font-family:inherit; }
+input:focus, textarea:focus, select:focus { border-color:var(--ep-pine) !important; box-shadow:0 0 0 3px rgba(75,122,110,.16); background:#fff !important; }
+::placeholder { color:var(--ep-neutral-400); }
+@keyframes epFade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+@page { size:letter; margin:0.7in; }
+@media print {
+  html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html, body { background:#fff; }
+  .screen-only { display:none !important; }
+  .sheet { box-shadow:none !important; margin:0 !important; padding:0 !important; }
+}
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding-bottom:70px;">
+
+  <div class="screen-only" style="position:sticky; top:0; z-index:30; background:rgba(243,243,240,.92); backdrop-filter:blur(9px); border-bottom:1px solid var(--ep-neutral-300);">
+    <div style="max-width:840px; margin:0 auto; padding:10px clamp(16px,4vw,28px); display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:190px;">
+        <img src="assets/img/logo-symbol-purple.png" alt="" width="22" style="flex:none; height:auto;">
+        <div style="flex:1; min-width:120px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:5px;">
+            <span style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-700);">{{ stepLabel }}</span>
+            <span style="font-size:12px; font-weight:600; color:var(--ep-pine-700);">{{ savedFlash }}</span>
+          </div>
+          <div style="height:6px; background:var(--ep-neutral-200); border-radius:99px; overflow:hidden;">
+            <div style="height:100%; border-radius:99px; background:var(--ep-plum); transition:width .3s; width:{{ pctText }}"></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; flex:none; align-items:center;">
+        <sc-if value="{{ remember }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ toggleRemember }}" title="Your answers are saved in this browser only." style="font-size:12.5px; font-weight:600; color:var(--ep-pine-700); background:var(--ep-pine-tint); border:1px solid var(--ep-pine); border-radius:99px; padding:7px 13px; cursor:pointer;">Saving on this device</button>
+        </sc-if>
+        <sc-if value="{{ notRemember }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleRemember }}" title="Nothing is stored. Your answers clear when you leave." style="font-size:12.5px; font-weight:600; color:var(--ep-neutral-600); background:transparent; border:1px solid var(--ep-neutral-300); border-radius:99px; padding:7px 13px; cursor:pointer;">Not saving</button>
+        </sc-if>
+        <button type="button" onClick="{{ startOver }}" style="font-size:13px; font-weight:600; color:var(--ep-neutral-600); background:transparent; border:1px solid var(--ep-neutral-300); border-radius:9px; padding:8px 13px; cursor:pointer;">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <main style="max-width:840px; margin:26px auto 0; padding:0 clamp(14px,4vw,28px);">
+    <div class="sheet" style="background:#fff; border-radius:18px; box-shadow:0 12px 50px rgba(46,46,46,.12); padding:clamp(24px,4.5vw,46px);">
+
+      <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+        <header style="text-align:center; padding:16px 0 2px;">
+          <img src="assets/img/logo-symbol-purple.png" alt="Expedition Psychology" width="58" style="display:block; margin:0 auto; height:auto;">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:12px; font-weight:700; color:var(--ep-pine-700); margin-top:26px;">Performance · Working With Self-Talk</div>
+          <h1 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(33px,6.2vw,52px); line-height:1.1; letter-spacing:-0.015em; margin-top:16px;">The Self Talk Workbook</h1>
+          <p style="color:var(--ep-neutral-600); font-size:clamp(15.5px,2.2vw,18px); line-height:1.65; margin:18px auto 0; max-width:56ch;">The aim isn't to tell yourself everything will go well. It's to make your inner commentary visible, then choose words that serve the task instead of adding pressure. Works for any sport.</p>
+          <hr style="border:none; border-top:1px solid var(--ep-neutral-300); max-width:110px; margin:30px auto 0;">
+        </header>
+        <section style="padding-top:30px;" data-screen-label="00 Why">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-plum);">Before you start</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Helpful matters more than positive</h2>
+          <div style="display:grid; gap:12px; margin-top:12px; font-size:15.5px; line-height:1.65; color:var(--ep-neutral-700); max-width:64ch;">
+            <p>Picture a training partner saying the things your commentary says mid-attempt: "You're going to mess this up, everyone can see you're struggling." You'd question whether they were helping. Our own version becomes so familiar we stop noticing it.</p>
+            <p>Thoughts shape emotion, attention and behaviour, but they aren't the only cause of difficulty: fatigue, pain, conditions and real demands matter too. So the useful question isn't whether a thought is positive enough. It's <strong style="font-weight:600; color:var(--ep-ink);">what happens when you get caught up in it, and what you could say instead that gives you a workable next action.</strong></p>
+          </div>
+
+          <h3 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:19px; margin-top:26px;">What you'll do</h3>
+          <div style="display:grid; gap:10px; margin-top:12px;">
+            <sc-for list="{{ plan }}" as="p" hint-placeholder-count="4">
+              <div style="display:flex; gap:14px; align-items:flex-start; border:1px solid var(--ep-neutral-200); border-radius:13px; padding:14px 16px; background:var(--ep-neutral-50);">
+                <span style="flex:none; width:30px; height:30px; border-radius:50%; background:#fff; border:1.5px solid {{ p.color }}; color:{{ p.color }}; font-family:'arboria',sans-serif; font-weight:500; font-size:14px; display:flex; align-items:center; justify-content:center;">{{ p.n }}</span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:16.5px;">{{ p.title }}</div>
+                  <p style="font-size:14.5px; color:var(--ep-neutral-600); margin-top:4px; line-height:1.55;">{{ p.blurb }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:22px; padding:15px 18px; border-left:3px solid var(--ep-plum); background:var(--ep-plum-tint); border-radius:0 12px 12px 0; max-width:66ch;">
+            <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:700; color:var(--ep-plum);">One thread throughout</div>
+            <p style="font-size:14.5px; line-height:1.6; color:var(--ep-neutral-700); margin-top:6px;">A cue should never override a genuine safety concern. "Commit" must not mean ignoring real risk. Sometimes the most helpful instruction you can give yourself is "pause and check".</p>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Start my plan</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ notIntro }}" hint-placeholder-val="{{ false }}">
+        <header style="display:flex; align-items:center; gap:13px; padding-bottom:20px; border-bottom:1px solid var(--ep-neutral-200);">
+          <img src="assets/img/logo-symbol-purple.png" alt="Expedition Psychology" width="28" style="height:auto; flex:none;">
+          <div style="flex:1; min-width:0;">
+            <div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:19px; letter-spacing:-0.01em;">Self-Talk Planner</div>
+            <div style="font-size:13.5px; color:var(--ep-neutral-500); margin-top:2px;">{{ countLine }}</div>
+          </div>
+        </header>
+      </sc-if>
+
+      <sc-if value="{{ isNotice }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="01 Notice">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step one · Notice the script</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Catch your recurring pressure thoughts</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Write down the negative automatic thoughts that show up under pressure, and when they tend to arrive: before starting, after an error, near the finish, or when someone's watching. Predictable moments give you something to prepare for.</p>
+
+          <div style="display:grid; gap:14px; margin-top:22px;">
+            <sc-for list="{{ notes }}" as="t" hint-placeholder-count="2">
+              <div style="border:1px solid var(--ep-neutral-200); border-radius:16px; padding:16px 18px; background:var(--ep-neutral-50);">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                  <span style="flex:none; width:28px; height:28px; border-radius:50%; background:var(--ep-clay); color:#fff; font-family:'arboria',sans-serif; font-weight:500; font-size:13.5px; display:flex; align-items:center; justify-content:center;">{{ t.n }}</span>
+                  <span style="flex:1; min-width:0; font-size:12.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--ep-neutral-500);">Pressure thought</span>
+                  <sc-if value="{{ t.canRemove }}" hint-placeholder-val="{{ true }}">
+                    <button type="button" onClick="{{ t.onRemove }}" aria-label="Remove" class="screen-only" style="flex:none; font-size:13px; color:var(--ep-neutral-500); background:transparent; border:1px solid var(--ep-neutral-200); border-radius:8px; padding:7px 10px; cursor:pointer;" style-hover="color:var(--ep-clay); border-color:var(--ep-clay);">Remove</button>
+                  </sc-if>
+                </div>
+                <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">The thought, in the words it actually uses</span>
+                  <textarea value="{{ t.nat }}" onChange="{{ t.onNat }}" placeholder="“You're going to mess this up.”  “I can't do this.”  “Don't make another mistake.”" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:58px; resize:vertical; outline:none;"></textarea></label>
+                <label style="display:block; margin-top:11px;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">When does it tend to arrive?</span>
+                  <input value="{{ t.trigger }}" onChange="{{ t.onTrigger }}" placeholder="Before the start · after a mistake · near the end · when watched" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+              </div>
+            </sc-for>
+          </div>
+          <button type="button" onClick="{{ addNote }}" class="screen-only" style="margin-top:14px; font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px dashed var(--ep-neutral-400); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="border-color:var(--ep-pine); color:var(--ep-pine-700);">Add another thought</button>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">Notice what each thought does to you. "I mustn't slip" pulls attention toward the mistake. "Everyone thinks I'm useless" asks you to solve an unknowable social problem mid-performance. You're not judging whether a thought is nice, you're spotting the ones that get in the way.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" disabled="{{ noNotes }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Write your responses</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isRework }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="02 Reword">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step two · Workable alternatives</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Choose words you can believe and use</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">For each thought, decide what job the response needs to do, write a believable alternative, and boil it down to one short cue you can use mid-performance. None of these predicts success, each just gives you a more workable relationship with the moment.</p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px; margin-top:20px;">
+            <div style="border-top:4px solid var(--ep-pine); background:var(--ep-neutral-50); border-radius:0 0 11px 11px; padding:11px 14px;"><div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:15px;">Instructional</div><p style="font-size:13px; color:var(--ep-neutral-600); margin-top:3px; line-height:1.45;">Directs attention to an action. "Place the foot."</p></div>
+            <div style="border-top:4px solid var(--ep-sand); background:var(--ep-neutral-50); border-radius:0 0 11px 11px; padding:11px 14px;"><div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:15px;">Motivational</div><p style="font-size:13px; color:var(--ep-neutral-600); margin-top:3px; line-height:1.45;">Supports effort or commitment. "Drive through."</p></div>
+            <div style="border-top:4px solid var(--ep-plum); background:var(--ep-neutral-50); border-radius:0 0 11px 11px; padding:11px 14px;"><div style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:15px;">Compassionate</div><p style="font-size:13px; color:var(--ep-neutral-600); margin-top:3px; line-height:1.45;">Helps you recover without self-attack. "That was hard. What next?"</p></div>
+          </div>
+
+          <div style="display:grid; gap:14px; margin-top:20px;">
+            <sc-for list="{{ reworks }}" as="t" hint-placeholder-count="2">
+              <div style="border:1px solid var(--ep-neutral-200); border-radius:16px; padding:16px 18px; background:#fff;">
+                <div style="display:flex; align-items:flex-start; gap:10px;">
+                  <span style="flex:none; width:26px; height:26px; border-radius:50%; background:var(--ep-clay); color:#fff; font-family:'arboria',sans-serif; font-weight:500; font-size:13px; display:flex; align-items:center; justify-content:center; margin-top:2px;">{{ t.n }}</span>
+                  <div style="flex:1; min-width:0;">
+                    <p style="font-size:15.5px; color:var(--ep-ink); font-style:italic;">{{ t.natQuoted }}</p>
+                    <sc-if value="{{ t.trigger }}" hint-placeholder-val="{{ false }}"><p style="font-size:13px; color:var(--ep-neutral-500); margin-top:3px;">Arrives: {{ t.trigger }}</p></sc-if>
+                  </div>
+                </div>
+                <div style="margin-top:14px;">
+                  <span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:7px;">What job should the response do?</span>
+                  <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <sc-for list="{{ t.typeOptions }}" as="o" hint-placeholder-count="3">
+                      <button type="button" onClick="{{ o.onPick }}" style="font-weight:600; font-size:13.5px; color:{{ o.color }}; background:{{ o.bg }}; border:1.5px solid {{ o.border }}; border-radius:99px; padding:7px 14px; cursor:pointer;">{{ o.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+                <label style="display:block; margin-top:13px;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">A believable, workable response</span>
+                  <textarea value="{{ t.response }}" onChange="{{ t.onResponse }}" placeholder="“I don't need to solve the whole thing now. Find the next useful position.”" style="width:100%; box-sizing:border-box; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:64px; resize:vertical; outline:none;"></textarea></label>
+                <label style="display:block; margin-top:11px; max-width:320px;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">The short cue to use in the moment</span>
+                  <input value="{{ t.cue }}" onChange="{{ t.onCue }}" placeholder="“Steady” · “Choose the target”" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+              </div>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">Avoid phrases that feel obviously false, you don't have to convince yourself the challenge is easy. "Don't make another mistake" can become "choose the target"; "that was pathetic" can become "that was difficult, what can I learn before the next one?" Keep the long reflection for before or after; in the middle of a hard moment, one short cue is plenty.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Acknowledge and redirect</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isRedirect }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="03 Redirect">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step three · Don't argue, redirect</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Make room for the thought, then act</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Trying to delete every negative thought becomes its own distraction, you notice doubt, argue with it, check whether the argument worked, and lose the activity. Instead, name the thought and point yourself at the cue. The thought can still be there; you're just making room for a useful action alongside it.</p>
+
+          <div style="margin-top:22px; border:1px solid var(--ep-pine); background:var(--ep-pine-tint); border-radius:16px; padding:18px 20px;">
+            <div style="text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-weight:700; color:var(--ep-pine-700);">Your acknowledge-and-redirect line</div>
+            <p style="font-size:14.5px; color:var(--ep-neutral-700); margin-top:8px; line-height:1.55;">Fill the two halves, and you've got a sentence to reach for in the moment.</p>
+            <div style="display:grid; gap:12px; margin-top:16px;">
+              <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">Acknowledge — "There's the thought that…"</span>
+                <input value="{{ rdThought }}" onChange="{{ onRdThought }}" placeholder="I'm not good enough" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+              <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">Redirect — "Right now, my cue is…"</span>
+                <input value="{{ rdCue }}" onChange="{{ onRdCue }}" placeholder="steady" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+            </div>
+            <sc-if value="{{ hasRedirect }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:15px; padding:14px 16px; background:#fff; border-radius:11px; border:1px dashed var(--ep-pine);">
+                <p style="font-size:16px; color:var(--ep-ink); line-height:1.5; font-style:italic;">{{ redirectLine }}</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="margin-top:18px; border:1px solid var(--ep-clay); background:#f6e6e4; border-radius:14px; padding:16px 19px;">
+            <div style="text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-weight:700; color:var(--ep-clay);">Keep cues appropriate to the context</div>
+            <p style="font-size:14.5px; color:var(--ep-neutral-700); margin-top:7px; line-height:1.55; max-width:64ch;">A cue should never talk you past a real safety concern. Note where "pause and check" is the genuinely helpful instruction, so a motivational cue doesn't override your judgement.</p>
+            <textarea value="{{ rdSafety }}" onChange="{{ onRdSafety }}" placeholder="Situations where I should pause and check rather than push on…" style="width:100%; box-sizing:border-box; margin-top:11px; font-weight:300; font-size:15px; line-height:1.55; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; min-height:62px; resize:vertical; outline:none;"></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">Rehearse it</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isPractise }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="04 Practise">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-pine-700);">Step four · Rehearse in training</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">Knowing a good phrase isn't enough</h2>
+          <p style="color:var(--ep-neutral-600); font-size:15.5px; margin-top:12px; max-width:62ch;">Self-talk works through deliberate practice, not good intentions. Use each response where it belongs, in ordinary training, then review the effect and adapt the wording. A phrase that helps a teammate may not help you.</p>
+
+          <div style="display:grid; gap:14px; margin-top:22px;">
+            <label style="display:block;"><span style="display:block; font-size:15px; color:var(--ep-neutral-700); margin-bottom:7px;">Where and when will you practise using these cues?</span>
+              <input value="{{ prWhen }}" onChange="{{ onPrWhen }}" placeholder="At the moments they're triggered — e.g. after a missed rep in Thursday's session" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:var(--ep-neutral-50); border:1px solid var(--ep-neutral-200); border-radius:9px; padding:11px 13px; outline:none;"></label>
+            <div style="border:1px solid var(--ep-neutral-200); border-radius:16px; padding:17px 19px; background:var(--ep-neutral-50);">
+              <div style="text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-weight:700; color:var(--ep-pine-700);">Afterwards, review the effect</div>
+              <div style="display:grid; gap:12px; margin-top:14px;">
+                <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">Did the cue make the task clearer?</span>
+                  <input value="{{ rvClearer }}" onChange="{{ onRvClearer }}" placeholder="What happened when you used it…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+                <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">Did it help you recover after an error?</span>
+                  <input value="{{ rvRecover }}" onChange="{{ onRvRecover }}" placeholder="How you came back…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+                <label style="display:block;"><span style="display:block; font-size:14px; color:var(--ep-neutral-700); margin-bottom:5px;">Did it feel supportive, or like another demand to perform correctly?</span>
+                  <input value="{{ rvFeel }}" onChange="{{ onRvFeel }}" placeholder="Be honest — adapt the wording if it added pressure…" style="width:100%; box-sizing:border-box; font-weight:400; font-size:15px; color:var(--ep-ink); background:#fff; border:1px solid var(--ep-neutral-200); border-radius:9px; padding:10px 12px; outline:none;"></label>
+              </div>
+            </div>
+          </div>
+
+          <sc-if value="{{ guidance }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:18px; padding:15px 18px; background:var(--ep-pine-tint); border-radius:12px; font-size:14.5px; line-height:1.6; color:var(--ep-pine-700); max-width:66ch;">The goal is a way of speaking to yourself that's honest about difficulty and still useful within it. You can care deeply about improving without making yourself the opponent. Timing matters as much as wording, and you don't have to remove a thought before choosing an action.</div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:26px;" class="screen-only">
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ next }}" style="font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:10px; border:1px solid transparent; background:var(--ep-plum); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-plum-700);">See my plan</button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isSummary }}" hint-placeholder-val="{{ false }}">
+        <section style="padding-top:28px; animation:epFade .28s ease-out;" data-screen-label="05 Summary">
+          <div style="text-transform:uppercase; letter-spacing:0.14em; font-size:11.5px; font-weight:700; color:var(--ep-plum);">Your self-talk plan</div>
+          <h2 style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:clamp(21px,3.4vw,28px); margin-top:8px; letter-spacing:-0.01em;">From script to cue</h2>
+
+          <div style="display:grid; gap:14px; margin-top:22px;">
+            <sc-for list="{{ summaryCards }}" as="c" hint-placeholder-count="2">
+              <div style="border:1px solid var(--ep-neutral-200); border-radius:14px; padding:16px 18px; background:#fff; break-inside:avoid;">
+                <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+                  <span style="flex:none; width:24px; height:24px; border-radius:50%; background:var(--ep-clay); color:#fff; font-family:'arboria',sans-serif; font-weight:500; font-size:12.5px; display:flex; align-items:center; justify-content:center;">{{ c.n }}</span>
+                  <p style="flex:1; min-width:140px; font-size:15.5px; color:var(--ep-neutral-600); font-style:italic; text-decoration:line-through; text-decoration-color:var(--ep-neutral-300);">{{ c.natQuoted }}</p>
+                  <sc-if value="{{ c.type }}" hint-placeholder-val="{{ false }}"><span style="flex:none; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:{{ c.typeColor }};">{{ c.type }}</span></sc-if>
+                </div>
+                <div style="display:grid; gap:6px; margin-top:11px; font-size:15px; color:var(--ep-neutral-700); line-height:1.5;">
+                  <sc-if value="{{ c.trigger }}" hint-placeholder-val="{{ false }}"><p><strong style="font-weight:600; color:var(--ep-ink);">Arrives:</strong> {{ c.trigger }}</p></sc-if>
+                  <sc-if value="{{ c.response }}" hint-placeholder-val="{{ false }}"><p><strong style="font-weight:600; color:var(--ep-ink);">Instead:</strong> {{ c.response }}</p></sc-if>
+                </div>
+                <sc-if value="{{ c.cue }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:12px; display:inline-flex; align-items:center; gap:8px; background:var(--ep-pine-tint); border:1px solid var(--ep-pine); border-radius:99px; padding:7px 15px;">
+                    <span style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ep-pine-700);">Cue</span>
+                    <span style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-ink); font-size:15.5px;">{{ c.cue }}</span>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ hasRedirect }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px; border:1px solid var(--ep-pine); border-radius:14px; padding:16px 20px; background:var(--ep-pine-tint); break-inside:avoid;">
+              <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ep-pine-700);">Acknowledge and redirect</div>
+              <p style="font-size:16px; color:var(--ep-ink); margin-top:8px; line-height:1.5; font-style:italic;">{{ redirectLine }}</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ rdSafety }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px; border:1px solid var(--ep-clay); border-radius:14px; padding:16px 20px; background:#f6e6e4; break-inside:avoid;">
+              <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ep-clay);">Pause and check when…</div>
+              <p style="font-size:15px; color:var(--ep-neutral-700); margin-top:8px; line-height:1.5; white-space:pre-wrap;">{{ rdSafety }}</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ hasPractice }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px; border:1px solid var(--ep-neutral-200); border-radius:14px; padding:16px 20px; background:#fff; display:grid; gap:7px; font-size:15px; color:var(--ep-neutral-700); line-height:1.5; break-inside:avoid;">
+              <sc-for list="{{ practiceLines }}" as="l" hint-placeholder-count="1">
+                <p><strong style="font-weight:600; color:var(--ep-ink);">{{ l.label }}</strong> {{ l.value }}</p>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;" class="screen-only">
+            <button type="button" onClick="{{ print }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid transparent; background:var(--ep-pine); color:var(--ep-paper); cursor:pointer;" style-hover="background:var(--ep-pine-700);">Download as PDF</button>
+            <button type="button" onClick="{{ back }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Back</button>
+            <button type="button" onClick="{{ startOver }}" style="font-weight:600; font-size:14.5px; padding:11px 18px; border-radius:10px; border:1px solid var(--ep-neutral-300); background:transparent; color:var(--ep-neutral-600); cursor:pointer;" style-hover="background:var(--ep-neutral-100);">Start a new plan</button>
+          </div>
+
+          <div style="margin-top:34px; padding-top:26px; border-top:1px solid var(--ep-neutral-200); text-align:center;">
+            <p style="font-family:'arboria',sans-serif; font-weight:500; color:var(--ep-plum); font-size:clamp(17px,2.6vw,21px); max-width:34ch; margin:0 auto; line-height:1.35;">You can care deeply about improving without making yourself the opponent.</p>
+            <img src="assets/img/logo-wordmark-black-trimmed.png" alt="Expedition Psychology" width="140" style="opacity:.65; margin:26px auto 0; display:block; height:auto;">
+          </div>
+        </section>
+      </sc-if>
+
+      <p class="screen-only" style="font-size:13px; color:var(--ep-neutral-500); margin-top:28px; padding-top:18px; border-top:1px solid var(--ep-neutral-200); line-height:1.6;">Everything you write stays in this browser, on this device. It is never uploaded or shared. On a shared computer, switch saving off or select <strong style="font-weight:600;">Clear</strong> when you finish.</p>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGuidance&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.KEY = 'ep-self-talk-v1';
+    this.PREF = 'ep-self-talk-remember';
+    let remember = true;
+    try { const p = localStorage.getItem(this.PREF); if(p !== null) remember = p !== '0'; } catch(e){}
+    let stored = {};
+    if(remember){ try { stored = JSON.parse(localStorage.getItem(this.KEY)) || {}; } catch(e){} }
+    this.state = Object.assign(this.base(), stored, { remember, saved:false });
+  }
+  base(){
+    return { step:0,
+      thoughts:[this.t(), this.t()],
+      rdThought:'', rdCue:'', rdSafety:'',
+      prWhen:'', rvClearer:'', rvRecover:'', rvFeel:'' };
+  }
+  t(){ return { id:'t'+Math.random().toString(36).slice(2,8), nat:'', trigger:'', type:'', response:'', cue:'' }; }
+  componentDidMount(){
+    this._touch = () => { this.touched = true; };
+    document.addEventListener('input', this._touch, true);
+    document.addEventListener('click', this._touch, true);
+  }
+  componentWillUnmount(){
+    document.removeEventListener('input', this._touch, true);
+    document.removeEventListener('click', this._touch, true);
+  }
+  KEYS = ['step','thoughts','rdThought','rdCue','rdSafety','prWhen','rvClearer','rvRecover','rvFeel'];
+  componentDidUpdate(prev){
+    if(!this.state.remember || !this.touched) return;
+    if(this.KEYS.some(k => prev[k] !== this.state[k])) this.persist();
+  }
+  persist(){
+    const s = this.state, d = {};
+    this.KEYS.forEach(k => d[k] = s[k]);
+    try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch(e){}
+    this.setState({ saved:true });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ saved:false }), 1400);
+  }
+  toggleRemember = () => {
+    const on = !this.state.remember;
+    try { localStorage.setItem(this.PREF, on ? '1' : '0'); } catch(e){}
+    if(!on){ try { localStorage.removeItem(this.KEY); } catch(e){} }
+    this.setState({ remember:on }, () => { if(on) this.persist(); });
+  };
+  startOver = () => {
+    if(!window.confirm('Clear everything and start again? This cannot be undone.')) return;
+    try { localStorage.removeItem(this.KEY); } catch(e){}
+    this.setState(this.base());
+  };
+  ORDER = ['intro','notice','rework','redirect','practise','summary'];
+  next = () => this.setState(s => ({ step: Math.min(s.step + 1, this.ORDER.length - 1) }));
+  back = () => this.setState(s => ({ step: Math.max(s.step - 1, 0) }));
+  print = () => window.print();
+  set = (k) => (e) => this.setState({ [k]: e.target.value });
+
+  patch(id, p){ this.setState(s => ({ thoughts: s.thoughts.map(t => t.id === id ? Object.assign({}, t, p) : t) })); }
+  addNote = () => this.setState(s => ({ thoughts: s.thoughts.concat([this.t()]) }));
+  remove(id){ this.setState(s => ({ thoughts: s.thoughts.length > 1 ? s.thoughts.filter(t => t.id !== id) : s.thoughts })); }
+
+  renderVals(){
+    const s = this.state, cur = this.ORDER[s.step] || 'intro';
+    const PL = '#5b4a6a', PI = '#4b7a6e', SAND = '#b98d2f', CLAY = '#b6534b';
+    const plan = [
+      { n:1, title:'Notice the script', blurb:'Catch the recurring pressure thoughts and when they arrive.', color:CLAY },
+      { n:2, title:'Write workable responses', blurb:'Believable alternatives, each doing a clear job, boiled down to a cue.', color:PI },
+      { n:3, title:'Acknowledge and redirect', blurb:'Make room for the thought instead of arguing with it.', color:PL },
+      { n:4, title:'Rehearse in training', blurb:'Practise the cues where they belong, then review the effect.', color:PI }
+    ];
+    const typeDefs = [
+      { id:'Instructional', color:PI, bg:'#dde9e5', border:PI },
+      { id:'Motivational', color:SAND, bg:'#f5edd5', border:'#d6b86c' },
+      { id:'Compassionate', color:PL, bg:'#e7e3ec', border:PL }
+    ];
+    const typeColor = id => (typeDefs.find(t => t.id === id) || {}).color || PI;
+    const quote = v => '\u201c' + (v || '').trim() + '\u201d';
+
+    const notes = s.thoughts.map((t, i) => ({ n:i+1, nat:t.nat, trigger:t.trigger, canRemove: s.thoughts.length > 1,
+      onNat:e => this.patch(t.id,{nat:e.target.value}), onTrigger:e => this.patch(t.id,{trigger:e.target.value}), onRemove:() => this.remove(t.id) }));
+
+    const filled = s.thoughts.filter(t => t.nat.trim());
+    const reworks = filled.map((t, i) => ({ n:i+1, natQuoted:quote(t.nat), trigger:t.trigger, response:t.response, cue:t.cue,
+      typeOptions: typeDefs.map(d => ({ label:d.id, onPick:() => this.patch(t.id,{type: t.type === d.id ? '' : d.id}),
+        color: t.type === d.id ? '#fff' : d.color, bg: t.type === d.id ? d.border : d.bg, border: d.border })),
+      onResponse:e => this.patch(t.id,{response:e.target.value}), onCue:e => this.patch(t.id,{cue:e.target.value}) }));
+
+    const redirectLine = (s.rdThought.trim() || s.rdCue.trim())
+      ? '\u201cThere\u2019s the thought that ' + (s.rdThought.trim() || '\u2026') + '. Right now, my cue is \u201c' + (s.rdCue.trim() || '\u2026') + '\u201d.\u201d'
+      : '';
+
+    const summaryCards = filled.map((t, i) => ({ n:i+1, natQuoted:quote(t.nat), trigger:t.trigger, response:t.response, cue:t.cue,
+      type:t.type, typeColor: typeColor(t.type) }));
+    const line = (label, value) => value && String(value).trim() ? { label, value } : null;
+    const practiceLines = [ line('Practise:', s.prWhen), line('Clearer?', s.rvClearer), line('Helped recover?', s.rvRecover), line('Felt supportive?', s.rvFeel) ].filter(Boolean);
+
+    const labels = { intro:'Why', notice:'Notice', rework:'Responses', redirect:'Redirect', practise:'Rehearse', summary:'Your plan' };
+    return {
+      guidance: this.props.showGuidance !== false,
+      stepLabel: 'Step ' + s.step + ' of ' + (this.ORDER.length - 1) + ' \u00b7 ' + labels[cur],
+      pctText: Math.round(s.step / (this.ORDER.length - 1) * 100) + '%',
+      savedFlash: s.saved ? 'Saved' : '',
+      remember:s.remember, notRemember:!s.remember, toggleRemember:this.toggleRemember, startOver:this.startOver,
+      next:this.next, back:this.back, print:this.print,
+      isIntro:cur==='intro', notIntro:cur!=='intro', isNotice:cur==='notice', isRework:cur==='rework', isRedirect:cur==='redirect', isPractise:cur==='practise', isSummary:cur==='summary',
+      plan,
+      countLine: filled.length ? (filled.length === 1 ? 'One thought in play' : filled.length + ' thoughts in play') : 'From script to cue',
+      notes, addNote:this.addNote, noNotes: filled.length === 0,
+      reworks,
+      rdThought:s.rdThought, rdCue:s.rdCue, rdSafety:s.rdSafety,
+      onRdThought:this.set('rdThought'), onRdCue:this.set('rdCue'), onRdSafety:this.set('rdSafety'),
+      hasRedirect: !!redirectLine, redirectLine,
+      prWhen:s.prWhen, rvClearer:s.rvClearer, rvRecover:s.rvRecover, rvFeel:s.rvFeel,
+      onPrWhen:this.set('prWhen'), onRvClearer:this.set('rvClearer'), onRvRecover:this.set('rvRecover'), onRvFeel:this.set('rvFeel'),
+      summaryCards, practiceLines, hasPractice: practiceLines.length > 0
+    };
+  }
+}
+</script>
+</body>
+</html>
