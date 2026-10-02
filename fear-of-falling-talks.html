@@ -61,6 +61,8 @@
     .article-body ul{color:var(--text-body);margin-bottom:var(--space-5);padding-left:var(--space-5);}
     .article-body ul li{margin-bottom:var(--space-2);line-height:var(--leading-relaxed);}
     .article-body strong{color:var(--text-strong);font-weight:600;}
+    .article-body a{color:var(--ep-pine);text-decoration:underline;text-underline-offset:2px;}
+    .article-body a:hover{color:var(--ep-plum);}
 
     /* Section number */
     .section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--ep-pine) 10%,transparent);color:var(--ep-pine);font-family:var(--font-heading);font-size:var(--text-xs);font-weight:600;letter-spacing:.06em;flex-shrink:0;margin-right:var(--space-3);}
@@ -95,7 +97,8 @@
 
     .article-photo{margin:var(--space-10) 0;border-radius:var(--radius-lg);overflow:hidden;}
     .article-photo img{width:100%;display:block;}
-    .article-photo figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) var(--space-1) 0;}
+    .ep-reel-inline{margin:var(--space-10) auto;max-width:340px;}
+    .ep-reel-inline figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) 0 0;text-align:center;}
 
     /* Venue logos */
     .venues{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-10);}
@@ -214,7 +217,6 @@
 
       <figure class="article-photo reveal">
         <img src="assets/img/talks/talk-1.jpg" alt="Dr Fin Haley presenting the Fear of Falling talk to a full room" loading="lazy">
-        <figcaption>Opening the talk &mdash; what fear actually is, before what to do about it</figcaption>
       </figure>
 
 
@@ -229,8 +231,7 @@
       <p>Fin also shared his own experience of growing up climbing on Peak District grit and alpine rock while remaining frightened of falling, and how that led him to apply psychological approaches to his own climbing.</p>
 
       <figure class="article-photo reveal">
-        <img src="assets/img/talks/talk-3.jpg" alt="Dr Fin Haley speaking during the Fear of Falling talk" loading="lazy">
-        <figcaption>Fin on growing up climbing while frightened of falling</figcaption>
+        <img src="assets/img/talks/talk-4.jpg" alt="The audience watching the Fear of Falling talk" loading="lazy">
       </figure>
 
 
@@ -253,7 +254,18 @@
 
       <figure class="article-photo reveal">
         <img src="assets/img/talks/talk-2.jpg" alt="Dr Fin Haley pointing to a slide during the talk" loading="lazy">
-        <figcaption>Working through the four practical ideas with the room</figcaption>
+      </figure>
+
+
+      <figure class="ep-reel-inline reveal">
+        <div class="ep-reel" data-reel="DdrJ3c9oA7R" onclick="loadReel(this)" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();loadReel(this);}"
+             aria-label="Play the reel: Why variety is what makes it stick">
+          <img src="assets/img/reels/DdrJ3c9oA7R.jpg" alt="Why variety is what makes it stick" loading="lazy">
+          <div class="reel-scrim"></div>
+          <div class="reel-play"><span><svg viewBox="0 0 24 24" fill="white" width="26" height="26" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg></span></div>
+        </div>
+        <figcaption>Why variety is what makes it stick &middot; watch on Instagram</figcaption>
       </figure>
 
 
@@ -265,9 +277,16 @@
 
       <p>The aim was not to encourage climbers to ignore fear, but to distinguish between <strong>fear to work with and risk to take seriously.</strong></p>
 
-      <figure class="article-photo reveal">
-        <img src="assets/img/talks/talk-4.jpg" alt="The audience watching the Fear of Falling talk" loading="lazy">
-        <figcaption>Where fall practice ends and risk assessment begins</figcaption>
+
+      <figure class="ep-reel-inline reveal">
+        <div class="ep-reel" data-reel="DdWni2do2_9" onclick="loadReel(this)" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();loadReel(this);}"
+             aria-label="Play the reel: Rehearsing it before you do it">
+          <img src="assets/img/reels/DdWni2do2_9.jpg" alt="Rehearsing it before you do it" loading="lazy">
+          <div class="reel-scrim"></div>
+          <div class="reel-play"><span><svg viewBox="0 0 24 24" fill="white" width="26" height="26" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg></span></div>
+        </div>
+        <figcaption>Rehearsing it before you do it &middot; watch on Instagram</figcaption>
       </figure>
 
 
@@ -308,58 +327,6 @@
 
   </div>
 </div>
-
-<!-- WATCH -->
-<section class="py-20 md:py-24 px-6" style="background:var(--surface-sunken)">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div class="reveal">
-        <p class="ep-eyebrow mb-4">Watch</p>
-        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">Rehearsing it before you do it</h2>
-        <p class="leading-relaxed mb-8" style="color:var(--text-muted)">A short piece on using imagery to rehearse the actions that support performance, including how you will cope when it does not go to plan.</p>
-        <p class="text-sm" style="color:var(--text-muted)">Dr Fin Haley &middot; Expedition Psychology on Instagram</p>
-      </div>
-      <div class="reveal reveal-delay-1 flex justify-center">
-        <div style="width:100%;max-width:340px">
-          <div class="ep-reel" data-reel="DdWni2do2_9" onclick="loadReel(this)" role="button" tabindex="0"
-               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();loadReel(this);}"
-               aria-label="Play the reel: Rehearsing it before you do it">
-            <img src="assets/img/reels/DdWni2do2_9.jpg" alt="Rehearsing it before you do it" loading="lazy">
-            <div class="reel-scrim"></div>
-            <div class="reel-play"><span><svg viewBox="0 0 24 24" fill="white" width="26" height="26" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg></span></div>
-          </div>
-          <p class="text-center text-xs mt-3" style="color:var(--text-muted)">Watch on Instagram</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WATCH -->
-<section class="py-20 md:py-24 px-6" style="background:var(--surface-sunken)">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div class="reveal">
-        <p class="ep-eyebrow mb-4">Watch</p>
-        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">Why variety is what makes it stick</h2>
-        <p class="leading-relaxed mb-8" style="color:var(--text-muted)">A short piece on why facing a fear in only one way tends to help in only that one situation &mdash; and how varying the exposure lets the confidence carry over.</p>
-        <p class="text-sm" style="color:var(--text-muted)">Dr Fin Haley &middot; Expedition Psychology on Instagram</p>
-      </div>
-      <div class="reveal reveal-delay-1 flex justify-center">
-        <div style="width:100%;max-width:340px">
-          <div class="ep-reel" data-reel="DdrJ3c9oA7R" onclick="loadReel(this)" role="button" tabindex="0"
-               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();loadReel(this);}"
-               aria-label="Play the reel: Why variety is what makes it stick">
-            <img src="assets/img/reels/DdrJ3c9oA7R.jpg" alt="Why variety is what makes it stick" loading="lazy">
-            <div class="reel-scrim"></div>
-            <div class="reel-play"><span><svg viewBox="0 0 24 24" fill="white" width="26" height="26" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg></span></div>
-          </div>
-          <p class="text-center text-xs mt-3" style="color:var(--text-muted)">Watch on Instagram</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- SLIDES -->
 <section class="py-16 px-6" style="background:var(--surface-page)">
