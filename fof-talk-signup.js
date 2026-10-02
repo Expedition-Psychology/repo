@@ -22,11 +22,36 @@
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   var MESSAGES = {
-    pending: 'Almost there — check your inbox and click the confirmation link to get the talk.',
-    existing: "You're already on the list. Check your inbox (and spam) for the talk.",
     invalid: 'Please enter a valid email address.',
     failed: 'Something went wrong. Please try again in a moment.',
   };
+
+  // Spelled out deliberately: the confirmation mail is the step people most
+  // often miss, and it lands in spam often enough to be worth saying plainly.
+  function successPanel(existing) {
+    var lead = existing
+      ? "You're already on the list."
+      : 'Almost there.';
+    var body = existing
+      ? 'We&rsquo;ve sent your confirmation link again. Click it and the talk comes straight over.'
+      : 'We&rsquo;ve just emailed you a confirmation link. Click it and the talk comes straight over.';
+    return (
+      '<div class="talk-done">' +
+        '<p class="talk-done-h">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" ' +
+          'stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+          '<polyline points="20 6 9 17 4 12"></polyline></svg>' +
+          lead + ' Check your inbox.' +
+        '</p>' +
+        '<p>' + body + '</p>' +
+        '<p class="talk-done-spam"><strong>Can&rsquo;t see it? Check your spam or junk folder.</strong> ' +
+          'The confirmation email often lands there &mdash; marking it &ldquo;not spam&rdquo; means the talk itself reaches you.</p>' +
+        '<p>Still nothing after a few minutes? Email ' +
+          '<a href="mailto:contact@expedition-psychology.com">contact@expedition-psychology.com</a> ' +
+          'and we&rsquo;ll send it over directly.</p>' +
+      '</div>'
+    );
+  }
 
   function setMessage(el, text, kind) {
     if (!el) return;
@@ -91,11 +116,11 @@
             // Success — retire the form, leave the confirmation in its place.
             form.style.display = 'none';
             if (note) note.style.display = 'none';
-            setMessage(
-              msg,
-              result.data.status === 'existing' ? MESSAGES.existing : MESSAGES.pending,
-              'ok'
-            );
+            if (msg) {
+              msg.innerHTML = successPanel(result.data.status === 'existing');
+              msg.classList.remove('err');
+              msg.classList.add('show', 'ok');
+            }
           })
           .catch(function () {
             setMessage(msg, MESSAGES.failed, 'err');

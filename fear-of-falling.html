@@ -114,6 +114,14 @@
     .talk-msg.show{display:block;}
     .talk-msg.ok{color:var(--ep-pine);font-weight:600;}
     .talk-msg.err{color:#b3261e;}
+    .talk-done{border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);background:var(--talk-done-bg);border:1px solid var(--talk-done-br);}
+    .talk-done p{margin:0 0 var(--space-3)!important;font-size:var(--text-sm)!important;line-height:var(--leading-relaxed);color:var(--talk-done-fg)!important;}
+    .talk-done p:last-child{margin-bottom:0!important;}
+    .talk-done .talk-done-h{display:flex;align-items:center;gap:9px;font-family:var(--font-heading);font-weight:600;font-size:var(--text-base)!important;color:var(--talk-done-hd)!important;}
+    .talk-done .talk-done-h svg{flex:none;color:var(--talk-done-tick);}
+    .talk-done strong{color:var(--talk-done-hd);}
+    .talk-done a{color:var(--talk-done-lk);text-decoration:underline;word-break:break-word;}
+    .talk-msg.ok{--talk-done-bg:var(--surface-raised);--talk-done-br:var(--border-subtle);--talk-done-fg:var(--text-muted);--talk-done-hd:var(--text-strong);--talk-done-lk:var(--ep-pine);--talk-done-tick:var(--ep-pine);}
   </style>
 <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
 <script src="cookie-consent.js?v=2" defer></script>
@@ -437,7 +445,7 @@
 </footer>
 
 <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
-<script src="fof-talk-signup.js" defer></script>
+<script src="fof-talk-signup.js?v=2" defer></script>
 <script>
   // Nav scroll behaviour
   var nav=document.getElementById('main-nav');
