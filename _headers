@@ -3,3 +3,55 @@
 
 /email-fof-coming-soon-sender.html
   Content-Disposition: attachment; filename="fear-of-falling-coming-soon-sender.html"
+
+# Article emails for the Sender drip series — download rather than render.
+/email-goal-setting-process-over-outcome.html
+  Content-Disposition: attachment; filename="01-goal-setting-process-over-outcome.html"
+
+/email-motivation-that-lasts.html
+  Content-Disposition: attachment; filename="02-motivation-that-lasts.html"
+
+/email-building-resilience-four-pillars.html
+  Content-Disposition: attachment; filename="03-building-resilience-four-pillars.html"
+
+/email-what-is-anxiety.html
+  Content-Disposition: attachment; filename="04-what-is-anxiety.html"
+
+/email-the-importance-of-preparation.html
+  Content-Disposition: attachment; filename="05-the-importance-of-preparation.html"
+
+/email-challenge-point-framework.html
+  Content-Disposition: attachment; filename="06-challenge-point-framework.html"
+
+/email-scaled-complexity.html
+  Content-Disposition: attachment; filename="07-scaled-complexity.html"
+
+/email-the-importance-of-spacing.html
+  Content-Disposition: attachment; filename="08-the-importance-of-spacing.html"
+
+/email-the-importance-of-variability.html
+  Content-Disposition: attachment; filename="09-the-importance-of-variability.html"
+
+/email-the-importance-of-gamification.html
+  Content-Disposition: attachment; filename="10-the-importance-of-gamification.html"
+
+/email-challenge-threat-framework.html
+  Content-Disposition: attachment; filename="11-challenge-threat-framework.html"
+
+/email-the-importance-of-routines.html
+  Content-Disposition: attachment; filename="12-the-importance-of-routines.html"
+
+/email-imagery-and-visualisation.html
+  Content-Disposition: attachment; filename="13-imagery-and-visualisation.html"
+
+/email-self-talk.html
+  Content-Disposition: attachment; filename="14-self-talk.html"
+
+/email-attentional-focus.html
+  Content-Disposition: attachment; filename="15-attentional-focus.html"
+
+/email-choking-under-pressure.html
+  Content-Disposition: attachment; filename="16-choking-under-pressure.html"
+
+/email-managing-fear-through-experience.html
+  Content-Disposition: attachment; filename="17-managing-fear-through-experience.html"
