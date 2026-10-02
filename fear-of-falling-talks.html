@@ -93,6 +93,10 @@
       .article-body{max-width:100%!important;}
     }
 
+    .article-photo{margin:var(--space-10) 0;border-radius:var(--radius-lg);overflow:hidden;}
+    .article-photo img{width:100%;display:block;}
+    .article-photo figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding:var(--space-3) var(--space-1) 0;}
+
     /* Venue logos */
     .venues{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-10);}
     .venues img{height:52px;width:auto;object-fit:contain;opacity:.9;}
@@ -182,6 +186,19 @@
   </div>
 </section>
 
+
+<!-- VENUES -->
+<section class="py-12 px-6" style="background:var(--surface-sunken);border-bottom:var(--border-width) solid var(--border-subtle)">
+  <div class="max-w-4xl mx-auto">
+    <p class="ep-eyebrow mb-7 text-center reveal" style="color:var(--text-muted)">Hosted by</p>
+    <div class="venues reveal reveal-delay-1">
+      <img src="assets/img/logos/the-foundry.png" alt="The Foundry Climbing Centre">
+      <img src="assets/img/logos/outside.png" alt="Outside">
+      <img src="assets/img/logos/climbing-works.png" alt="The Climbing Works">
+    </div>
+  </div>
+</section>
+
 <!-- ARTICLE -->
 <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
   <div class="grid lg:grid-cols-[1fr_280px] gap-16 items-start">
@@ -195,6 +212,12 @@
 
       <p>Couldn&rsquo;t make it along? <strong>The recorded talk is available free</strong>, so you can explore the ideas in your own time.</p>
 
+      <figure class="article-photo reveal">
+        <img src="assets/img/talks/talk-1.jpg" alt="Dr Fin Haley presenting the Fear of Falling talk to a full room" loading="lazy">
+        <figcaption>Opening the talk &mdash; what fear actually is, before what to do about it</figcaption>
+      </figure>
+
+
       <h2 id="understanding" class="flex items-center gap-0"><span class="section-num">1</span>Understanding the fear behind the climbing</h2>
 
       <p>The starting point wasn&rsquo;t &ldquo;be braver&rdquo;. It was understanding what happens when fear takes over.</p>
@@ -204,6 +227,12 @@
       <p>From there, we looked at the avoidance cycle. Backing away from a feared fall can bring immediate relief, but it can also leave that fear unchallenged. We explored this pattern in the context of appropriate fall practice &mdash; not situations where backing off is the right response to a genuine risk.</p>
 
       <p>Fin also shared his own experience of growing up climbing on Peak District grit and alpine rock while remaining frightened of falling, and how that led him to apply psychological approaches to his own climbing.</p>
+
+      <figure class="article-photo reveal">
+        <img src="assets/img/talks/talk-3.jpg" alt="Dr Fin Haley speaking during the Fear of Falling talk" loading="lazy">
+        <figcaption>Fin on growing up climbing while frightened of falling</figcaption>
+      </figure>
+
 
       <h2 id="big-falls" class="flex items-center gap-0"><span class="section-num">2</span>Why &ldquo;just take a big fall&rdquo; misses the point</h2>
 
@@ -222,6 +251,12 @@
 
       <p>The recording takes you through the reasoning behind each principle, including why being comfortable during planned fall practice does not always translate into feeling comfortable when trying a difficult route.</p>
 
+      <figure class="article-photo reveal">
+        <img src="assets/img/talks/talk-2.jpg" alt="Dr Fin Haley pointing to a slide during the talk" loading="lazy">
+        <figcaption>Working through the four practical ideas with the room</figcaption>
+      </figure>
+
+
       <h2 id="real-consequences" class="flex items-center gap-0"><span class="section-num">3</span>And when the consequences are real?</h2>
 
       <p>The talks also addressed an important boundary: not every fall belongs in fall practice.</p>
@@ -229,6 +264,12 @@
       <p>For situations with serious consequences, we shifted towards risk assessment and experience, outlining a three-step decision framework: assess the risk, decide whether you are willing to accept the consequences, and plan your response. Alongside it was a <a href="managing-fear-through-experience.html" style="color:var(--ep-pine);text-decoration:underline">pyramid of experience</a>, built on plenty of climbing well within your ability &mdash; not repeated exposure to dangerous falls.</p>
 
       <p>The aim was not to encourage climbers to ignore fear, but to distinguish between <strong>fear to work with and risk to take seriously.</strong></p>
+
+      <figure class="article-photo reveal">
+        <img src="assets/img/talks/talk-4.jpg" alt="The audience watching the Fear of Falling talk" loading="lazy">
+        <figcaption>Where fall practice ends and risk assessment begins</figcaption>
+      </figure>
+
 
       <h2 id="start-here" class="flex items-center gap-0"><span class="section-num">4</span>Missed the talks? Start here</h2>
 
@@ -268,14 +309,70 @@
   </div>
 </div>
 
-<!-- VENUES -->
-<section class="py-16 px-6" style="background:var(--surface-sunken);border-top:var(--border-width) solid var(--border-subtle)">
-  <div class="max-w-4xl mx-auto">
-    <p class="ep-eyebrow mb-7 text-center reveal" style="color:var(--text-muted)">Hosted by</p>
-    <div class="venues reveal reveal-delay-1">
-      <img src="assets/img/logos/the-foundry.png" alt="The Foundry Climbing Centre">
-      <img src="assets/img/logos/outside.png" alt="Outside">
-      <img src="assets/img/logos/climbing-works.png" alt="The Climbing Works">
+<!-- WATCH -->
+<section class="py-20 md:py-24 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4">Watch</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">Rehearsing it before you do it</h2>
+        <p class="leading-relaxed mb-8" style="color:var(--text-muted)">A short piece on using imagery to rehearse the actions that support performance, including how you will cope when it does not go to plan.</p>
+        <p class="text-sm" style="color:var(--text-muted)">Dr Fin Haley &middot; Expedition Psychology on Instagram</p>
+      </div>
+      <div class="reveal reveal-delay-1 flex justify-center">
+        <div style="width:100%;max-width:340px">
+          <div class="ep-reel" data-reel="DdWni2do2_9" onclick="loadReel(this)" role="button" tabindex="0"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();loadReel(this);}"
+               aria-label="Play the reel: Rehearsing it before you do it">
+            <img src="assets/img/reels/DdWni2do2_9.jpg" alt="Rehearsing it before you do it" loading="lazy">
+            <div class="reel-scrim"></div>
+            <div class="reel-play"><span><svg viewBox="0 0 24 24" fill="white" width="26" height="26" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg></span></div>
+          </div>
+          <p class="text-center text-xs mt-3" style="color:var(--text-muted)">Watch on Instagram</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WATCH -->
+<section class="py-20 md:py-24 px-6" style="background:var(--surface-sunken)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="ep-eyebrow mb-4">Watch</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="color:var(--text-strong)">Why variety is what makes it stick</h2>
+        <p class="leading-relaxed mb-8" style="color:var(--text-muted)">A short piece on why facing a fear in only one way tends to help in only that one situation &mdash; and how varying the exposure lets the confidence carry over.</p>
+        <p class="text-sm" style="color:var(--text-muted)">Dr Fin Haley &middot; Expedition Psychology on Instagram</p>
+      </div>
+      <div class="reveal reveal-delay-1 flex justify-center">
+        <div style="width:100%;max-width:340px">
+          <div class="ep-reel" data-reel="DdrJ3c9oA7R" onclick="loadReel(this)" role="button" tabindex="0"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();loadReel(this);}"
+               aria-label="Play the reel: Why variety is what makes it stick">
+            <img src="assets/img/reels/DdrJ3c9oA7R.jpg" alt="Why variety is what makes it stick" loading="lazy">
+            <div class="reel-scrim"></div>
+            <div class="reel-play"><span><svg viewBox="0 0 24 24" fill="white" width="26" height="26" style="margin-left:3px"><polygon points="5,3 19,12 5,21"></polygon></svg></span></div>
+          </div>
+          <p class="text-center text-xs mt-3" style="color:var(--text-muted)">Watch on Instagram</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDES -->
+<section class="py-16 px-6" style="background:var(--surface-page)">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal" style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-8);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-6);justify-content:space-between">
+      <div style="flex:1 1 300px;min-width:0">
+        <p class="ep-eyebrow mb-3" style="color:var(--ep-pine)">The Slides</p>
+        <h2 class="text-2xl mb-2" style="color:var(--text-strong)">Download the talk deck</h2>
+        <p class="text-sm" style="color:var(--text-muted)">The full presentation as shown on the night &mdash; 34 slides, PDF.</p>
+      </div>
+      <a href="assets/docs/fear-of-falling-talk-slides.pdf" download class="cta-btn" style="background:var(--ep-pine);color:#fff;flex:none">
+        <i data-lucide="download" class="w-4 h-4"></i> Download PDF
+      </a>
     </div>
   </div>
 </section>
