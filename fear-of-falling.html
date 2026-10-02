@@ -131,6 +131,18 @@
     .talk-done strong{color:var(--talk-done-hd);}
     .talk-done a{color:var(--talk-done-lk);text-decoration:underline;word-break:break-word;}
     .talk-msg.ok{--talk-done-bg:var(--surface-raised);--talk-done-br:var(--border-subtle);--talk-done-fg:var(--text-muted);--talk-done-hd:var(--text-strong);--talk-done-lk:var(--ep-pine);--talk-done-tick:var(--ep-pine);}
+
+    /* ── App preview: looping, muted, autoplaying clips (a GIF without the
+       filesize). Sources are swapped in on scroll so nothing downloads unless
+       the reader actually reaches this section. ── */
+    .app-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-10);max-width:760px;margin:0 auto;}
+    .app-shot{display:flex;flex-direction:column;align-items:center;}
+    .app-frame{width:100%;max-width:260px;border-radius:26px;overflow:hidden;background:#0a0a0a;border:7px solid #1c1c1c;box-shadow:var(--shadow-xl);}
+    .app-frame video{display:block;width:100%;height:auto;}
+    .app-shot p{margin:var(--space-4) 0 0;text-align:center;}
+    .app-cap{font-family:var(--font-heading);font-weight:600;font-size:var(--text-base);color:var(--text-strong);}
+    .app-sub{font-size:var(--text-sm);color:var(--text-muted);line-height:var(--leading-relaxed);max-width:26ch;}
+    @media (max-width:640px){.app-shots{grid-template-columns:1fr;gap:var(--space-8);}}
   </style>
 <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
 <script src="cookie-consent.js?v=2" defer></script>
@@ -341,6 +353,36 @@
   </div>
 </section>
 
+
+<!-- ═══ INSIDE THE APP ═══ -->
+<section class="py-20 md:py-28 px-6" style="background:var(--ep-paper)">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <p class="ep-eyebrow mb-4" style="color:var(--ep-pine)">Inside the App</p>
+      <h2 class="text-3xl md:text-4xl mb-4" style="color:var(--text-strong)">What you'll actually be using</h2>
+      <p class="leading-relaxed" style="color:var(--text-muted)">Your goals and plan on one screen, and a quick way to log how the fear felt after each exercise.</p>
+    </div>
+    <div class="app-shots reveal rd1">
+      <div class="app-shot">
+        <div class="app-frame">
+          <video data-src="assets/video/app-goals.mp4" autoplay loop muted playsinline preload="none"
+                 aria-label="The Toolkit home screen, showing goals and the plan for the week"></video>
+        </div>
+        <p class="app-cap">Goals and planning</p>
+        <p class="app-sub">The home screen &mdash; what you're working towards and what's next.</p>
+      </div>
+      <div class="app-shot">
+        <div class="app-frame">
+          <video data-src="assets/video/app-fear-rating.mp4" autoplay loop muted playsinline preload="none"
+                 aria-label="Logging how frightening an exercise felt, during a session"></video>
+        </div>
+        <p class="app-cap">Logging your fear</p>
+        <p class="app-sub">Rate how an exercise felt, so the plan knows when you're ready to move on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ 6 · SEE INSIDE ═══ -->
 <section class="py-20 md:py-28 px-6" style="background:var(--surface-sunken)">
   <div class="max-w-3xl mx-auto text-center mb-8 reveal">
@@ -497,12 +539,31 @@
       .then(function(){
         document.getElementById('form-fields').classList.add('hide');
         document.getElementById('form-success').classList.add('show');
-        lucide.createIcons();
+      
+
+  lucide.createIcons();
       })
       .catch(function(){alert('Something went wrong — please try again.');});
   }
 
   lucide.createIcons();
+
+  // Only fetch the app clips once they are near the viewport.
+  (function () {
+    var vids = document.querySelectorAll('video[data-src]');
+    if (!vids.length) return;
+    function load(v) {
+      if (v.src) return;
+      v.src = v.getAttribute('data-src');
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+    if (!('IntersectionObserver' in window)) { vids.forEach(load); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '300px 0px' });
+    vids.forEach(function (v) { io.observe(v); });
+  })();
 </script>
 </body>
 </html>
