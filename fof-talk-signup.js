@@ -30,25 +30,34 @@
   // often miss, and it lands in spam often enough to be worth saying plainly.
   function successPanel(existing) {
     var lead = existing
-      ? "You're already on the list."
-      : 'Almost there.';
-    var body = existing
-      ? 'We&rsquo;ve sent your confirmation link again. Click it and the talk comes straight over.'
-      : 'We&rsquo;ve just emailed you a confirmation link. Click it and the talk comes straight over.';
+      ? 'You were already on the list, so we have sent your confirmation link again.'
+      : 'We have just emailed you a confirmation link.';
     return (
+      // The spam warning leads, because the confirmation mail frequently lands
+      // there and an unclicked link means the talk is never sent at all.
       '<div class="talk-done">' +
+        '<div class="talk-spam">' +
+          '<p class="talk-spam-h">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" ' +
+            'stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M4 4h16v16H4z"></path><path d="m4 7 8 6 8-6"></path></svg>' +
+            'Check your spam folder' +
+          '</p>' +
+          '<p class="talk-spam-b">Our confirmation email <strong>very often lands in spam or junk</strong>. ' +
+            'Please look there before anything else &mdash; <strong>the talk is only sent once you click the link inside it.</strong></p>' +
+          '<p class="talk-spam-b">Found it there? Mark it <strong>&ldquo;not spam&rdquo;</strong>, ' +
+            'so the talk itself reaches your inbox.</p>' +
+        '</div>' +
         '<p class="talk-done-h">' +
           '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" ' +
           'stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
           '<polyline points="20 6 9 17 4 12"></polyline></svg>' +
-          lead + ' Check your inbox.' +
+          'You&rsquo;re nearly there' +
         '</p>' +
-        '<p>' + body + '</p>' +
-        '<p class="talk-done-spam"><strong>Can&rsquo;t see it? Check your spam or junk folder.</strong> ' +
-          'The confirmation email often lands there &mdash; marking it &ldquo;not spam&rdquo; means the talk itself reaches you.</p>' +
+        '<p>' + lead + ' Click it and the talk comes straight over.</p>' +
         '<p>Still nothing after a few minutes? Email ' +
           '<a href="mailto:contact@expedition-psychology.com">contact@expedition-psychology.com</a> ' +
-          'and we&rsquo;ll send it over directly.</p>' +
+          'and we&rsquo;ll send it to you directly.</p>' +
       '</div>'
     );
   }
