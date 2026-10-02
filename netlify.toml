@@ -19,3 +19,16 @@
   to = "/buxton-mountain-rescue-case-study"
   status = 301
   force = true
+
+# Events page retired.
+[[redirects]]
+  from = "/events"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/events.html"
+  to = "/"
+  status = 301
+  force = true

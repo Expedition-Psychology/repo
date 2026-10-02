@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Importance of Preparation — Expedition Psychology</title>
-  <meta name="description" content="Identify the demands, separate what you can control from what you can&#x27;t, and rehearse adapting to the rest.">
+  <title>Fear of Falling: Our Talks at The Foundry, Outside and The Climbing Works — Expedition Psychology</title>
+  <meta name="description" content="Why fear shows up on the wall, what keeps it going, and how to work with it &mdash; from our Fear of Falling talks. Watch the recording free.">
   <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
   <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -93,56 +93,26 @@
       .article-body{max-width:100%!important;}
     }
 
-    /* ── Shared diagram shell ── */
-    .ep-diagram{margin:var(--space-10) 0;}
-    .ep-diagram figcaption{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;text-transform:uppercase;padding-top:var(--space-4);}
+    /* Venue logos */
+    .venues{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-10);}
+    .venues img{height:52px;width:auto;object-fit:contain;opacity:.9;}
+    @media (max-width:640px){.venues{gap:var(--space-6);}.venues img{height:42px;}}
 
-    /* ── Control / influence / outside bands ── */
-    .ctl{display:flex;flex-direction:column;gap:var(--space-3);}
-    .ctl-band{display:flex;align-items:flex-start;gap:var(--space-4);border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);border-left:4px solid var(--ep-pine);padding:var(--space-5);background:var(--surface-raised);}
-    .ctl-band--1{border-left-color:var(--ep-pine);background:color-mix(in srgb,var(--ep-pine) 6%,var(--surface-raised));}
-    .ctl-band--2{border-left-color:var(--ep-plum);background:color-mix(in srgb,var(--ep-plum) 6%,var(--surface-raised));}
-    .ctl-band--3{border-left-color:var(--ep-neutral-400);background:var(--surface-sunken);}
-    .ctl-main{flex:1;min-width:0;}
-    .ctl-k{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.09em;text-transform:uppercase;margin:0 0 var(--space-2)!important;}
-    .ctl-band--1 .ctl-k{color:var(--ep-pine);}
-    .ctl-band--2 .ctl-k{color:var(--ep-plum);}
-    .ctl-band--3 .ctl-k{color:var(--ep-neutral-600);}
-    .ctl-t{font-size:var(--text-sm)!important;color:var(--text-body)!important;margin:0!important;line-height:var(--leading-relaxed);}
-    .ctl-do{flex:none;font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.07em;text-transform:uppercase;padding-top:2px;white-space:nowrap;}
-    .ctl-band--1 .ctl-do{color:var(--ep-pine);}
-    .ctl-band--2 .ctl-do{color:var(--ep-plum);}
-    .ctl-band--3 .ctl-do{color:var(--ep-neutral-600);}
-    .ctl-ask{font-family:var(--font-heading);font-weight:600;font-size:var(--text-base)!important;color:var(--text-muted)!important;text-align:center;margin:var(--space-5) 0 0!important;}
-    @media (max-width:640px){
-      .ctl-band{flex-direction:column;gap:var(--space-2);padding:var(--space-4);}
-      .ctl-do{padding-top:0;}
-    }
-
-    /* ── Attentional grid ── */
-    .ag{display:grid;grid-template-columns:auto 1fr 1fr auto;grid-template-rows:auto 1fr 1fr auto;gap:var(--space-3);align-items:stretch;}
-    .ag-ax{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--ep-neutral-500);display:flex;align-items:center;justify-content:center;margin:0!important;}
-    .ag-ax--top{grid-column:2 / 4;grid-row:1;}
-    .ag-ax--bottom{grid-column:2 / 4;grid-row:4;}
-    .ag-ax--left{grid-column:1;grid-row:2 / 4;writing-mode:vertical-rl;transform:rotate(180deg);}
-    .ag-ax--right{grid-column:4;grid-row:2 / 4;writing-mode:vertical-rl;}
-    .ag-q{border-radius:var(--radius-lg);border:var(--border-width) solid var(--border-subtle);padding:var(--space-5);display:flex;flex-direction:column;}
-    .ag-q--be{grid-column:2;grid-row:2;background:color-mix(in srgb,var(--ep-pine) 8%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-pine) 28%,transparent);}
-    .ag-q--bi{grid-column:3;grid-row:2;background:color-mix(in srgb,var(--ep-plum) 8%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-plum) 28%,transparent);}
-    .ag-q--ne{grid-column:2;grid-row:3;background:color-mix(in srgb,var(--ep-pine) 14%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-pine) 38%,transparent);}
-    .ag-q--ni{grid-column:3;grid-row:3;background:color-mix(in srgb,var(--ep-plum) 14%,var(--surface-raised));border-color:color-mix(in srgb,var(--ep-plum) 38%,transparent);}
-    .ag-k{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:.07em;text-transform:uppercase;margin:0 0 var(--space-2)!important;}
-    .ag-q--be .ag-k,.ag-q--ne .ag-k{color:var(--ep-pine);}
-    .ag-q--bi .ag-k,.ag-q--ni .ag-k{color:var(--ep-plum);}
-    .ag-h{font-size:var(--text-lg)!important;color:var(--text-strong);margin:0 0 var(--space-2)!important;}
-    .ag-t{font-size:var(--text-sm)!important;color:var(--text-muted)!important;margin:0 0 var(--space-3)!important;line-height:var(--leading-relaxed);}
-    .ag-over{font-size:var(--text-sm)!important;color:var(--text-muted)!important;font-style:italic;margin:auto 0 0!important;line-height:var(--leading-relaxed);opacity:.85;}
-    @media (max-width:760px){
-      .ag{grid-template-columns:1fr;grid-template-rows:none;}
-      .ag-q{grid-column:1;grid-row:auto;}
-      .ag-ax--left,.ag-ax--right,.ag-ax--bottom{display:none;}
-      .ag-ax--top{grid-column:1;grid-row:auto;justify-content:flex-start;}
-    }
+    /* Free talk signup */
+    .talk-form{margin-bottom:var(--space-4);}
+    .talk-row{display:flex;flex-wrap:wrap;gap:var(--space-3);}
+    .talk-input{flex:1 1 240px;min-width:0;padding:15px var(--space-5);border-radius:var(--radius-pill);border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:var(--ep-paper);font-size:var(--text-base);font-family:var(--font-body);outline:none;transition:background .2s,border-color .2s;}
+    .talk-input::placeholder{color:rgba(243,243,240,.45);}
+    .talk-input:focus{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.5);}
+    .talk-submit{background:var(--ep-pine);color:var(--ep-paper);padding:15px var(--space-7);border:none;}
+    .talk-submit[disabled]{opacity:.6;cursor:default;transform:none;}
+    .talk-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
+    .talk-note{font-size:var(--text-sm);color:rgba(243,243,240,.4);margin:0;}
+    .talk-note a{color:rgba(243,243,240,.6);text-decoration:underline;}
+    .talk-msg{font-size:var(--text-sm);margin:0;display:none;}
+    .talk-msg.show{display:block;}
+    .talk-msg.ok{color:var(--ep-paper);font-weight:600;font-size:var(--text-base);}
+    .talk-msg.err{color:#ffb4a8;}
   </style>
   <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
   <script src="cookie-consent.js" defer></script>
@@ -194,14 +164,14 @@
 <!-- HERO -->
 <section class="relative min-h-[62vh] flex items-end overflow-hidden">
   <div class="absolute inset-0">
-    <img src="assets/img/blog/the-importance-of-preparation.jpg" alt="The Importance of Preparation" class="w-full h-full object-cover" style="object-position:center 40%">
+    <img src="assets/img/blog/fear-of-falling-talks.jpg" alt="Fear of Falling: Our Talks at The Foundry, Outside and The Climbing Works" class="w-full h-full object-cover" style="object-position:center 45%">
     <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(20,16,26,.96) 0%,rgba(20,16,26,.82) 40%,rgba(20,16,26,.5) 70%,rgba(20,16,26,.25) 100%)"></div>
   </div>
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
     <a href="our-work.html" class="back-link mb-8 inline-flex reveal"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> All Articles</a>
-    <p class="mb-5 reveal" style="font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.55)">Foundations &middot; 3 min read</p>
-    <h1 class="text-4xl md:text-6xl text-white mb-5 reveal reveal-delay-1" style="max-width:clamp(100%,90vw,760px);line-height:1.07">The Importance of Preparation</h1>
-    <p class="text-lg font-light mb-8 reveal reveal-delay-2" style="color:rgba(243,243,240,.8);max-width:clamp(100%,90vw,560px);line-height:var(--leading-relaxed)">Preparation isn't about predicting everything. It's about improving what you can and practising how you will respond to the rest.</p>
+    <p class="mb-5 reveal" style="font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:rgba(243,243,240,.55)">Climbing &middot; 5 min read</p>
+    <h1 class="text-4xl md:text-6xl text-white mb-5 reveal reveal-delay-1" style="max-width:clamp(100%,90vw,760px);line-height:1.07">Fear of Falling: Our Talks at The Foundry, Outside and The Climbing Works</h1>
+    <p class="text-lg font-light mb-8 reveal reveal-delay-2" style="color:rgba(243,243,240,.8);max-width:clamp(100%,90vw,560px);line-height:var(--leading-relaxed)">Understanding what holds us back on the wall &mdash; and how to approach it differently. Missed the talks? You can now watch the recording for free.</p>
     <div class="flex items-center gap-4 reveal reveal-delay-2">
       <img src="assets/img/team-fin.jpg" alt="Dr Fin Haley" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)">
       <div>
@@ -217,66 +187,58 @@
   <div class="grid lg:grid-cols-[1fr_280px] gap-16 items-start">
 
     <article class="article-body">
-      <p class="text-xl leading-relaxed mb-8" style="color:var(--text-strong)">You've trained for the event. You feel strong, the equipment is packed, and the plan looks straightforward.</p>
-      <p>Then the start is delayed. The venue is noisier than expected. The first section doesn't suit your strengths. Suddenly, a day you felt ready for begins to feel unfamiliar.</p>
-      <p>This is where preparation needs to go beyond the ideal version of an event.</p>
-      <p>Physical readiness matters. So does having a way to think, decide and adapt when reality refuses to follow the plan.</p>
+      <p class="text-xl leading-relaxed mb-8" style="color:var(--text-strong)">You spot a route you&rsquo;d love to try. The moves look possible, but your attention keeps returning to one question: <em>what happens if I fall?</em></p>
 
-      <h2 id="prepare-for-demands-not-just-dates" class="flex items-center gap-0"><span class="section-num">1</span>Prepare for demands, not just dates</h2>
-      <p>A date in the diary tells you when you need to be ready. It doesn't tell you what readiness involves.</p>
-      <p>Start by identifying the demands of the activity: the skills, decisions, physical effort, environment and practical arrangements it requires. Your confidence is more useful when it rests on relevant preparation than on a general promise that everything will be fine.</p>
-      <p>For a climber, that might include unfamiliar movement, route reading, communicating with a partner and managing the experience of being watched. For an expedition team, it might include fatigue, changing conditions, responsibilities and decision-making when information is incomplete.</p>
-      <p>Work from the likely and important difficulties. You don't need an exhaustive catalogue of every imaginable disaster.</p>
+      <p>Perhaps you pull on anyway, only to shout &ldquo;take&rdquo; before the difficult move. Perhaps you grip harder than you need to. Or perhaps you quietly choose something else.</p>
 
-      <h2 id="separate-control-from-influence" class="flex items-center gap-0"><span class="section-num">2</span>Separate control from influence</h2>
-      <p>Some actions are yours to organise: practise a skill, prepare equipment, clarify a role, or leave enough time for the journey.</p>
-      <p>Other things can be influenced but not commanded. You can support your recovery, but you cannot guarantee how energetic you'll feel. You can practise an attentional routine, but you cannot order anxiety to disappear.</p>
-      <p>Some conditions are outside your control: the weather, another competitor's performance, a last-minute schedule change.</p>
-      <p>The distinction matters because different problems need different responses. Trying harder won't change the weather. Accepting uncertainty won't replace a missing technical skill.</p>
-      <p>Ask: "Can I act on the situation, prepare my response, or do both?"</p>
+      <p>These were the experiences at the centre of our Fear of Falling talks at The Foundry, Outside and The Climbing Works. Led by Dr Fin Haley, Clinical Psychologist and Rock Climbing Instructor, the sessions brought psychology and climbing together to explore why fear shows up, what keeps it going, and how to work with it.</p>
 
-      <figure class="ep-diagram reveal">
-        <div class="ctl">
-          <div class="ctl-band ctl-band--1">
-            <div class="ctl-main">
-              <p class="ctl-k">Within your control</p>
-              <p class="ctl-t">Practise a skill &middot; prepare equipment &middot; clarify a role &middot; allow enough time</p>
-            </div>
-            <p class="ctl-do">Act on it</p>
-          </div>
-          <div class="ctl-band ctl-band--2">
-            <div class="ctl-main">
-              <p class="ctl-k">You can influence</p>
-              <p class="ctl-t">How you recover &middot; how anxious you feel &middot; how well your routine holds</p>
-            </div>
-            <p class="ctl-do">Prepare your response</p>
-          </div>
-          <div class="ctl-band ctl-band--3">
-            <div class="ctl-main">
-              <p class="ctl-k">Outside your control</p>
-              <p class="ctl-t">The weather &middot; another competitor&rsquo;s performance &middot; a schedule change</p>
-            </div>
-            <p class="ctl-do">Adapt to it</p>
-          </div>
-        </div>
-        <p class="ctl-ask">&ldquo;Can I act on the situation, prepare my response, or do both?&rdquo;</p>
-        <figcaption>Different problems need different responses &mdash; trying harder will not change the weather.</figcaption>
-      </figure>
+      <p>Couldn&rsquo;t make it along? <strong>The recorded talk is available free</strong>, so you can explore the ideas in your own time.</p>
 
-      <h2 id="make-plans-specific-enough-to-use" class="flex items-center gap-0"><span class="section-num">3</span>Make plans specific enough to use</h2>
-      <p>"I'll improve my route reading" is an intention. "During Thursday's session, I'll preview two appropriate routes, describe my plan, and compare it with what actually happens" is a practice task.</p>
-      <p>Useful planning answers what, where, when and how. It also makes room for obstacles.</p>
-      <p>Then create a few simple if-then responses. For example: "If the start is delayed, I'll check the revised timing, stay appropriately warm, and repeat a shortened version of my routine." Or: "If I make an early mistake, I'll use the next suitable pause to reset rather than change the whole plan in frustration."</p>
-      <p>These are not scripts that must be followed regardless of events. They are starting points that reduce the need to invent every response under pressure.</p>
-      <p>For activities with significant consequences, include clear limits and stop criteria. A changed plan can be evidence of good judgement, not failed commitment.</p>
+      <h2 id="understanding" class="flex items-center gap-0"><span class="section-num">1</span>Understanding the fear behind the climbing</h2>
 
-      <h2 id="rehearse-adaptation-then-let-preparation" class="flex items-center gap-0"><span class="section-num">4</span>Rehearse adaptation, then let preparation end</h2>
-      <p>Knowing what you'd like to do is different from having practised it.</p>
-      <p>Bring manageable versions of relevant demands into training. Rehearse a routine with a little background noise. Practise communicating a change of plan. Ask a willing partner to observe an attempt so that being watched becomes more familiar.</p>
-      <p>Keep simulations proportionate and safe. Creating unnecessary danger or distress doesn't make preparation more realistic or effective.</p>
-      <p>Afterwards, review what happened. Did the plan help? What information did you miss? What needs simplifying?</p>
-      <p>Finally, decide when preparation is sufficient for the next step. Repeatedly checking the same plan in search of complete certainty can become another way of delaying action.</p>
-      <p>You cannot prepare for every possibility. You can arrive with relevant skills, useful options, and permission to adapt. That is a more dependable foundation than expecting yourself never to feel uncertain.</p>
+      <p>The starting point wasn&rsquo;t &ldquo;be braver&rdquo;. It was understanding what happens when fear takes over.</p>
+
+      <p>We explored the connection between the body&rsquo;s threat response, the thoughts running through our minds, and the things we do next. The talk invited climbers to consider their own pattern: what triggers their fear, how it feels physically, what they tell themselves, and how they respond.</p>
+
+      <p>From there, we looked at the avoidance cycle. Backing away from a feared fall can bring immediate relief, but it can also leave that fear unchallenged. We explored this pattern in the context of appropriate fall practice &mdash; not situations where backing off is the right response to a genuine risk.</p>
+
+      <p>Fin also shared his own experience of growing up climbing on Peak District grit and alpine rock while remaining frightened of falling, and how that led him to apply psychological approaches to his own climbing.</p>
+
+      <h2 id="big-falls" class="flex items-center gap-0"><span class="section-num">2</span>Why &ldquo;just take a big fall&rdquo; misses the point</h2>
+
+      <p>One question ran through the talk: why can someone take big falls and still feel just as frightened the next time?</p>
+
+      <p>Rather than treating fall practice as a test of courage, we introduced the <strong>window of tolerance</strong> &mdash; a way of thinking about the difference between manageable discomfort and feeling overwhelmed. The emphasis was on building practice around the person, rather than expecting everyone to start in the same place.</p>
+
+      <p>The practical section centred on four ideas:</p>
+
+      <ul>
+        <li><strong>Notice your avoidance.</strong> Recognise the moments when fear starts making decisions about your climbing.</li>
+        <li><strong>Grade your practice.</strong> Start with a challenge you can cope with, rather than throwing yourself in at the deep end.</li>
+        <li><strong>Give practice enough time.</strong> One quick fall is not the same as spending time working with the fear.</li>
+        <li><strong>Keep it varied.</strong> Confidence developed in a familiar exercise needs to carry into different climbing situations.</li>
+      </ul>
+
+      <p>The recording takes you through the reasoning behind each principle, including why being comfortable during planned fall practice does not always translate into feeling comfortable when trying a difficult route.</p>
+
+      <h2 id="real-consequences" class="flex items-center gap-0"><span class="section-num">3</span>And when the consequences are real?</h2>
+
+      <p>The talks also addressed an important boundary: not every fall belongs in fall practice.</p>
+
+      <p>For situations with serious consequences, we shifted towards risk assessment and experience, outlining a three-step decision framework: assess the risk, decide whether you are willing to accept the consequences, and plan your response. Alongside it was a <a href="managing-fear-through-experience.html" style="color:var(--ep-pine);text-decoration:underline">pyramid of experience</a>, built on plenty of climbing well within your ability &mdash; not repeated exposure to dangerous falls.</p>
+
+      <p>The aim was not to encourage climbers to ignore fear, but to distinguish between <strong>fear to work with and risk to take seriously.</strong></p>
+
+      <h2 id="start-here" class="flex items-center gap-0"><span class="section-num">4</span>Missed the talks? Start here</h2>
+
+      <p>Thank you to The Foundry, Outside and The Climbing Works for hosting, and to everyone who came along.</p>
+
+      <p>For those who missed the sessions, the recording is an opportunity to understand your own fear and explore a more structured approach to it. It also introduces the <a href="fear-of-falling.html" style="color:var(--ep-pine);text-decoration:underline">Fear of Falling Toolkit</a>, our paid guided programme &mdash; but you do not need to buy the Toolkit to access the talk.</p>
+
+      <p>Enter your email below, confirm your address, and we&rsquo;ll send you the recording. You can watch at your own pace, revisit the explanations, and use the reflection prompts to consider what happens in your own climbing.</p>
+
+      <p><strong>You don&rsquo;t have to begin with a bigger fall. Begin by understanding the fear.</strong></p>
 
     </article>
 
@@ -284,15 +246,17 @@
       <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
         <p class="ep-eyebrow mb-4" style="font-size:var(--text-2xs)">In This Article</p>
         <nav class="space-y-1">
-          <a href="#prepare-for-demands-not-just-dates" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">1. Prepare for demands, not just dates</a>
-          <a href="#separate-control-from-influence" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">2. Separate control from influence</a>
-          <a href="#make-plans-specific-enough-to-use" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">3. Make plans specific enough to use</a>
-          <a href="#rehearse-adaptation-then-let-preparation" class="block py-2 text-sm" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.02em">4. Rehearse adaptation, then let preparation end</a>
+          <a href="#understanding" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">1. Understanding the fear</a>
+          <a href="#big-falls" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">2. Why big falls miss the point</a>
+          <a href="#real-consequences" class="block py-2 text-sm border-b" style="color:var(--text-muted);border-color:var(--border-subtle);font-family:var(--font-heading);letter-spacing:.02em">3. When consequences are real</a>
+          <a href="#start-here" class="block py-2 text-sm" style="color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.02em">4. Missed the talks?</a>
         </nav>
       </div>
       <div style="background:var(--surface-raised);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)">
         <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Put It Into Practice</p>
-        <a href="preparation-workbook.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">The Preparation Workbook &rarr;</a>
+        <a href="#free-talk" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">Fear of Falling: The Talk &rarr;</a>
+        <a href="managing-fear-through-experience.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">When the Consequences Are Real &rarr;</a>
+        <a href="fear-of-falling-article.html" class="block text-sm font-semibold mb-2" style="color:var(--ep-pine);text-decoration:none">Overcoming the Fear of Falling &rarr;</a>
       </div>
       <div style="background:var(--ep-ink);border-radius:var(--radius-lg);padding:var(--space-6)">
         <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs);color:var(--ep-pine)">Work With Us</p>
@@ -304,6 +268,38 @@
   </div>
 </div>
 
+<!-- VENUES -->
+<section class="py-16 px-6" style="background:var(--surface-sunken);border-top:var(--border-width) solid var(--border-subtle)">
+  <div class="max-w-4xl mx-auto">
+    <p class="ep-eyebrow mb-7 text-center reveal" style="color:var(--text-muted)">Hosted by</p>
+    <div class="venues reveal reveal-delay-1">
+      <img src="assets/img/logos/the-foundry.png" alt="The Foundry Climbing Centre">
+      <img src="assets/img/logos/outside.png" alt="Outside">
+      <img src="assets/img/logos/climbing-works.png" alt="The Climbing Works">
+    </div>
+  </div>
+</section>
+
+<!-- FREE TALK -->
+<section id="free-talk" class="px-6" style="padding-top:88px;padding-bottom:88px;background:var(--ep-plum);scroll-margin-top:80px">
+  <div style="max-width:720px;margin:0 auto">
+    <p class="ep-eyebrow mb-4 reveal" style="color:rgba(243,243,240,.6)">Free Talk</p>
+    <h2 class="text-3xl md:text-4xl mb-5 reveal reveal-delay-1" style="color:var(--ep-paper);max-width:560px">Get the recording, free</h2>
+    <p class="mb-8 reveal reveal-delay-2" style="line-height:var(--leading-relaxed);color:rgba(243,243,240,.65);max-width:560px">The full talk, recorded. No cost, no commitment &mdash; just tell us where to send it.</p>
+    <div class="reveal reveal-delay-2" style="max-width:560px">
+      <form class="talk-form" data-source="talks-article" novalidate>
+        <div class="talk-row">
+          <input type="email" name="email" class="talk-input" placeholder="you@example.com" autocomplete="email" required>
+          <button type="submit" class="cta-btn talk-submit">Send me the talk</button>
+        </div>
+        <input type="text" name="website" class="talk-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </form>
+      <p class="talk-msg" role="status" aria-live="polite"></p>
+      <p class="talk-note">We'll email you a link to confirm, then send the talk. Occasional emails about fear of falling &mdash; unsubscribe any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</section>
+
 <!-- TAKE-HOMES -->
 <section class="py-20 px-6" style="background:var(--surface-sunken)">
   <div class="max-w-6xl mx-auto">
@@ -312,24 +308,24 @@
     <div class="grid md:grid-cols-3 gap-6">
       <div class="takehome-card reveal">
         <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-          <i data-lucide="target" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+          <i data-lucide="shield" class="w-5 h-5" style="color:var(--ep-pine)"></i>
         </div>
-        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Identify the demands</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Readiness is task-specific.</p>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Fear is not a character flaw</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">It is a threat response doing its job. The goal is to recalibrate it, not to stop feeling it.</p>
       </div>
       <div class="takehome-card reveal reveal-delay-1">
         <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-plum) 10%,transparent)">
-          <i data-lucide="activity" class="w-5 h-5" style="color:var(--ep-plum)"></i>
+          <i data-lucide="layers" class="w-5 h-5" style="color:var(--ep-plum)"></i>
         </div>
-        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Match the response to the problem</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Act where you can, and rehearse adaptation elsewhere.</p>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Size is not the variable</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">One big fall does not retrain fear. Graded, repeated, varied practice does.</p>
       </div>
       <div class="takehome-card reveal reveal-delay-2">
         <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
-          <i data-lucide="message-circle" class="w-5 h-5" style="color:var(--ep-pine)"></i>
+          <i data-lucide="git-branch" class="w-5 h-5" style="color:var(--ep-pine)"></i>
         </div>
-        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Leave room for judgement</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">A plan should support decisions, not prevent them.</p>
+        <h3 class="text-xl mb-3" style="color:var(--text-strong)">Know which kind you are facing</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted)">Fear to work with and risk to take seriously need completely different responses.</p>
       </div>
     </div>
   </div>
@@ -339,16 +335,34 @@
 <section class="py-20 px-6" style="background:var(--surface-page)">
   <div class="max-w-6xl mx-auto">
     <p class="ep-eyebrow mb-4 reveal">Put It Into Practice</p>
-    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Free resource to take this further</h2>
+    <h2 class="text-3xl md:text-4xl mb-12 reveal" style="color:var(--text-strong)">Free resources to take this further</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <a href="preparation-workbook.html" class="takehome-card reveal" style="display:block;text-decoration:none">
+      <a href="#free-talk" class="takehome-card reveal" style="display:block;text-decoration:none">
         <div class="flex items-center gap-3 mb-3">
           <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
             <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
           </div>
-          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free resource</span>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free</span>
         </div>
-        <h3 class="text-lg" style="color:var(--text-strong)">The Preparation Workbook</h3>
+        <h3 class="text-lg" style="color:var(--text-strong)">Fear of Falling: The Talk</h3>
+      </a>
+      <a href="managing-fear-through-experience.html" class="takehome-card reveal reveal-delay-1" style="display:block;text-decoration:none">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+          </div>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free</span>
+        </div>
+        <h3 class="text-lg" style="color:var(--text-strong)">When the Consequences Are Real</h3>
+      </a>
+      <a href="fear-of-falling-article.html" class="takehome-card reveal reveal-delay-2" style="display:block;text-decoration:none">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:color-mix(in srgb,var(--ep-pine) 10%,transparent)">
+            <i data-lucide="book-open" class="w-4 h-4" style="color:var(--ep-pine)"></i>
+          </div>
+          <span class="ep-eyebrow" style="font-size:var(--text-2xs);color:var(--ep-pine)">Free</span>
+        </div>
+        <h3 class="text-lg" style="color:var(--text-strong)">Overcoming the Fear of Falling</h3>
       </a>
     </div>
   </div>
@@ -370,6 +384,7 @@
 </footer>
 
 <script src="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/_ds_bundle.js"></script>
+<script src="fof-talk-signup.js" defer></script>
 <script>
   var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link');
   window.addEventListener('scroll',function(){

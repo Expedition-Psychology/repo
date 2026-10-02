@@ -181,7 +181,6 @@
           <a href="fear-of-falling.html" class="nav-drop-item">Fear of Falling Toolkit</a>
         </div></div>
       </div>
-      <a href="events.html" class="nav-link text-white/70 hover:text-white">Events</a>
       <a href="index.html#contact"   class="nav-link text-white/70 hover:text-white">Contact</a>
     </div>
     <button id="mob-btn" class="md:hidden text-white p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
@@ -192,7 +191,6 @@
     <a href="index.html#about" class="block py-2 nav-link" style="color:var(--text-muted)">About</a>
     <a href="our-work.html" class="block py-2 nav-link" style="color:var(--text-muted)">Recent Work</a>
     <a href="free-tools.html" class="block py-2 nav-link" style="color:var(--text-muted)">Resources</a>
-    <a href="events.html" class="block py-2 nav-link" style="color:var(--text-muted)">Events</a>
     <button type="button" class="mob-accordion-trigger" onclick="toggleMobAccordion(this)">Courses<svg class="mob-accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     <div class="mob-accordion-panel">
       <a href="courses.html" class="block py-1.5 pl-4 nav-link" style="color:var(--text-muted);font-size:var(--text-2xs)">All Courses</a>
@@ -225,30 +223,43 @@
 <!-- OVERVIEW -->
 <section class="py-20 md:py-28 px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="grid lg:grid-cols-[1.35fr_1fr] gap-14 items-start">
-      <div>
+    <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+      <div class="lg:col-span-2">
         <p class="ep-eyebrow mb-4 reveal">Overview</p>
-        <h2 class="text-3xl md:text-4xl mb-6 reveal" style="color:var(--text-strong)">Understanding heightened emotions, responding with confidence</h2>
-        <p class="text-lg leading-relaxed mb-5 reveal reveal-delay-1" style="color:var(--text-muted)">How do you help someone who is too frightened to take in what you&rsquo;re saying? What about a casualty who becomes withdrawn, angry, or repeatedly asks the same questions? And after a difficult callout, how do you look after the people who were there to help?</p>
-        <p class="leading-relaxed mb-5 reveal reveal-delay-1" style="color:var(--text-muted)">These were the questions at the heart of our session with Northumberland National Park Mountain Rescue Team. The talk brought together two interconnected topics: supporting casualties with heightened emotions, and building resilience to trauma among rescuers themselves.</p>
-        <p class="leading-relaxed reveal reveal-delay-1" style="color:var(--text-muted)">The aim was to connect psychological understanding with practical approaches that could fit into the realities of a callout.</p>
+        <p class="text-lg md:text-xl leading-relaxed mb-6 reveal reveal-delay-1" style="color:var(--text-body)">
+          How do you help someone who is too frightened to take in what you&rsquo;re saying? What about a casualty who becomes withdrawn, angry, or repeatedly asks the same questions? And after a difficult callout, how do you look after the people who were there to help?
+        </p>
+        <p class="leading-relaxed mb-5 reveal reveal-delay-2" style="color:var(--text-muted)">
+          These were the questions at the heart of our session with Northumberland National Park Mountain Rescue Team. The talk brought together two interconnected topics: supporting casualties with heightened emotions, and building resilience to trauma among rescuers themselves.
+        </p>
+        <p class="leading-relaxed mb-5 reveal reveal-delay-2" style="color:var(--text-muted)">
+          The aim was to connect psychological understanding with practical approaches that could fit into the realities of a callout.
+        </p>
         <div class="pull-quote reveal reveal-delay-2">
           <p>&ldquo;Incredibly thought provoking and relevant session, thinking about the emotions of our casualties and team mates.&rdquo;</p>
           <p style="font-size:var(--text-sm);font-style:normal;color:var(--text-muted);margin-top:var(--space-3);font-family:var(--font-heading)">&mdash; Ninette Edwards</p>
         </div>
       </div>
-      <div class="grid gap-5 reveal reveal-delay-2">
-        <div class="domain-card">
-          <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Organisation</p>
-          <p style="color:var(--text-strong)">Northumberland National Park Mountain Rescue Team</p>
-        </div>
-        <div class="domain-card">
-          <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Sector</p>
-          <p style="color:var(--text-strong)">Search &amp; rescue &middot; Volunteer emergency response</p>
-        </div>
-        <div class="domain-card">
-          <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Intervention</p>
-          <p style="color:var(--text-strong)">Workshop on supporting distressed casualties, responses to trauma, and individual and team resilience</p>
+      <div class="lg:col-span-1 reveal reveal-delay-2">
+        <div class="sticky top-28 space-y-4">
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Organisation</p>
+            <div class="flex items-center gap-3">
+              <img src="assets/img/mr-logo.png" alt="Mountain Rescue England &amp; Wales" class="w-10 h-10 object-contain flex-shrink-0">
+              <span class="font-semibold" style="color:var(--text-strong);font-family:var(--font-heading)">Northumberland National Park Mountain Rescue Team</span>
+            </div>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Sector</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="ep-tag ep-tag-plum">Search &amp; Rescue</span>
+              <span class="ep-tag ep-tag-pine">Voluntary</span>
+            </div>
+          </div>
+          <div class="impact-card">
+            <p class="ep-eyebrow mb-3" style="font-size:var(--text-2xs)">Intervention</p>
+            <p class="text-sm" style="color:var(--text-muted)">Workshop on supporting distressed casualties, understanding responses to trauma, and building individual and team resilience</p>
+          </div>
         </div>
       </div>
     </div>
