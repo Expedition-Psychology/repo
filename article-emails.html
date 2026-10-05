@@ -30,7 +30,7 @@
 <div class="wrap">
   <p class="eyebrow">Internal</p>
   <h1 style="font-size:clamp(30px,5vw,42px);color:var(--text-strong)">Article emails</h1>
-  <p class="lead">One HTML email per article, in running order, for a monthly Sender series. Each is self-contained: paste the file's source into Sender's custom-HTML editor.</p>
+  <p class="lead">One HTML email per article, in running order, for a monthly Sender series, plus the two post-purchase emails for the Toolkit. Each is self-contained: paste the file's source into Sender's custom-HTML editor.</p>
   <table>
       <tr><td colspan="4" style="padding:26px 0 8px"><p class="grp">Foundations</p></td></tr>
       <tr>
@@ -150,10 +150,24 @@
         <td class="l"><a href="fear-of-falling-talks.html">article</a></td>
         <td class="d"><a href="email-fear-of-falling-talks.html" download>Download email</a></td>
       </tr>
+      <tr><td colspan="4" style="padding:26px 0 8px"><p class="grp">After purchase &mdash; Toolkit</p></td></tr>
+      <tr>
+        <td class="n">+1m</td>
+        <td class="t">How are you getting on?</td>
+        <td class="l"><a href="fear-of-falling.html">Toolkit</a></td>
+        <td class="d"><a href="email-toolkit-check-in.html" download>Download email</a></td>
+      </tr>
+      <tr>
+        <td class="n">+2m</td>
+        <td class="t">Would you tell me how it went?</td>
+        <td class="l"><a href="toolkit-testimonial.html">form</a></td>
+        <td class="d"><a href="email-toolkit-testimonial.html" download>Download email</a></td>
+      </tr>
   </table>
   <div class="note">
     <p style="margin:0 0 10px"><strong>Setting the series up in Sender</strong></p>
     <p style="margin:0 0 10px">Automation &rarr; trigger <em>Subscriber Added to a Group</em> on your confirmed list, then alternate <em>Delay 1 month</em> and <em>Email</em> steps, pasting each file in order.</p>
+    <p style="margin:0 0 10px">The two <strong>after purchase</strong> emails are a separate automation: trigger on the Toolkit purchase group, then <em>Delay 1 month</em> &rarr; check-in, <em>Delay 1 month</em> &rarr; testimonial request. The second links to <a href="toolkit-testimonial.html">the testimonial form</a>, which posts to Netlify Forms &mdash; answers appear under Forms &rarr; toolkit-testimonial in the Netlify dashboard.</p>
     <p style="margin:0">Images are absolute URLs to this site, so they resolve in any client. The unsubscribe link uses Sender's <code>{$unsubscribe_link}</code> tag &mdash; leave it in place or Sender will refuse to send.</p>
   </div>
 </div>

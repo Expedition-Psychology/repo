@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share your experience — The Fear of Falling Toolkit</title>
+  <meta name="description" content="Tell us how the Fear of Falling Toolkit changed your climbing. Your answers help other climbers decide whether it's for them.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+  <link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+  <style>
+    h1,h2{font-family:var(--font-heading);font-weight:var(--weight-heading);letter-spacing:var(--tracking-tight);margin:0;}
+    html,body{margin:0;}
+    body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+
+    .masthead{background:var(--ep-ink);padding:18px 24px;}
+    .masthead img{display:block;height:34px;width:auto;margin:0 auto;}
+
+    .wrap{max-width:680px;margin:0 auto;padding:56px 24px 90px;}
+    .eyebrow{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--ep-pine);margin:0 0 14px;}
+    h1{font-size:clamp(30px,5.4vw,42px);line-height:1.1;color:var(--text-strong);margin-bottom:18px;}
+    .lead{color:var(--text-muted);line-height:var(--leading-relaxed);margin:0 0 10px;}
+    .lead:last-of-type{margin-bottom:0;}
+
+    .intro{margin-bottom:var(--space-8);}
+    .meta-note{margin-top:var(--space-5);padding:16px 20px;background:var(--surface-sunken);border-radius:var(--radius-lg);font-size:var(--text-sm);color:var(--text-muted);line-height:var(--leading-relaxed);}
+    .meta-note strong{color:var(--text-strong);}
+
+    .sect{margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--border-subtle);}
+    .sect:first-of-type{border-top:none;padding-top:0;}
+    .sect-h{font-family:var(--font-heading);font-weight:600;font-size:var(--text-2xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--ep-plum);margin:0 0 var(--space-5);}
+
+    .q{margin-bottom:var(--space-6);}
+    .q label{display:block;font-family:var(--font-heading);font-weight:600;font-size:var(--text-lg);line-height:1.4;color:var(--text-strong);margin-bottom:6px;}
+    .q .hint{font-size:var(--text-sm);color:var(--text-muted);line-height:1.55;margin:0 0 10px;}
+    .q textarea,.q input[type=text],.q input[type=email]{width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-strong);background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:13px 16px;outline:none;transition:border-color .18s,box-shadow .18s;}
+    .q textarea{min-height:112px;resize:vertical;}
+    .q textarea:focus,.q input:focus,.q select:focus{border-color:var(--ep-pine);box-shadow:0 0 0 3px rgba(75,122,110,.14);}
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);}
+    @media(max-width:560px){.pair{grid-template-columns:1fr;}}
+
+    .consent{margin-top:var(--space-8);background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);}
+    .consent h2{font-size:var(--text-xl);color:var(--text-strong);margin-bottom:10px;}
+    .consent > p{font-size:var(--text-sm);color:var(--text-muted);line-height:var(--leading-relaxed);margin:0 0 var(--space-5);}
+    .check{display:flex;gap:12px;align-items:flex-start;margin-bottom:var(--space-5);}
+    .check input{flex:none;width:19px;height:19px;margin:2px 0 0;accent-color:var(--ep-pine);cursor:pointer;}
+    .check span{font-size:var(--text-sm);line-height:1.6;color:var(--text-body);}
+    .check span b{color:var(--text-strong);font-weight:600;}
+    .credit label{display:block;font-size:var(--text-sm);font-weight:600;color:var(--text-strong);margin-bottom:7px;}
+    .credit select{width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:var(--text-base);color:var(--text-strong);background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:12px 14px;outline:none;}
+    .withdraw{font-size:var(--text-2xs);color:var(--text-muted);line-height:1.6;margin:var(--space-5) 0 0;}
+    .withdraw a{color:var(--text-muted);}
+
+    .actions{margin-top:var(--space-7);text-align:center;}
+    .submit{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:var(--radius-pill);font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;padding:17px 40px;background:var(--ep-pine);color:#fff;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+    .submit:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+    .submit[disabled]{opacity:.6;cursor:default;transform:none;}
+    .err{display:none;margin:var(--space-5) 0 0;font-size:var(--text-sm);color:var(--ep-clay);}
+    .err.show{display:block;}
+    .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
+
+    .done{display:none;text-align:center;padding:var(--space-9) var(--space-6);}
+    .done.show{display:block;}
+    .done .tick{width:62px;height:62px;border-radius:50%;background:var(--ep-pine);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-6);}
+    .done h2{font-size:clamp(26px,4.6vw,34px);color:var(--text-strong);margin-bottom:14px;}
+    .done p{color:var(--text-muted);line-height:var(--leading-relaxed);margin:0 auto var(--space-4);max-width:46ch;}
+    .done a{color:var(--ep-pine);}
+
+    .foot{border-top:1px solid var(--border-subtle);padding:26px 24px 40px;text-align:center;}
+    .foot p{margin:0;font-size:var(--text-2xs);color:var(--text-muted);font-family:var(--font-heading);letter-spacing:.04em;}
+    .foot a{color:var(--text-muted);text-decoration:none;}
+    .foot a:hover{text-decoration:underline;}
+  </style>
+  <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+  <script src="cookie-consent.js?v=2" defer></script>
+</head>
+<body>
+
+<div class="masthead">
+  <a href="index.html"><img src="assets/img/logo-wordmark-white-trimmed.png" alt="Expedition Psychology"></a>
+</div>
+
+<div class="wrap">
+
+  <div id="form-area">
+    <div class="intro">
+      <p class="eyebrow">The Fear of Falling Toolkit</p>
+      <h1>How has your climbing changed?</h1>
+      <p class="lead">You started the Toolkit a couple of months ago. If it has made a difference, hearing that from you is what helps the next climber decide whether it is worth their time &mdash; far more than anything I can say about it myself.</p>
+      <p class="lead">There are eight questions below. Answer whichever ones you can and leave the rest blank; a few honest sentences are more useful than a complete set of short ones.</p>
+      <div class="meta-note">Takes about <strong>ten minutes</strong>. Nothing you write is published without your say-so &mdash; you choose at the bottom of the page how, and whether, you are named.</div>
+    </div>
+
+    <form id="testimonial-form" name="toolkit-testimonial" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="toolkit-testimonial">
+      <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
+
+      <div class="sect">
+        <p class="sect-h">Before the Toolkit</p>
+
+        <div class="q">
+          <label for="q_before">Before starting the course, how was fear of falling affecting your climbing?</label>
+          <textarea id="q_before" name="q_before"></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q_moment">Can you remember a specific moment when fear stopped you doing something you knew you were physically capable of?</label>
+          <p class="hint">A particular route, a particular day &mdash; the details are what make it ring true for someone reading it.</p>
+          <textarea id="q_moment" name="q_moment"></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q_history">How long had this been a problem for you, and what had you previously tried to overcome it?</label>
+          <textarea id="q_history" name="q_history"></textarea>
+        </div>
+      </div>
+
+      <div class="sect">
+        <p class="sect-h">What shifted</p>
+
+        <div class="q">
+          <label for="q_turning_point">Was there a particular lesson or exercise that changed the way you approached fear or falling?</label>
+          <textarea id="q_turning_point" name="q_turning_point"></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q_realised">Can you describe a specific moment when you realised your climbing had changed?</label>
+          <textarea id="q_realised" name="q_realised"></textarea>
+        </div>
+      </div>
+
+      <div class="sect">
+        <p class="sect-h">Where you are now</p>
+
+        <div class="q">
+          <label for="q_now">What can you do now that you would have struggled to do before the course?</label>
+          <textarea id="q_now" name="q_now"></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q_grade">Could you quantify a grade increase, before and after?</label>
+          <p class="hint">Only if it applies &mdash; plenty of people get a lot out of the course without the grade being the thing that moved.</p>
+          <textarea id="q_grade" name="q_grade" style="min-height:76px"></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q_advice">What would you say to another climber who's considering doing the course?</label>
+          <textarea id="q_advice" name="q_advice"></textarea>
+        </div>
+      </div>
+
+      <div class="sect">
+        <p class="sect-h">About you</p>
+        <div class="pair">
+          <div class="q">
+            <label for="name" style="font-size:var(--text-base)">Your name</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+          </div>
+          <div class="q">
+            <label for="email" style="font-size:var(--text-base)">Your email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+        </div>
+        <div class="q" style="margin-bottom:0">
+          <label for="about" style="font-size:var(--text-base)">Anything else worth knowing?</label>
+          <p class="hint">How long you've climbed, where you climb, indoors or out &mdash; whatever gives your words context.</p>
+          <textarea id="about" name="about" style="min-height:84px"></textarea>
+        </div>
+      </div>
+
+      <div class="consent">
+        <h2>Using your words</h2>
+        <p>Your answers come to me first. I may shorten them or pull out a sentence or two, but I will never change what you meant, and I will not use anything you have asked me not to.</p>
+
+        <div class="check">
+          <input type="checkbox" id="consent" name="consent" value="yes">
+          <span><b>Yes, you can quote me.</b> I'm happy for Expedition Psychology to use my answers, in full or in part, on its website, in emails and on social media.</span>
+        </div>
+
+        <div class="check">
+          <input type="checkbox" id="consent_photo" name="consent_photo" value="yes">
+          <span>If I send a climbing photo of myself by email, you can use that alongside my words. <em>(Optional &mdash; nothing is assumed either way.)</em></span>
+        </div>
+
+        <div class="credit">
+          <label for="credit">If you are quoted, how would you like to be named?</label>
+          <select id="credit" name="credit">
+            <option value="Full name">My full name</option>
+            <option value="First name and initial">First name and last initial</option>
+            <option value="First name only">First name only</option>
+            <option value="Anonymous">Keep me anonymous</option>
+          </select>
+        </div>
+
+        <p class="withdraw">You can change your mind at any point &mdash; email <a href="mailto:contact@expedition-psychology.com">contact@expedition-psychology.com</a> and anything of yours comes down. Your email address is only used to reply to you about this. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="submit">Send my answers</button>
+        <p class="err" role="alert"></p>
+      </div>
+    </form>
+  </div>
+
+  <div class="done" id="done">
+    <div class="tick">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <h2>Thank you &mdash; that's really generous</h2>
+    <p>Your answers have come through. If I'd like to use anything you've written, I'll email you first so you can see it in context before it goes anywhere.</p>
+    <p>If you'd like to send a climbing photo to go with it, just reply to <a href="mailto:contact@expedition-psychology.com">contact@expedition-psychology.com</a>.</p>
+  </div>
+
+</div>
+
+<div class="foot">
+  <p>Dr Fin Haley &middot; Clinical Psychologist &amp; Rock Climbing Instructor &middot; <a href="fear-of-falling.html">The Fear of Falling Toolkit</a></p>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('testimonial-form');
+  var err  = form.querySelector('.err');
+  var btn  = form.querySelector('.submit');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.classList.remove('show');
+
+    // Something has to be said, or there is nothing to send.
+    var answered = [].slice.call(form.querySelectorAll('textarea'))
+      .some(function (t) { return t.value.trim().length > 0; });
+    if (!answered) {
+      err.textContent = 'Please answer at least one question before sending.';
+      err.classList.add('show');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch('/', { method: 'POST', body: new FormData(form) })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        document.getElementById('form-area').style.display = 'none';
+        document.getElementById('done').classList.add('show');
+        window.scrollTo(0, 0);
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send my answers';
+        err.innerHTML = 'Something went wrong sending that. Please try again, or email your answers to <a href="mailto:contact@expedition-psychology.com">contact@expedition-psychology.com</a>.';
+        err.classList.add('show');
+      });
+  });
+})();
+</script>
+</body>
+</html>

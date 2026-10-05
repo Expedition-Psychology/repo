@@ -61,3 +61,10 @@
 
 /email-fear-of-falling-talks.html
   Content-Disposition: attachment; filename="19-fear-of-falling-talks.html"
+
+# Post-purchase lifecycle emails for the Toolkit.
+/email-toolkit-check-in.html
+  Content-Disposition: attachment; filename="toolkit-01-check-in.html"
+
+/email-toolkit-testimonial.html
+  Content-Disposition: attachment; filename="toolkit-02-testimonial-request.html"
