@@ -133,16 +133,18 @@
     .talk-msg.ok{--talk-done-bg:var(--surface-raised);--talk-done-br:var(--border-subtle);--talk-done-fg:var(--text-muted);--talk-done-hd:var(--text-strong);--talk-done-lk:var(--ep-pine);--talk-done-tick:var(--ep-pine);}
 
     /* ── App preview: looping, muted, autoplaying clips (a GIF without the
-       filesize). Sources are swapped in on scroll so nothing downloads unless
-       the reader actually reaches this section. ── */
-    .app-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-10);max-width:760px;margin:0 auto;}
+       filesize). Every frame is the same 10:16 box and the clips are cropped
+       to fill it, so the three sit at identical size whatever the source
+       recording's aspect was. Sources load on scroll. ── */
+    .app-shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-7);max-width:860px;margin:0 auto;align-items:start;}
     .app-shot{display:flex;flex-direction:column;align-items:center;}
-    .app-frame{width:100%;max-width:260px;border-radius:26px;overflow:hidden;background:#0a0a0a;border:7px solid #1c1c1c;box-shadow:var(--shadow-xl);}
-    .app-frame video{display:block;width:100%;height:auto;}
+    .app-frame{width:100%;max-width:240px;aspect-ratio:10 / 16;border-radius:24px;overflow:hidden;background:#0a0a0a;border:6px solid #1c1c1c;box-shadow:var(--shadow-xl);}
+    .app-frame video{display:block;width:100%;height:100%;object-fit:cover;}
     .app-shot p{margin:var(--space-4) 0 0;text-align:center;}
     .app-cap{font-family:var(--font-heading);font-weight:600;font-size:var(--text-base);color:var(--text-strong);}
     .app-sub{font-size:var(--text-sm);color:var(--text-muted);line-height:var(--leading-relaxed);max-width:26ch;}
-    @media (max-width:640px){.app-shots{grid-template-columns:1fr;gap:var(--space-8);}}
+    @media (max-width:860px){.app-shots{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-8);max-width:560px;}}
+    @media (max-width:560px){.app-shots{grid-template-columns:1fr;max-width:300px;}}
   </style>
 <!-- Cookie consent & analytics (tracking loads only after opt-in) -->
 <script src="cookie-consent.js?v=2" defer></script>
@@ -360,7 +362,7 @@
     <div class="text-center max-w-2xl mx-auto mb-12 reveal">
       <p class="ep-eyebrow mb-4" style="color:var(--ep-pine)">Inside the App</p>
       <h2 class="text-3xl md:text-4xl mb-4" style="color:var(--text-strong)">What you'll actually be using</h2>
-      <p class="leading-relaxed" style="color:var(--text-muted)">Your goals and plan on one screen, and a quick way to log how the fear felt after each exercise.</p>
+      <p class="leading-relaxed" style="color:var(--text-muted)">Your goals and plan on one screen, 21 chapters of lessons with their workbooks built in, and a quick way to log how the fear felt after each exercise.</p>
     </div>
     <div class="app-shots reveal rd1">
       <div class="app-shot">
@@ -370,6 +372,14 @@
         </div>
         <p class="app-cap">Goals and planning</p>
         <p class="app-sub">The home screen &mdash; what you're working towards and what's next.</p>
+      </div>
+      <div class="app-shot">
+        <div class="app-frame">
+          <video data-src="assets/video/app-chapters.mp4" autoplay loop muted playsinline preload="none"
+                 aria-label="Scrolling through the 21 chapters of lessons and their workbooks"></video>
+        </div>
+        <p class="app-cap">21 chapters of lessons</p>
+        <p class="app-sub">Each one with its workbook built in, so the thinking happens as you go.</p>
       </div>
       <div class="app-shot">
         <div class="app-frame">
@@ -441,11 +451,9 @@
         <p class="text-base mb-8 reveal rd2 mx-auto" style="max-width:34rem;color:rgba(243,243,240,.68);line-height:var(--leading-relaxed)">The complete Toolkit — guided video lessons, a step-by-step programme, progress tracking, and a community of climbers. Yours to keep, worked through at your own pace.</p>
         <div class="reveal rd2 mb-8">
           <span style="display:inline-flex;align-items:baseline;gap:12px;color:#fff;flex-wrap:wrap;justify-content:center">
-            <span style="font-family:var(--font-heading);font-size:26px;color:rgba(243,243,240,.45);text-decoration:line-through;text-decoration-thickness:2px">£99</span>
-            <span style="font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:56px;line-height:1">£84.15</span>
+            <span style="font-family:var(--font-heading);font-weight:var(--weight-heading);font-size:56px;line-height:1">£99</span>
             <span style="font-size:14px;color:rgba(243,243,240,.6)">one-off &middot; lifetime access</span>
           </span>
-          <p class="mt-3" style="font-size:var(--text-sm);color:rgba(243,243,240,.6)">Launch offer — use code <strong style="color:#fff;font-weight:600">LAUNCH15</strong> at checkout. Ends 30 September.</p>
         </div>
         <div class="reveal rd3">
           <a href="https://expedition-psychology.co.uk/login" class="cta-btn cta-white">Start the Toolkit today <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
