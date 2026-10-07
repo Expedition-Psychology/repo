@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Email templates and private forms are not search content.
+Disallow: /email-
+Disallow: /article-emails
+Disallow: /therapy-session-feedback
+Disallow: /mountain-rescue-feedback
+Disallow: /toolkit-testimonial
+Disallow: /fof-talk-confirmed
+
+Sitemap: https://expedition-psychology.com/sitemap.xml
