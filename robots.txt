@@ -1,12 +1,8 @@
+# Everything is crawlable. The pages that should stay out of search — email
+# templates, private feedback forms, the standalone exports — carry a noindex
+# meta tag instead. Disallowing them here would block the crawl that reads it,
+# which can leave the bare URL indexed anyway.
 User-agent: *
 Allow: /
-
-# Email templates and private forms are not search content.
-Disallow: /email-
-Disallow: /article-emails
-Disallow: /therapy-session-feedback
-Disallow: /mountain-rescue-feedback
-Disallow: /toolkit-testimonial
-Disallow: /fof-talk-confirmed
 
 Sitemap: https://expedition-psychology.com/sitemap.xml
