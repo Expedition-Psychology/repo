@@ -72,3 +72,6 @@
 # One-off broadcast for the free talk.
 /email-free-talk-promo.html
   Content-Disposition: attachment; filename="free-talk-promo.html"
+
+/email-toolkit-after-talk.html
+  Content-Disposition: attachment; filename="toolkit-after-talk.html"
