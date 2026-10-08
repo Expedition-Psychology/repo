@@ -68,3 +68,7 @@
 
 /email-toolkit-testimonial.html
   Content-Disposition: attachment; filename="toolkit-02-testimonial-request.html"
+
+# One-off broadcast for the free talk.
+/email-free-talk-promo.html
+  Content-Disposition: attachment; filename="free-talk-promo.html"

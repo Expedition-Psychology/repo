@@ -163,11 +163,19 @@
         <td class="l"><a href="toolkit-testimonial.html">form</a></td>
         <td class="d"><a href="email-toolkit-testimonial.html" download>Download email</a></td>
       </tr>
+      <tr><td colspan="4" style="padding:26px 0 8px"><p class="grp">Broadcast</p></td></tr>
+      <tr>
+        <td class="n">&mdash;</td>
+        <td class="t">You&rsquo;re not short of strength &mdash; the free talk</td>
+        <td class="l"><a href="fof-talk-confirmed.html">talk page</a></td>
+        <td class="d"><a href="email-free-talk-promo.html" download>Download email</a></td>
+      </tr>
   </table>
   <div class="note">
     <p style="margin:0 0 10px"><strong>Setting the series up in Sender</strong></p>
     <p style="margin:0 0 10px">Automation &rarr; trigger <em>Subscriber Added to a Group</em> on your confirmed list, then alternate <em>Delay 1 month</em> and <em>Email</em> steps, pasting each file in order.</p>
     <p style="margin:0 0 10px">The two <strong>after purchase</strong> emails are a separate automation: trigger on the Toolkit purchase group, then <em>Delay 1 month</em> &rarr; check-in, <em>Delay 1 month</em> &rarr; testimonial request. The second links to <a href="toolkit-testimonial.html">the testimonial form</a>, which posts to Netlify Forms &mdash; answers appear under Forms &rarr; toolkit-testimonial in the Netlify dashboard.</p>
+    <p style="margin:0 0 10px">The <strong>broadcast</strong> is a one-off send to the whole list, not an automation. Its link carries its own UTM tags &mdash; do not paste in the parameters from another campaign, or the clicks get filed under that campaign instead.</p>
     <p style="margin:0">Images are absolute URLs to this site, so they resolve in any client. The unsubscribe link uses Sender's <code>{$unsubscribe_link}</code> tag &mdash; leave it in place or Sender will refuse to send.</p>
   </div>
 </div>
