@@ -153,6 +153,33 @@
   // these pages have a ".doc" wrapper, so find the content host by descending
   // from the component root through the zero-height wrappers until we reach the
   // element that actually carries the page's height.
+  // Bottom edge of an element in viewport coords, ignoring anything with no box.
+  function boxBottom(el) {
+    var r = el.getBoundingClientRect();
+    return (r.height > 0 || r.width > 0) ? r.bottom : -Infinity;
+  }
+
+  // How far down does the rendered content actually reach?
+  function contentBottom(root) {
+    var deepest = -Infinity;
+    var all = root.querySelectorAll("*");
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      if (el.id === "epx-legal-bar" || el.id === "epx-consent") continue;
+      var b = boxBottom(el);
+      if (b > deepest) deepest = b;
+    }
+    return deepest;
+  }
+
+  // Find the element the bar should be appended to.
+  //
+  // Descending from the root does not work on these workbooks: .sc-host is one
+  // viewport tall and its content simply overflows it, so no child of the root
+  // ever "reaches" the bottom of the content. Walk up from the content tail
+  // instead, to the highest ancestor that still ends where the content ends --
+  // that is the element genuinely wrapping the page, and appending to it puts
+  // the bar after everything rather than a viewport down.
   function findContentHost() {
     var doc = document.querySelector(".doc");
     if (doc && doc.parentElement) return doc.parentElement;
@@ -160,24 +187,72 @@
     var root = document.getElementById("dc-root") || document.querySelector("x-dc");
     if (!root) return null;
 
-    var node = root;
-    for (var depth = 0; depth < 8; depth++) {
-      if (node.getBoundingClientRect().height > 0) {
-        // Only usable once the content has actually rendered into it.
-        return node === root ? null : node;
-      }
-      var kids = [];
-      for (var i = 0; i < node.children.length; i++) {
-        var c = node.children[i];
-        if (c.tagName !== "SCRIPT" && c.tagName !== "STYLE") kids.push(c);
-      }
-      if (!kids.length) return null;
-      kids.sort(function (a, b) {
-        return b.getBoundingClientRect().height - a.getBoundingClientRect().height;
-      });
-      node = kids[0];
+    var deepest = null, end = -Infinity;
+    var all = root.querySelectorAll("*");
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      if (el.id === "epx-legal-bar" || el.id === "epx-consent") continue;
+      if (el.tagName === "SCRIPT" || el.tagName === "STYLE") continue;
+      var b = boxBottom(el);
+      if (b > end) { end = b; deepest = el; }
     }
-    return null;
+    if (!deepest) return null; // nothing rendered yet -- keep waiting
+
+    var node = deepest;
+    while (node.parentElement && node.parentElement !== document.body) {
+      if (boxBottom(node.parentElement) < end - 1) break;
+      node = node.parentElement;
+    }
+    // A leaf is no use as a container; step up to something that holds children.
+    if (!node.children.length && node.parentElement) node = node.parentElement;
+    return node;
+  }
+
+  // Keep the bar as the host's final child, for the life of the page.
+  //
+  // The x-dc workbooks re-render their container whenever someone moves between
+  // steps, appending the new step's nodes after whatever is already there. A
+  // one-off append therefore survives the first paint and then strands the bar
+  // in the middle of the page the moment a step changes -- which a short-lived
+  // polling watchdog never caught, because people reach step two long after it
+  // has stopped. Watching the host instead costs nothing and never expires.
+  function pinToEnd(host, bar) {
+    var queued = false;
+    function settle() {
+      if (queued) return;
+      queued = true;
+      // Deliberately a timeout rather than requestAnimationFrame: rAF does not
+      // run while a tab is hidden, and this only needs DOM order, not layout.
+      setTimeout(function () {
+        queued = false;
+        // React owns this subtree and may drop a foreign node on reconciliation,
+        // so re-home it from scratch if it has been detached entirely.
+        if (!bar.isConnected) {
+          var again = findContentHost();
+          if (again) { host = again; host.appendChild(bar); watch(host); }
+          return;
+        }
+        // appendChild on a node already present just moves it, so this is a
+        // no-op once the bar is last and cannot loop against itself.
+        if (host.lastElementChild !== bar) host.appendChild(bar);
+      }, 0);
+    }
+
+    var observed = null;
+    function watch(target) {
+      if (typeof MutationObserver !== "function" || observed === target) return;
+      observed = target;
+      new MutationObserver(settle).observe(target, { childList: true });
+    }
+
+    host.appendChild(bar);
+    watch(host);
+    if (typeof MutationObserver !== "function") setInterval(settle, 500);
+
+    // Content can keep arriving after the first paint; re-check a few times
+    // rather than polling for the life of the page.
+    [400, 1200, 3000, 8000].forEach(function (t) { setTimeout(settle, t); });
+    window.addEventListener("resize", settle);
   }
 
   function ensureLegalBar() {
@@ -202,13 +277,7 @@
       var host = findContentHost();
       if (host) {
         clearInterval(iv);
-        var bar = buildLegalBar();
-        host.appendChild(bar);
-        var c = 0;
-        var iv2 = setInterval(function () {
-          if (host.lastElementChild !== bar) host.appendChild(bar);
-          if (++c > 30) clearInterval(iv2);
-        }, 200);
+        pinToEnd(host, buildLegalBar());
         return;
       }
 
@@ -216,7 +285,14 @@
       // so fall back to <body> rather than leaving the page without the links.
       if (++tries > 50) {
         clearInterval(iv);
-        if (!document.getElementById("epx-legal-bar")) document.body.appendChild(buildLegalBar());
+        if (document.getElementById("epx-legal-bar")) return;
+        // Only fall back to <body> when the root actually encloses its content.
+        // Where it does not, appending here drops the bar a viewport down with
+        // content still below it, which is worse than having no bar at all.
+        var root = document.getElementById("dc-root") || document.querySelector("x-dc");
+        if (root && boxBottom(root) + 1 >= contentBottom(root)) {
+          document.body.appendChild(buildLegalBar());
+        }
       }
     }, 200);
   }
