@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Local prototype only. Not linked from the site; keep it out of commits. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Fear of Falling Essentials | Expedition Psychology</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="../../assets/img/favicon-icon.png">
+<link rel="stylesheet" href="../../_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<div class="proto-bar" role="note">
+  <b>Prototype</b>
+  <span>Essentials tier · progress is saved in this browser only</span>
+  <span class="sep">|</span>
+  <a href="#/notes">Prototype notes</a>
+  <button type="button" data-action="load-sample">Load example data</button>
+  <button type="button" data-action="reset-all">Reset</button>
+</div>
+
+<header class="app-header">
+  <div class="inner">
+    <a class="brand" href="#/" aria-label="Fear of Falling Essentials dashboard">
+      <img src="../../assets/img/logo-wordmark-black-trimmed.png" alt="Expedition Psychology">
+      <span class="tier">Fear of Falling<br>Essentials</span>
+    </a>
+    <nav class="top-nav" aria-label="Course">
+      <a href="#/" data-nav=""><i data-lucide="layout-grid"></i>Dashboard</a>
+      <a href="#/understand" data-nav="understand"><i data-lucide="book-open"></i>Understand</a>
+      <a href="#/hierarchy" data-nav="hierarchy"><i data-lucide="list-ordered"></i>Hierarchy</a>
+      <a href="#/practice" data-nav="practice"><i data-lucide="activity"></i>Practice</a>
+      <a href="#/log" data-nav="log"><i data-lucide="history"></i>Log</a>
+    </nav>
+    <a class="pill-toolkit" href="#/toolkit"><i data-lucide="sparkles"></i>Full Toolkit</a>
+  </div>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<nav class="bottom-nav" aria-label="Course">
+  <a href="#/" data-nav=""><i data-lucide="layout-grid"></i>Home</a>
+  <a href="#/understand" data-nav="understand"><i data-lucide="book-open"></i>Understand</a>
+  <a href="#/hierarchy" data-nav="hierarchy"><i data-lucide="list-ordered"></i>Hierarchy</a>
+  <a href="#/practice" data-nav="practice"><i data-lucide="activity"></i>Practise</a>
+  <a href="#/log" data-nav="log"><i data-lucide="history"></i>Log</a>
+</nav>
+
+<div id="modal-root"></div>
+<div id="toast-root" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

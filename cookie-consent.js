@@ -132,18 +132,31 @@
 
   /* ---------- legal links bar (footer of every page) ---------- */
   function buildLegalBar() {
+    // Hairline rule and no background of its own, so the bar takes on whatever
+    // it is sitting inside -- the white worksheet card, or the paper page
+    // behind it -- instead of reading as a separate strip underneath.
+    if (!document.getElementById("epx-legal-style")) {
+      var st = document.createElement("style");
+      st.id = "epx-legal-style";
+      st.textContent =
+        "#epx-legal-bar a:hover{text-decoration:underline!important;}" +
+        "@media print{#epx-legal-bar{display:none!important;}}";
+      document.head.appendChild(st);
+    }
+
     var bar = document.createElement("div");
     bar.id = "epx-legal-bar";
     bar.setAttribute("data-epx-legal", "");
     bar.style.cssText =
-      "border-top:1px solid #e0dfdb;background:#f3f3f0;color:#717171;" +
+      "border-top:1px solid rgba(46,46,46,.10);background:transparent;color:#8a8a84;" +
       "font-family:'nunito',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;" +
-      "font-size:12px;line-height:1.6;text-align:center;padding:14px 16px;" +
+      "font-size:12px;line-height:1.6;text-align:center;" +
+      "max-width:720px;margin:34px auto 0;padding:16px 16px 6px;" +
       "display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;align-items:center;";
     bar.innerHTML =
-      '<a href="privacy-policy.html" style="color:#4b7a6e;text-decoration:none;">Privacy Policy</a>' +
-      '<a href="#" onclick="epxOpenConsent();return false;" style="color:#4b7a6e;text-decoration:none;">Cookie Preferences</a>' +
-      '<a href="#" onclick="epxDoNotSell();return false;" style="color:#4b7a6e;text-decoration:none;">Do Not Sell or Share My Personal Information</a>';
+      '<a href="privacy-policy.html" style="color:#6f6f69;text-decoration:none;">Privacy Policy</a>' +
+      '<a href="#" onclick="epxOpenConsent();return false;" style="color:#6f6f69;text-decoration:none;">Cookie Preferences</a>' +
+      '<a href="#" onclick="epxDoNotSell();return false;" style="color:#6f6f69;text-decoration:none;">Do Not Sell or Share My Personal Information</a>';
     return bar;
   }
 
@@ -181,8 +194,11 @@
   // that is the element genuinely wrapping the page, and appending to it puts
   // the bar after everything rather than a viewport down.
   function findContentHost() {
-    var doc = document.querySelector(".doc");
-    if (doc && doc.parentElement) return doc.parentElement;
+    // The worksheets render into a card -- .sheet or .doc -- and the bar
+    // belongs inside it, under the page's own closing note. Appending after
+    // the card leaves it stranded on the background behind the page.
+    var card = document.querySelector(".sheet") || document.querySelector(".doc");
+    if (card) return card;
 
     var root = document.getElementById("dc-root") || document.querySelector("x-dc");
     if (!root) return null;
