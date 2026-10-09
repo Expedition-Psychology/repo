@@ -14,6 +14,8 @@
 </head>
 <body>
 
+<!-- On phones this wrapper is the scroll area, so the bottom nav (outside it) never moves. -->
+<div class="shell-scroll" id="scroller">
 <div class="proto-bar" role="note">
   <b>Prototype</b>
   <span>Essentials tier · progress is saved in this browser only</span>
@@ -41,6 +43,7 @@
 </header>
 
 <main id="app" tabindex="-1"></main>
+</div>
 
 <nav class="bottom-nav" aria-label="Course">
   <a href="#/" data-nav=""><i data-lucide="layout-grid"></i>Home</a>

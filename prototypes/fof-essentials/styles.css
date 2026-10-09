@@ -726,3 +726,17 @@ details.disclose > .dbody p, details.disclose > .dbody li { font-size: 15.5px; }
 .chapter-foot > .btn-row { justify-content: center; text-align: center; }
 details.reflect { margin-bottom: 24px; }
 details.reflect .field > span { font-size: 15px; }
+
+/* ---------- Mobile app shell ----------
+   iOS Safari leaves position:fixed bottom bars floating mid-screen when its
+   toolbar collapses on scroll. On phones the page instead scrolls inside
+   .shell-scroll and the nav sits below it in a fixed-height column, so it is
+   always at the bottom of the screen. */
+@media (max-width: 860px) {
+  html, body { height: 100%; overflow: hidden; }
+  body { display: flex; flex-direction: column; height: 100dvh; }
+  .shell-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+  .bottom-nav { position: static; flex: none; }
+  main { padding-bottom: 32px !important; }
+  .wizard-foot.sticky { bottom: 8px; }
+}

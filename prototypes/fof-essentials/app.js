@@ -1519,8 +1519,10 @@
     document.querySelectorAll('[data-nav]').forEach((a) => a.classList.toggle('active', a.dataset.nav === active));
     paintIcons();
     const key = location.hash;
-    if (ui.lastRoute !== key) { ui.lastRoute = key; window.scrollTo(0, 0); }
+    if (ui.lastRoute !== key) { ui.lastRoute = key; scrollTop(); }
   }
+  // Phones scroll inside #scroller (see styles.css); desktop scrolls the window.
+  function scrollTop() { window.scrollTo(0, 0); const sc = $('#scroller'); if (sc) sc.scrollTop = 0; }
   function paintIcons() { if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': 1.9 } }); }
   function go(hash) { if (location.hash === hash) render(); else location.hash = hash; }
 
@@ -1627,7 +1629,7 @@
       const d = state.draft;
       d.step = Math.max(0, Math.min(STEPS.length - 1, d.step + Number(el.dataset.d)));
       if (d.step === 4 && !hasNum(d.after)) d.after = d.peak;
-      save(); render(); window.scrollTo(0, 0);
+      save(); render(); scrollTop();
     },
     reps(el) { state.draft.reps = Math.max(0, state.draft.reps + Number(el.dataset.d)); save(); render(); },
     'draft-set'(el) {
