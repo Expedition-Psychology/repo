@@ -13,7 +13,8 @@
  *   SENDER_SOURCE_FIELD       Custom field key (e.g. "{$signup_source}") to record which page they signed up from
  */
 
-const SENDER_SUBSCRIBERS_URL = 'https://api.sender.net/v2/subscribers';
+const { addToGroup } = require('./_sender');
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function json(statusCode, body) {
@@ -56,45 +57,19 @@ exports.handler = async function (event) {
     return json(500, { ok: false, error: 'Signup is temporarily unavailable. Please try again later.' });
   }
 
-  const body = {
-    email,
-    groups: [group],
-    trigger_automation: true,
-  };
-  if (firstname) body.firstname = firstname;
-  if (source && process.env.SENDER_SOURCE_FIELD) {
-    body.fields = { [process.env.SENDER_SOURCE_FIELD]: source };
+  const fields = (source && process.env.SENDER_SOURCE_FIELD)
+    ? { [process.env.SENDER_SOURCE_FIELD]: source }
+    : undefined;
+
+  const result = await addToGroup({ token, group, email, firstname, fields });
+
+  if (result.ok) {
+    return json(200, { ok: true, status: result.status === 'new' ? 'pending' : 'existing' });
   }
 
-  let res;
-  let text;
-  try {
-    res = await fetch(SENDER_SUBSCRIBERS_URL, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-    text = await res.text();
-  } catch (err) {
-    console.error('Sender.net request failed:', err);
+  console.error('Sender.net', result.error, result.detail);
+  if (result.error === 'unreachable') {
     return json(502, { ok: false, error: 'Could not reach the mailing service. Please try again.' });
   }
-
-  if (res.ok) {
-    return json(200, { ok: true, status: 'pending' });
-  }
-
-  // 422 is Sender's validation response — most commonly "already a subscriber".
-  // That is not an error worth showing: they are on the list either way.
-  if (res.status === 422) {
-    console.warn('Sender.net 422 for signup:', text);
-    return json(200, { ok: true, status: 'existing' });
-  }
-
-  console.error('Sender.net error', res.status, text);
   return json(502, { ok: false, error: 'Something went wrong signing you up. Please try again.' });
 };
