@@ -10,7 +10,7 @@ adverts. Each one hands off to the next:
 |---|---|---|---|
 | **2** | 2 | Why knowing how to fall isn't always enough | Names the gap: you understood the talk and still came down. Reframes it as a structure problem, not a knowledge problem. |
 | **3** | 4 | What does progress with fear of falling actually look like? | Resets the goal. Progress isn't the absence of fear — so here is what it is, and why you need a record to see it. |
-| **4** | 7 | Here's what's inside the Fear of Falling Toolkit | Answers "what do I actually get for £99", with real screenshots and a week in practice. |
+| **4** | 7 | Here's what's inside the Fear of Falling Toolkit | Answers "what do I actually get for £99", with the explainer video and a week in practice. |
 | **5** | 10 | Ready to start working on your fear of falling? | Closes. Reconnects with why they signed up, handles the three objections, asks. |
 
 Email 2 raises the problem, 3 redefines what solving it looks like, 4 shows the
@@ -51,9 +51,12 @@ resolve in any client. They live in `assets/img/email/seq/` and must stay
 deployed for as long as the sequence is in use — deleting them breaks every
 email already sitting in someone's inbox.
 
-The product shots in email 4 are genuine captures of the Toolkit: the dashboard,
-the training-goals screen, the fear-rating log, and the lesson syllabus. If the
-interface changes, re-capture them rather than letting them go stale.
+Email 4 points at the explainer video rather than carrying screenshots. The
+thumbnail is a real frame from it with a play button composited on, linking to
+`youtube.com/watch?v=XVexM0NG50Q&t=33s` (it starts at 33 seconds). No email
+client plays video inline, so a clickable thumbnail is the only thing that
+behaves everywhere &mdash; and it sends people to your channel rather than
+asking them to squint at stills.
 
 ## The discount variant
 
@@ -100,7 +103,7 @@ assumes your own judgement, a trusted belayer and a suitable wall.
 - Responsive at 375px: container fills, headline drops to 27px, padding tightens,
   CTA goes full-width, no horizontal overflow.
 - Every image has descriptive alt text and an absolute URL; every link is
-  absolute. Total image weight is under 130KB per email.
+  absolute. Total image weight is under 75KB per email.
 - `color-scheme: light` is declared to stop dark-mode clients inverting the
   palette.
 - Word counts (body, excluding header and footer): 320 / 360 / 397 / 306.
@@ -112,7 +115,7 @@ Shared across all five so they read as one sequence: 640px container, white
 logo bar, ink `#2e2e2e` headline band with a pine `#4b7a6e` tag, `#f3f3f0` body,
 Arboria headings over Nunito body text, white feature cards with a 14px radius,
 and a pine pill CTA. They stay distinct through structure rather than colour —
-2 and 3 carry a photograph, 4 carries product screenshots and a price block,
+2 and 3 carry a photograph, 4 carries the video card and a price block,
 5 is a plain letter with no image above the fold.
 
 To change the design once for all five, edit the generator rather than the five

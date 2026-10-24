@@ -43,9 +43,12 @@ THE PROGRAMME
 
 INSIDE THE APP
 
-[ Three screens from the Toolkit app: a progress dashboard, a training goals page, and a fear-rating log ]
+Rather than describe the interface, here is a walk through it — the
+lessons and their workbooks, the ladder, and how the logging actually
+works. It takes about three minutes.
 
-[ The Toolkit lesson list, showing numbered chapters with video and workbook icons ]
+Watch: what the Toolkit is, in three minutes
+  https://www.youtube.com/watch?v=XVexM0NG50Q&t=33s
 
 HOW A WEEK ACTUALLY RUNS
 

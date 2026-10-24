@@ -103,6 +103,20 @@ def render_html(blocks):
                 f'<img src="{BASE}/assets/img/email/seq/{src}" width="584" alt="{alt}" '
                 f'style="display:block;width:100%;max-width:584px;height:auto;border:1px solid {RULE};'
                 f'border-radius:12px;">{c}</td></tr></table>')
+        elif kind == 'video':
+            _, src, alt, cap, url = b
+            out.append(
+                f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" '
+                f'style="margin:4px 0 22px;"><tr><td align="center">'
+                f'<a href="{url}" target="_blank">'
+                f'<img src="{BASE}/assets/img/email/seq/{src}" width="584" alt="{alt}" '
+                f'style="display:block;width:100%;max-width:584px;height:auto;border:1px solid {RULE};'
+                f'border-radius:12px;"></a>'
+                f'<p style="margin:10px 0 0;font-family:{BODY};font-size:13px;line-height:20px;'
+                f'color:{MUTED};text-align:center;">'
+                f'<a href="{url}" target="_blank" style="color:{PINE};text-decoration:none;'
+                f'font-weight:600;">&#9654;&nbsp;{cap}</a></p>'
+                f'</td></tr></table>')
         elif kind == 'note':
             out.append(
                 '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" '
@@ -145,6 +159,8 @@ def render_text(blocks, width=72):
                                          subsequent_indent='  ') + f'\n      — {strip(w)}')
         elif kind == 'image':
             out.append(f'[ {strip(b[2])} ]')
+        elif kind == 'video':
+            out.append(f'{strip(b[3])}\n  {b[4].replace("&amp;", "&")}')
         elif kind == 'note':
             out.append(wrap(b[1]))
         elif kind == 'price':
@@ -428,12 +444,12 @@ EMAILS.append(dict(
     ('Cognitive and mindfulness skills', 'Practical attention and self-talk work, explained simply.'),
   ]),
   ('h2', 'Inside the app'),
-  ('image', 'e4-screens.jpg',
-   'Three screens from the Toolkit app: a progress dashboard, a training goals page, and a fear-rating log',
-   'Your dashboard, your goals, and logging how an exercise actually felt.'),
-  ('image', 'e4-lessons.jpg',
-   'The Toolkit lesson list, showing numbered chapters with video and workbook icons',
-   'The full syllabus, with the workbook attached to each lesson.'),
+  ('p', 'Rather than describe the interface, here is a walk through it &mdash; the lessons and their '
+        'workbooks, the ladder, and how the logging actually works. It takes about three minutes.'),
+  ('video', 'e4-video.jpg',
+   'Play the video: Dr Fin Haley explaining what is inside the Fear of Falling Toolkit',
+   'Watch: what the Toolkit is, in three minutes',
+   'https://www.youtube.com/watch?v=XVexM0NG50Q&amp;t=33s'),
   ('h2', 'How a week actually runs'),
   ('panel', '', [
     ('Before the session', 'Ten minutes on a lesson and its workbook, then pick the exercise for today.'),
