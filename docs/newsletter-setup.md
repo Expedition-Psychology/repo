@@ -5,8 +5,18 @@ The signup box is live on 32 pages and the Netlify side is **done**:
 - `SENDER_NEWSLETTER_GROUP` = `enoZG7`, deployed and verified end to end.
 - `SENDER_API_TOKEN` was already set from the free-talk funnel and is reused.
 
-A test subscriber, `setup-test@expedition-psychology.com`, is sitting in group
-`enoZG7` from that verification. **Delete it** before you start sending.
+### Delete these test subscribers
+
+Verifying this created a few junk subscribers, all on your own domain. Remove
+them before you start sending:
+
+- `setup-test@expedition-psychology.com`
+- `verify-27465@expedition-psychology.com` — also in the Fear of Falling group
+- `delay-30562@expedition-psychology.com`
+- one `probe-new-…@expedition-psychology.com`
+
+Anything starting `probe-` or `logprobe-` that you *don't* see was rejected
+before it reached Sender, so there is nothing to clean up for those.
 
 **One step is left**, and until you do it the site is making a promise it cannot
 keep: after someone subscribes it tells them to look for a confirmation link.
@@ -85,6 +95,33 @@ filtered, and an unconfirmed subscriber who never hears from you again is worse
 than a confirmed-by-form one who does. Move to double opt-in later if engagement
 drops or complaints appear. The confirmation email is built and waiting either
 way.
+
+---
+
+## A trap worth knowing about
+
+`POST /v2/subscribers` — the obvious "create a subscriber" call — documents its
+`groups` parameter as *"the new groups assigned to the subscriber"*. It
+**replaces** their groups rather than adding to them. Both signup functions used
+it originally, which meant a newsletter signup from someone already in the Fear
+of Falling funnel would have silently dropped them out of it, and vice versa.
+With only one group in play it was invisible; adding a second made it live.
+
+Both functions now go through `netlify/functions/_sender.js`, which calls
+`POST /v2/subscribers/groups/{groupId}` instead. That one is additive and leaves
+other memberships alone, but only works on subscribers who already exist — so it
+reads `non_existing_subscribers` from the response and only creates the
+subscriber when Sender says they are missing.
+
+Two things to know if you ever touch this:
+
+- Sender answers **400**, not 404 or 422, when the email does not exist yet. The
+  decision has to come from the response body, not the status code.
+- A newly created subscriber takes **15–20 seconds** to become visible to the
+  add-to-group endpoint. So if the same person submitted two different forms
+  within that window of first ever subscribing, the second could still replace
+  their groups. Rare enough to live with, and easily fixed by hand if it ever
+  shows up.
 
 ---
 
