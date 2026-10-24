@@ -44,23 +44,31 @@ async function addToGroup({ token, group, email, firstname, fields }) {
     return { ok: false, error: 'unreachable', detail: String(err) };
   }
 
-  if (res.ok) {
-    let missing = [];
-    try {
-      const body = JSON.parse(text);
-      const m = body && body.message;
-      missing = (m && m.non_existing_subscribers) || [];
-    } catch (err) {
-      // A 200 we cannot parse still means Sender accepted it.
-      return { ok: true, status: 'existing' };
-    }
+  // Sender answers 400 — not 404 or 422 — when none of the emails exist yet,
+  // and names them in non_existing_subscribers. So decide from the payload
+  // rather than the status code, which is what caught this out the first time.
+  let missing = [];
+  let invalid = [];
+  try {
+    const parsed = JSON.parse(text);
+    const m = parsed && parsed.message;
+    missing = (m && m.non_existing_subscribers) || [];
+    invalid = (m && m.invalid_emails) || [];
+  } catch (err) {
+    if (res.ok) return { ok: true, status: 'existing' };
+    return { ok: false, error: 'group_add_failed', detail: `${res.status} ${text}` };
+  }
 
-    const isNew = missing.some(function (e) {
-      return String(e).toLowerCase() === email;
-    });
-    if (!isNew) return { ok: true, status: 'existing' };
-    // falls through to create them
-  } else if (res.status !== 404 && res.status !== 422) {
+  const lower = function (list) {
+    return (list || []).map(function (e) { return String(e).toLowerCase(); });
+  };
+  if (lower(invalid).indexOf(email) !== -1) {
+    return { ok: false, error: 'invalid_email', detail: text };
+  }
+  const notYetASubscriber = lower(missing).indexOf(email) !== -1;
+
+  if (!notYetASubscriber) {
+    if (res.ok) return { ok: true, status: 'existing' };
     return { ok: false, error: 'group_add_failed', detail: `${res.status} ${text}` };
   }
 
