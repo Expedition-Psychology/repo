@@ -75,3 +75,6 @@
 
 /email-toolkit-after-talk.html
   Content-Disposition: attachment; filename="toolkit-after-talk.html"
+
+/email-newsletter-confirm.html
+  Content-Disposition: attachment; filename="newsletter-confirm.html"

@@ -1,56 +1,90 @@
 # Newsletter signup — setup
 
-The signup box is live on 32 pages. **It will not work until you do step 1**,
-and until then anyone who tries gets "Signup is temporarily unavailable."
-It is a one-line change, so do it first.
+The signup box is live on 32 pages and the Netlify side is **done**:
+
+- `SENDER_NEWSLETTER_GROUP` = `enoZG7`, deployed and verified end to end.
+- `SENDER_API_TOKEN` was already set from the free-talk funnel and is reused.
+
+A test subscriber, `setup-test@expedition-psychology.com`, is sitting in group
+`enoZG7` from that verification. **Delete it** before you start sending.
+
+**One step is left**, and until you do it the site is making a promise it cannot
+keep: after someone subscribes it tells them to look for a confirmation link.
+Nothing sends that link yet. See the next two sections.
 
 ---
 
-## 1. Create the group and point the site at it
+## 1. How opt-in works in this account
 
-**In Sender:** Subscribers → Groups → **Create group**. Call it something you
-will recognise in a year — `Newsletter` is fine.
+Sender's own double opt-in applies to forms it hosts. Subscribers added through
+the API — which is what the site does — arrive **already active**, so there is no
+native confirmation mail to switch on.
 
-Open the group. The ID is the string in the browser's address bar after
-`/groups/` — something like `eB1jKd`. (It is also under the group's
-**Settings**.)
+Your free-talk funnel gets around this with a click-gate, and the newsletter
+copies it:
 
-**Then add it to Netlify.** Either paste it into Site settings → Environment
-variables as `SENDER_NEWSLETTER_GROUP`, or run:
-
-```bash
-netlify env:set SENDER_NEWSLETTER_GROUP "your-group-id-here"
+```
+site form  →  API adds subscriber to the PENDING group
+           →  automation sends "Confirm your subscription"
+           →  they click the button
+           →  automation sees the click, moves them to CONFIRMED
+           →  the monthly series runs off CONFIRMED
 ```
 
-Environment variables only take effect on a new deploy, so trigger one:
+That means **two groups**, not one. `enoZG7` is wired up as the group the website
+writes into, so treat it as *pending* and create a second group for confirmed
+subscribers.
 
-```bash
-netlify deploy --build --prod
-```
-
-`SENDER_API_TOKEN` is already set from the free-talk funnel — the newsletter
-reuses it. You do not need a second token.
+If you would rather skip all of this, see "Single opt-in instead" below — it is a
+legitimate choice and much less to build.
 
 ---
 
-## 2. Decide on double opt-in
+## 2. Build the confirmation automation
 
-The site currently assumes **double opt-in** — after someone subscribes it tells
-them to look for a confirmation link, and warns them to check spam.
+In Sender: rename `enoZG7` to something like **Newsletter — Pending**, then
+create a second group, **Newsletter — Confirmed**.
 
-**I would keep it.** It is what your free-talk funnel already does, and given the
-deliverability trouble you have had, a list where every address has actively
-confirmed is worth more than a bigger list that gets you filtered. The cost is
-real though: some people never click, and you lose them.
+Automations → Create automation → trigger **Subscriber added to a group** →
+*Newsletter — Pending*:
 
-**If you switch that group to single opt-in in Sender**, tell the site, or it
-will keep promising a confirmation email that never arrives:
+```
+Trigger: added to Newsletter — Pending
+  → Email:  Confirm your subscription     (email-newsletter-confirm.html)
+  → Wait / condition: clicked a link in that email
+        yes → Add to group: Newsletter — Confirmed
+              Remove from group: Newsletter — Pending
+        no  → leave them, or remove after a week
+```
+
+Paste `email-newsletter-confirm.html` into the custom-HTML editor and
+`email-newsletter-confirm.txt` into the plain-text field. Its button goes to
+`expedition-psychology.com/newsletter-confirmed`, a page that just says they are
+subscribed — Sender tracks the click, which is what moves them.
+
+Leave `{$unsubscribe_link}` alone; Sender refuses to send without it.
+
+### Single opt-in instead
+
+Perfectly defensible: they typed their address into a form with the terms next to
+it, which is consent. You lose nobody to an unclicked link, and given how often
+your confirmations land in spam, that is not a small number.
+
+To do it, skip this whole section, run the series straight off `enoZG7`, and tell
+the website to stop promising a confirmation email:
 
 ```bash
 netlify env:set SENDER_NEWSLETTER_CONFIRM "false"
+netlify api createSiteBuild --data '{"site_id":"fe59753c-6764-4078-9990-bfd274378c5a"}'
 ```
 
-The success message changes to "You're on the list" instead.
+The success message becomes "You're on the list" instead.
+
+**My view:** start with single opt-in. You already know your confirmations get
+filtered, and an unconfirmed subscriber who never hears from you again is worse
+than a confirmed-by-form one who does. Move to double opt-in later if engagement
+drops or complaints appear. The confirmation email is built and waiting either
+way.
 
 ---
 
@@ -62,12 +96,12 @@ ways to send them, and they do different jobs:
 ### A drip, so everyone gets the series from the start — recommended
 
 Automations → **Create automation** → trigger **Subscriber added to a group** →
-pick your newsletter group.
+pick *Newsletter — Confirmed* (or `enoZG7` if you went single opt-in).
 
 Then alternate steps:
 
 ```
-Trigger: subscriber added to Newsletter
+Trigger: subscriber added to Newsletter — Confirmed
   → Email:  01 Goal Setting: Process Over Outcome
   → Delay:  1 month
   → Email:  02 Motivation That Lasts
@@ -175,7 +209,7 @@ worth the risk of sharing.
 ## If something breaks
 
 **"Signup is temporarily unavailable"** — `SENDER_NEWSLETTER_GROUP` is missing,
-or you set it but have not deployed since.
+or you set it but have not deployed since. It is set now, so this should not recur.
 
 **"Something went wrong signing you up"** — Sender rejected the call. Netlify →
 Functions → `newsletter-signup` → the logs carry Sender's own error. Usually an
