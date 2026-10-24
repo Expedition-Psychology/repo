@@ -1,0 +1,71 @@
+Ready to start working on your fear of falling? ({{DISCOUNT_AMOUNT}} off)
+{{DISCOUNT_AMOUNT}} off until {{DISCOUNT_DEADLINE}} &mdash; self-paced, and yours to keep.
+
+====================================================================
+READY TO START?
+====================================================================
+
+You signed up for the talk for a reason. If that reason is still there,
+this is the part where it becomes something you are actually working on.
+
+You signed up for the talk because something about your climbing was not
+sitting right. Probably a route you keep not getting on, or a move you
+keep not committing to.
+
+That reason has not gone anywhere. The question is just whether this is
+the month you do something structured about it.
+
+Confidence is not something that arrives and then lets you climb. It is
+the residue of having done the thing, in manageable steps, enough times.
+Waiting to feel ready is the one approach that reliably does not work.
+
+THREE THINGS PEOPLE SAY TO ME
+
+  * “I do not have the time.” — The exercises run inside sessions you
+    are already climbing. There is no extra night out.
+
+  * “I have tried fall practice before.” — Usually by jumping to the big
+    version and bracing through it. A ladder is the difference: small,
+    repeatable steps, in an order, with a record of what each one did.
+
+  * “I am not sure it will work for me.” — I cannot promise it will, and
+    I would be wary of anyone who did. What I can say is that it is
+    self-paced, yours permanently, and backed by a money-back guarantee
+    — if it is not right for you, we will make it right.
+
+WHAT YOU WOULD BE STARTING
+
+  - 24 video lessons with workbooks built in, at your own pace.
+
+  - An exposure ladder set around the situations you actually avoid.
+
+  - Fall-practice exercises in graded steps, not one leap.
+
+  - Ratings and logs, so you can see the trend rather than guess at it.
+
+£99 — One-off payment · lifetime access · no subscription
+
+{{DISCOUNT_AMOUNT}} off until {{DISCOUNT_DEADLINE}}. Use the code
+{{DISCOUNT_CODE}} at checkout. Everything above is included either way —
+the price is the only thing that changes.
+
+--------------------------------------------------------------------
+GET THE TOOLKIT
+https://expedition-psychology.com/fear-of-falling?utm_source=newsletter&utm_medium=email&utm_campaign=fof-sequence&utm_content=email-05-discount
+Code {{DISCOUNT_CODE}} · ends {{DISCOUNT_DEADLINE}}
+--------------------------------------------------------------------
+
+And if the answer is not now, that is genuinely fine — it is not going
+anywhere, and the tools from the talk work whether or not you ever buy
+anything.
+
+All the best,
+Fin
+
+Dr Fin Haley
+Clinical Psychologist & Rock Climbing Instructor
+Expedition Psychology
+https://expedition-psychology.com
+
+You're receiving this because you signed up for the free Fear of Falling
+talk. Unsubscribe: {$unsubscribe_link}
