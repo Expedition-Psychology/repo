@@ -1,20 +1,20 @@
 Confirm your subscription
-One click and you're on the list — until you do, nothing else gets sent.
+One click and your 15% off the Fear of Falling Toolkit is on its way.
 
 ====================================================================
 CONFIRM YOUR SUBSCRIPTION
 ====================================================================
 
-Thanks for subscribing to the Expedition Psychology newsletter.
+Thanks for subscribing to the Expedition Psychology Stay updated email.
 
-Open the link below to confirm your email address. It is a single
-click — there is nothing to fill in.
+Open the link below to confirm your email address. As soon as you do,
+your 15% discount code for the Fear of Falling Toolkit comes straight
+over.
 
   https://expedition-psychology.com/newsletter-confirmed
 
-After that you'll get one piece a month on fear, pressure and
-performance in the outdoors: the same writing that goes on the site,
-sent as it is published. You can unsubscribe from any email.
+After that you'll get one Stay updated email a month on fear, pressure
+and performance in the outdoors. You can unsubscribe from any email.
 
 Didn't sign up for this? Ignore this email and nothing happens — you
 won't hear from us again.
@@ -28,4 +28,4 @@ Expedition Psychology
 https://expedition-psychology.com
 
 You're receiving this because you subscribed to the Expedition
-Psychology newsletter. Unsubscribe: {$unsubscribe_link}
+Psychology Stay updated email. Unsubscribe: {$unsubscribe_link}

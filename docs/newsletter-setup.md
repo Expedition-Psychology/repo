@@ -38,8 +38,19 @@ site form  →  API adds subscriber to the PENDING group
            →  automation sends "Confirm your subscription"
            →  they click the button
            →  automation sees the click, moves them to CONFIRMED
+           →  sends "Welcome — your 15% code"
            →  the monthly series runs off CONFIRMED
 ```
+
+**The site now promises 15% off for subscribing**, so something has to deliver
+it. That is `email-newsletter-welcome.html` — it carries the code and goes out
+straight after they confirm. On single opt-in it is the first email they get
+instead. Either way it has to be in the automation before you point anyone at
+the form, or the promise on 32 pages is one you are not keeping.
+
+The code is a `{{DISCOUNT_CODE}}` placeholder, as in the talk sequence. Use the
+**same code** for both if you want one thing to manage; 15% off £99 is £84.15,
+which is printed in the welcome email.
 
 That means **two groups**, not one. `enoZG7` is wired up as the group the website
 writes into, so treat it as *pending* and create a second group for confirmed

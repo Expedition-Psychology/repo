@@ -78,3 +78,6 @@
 
 /email-newsletter-confirm.html
   Content-Disposition: attachment; filename="newsletter-confirm.html"
+
+/email-newsletter-welcome.html
+  Content-Disposition: attachment; filename="newsletter-welcome.html"

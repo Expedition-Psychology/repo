@@ -7,7 +7,7 @@
  *
  * Usage — one placeholder, one script tag:
  *   <div data-ep-newsletter data-source="article:self-talk"></div>
- *   <script src="newsletter-signup.js?v=1" defer></script>
+ *   <script src="newsletter-signup.js?v=2" defer></script>
  *
  * Attributes (all optional):
  *   data-source   recorded against the subscriber so you can see which page won them
@@ -25,9 +25,10 @@
   var ENDPOINT = '/.netlify/functions/newsletter-signup';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  var HEADING = 'Get the writing by email';
-  var SUB = 'One piece a month on fear, pressure and performance in the outdoors. ' +
-            'Unsubscribe whenever you like.';
+  var HEADING = 'Get 15% off the Fear of Falling Toolkit';
+  var SUB = 'Sign up to the Stay updated email and we&rsquo;ll send you a 15% discount code. ' +
+            'One email a month on fear, pressure and performance in the outdoors, and you can ' +
+            'unsubscribe whenever you like.';
 
   var CSS = [
     '.epn{background:var(--surface-sunken,#eceae6);border-top:1px solid var(--border-subtle,#e0e0da);',
@@ -112,15 +113,17 @@
       return '<div class="epn-done">' +
         '<p class="epn-done-h">' + tick() +
           (existing ? 'You were already subscribed' : 'You&rsquo;re on the list') + '</p>' +
-        '<p>Thanks for signing up. The next piece will come to you when it is published.</p>' +
+        '<p><strong>Your 15% code is on its way.</strong> It does not expire, so there is no rush ' +
+          'to use it.</p>' +
+        '<p>After that, one Stay updated email a month on fear, pressure and performance.</p>' +
       '</div>';
     }
     return '<div class="epn-done">' +
-      '<p class="epn-done-h">' + tick() + 'One more step' + '</p>' +
+      '<p class="epn-done-h">' + tick() + 'One more step &mdash; then your code' + '</p>' +
       '<p>' + (existing
         ? 'You were already on the list, so we have sent your confirmation link again.'
         : 'We have just emailed you a confirmation link.') +
-        ' <strong>You are not subscribed until you click it.</strong></p>' +
+        ' <strong>Click it and your 15% code comes straight over.</strong></p>' +
       '<p><strong>Please check your spam or junk folder.</strong> That email lands there more often ' +
         'than it should. If you find it, mark it &ldquo;not spam&rdquo; so the rest reach your inbox.</p>' +
       '<p>Nothing after a few minutes? Email ' +
@@ -141,7 +144,7 @@
     host.className = (host.className ? host.className + ' ' : '') + cls;
     host.innerHTML =
       '<div class="epn-in">' +
-        '<p class="epn-eyebrow">The Newsletter</p>' +
+        '<p class="epn-eyebrow">Stay Updated</p>' +
         '<h2 class="epn-h">' + heading + '</h2>' +
         '<p class="epn-sub">' + sub + '</p>' +
         '<form class="epn-form" novalidate>' +
@@ -155,7 +158,7 @@
             '<input type="text" name="website" tabindex="-1" autocomplete="off"></label>' +
         '</form>' +
         '<p class="epn-msg" role="alert" aria-live="polite"></p>' +
-        '<p class="epn-note">Occasional emails from Expedition Psychology. We will never share your ' +
+        '<p class="epn-note">The Stay updated email from Expedition Psychology. We will never share your ' +
           'address, and you can unsubscribe from any email. See our ' +
           '<a href="privacy-policy.html">Privacy Policy</a>.</p>' +
       '</div>';
