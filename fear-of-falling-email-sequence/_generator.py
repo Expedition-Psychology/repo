@@ -132,6 +132,19 @@ def render_html(blocks):
                 f'font-weight:600;color:{INK};">{b[1]}</p>'
                 f'<p style="margin:0;font-family:{BODY};font-size:15px;line-height:23px;'
                 f'color:{MUTED};">{b[2]}</p></td></tr></table>')
+        elif kind == 'offer':
+            _, was, now, sub = b
+            out.append(
+                '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" '
+                f'style="background:#ffffff;border:2px solid {PINE};border-radius:14px;margin:4px 0 22px;">'
+                '<tr><td align="center" style="padding:24px 24px;">'
+                f'<p style="margin:0 0 6px;font-family:{BODY};font-size:15px;line-height:22px;'
+                f'color:{MUTED};"><span style="text-decoration:line-through;">{was}</span>'
+                f'&nbsp;&nbsp;with your 15% off</p>'
+                f'<p style="margin:0 0 6px;font-family:{HEAD};font-size:34px;line-height:40px;'
+                f'font-weight:600;color:{INK};">{now}</p>'
+                f'<p style="margin:0;font-family:{BODY};font-size:15px;line-height:23px;'
+                f'color:{MUTED};">{sub}</p></td></tr></table>')
     return '\n              '.join(out)
 
 
@@ -163,6 +176,8 @@ def render_text(blocks, width=72):
             out.append(f'{strip(b[3])}\n  {b[4].replace("&amp;", "&")}')
         elif kind == 'note':
             out.append(wrap(b[1]))
+        elif kind == 'offer':
+            out.append(f'{strip(b[1])} -> {strip(b[2])} with your 15% off — {strip(b[3])}')
         elif kind == 'price':
             out.append(f'{strip(b[1])} — {strip(b[2])}')
     return '\n\n'.join(out)
@@ -336,6 +351,45 @@ TESTIMONIALS = [
 
 EMAILS = []
 
+# ───────────── EMAIL 1 · Day 0 · the voucher ─────────────
+EMAILS.append(dict(
+ file='email-01-your-discount',
+ subject='Your 15% off the Fear of Falling Toolkit',
+ title='Your 15% off',
+ tag='Thanks for watching', slug='email-01',
+ hero=None, hero_alt='',
+ h1='Here&rsquo;s 15% off the Toolkit',
+ deck='You have watched the talk, which is the part most people never get round to. '
+      'If you want to carry on with it properly, this takes 15% off the Toolkit &mdash; '
+      'to use whenever you are ready.',
+ preheader='15% off the Fear of Falling Toolkit, to use whenever suits you.',
+ blocks=[
+  ('lead', 'Thanks for watching the Fear of Falling talk.'),
+  ('p', 'Most people who mean to watch something like that never quite do, so that is worth '
+        'something on its own. What you do next is the part that actually changes your climbing.'),
+  ('p', 'If that means working through it properly, here is <strong>15% off the Fear of Falling '
+        'Toolkit</strong> &mdash; the full programme the talk is drawn from.'),
+  ('offer', '&pound;99', '&pound;84.15', 'One-off payment &middot; lifetime access &middot; no subscription'),
+  ('p', 'Use the code <strong>{{DISCOUNT_CODE}}</strong> at checkout. There is no deadline on it '
+        '&mdash; it will be there when you want it.'),
+  ('h2', 'What you would be getting'),
+  ('list', [
+    '24 video lessons, each with an interactive workbook built in.',
+    'An exposure ladder built around the situations you actually avoid.',
+    'Fall-practice exercises in graded steps, designed to sit inside a normal session.',
+    'Anxiety ratings and logs, so the plan paces you instead of you guessing.',
+  ]),
+  ('p', 'Over the next week or so I will send a few emails about the ideas behind it &mdash; why '
+        'understanding fear is not the same as climbing differently, and what progress actually looks '
+        'like. Those are worth reading whether or not you ever use the code.'),
+  ('note', 'There is no countdown here and I am not going to chase you about it. Buying something '
+           'like this in a hurry tends not to work; buying it when you have decided you want to do '
+           'the work tends to.'),
+ ],
+ cta_label='Use my 15% off', cta_sub='Code {{DISCOUNT_CODE}} &middot; &pound;84.15 &middot; lifetime access',
+ signoff='Any questions about whether it fits your climbing, just reply.',
+))
+
 # ───────────── EMAIL 2 · Day 2 ─────────────
 EMAILS.append(dict(
  file='email-02-understanding-vs-doing',
@@ -370,7 +424,7 @@ EMAILS.append(dict(
   ('note', 'Fall practice always carries real risk. The Toolkit is about building up sensibly, within '
            'your own judgement and with a belayer you trust &mdash; not about pushing past it.'),
  ],
- cta_label='Explore the Toolkit', cta_sub='&pound;99 one-off &middot; lifetime access &middot; self-paced',
+ cta_label='Explore the Toolkit', cta_sub='&pound;84.15 with your 15% code &middot; lifetime access',
  signoff='If there is a particular situation that trips you up, reply and tell me what happens &mdash; '
          'I read every one.',
 ))
@@ -412,7 +466,7 @@ EMAILS.append(dict(
   ('p', 'Their experience will not be everyone&rsquo;s, and I would not claim otherwise. But structured '
         'practice gives you something to judge by other than how the last session felt.'),
  ],
- cta_label='Start making progress', cta_sub='&pound;99 one-off &middot; lifetime access &middot; self-paced',
+ cta_label='Start making progress', cta_sub='&pound;84.15 with your 15% code &middot; lifetime access',
  signoff='What would count as progress for you? Reply and tell me &mdash; it is usually a more useful '
          'question than it first sounds.',
 ))
@@ -456,7 +510,7 @@ EMAILS.append(dict(
     ('At the wall', 'Work the rung you are on. It is designed to sit inside a normal session, not add one.'),
     ('Afterwards', 'Rate how it felt and note what happened. That rating is what paces the next step.'),
   ]),
-  ('price', '&pound;99', 'One-off payment &middot; lifetime access &middot; no subscription'),
+  ('offer', '&pound;99', '&pound;84.15', 'With your code {{DISCOUNT_CODE}} &middot; lifetime access &middot; no subscription'),
   ('h2', 'Why it is not just videos'),
   ('p', 'Information is the part you already have &mdash; the talk gave you that for nothing. What the '
         'Toolkit adds is sequence and feedback: a ladder built for you, a reason to do the next thing in '
@@ -465,7 +519,7 @@ EMAILS.append(dict(
            'Fall practice carries real risk; every exercise assumes your own judgement, a trusted '
            'belayer and a suitable wall.'),
  ],
- cta_label='Explore the full toolkit', cta_sub='&pound;99 one-off &middot; lifetime access',
+ cta_label='Explore the full toolkit', cta_sub='&pound;84.15 with your 15% code &middot; lifetime access',
  signoff='If you want to know whether it suits your particular situation, reply and ask. '
          'I would rather tell you it is not a fit than have you buy the wrong thing.',
 ))
@@ -498,7 +552,7 @@ E5_BLOCKS = [
     'Fall-practice exercises in graded steps, not one leap.',
     'Ratings and logs, so you can see the trend rather than guess at it.',
   ]),
-  ('price', '&pound;99', 'One-off payment &middot; lifetime access &middot; no subscription'),
+  ('offer', '&pound;99', '&pound;84.15', 'With your code {{DISCOUNT_CODE}} &middot; lifetime access &middot; no subscription'),
 ]
 
 EMAILS.append(dict(
@@ -512,7 +566,7 @@ EMAILS.append(dict(
       'this is the part where it becomes something you are actually working on.',
  preheader='Self-paced, yours to keep, and designed to run inside the sessions you already climb.',
  blocks=E5_BLOCKS,
- cta_label='Get the Toolkit', cta_sub='&pound;99 one-off &middot; lifetime access &middot; self-paced',
+ cta_label='Get the Toolkit', cta_sub='&pound;84.15 with your 15% code &middot; lifetime access',
  signoff='And if the answer is not now, that is genuinely fine &mdash; it is not going anywhere, and '
          'the tools from the talk work whether or not you ever buy anything.',
 ))

@@ -1,30 +1,50 @@
 # Fear of Falling — post-talk email sequence
 
-Four emails (plus one variant) sent to people who signed up for the free Fear of
-Falling talk, taking them from "that made sense" to buying the £99 Toolkit.
+Five emails sent to people who signed up for the free Fear of Falling talk,
+taking them from "that made sense" to buying the Toolkit. It opens with a
+standing 15% discount and then earns it over the following week.
 
-They are written as one argument split across ten days, not four separate
+They are written as one argument split across ten days, not five separate
 adverts. Each one hands off to the next:
 
 | | Day | Subject | The job it does |
 |---|---|---|---|
+| **1** | 0 | Your 15% off the Fear of Falling Toolkit | Thanks them for watching, gives the code, sets up the week. No deadline on it. |
 | **2** | 2 | Why knowing how to fall isn't always enough | Names the gap: you understood the talk and still came down. Reframes it as a structure problem, not a knowledge problem. |
 | **3** | 4 | What does progress with fear of falling actually look like? | Resets the goal. Progress isn't the absence of fear — so here is what it is, and why you need a record to see it. |
-| **4** | 7 | Here's what's inside the Fear of Falling Toolkit | Answers "what do I actually get for £99", with the explainer video and a week in practice. |
+| **4** | 7 | Here's what's inside the Fear of Falling Toolkit | Answers "what do I actually get", with the explainer video and a week in practice. |
 | **5** | 10 | Ready to start working on your fear of falling? | Closes. Reconnects with why they signed up, handles the three objections, asks. |
 
-Email 2 raises the problem, 3 redefines what solving it looks like, 4 shows the
-mechanism, 5 asks. Nothing is repeated between them: the exposure ladder is
-introduced in 2, justified in 3, shown in 4 and summarised in 5.
+Email 1 opens the door, 2 raises the problem, 3 redefines what solving it looks
+like, 4 shows the mechanism, 5 asks. Nothing is repeated between them: the
+exposure ladder is introduced in 2, justified in 3, shown in 4 and summarised
+in 5.
+
+### The discount
+
+The code has **no expiry**, by your decision, and nothing in the sequence
+suggests otherwise. Email 1 says so explicitly, and there is no last-chance
+email — so nothing will contradict it or create a false deadline later.
+
+That changes what the discount is doing. It is not pressure; it is a reason to
+have the conversation, and it stays open while emails 2 to 5 make the case. The
+trade is that you lose the urgency a deadline buys. If you ever want that back,
+`email-05-discount-variant.html` is the deadline-based version — see below.
+
+**Every email carries `{{DISCOUNT_CODE}}` as a placeholder.** Create the real
+code at checkout first, then find and replace across all five files and their
+`.txt` versions. 15% off £99 is **£84.15**, which is stated in emails 1, 4 and 5
+— if you change the percentage, that figure needs changing too.
 
 ## Files
 
 ```
+email-01-your-discount.html          / .txt
 email-02-understanding-vs-doing.html / .txt
 email-03-what-progress-looks-like.html / .txt
-email-04-inside-the-toolkit.html / .txt
-email-05-your-next-step.html / .txt
-email-05-discount-variant.html / .txt
+email-04-inside-the-toolkit.html     / .txt
+email-05-your-next-step.html         / .txt
+email-05-discount-variant.html       / .txt   ← alternative, not part of the run
 ```
 
 Each `.txt` is the plain-text alternative for the matching `.html`. Both are
@@ -35,7 +55,8 @@ one by hand, edit the other.
 
 Paste the HTML file's source into your ESP's custom-HTML editor and the `.txt`
 into its plain-text field. In Sender this is one automation off the talk-signup
-group, with Delay steps of 2, 2 and 3 days between the emails.
+group: send email 1 on the trigger, then Delay steps of 2, 2, 3 and 3 days
+before emails 2 to 5.
 
 - **Leave `{$unsubscribe_link}` in place.** It is Sender's tag; Sender refuses
   to send without it. Swap it if you move platform.
@@ -60,10 +81,13 @@ asking them to squint at stills.
 
 ## The discount variant
 
-`email-05-discount-variant.html` is email 5 with a discount block, for if you
-ever want to run one. **It contains placeholders, not a real offer**, because
-you removed the launch discount from the Toolkit page deliberately and I was not
-going to invent terms:
+`email-05-discount-variant.html` is a **deadline-based** alternative to email 5,
+written before you decided against a time limit. It is not part of the sequence
+above and **must not be sent alongside email 1** — one says the code never
+expires, the other says it ends on a date.
+
+It is kept only in case you later want to run a limited offer instead of a
+standing one. It still has its own placeholders:
 
 ```
 {{DISCOUNT_AMOUNT}}     e.g. "£20" or "20%"
@@ -71,15 +95,14 @@ going to invent terms:
 {{DISCOUNT_DEADLINE}}   e.g. "Sunday 9 November"
 ```
 
-Find and replace all three before sending, and check the code actually exists at
-checkout. If you are not running a discount, delete this file so it cannot be
-sent by accident.
+If you are confident you will never run a deadline, delete the file so it cannot
+go out by mistake.
 
 ## What's verified, and what isn't
 
 Everything factual is taken from the live Toolkit page or your brief:
 
-- £99 one-off, lifetime access, no subscription.
+- £99 one-off, lifetime access, no subscription; £84.15 with 15% off.
 - 24 video lessons with workbooks built in.
 - The exposure ladder, fall-practice exercises, goal setting, anxiety ratings,
   progress tracking, reflective logs, cognitive and mindfulness skills.
@@ -106,7 +129,7 @@ assumes your own judgement, a trusted belayer and a suitable wall.
   absolute. Total image weight is under 75KB per email.
 - `color-scheme: light` is declared to stop dark-mode clients inverting the
   palette.
-- Word counts (body, excluding header and footer): 320 / 360 / 397 / 306.
+- Word counts (body, excluding header and footer): 275 / 320 / 360 / 411 / 314.
   Email 3 includes ~55 words of testimonial; email 4 is longest by design.
 
 ## Design system
@@ -115,8 +138,8 @@ Shared across all five so they read as one sequence: 640px container, white
 logo bar, ink `#2e2e2e` headline band with a pine `#4b7a6e` tag, `#f3f3f0` body,
 Arboria headings over Nunito body text, white feature cards with a 14px radius,
 and a pine pill CTA. They stay distinct through structure rather than colour —
-2 and 3 carry a photograph, 4 carries the video card and a price block,
-5 is a plain letter with no image above the fold.
+1 is a short letter with the offer block, 2 and 3 carry a photograph, 4 carries
+the video card, 5 is a plain letter with no image above the fold.
 
 To change the design once for all five, edit the generator rather than the five
 files: `_generator.py`, kept alongside these files.
