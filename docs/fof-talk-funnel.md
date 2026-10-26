@@ -32,7 +32,7 @@ and by email as a copy they can come back to.
 | `email-fof-talk-confirm.html` | Email 1 — "Confirm your email" |
 | `email-fof-talk-deliver.html` | Email 2 — the talk + Toolkit CTA |
 
-The talk: <https://www.youtube.com/watch?v=gXD2u-74HdY>
+The talk: <https://www.youtube.com/watch?v=OcJrPaY7Xsw>
 
 ---
 
