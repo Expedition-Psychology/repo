@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CORE-10 Wellbeing Check | Free Online Distress Screening</title>
+<!-- ═══ SEO (generated) ═══ -->
+<link rel="canonical" href="https://expedition-psychology.com/core-10-wellbeing-check">
+<meta name="description" content="A free, private CORE-10 wellbeing check you can complete in two minutes. Nothing is sent anywhere — your answers stay in your own browser.">
+<meta name="theme-color" content="#2e2e2e">
+<meta property="og:site_name" content="Expedition Psychology">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CORE-10 Wellbeing Check | Free Online Distress Screening">
+<meta property="og:description" content="A free, private CORE-10 wellbeing check you can complete in two minutes. Nothing is sent anywhere — your answers stay in your own browser.">
+<meta property="og:url" content="https://expedition-psychology.com/core-10-wellbeing-check">
+<meta property="og:image" content="https://expedition-psychology.com/assets/img/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CORE-10 Wellbeing Check | Free Online Distress Screening">
+<meta name="twitter:description" content="A free, private CORE-10 wellbeing check you can complete in two minutes. Nothing is sent anywhere — your answers stay in your own browser.">
+<meta name="twitter:image" content="https://expedition-psychology.com/assets/img/og/default.jpg">
+<!-- ═══ /SEO ═══ -->
+<link rel="icon" type="image/png" href="assets/img/favicon-icon.png">
+<link rel="stylesheet" href="_ds/expedition-psychology-design-system-4e7d0efc-e50c-42c3-8d9a-5b6ad5a7c77a/styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-page,#f3f3f0);}
+  body{font-family:var(--font-body);color:var(--text-body);-webkit-font-smoothing:antialiased;}
+  .ep-back-bar{position:relative;z-index:40;padding:10px 24px;font-family:"arboria",sans-serif;background:rgba(243,243,240,.92);border-bottom:1px solid #ddddd8;}
+  .ep-back-bar a{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#5f5f59;text-decoration:none;}
+  .ep-back-bar a:hover{color:#4b7a6e;}
+  .frame-wrap{max-width:1100px;margin:0 auto;}
+  iframe#tool{display:block;width:100%;border:0;min-height:900px;}
+  .noscript{max-width:720px;margin:40px auto;padding:24px 26px;background:#fdf6ec;border:1px solid #e8c89a;border-left:5px solid var(--ep-ember,#c97a4a);border-radius:10px;}
+  .noscript p{margin:0 0 10px;font-size:15px;line-height:1.6;color:#5f4330;}
+  .noscript p:last-child{margin-bottom:0;}
+  .noscript strong{color:#8a4a22;}
+  .noscript a{color:#8a4a22;}
+  @media print{.ep-back-bar{display:none!important;}}
+</style>
+<!-- Cookie consent & analytics (tracking loads only after opt-in) -->
+<script src="cookie-consent.js?v=4" defer></script>
+</head>
+<body>
+
+<div class="ep-back-bar screen-only"><a href="free-tools.html">&larr; Back to Free Tools</a></div>
+
+<noscript>
+  <div class="noscript">
+    <p><strong>This check needs JavaScript to run.</strong> Please turn it on, or open this page in
+       a different browser.</p>
+    <p><strong>If things feel unsafe:</strong> if you are having thoughts of ending your life or harming yourself, please talk to someone now &mdash; call the Samaritans free on <strong>116 123</strong> (24 hours), contact your GP, or dial <strong>999</strong> in an emergency. There is more in our <a href="suicide-support-prevention-guide.html">suicide support and prevention guide</a>.</p>
+  </div>
+</noscript>
+
+<div class="frame-wrap">
+  <iframe id="tool" src="assets/tools/core10/index.html" title="Wellbeing check (CORE-10)"
+          scrolling="no" referrerpolicy="same-origin"></iframe>
+</div>
+
+<script>
+// Size the frame to its content. Same origin, so the child document can be
+// measured directly; the bundle renders asynchronously and the result panel
+// changes height as answers come in, so keep watching rather than measuring once.
+(function () {
+  var f = document.getElementById('tool');
+  if (!f) return;
+  var last = 0;
+  function fit() {
+    try {
+      var d = f.contentDocument;
+      if (!d || !d.body) return;
+      var h = Math.max(d.body.scrollHeight, d.documentElement.scrollHeight);
+      if (h && Math.abs(h - last) > 2) { last = h; f.style.height = h + 'px'; }
+    } catch (e) { /* cross-origin or not ready */ }
+  }
+  f.addEventListener('load', function () {
+    fit();
+    try {
+      var d = f.contentDocument;
+      if (window.ResizeObserver && d && d.body) new ResizeObserver(fit).observe(d.body);
+      if (window.MutationObserver && d && d.body) {
+        new MutationObserver(fit).observe(d.body, { childList: true, subtree: true });
+      }
+    } catch (e) {}
+    // belt and braces while the bundle boots and fonts settle
+    [200, 600, 1200, 2500, 5000].forEach(function (t) { setTimeout(fit, t); });
+  });
+  window.addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
