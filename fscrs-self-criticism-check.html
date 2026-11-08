@@ -31,7 +31,9 @@
   .ep-back-bar a{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#5f5f59;text-decoration:none;}
   .ep-back-bar a:hover{color:#4b7a6e;}
   .frame-wrap{max-width:1100px;margin:0 auto;}
-  iframe#tool{display:block;width:100%;border:0;min-height:900px;}
+  iframe#tool{display:block;width:100%;border:0;min-height:100vh;}
+  .escape{max-width:760px;margin:0 auto;padding:10px 24px 0;text-align:center;}
+  .escape a{font-size:13px;color:var(--text-muted,#6b6b6b);}
   .noscript{max-width:720px;margin:40px auto;padding:24px 26px;background:#fdf6ec;border:1px solid #e8c89a;border-left:5px solid var(--ep-ember,#c97a4a);border-radius:10px;}
   .noscript p{margin:0 0 10px;font-size:15px;line-height:1.6;color:#5f4330;}
   .noscript p:last-child{margin-bottom:0;}
@@ -55,38 +57,58 @@
 
 <div class="frame-wrap">
   <iframe id="tool" src="assets/tools/fscrs/index.html" title="Self-criticism check (FSCRS)"
-          scrolling="no" referrerpolicy="same-origin"></iframe>
+          referrerpolicy="same-origin"></iframe>
+  <p class="escape"><a href="assets/tools/fscrs/index.html">Trouble with the form? Open it in its own window.</a></p>
 </div>
 
 <script>
-// Size the frame to its content. Same origin, so the child document can be
-// measured directly; the bundle renders asynchronously and the result panel
-// changes height as answers come in, so keep watching rather than measuring once.
+// Size the frame to its content.
+//
+// This has to keep working on a slow phone. The first version attached
+// observers at load and then ran five timed checks over five seconds; if the
+// bundle was still booting past that, nothing measured again, the frame stayed
+// at its minimum and — with scrolling switched off — most of the questionnaire
+// became unreachable. A client hit exactly that on the CORE-10.
+//
+// So: the frame scrolls by default, and a cheap poll runs for the life of the
+// page rather than giving up. Worst case now is an inner scrollbar, not lost
+// questions.
 (function () {
   var f = document.getElementById('tool');
   if (!f) return;
-  var last = 0;
+  function measure() {
+    try {
+      var d = f.contentDocument;
+      if (!d || !d.body) return 0;
+      return Math.max(d.body.scrollHeight, d.documentElement ? d.documentElement.scrollHeight : 0);
+    } catch (e) { return 0; }   // not ready, or cross-origin
+  }
+
+  // Reconcile against the height actually rendered, not a remembered one:
+  // a remembered value cannot tell that something else has resized the frame,
+  // so the poll would sit there believing it had already done its job.
   function fit() {
+    var h = measure();
+    if (!h) return;
+    var cur = Math.round(f.getBoundingClientRect().height);
+    if (Math.abs(h - cur) > 2) f.style.height = h + 'px';
+  }
+
+  function watch() {
     try {
       var d = f.contentDocument;
       if (!d || !d.body) return;
-      var h = Math.max(d.body.scrollHeight, d.documentElement.scrollHeight);
-      if (h && Math.abs(h - last) > 2) { last = h; f.style.height = h + 'px'; }
-    } catch (e) { /* cross-origin or not ready */ }
-  }
-  f.addEventListener('load', function () {
-    fit();
-    try {
-      var d = f.contentDocument;
-      if (window.ResizeObserver && d && d.body) new ResizeObserver(fit).observe(d.body);
-      if (window.MutationObserver && d && d.body) {
+      if (window.ResizeObserver) new ResizeObserver(fit).observe(d.body);
+      if (window.MutationObserver) {
         new MutationObserver(fit).observe(d.body, { childList: true, subtree: true });
       }
     } catch (e) {}
-    // belt and braces while the bundle boots and fonts settle
-    [200, 600, 1200, 2500, 5000].forEach(function (t) { setTimeout(fit, t); });
-  });
+  }
+
+  f.addEventListener('load', function () { fit(); watch(); });
   window.addEventListener('resize', fit);
+  setInterval(fit, 500);
+  fit();
 })();
 </script>
 </body>
