@@ -482,8 +482,8 @@
   lucide.createIcons();
   var nav=document.getElementById('main-nav'),navLogo=document.getElementById('nav-logo'),navLinks=document.querySelectorAll('.nav-link'),navLogin=document.querySelector('.nav-login');
   window.addEventListener('scroll',function(){
-    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});navLogin.style.borderColor='color-mix(in srgb,var(--ep-plum) 30%,transparent)';navLogin.style.color='var(--ep-plum)';}
-    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLogo.classList.add('logo-white');navLinks.forEach(function(l){l.style.color='rgba(243,243,240,.7)'});navLogin.style.borderColor='rgba(255,255,255,.3)';navLogin.style.color='white';}
+    if(window.scrollY>80){nav.classList.add('nav-glass');navLogo.style.filter='brightness(0) opacity(.65)';navLinks.forEach(function(l){l.style.color='var(--text-muted)'});if(navLogin){navLogin.style.borderColor='color-mix(in srgb,var(--ep-plum) 30%,transparent)';navLogin.style.color='var(--ep-plum)';}}
+    else{nav.classList.remove('nav-glass');navLogo.style.filter='';navLogo.classList.add('logo-white');navLinks.forEach(function(l){l.style.color='rgba(243,243,240,.7)'});if(navLogin){navLogin.style.borderColor='rgba(255,255,255,.3)';navLogin.style.color='white';}}
   });
     function toggleMobAccordion(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
   document.getElementById('mob-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('open');});
