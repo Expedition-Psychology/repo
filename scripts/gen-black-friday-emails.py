@@ -41,7 +41,6 @@ EMAILS = [
               'and closes at the end of Cyber Monday.'),
         price_label='25% off &middot; from tomorrow',
         price_label_txt='25% OFF - FROM TOMORROW',
-        code_style='dashed',
         cta='Look round the Toolkit',
         cta_content='teaser-cta',
         undercta='Nothing to buy tonight &mdash; the code opens in the morning',
@@ -67,7 +66,6 @@ EMAILS = [
               'Cyber Monday, Monday 30 November.'),
         price_label='25% off &middot; until Cyber Monday',
         price_label_txt='25% OFF - UNTIL CYBER MONDAY',
-        code_style='solid',
         cta='Get the Toolkit for &pound;74.25',
         cta_content='friday-cta',
         undercta='Code %s &middot; closes end of Monday 30 November' % CODE,
@@ -226,8 +224,10 @@ TPL = '''<!DOCTYPE html>
 </html>
 '''
 
+# The rule is 2px tall and the text line box is 25px, so 11px of top padding
+# drops it onto the optical middle of the first line rather than its top edge.
 POINT_ROW = ('                <tr>\n'
-             '                  <td valign="top" width="26" style="padding:0 14px 14px 0;">'
+             '                  <td valign="top" width="26" style="padding:11px 14px 14px 0;">'
              '<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>'
              '<td style="width:18px;height:2px;line-height:2px;font-size:0;background:{ember};">&nbsp;</td>'
              '</tr></table></td>\n'
@@ -319,9 +319,8 @@ def strip_ents(s):
 
 
 for e in EMAILS:
-    code_css = ('border:1.5px dashed rgba(243,243,240,0.4);border-radius:10px;padding:13px 24px;'
-                if e['code_style'] == 'dashed'
-                else 'background:%s;border-radius:10px;padding:14px 26px;' % EMBER)
+    # Same dashed, transparent box on both emails.
+    code_css = 'border:1.5px dashed rgba(243,243,240,0.4);border-radius:10px;padding:13px 24px;'
 
     points = ''.join(POINT_ROW.format(ember=EMBER, nunito=NUNITO, text=p) for p in POINTS)
 
